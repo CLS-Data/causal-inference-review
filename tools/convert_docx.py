@@ -17,9 +17,11 @@ What it does
    (1, 2.1, 2.2.3, 5.10, 5.10.1 ...).
 5. Turns "Section 5.10", "Figure 2.8b", "Table 5.2", "Box 2.1" and
    "Equation 5.1" mentions into links.
-6. Extracts the Zotero citation metadata embedded in the Word field codes
-   and writes it as CSL-JSON (references.json) so Quarto can render the
-   reference list in APA style.
+6. Converts every Zotero citation field into pandoc citation syntax
+   ([@ref123, p. 5]) and extracts the citation metadata embedded in the
+   field codes as CSL-JSON (references.json), so Quarto renders the
+   citations and the reference list in APA style, with each citation
+   linked to its entry and shown in full on hover.
 
 Files it writes (everything else in the repo is hand-maintained):
     01-*.qmd ... 08-*.qmd, 05-NN-*.qmd, references.qmd, references.json,
@@ -77,10 +79,228 @@ def run_pandoc(docx: Path) -> str:
     return md
 
 
-def extract_zotero_items(docx: Path) -> list:
-    """Collect the CSL-JSON item data that Zotero stores inside each citation field."""
+# A Word field is a sequence of runs: begin, instrText..., separate, result runs..., end
+RUNFIELD = re.compile(
+    r'<w:r(?: [^>]*)?>(?:(?!</w:r>).)*?<w:fldChar w:fldCharType="begin"/>.*?'
+    r'<w:fldChar w:fldCharType="end"/>(?:(?!<w:r[ >]).)*?</w:r>', re.S)
+TOKEN_RE = re.compile(r"ZC(\d+)Z+")
+
+
+def prepare_docx(docx: Path):
+    """Copy the .docx, replacing every Zotero citation field with a placeholder.
+
+    The placeholder has the same length as the citation text Zotero rendered, so
+    pandoc lays out grid tables exactly as before. Returns the new file and a
+    dict placeholder -> {items, plain, rendered}.
+    """
     z = zipfile.ZipFile(docx)
-    items = {}
+    new = Path(tempfile.mkdtemp()) / "prepared.docx"
+    cites, n = {}, 0
+
+    def repl(m):
+        nonlocal n
+        seg = m.group(0)
+        instr = "".join(re.findall(r"<w:instrText[^>]*>(.*?)</w:instrText>", seg, flags=re.S))
+        if "ZOTERO_ITEM" not in instr:
+            return seg
+        d = json.loads(html.unescape(instr[instr.find("{"): instr.rfind("}") + 1]))
+        sep = seg.find('fldCharType="separate"')
+        rendered = html.unescape("".join(re.findall(r"<w:t[^>]*>(.*?)</w:t>", seg[sep:]))) if sep >= 0 else ""
+        n += 1
+        tok = f"ZC{n}Z"
+        tok = tok + "Z" * max(0, len(rendered) - len(tok))
+        cites[tok.rstrip("Z") + "Z"] = {"items": d["citationItems"],
+                                        "plain": d["properties"].get("plainCitation", ""),
+                                        "rendered": rendered}
+        return f'<w:r><w:t xml:space="preserve">{tok}</w:t></w:r>'
+
+    with zipfile.ZipFile(new, "w", zipfile.ZIP_DEFLATED) as zout:
+        for item in z.infolist():
+            data = z.read(item.filename)
+            if item.filename in ("word/document.xml", "word/footnotes.xml", "word/endnotes.xml"):
+                data = RUNFIELD.sub(repl, data.decode("utf8")).encode("utf8")
+            zout.writestr(item, data)
+    print(f"citation fields: {n}")
+    return new, cites
+
+
+def _esc(text: str) -> str:
+    """Escape characters that pandoc's citation syntax would otherwise interpret,
+    and use the single curly quotes Zotero's en-GB locale produced for "quoted" text."""
+    text = re.sub(r'"([^"]*)"', "‘\\1’", text)
+    return text.replace("[", r"\[").replace("]", r"\]").replace(";", r"\;")
+
+
+LOCATOR_LABELS = {"page": "p.", "chapter": "chap.", "section": "sec.", "paragraph": "para.",
+                  "figure": "fig.", "table": "tbl.", "volume": "vol.", "part": "pt."}
+
+
+def cite_markdown(c: dict) -> str:
+    """Pandoc citation syntax for one Zotero citation field."""
+    items = c["items"]
+    plain, rendered = c["plain"].strip(), c["rendered"].strip()
+    parts = []
+    for i, it in enumerate(items):
+        prefix = (it.get("prefix") or "").strip()
+        suffix = (it.get("suffix") or "").rstrip()
+        # If the author corrected the citation text in Word, the edit is in the
+        # prefix (e.g. hyphenation): take the prefix from the rendered text.
+        if i == 0 and prefix and rendered != plain and plain.startswith("(" + prefix):
+            body = plain[1 + len(prefix):].lstrip()
+            j = rendered.find(body)
+            if j > 0:
+                prefix = rendered[1:j].strip()
+        s = ""
+        if prefix:
+            s += _esc(prefix) + " "
+        s += ("-" if it.get("suppress-author") else "") + "@" + cite_key(it.get("id", (it.get("itemData") or {}).get("id")))
+        loc = (it.get("locator") or "").strip()
+        if loc:
+            s += f", {LOCATOR_LABELS.get(it.get('label') or 'page', it.get('label'))} {loc}"
+        if suffix:
+            s += ("" if suffix.startswith((",", ";", ":", ".")) else " ") + _esc(suffix)
+        parts.append(s)
+    out = "[" + "; ".join(parts) + "]"
+
+    def family(it):
+        people = (it.get("itemData") or {}).get("author") or (it.get("itemData") or {}).get("editor") or [{}]
+        return people[0].get("family") or people[0].get("literal")
+    if len(items) > 1 and items[0].get("suppress-author") and \
+            all(family(it) == family(items[0]) for it in items[1:]):
+        # "Trochim (1985, 1989)": Zotero collapses the same-author years after a
+        # suppressed author; pandoc's citeproc keeps the author on the 2nd+ item.
+        # The post-render script strips it inside this span.
+        out = f"[{out}]{{.cite-suppressed}}"
+    return out
+
+
+def replace_citation_tokens(files: dict, cites: dict):
+    """Placeholders -> pandoc citations; inside grid/multiline tables keep the original text."""
+    missing = set()
+    for fname, flines in files.items():
+        # pipe tables (header line followed by |:---|:---| separator) are not width-sensitive
+        pipe_lines = set()
+        for i, l in enumerate(flines):
+            if l.startswith("|") and i + 1 < len(flines) and re.match(r"^\|(:?-+:?\|)+\s*$", flines[i + 1]):
+                j = i
+                while j < len(flines) and flines[j].startswith("|"):
+                    pipe_lines.add(j); j += 1
+        in_simple = False
+        for i, line in enumerate(flines):
+            if re.match(r"^\s*-{5,}\s*$", line):      # solid rule opening/closing a simple table
+                in_simple = not in_simple
+                continue
+            if "ZC" not in line:
+                continue
+            width_sensitive = in_simple or (line[:1] in "|+" and i not in pipe_lines)
+
+            def repl(m):
+                key = f"ZC{m.group(1)}Z"
+                c = cites.get(key)
+                if not c:
+                    missing.add(key)
+                    return m.group(0)
+                return c["rendered"] if width_sensitive else cite_markdown(c)
+            flines[i] = TOKEN_RE.sub(repl, line)
+    if missing:
+        print("citation placeholders without data:", sorted(missing))
+
+
+def cite_key(raw) -> str:
+    """Pandoc citation key for a Zotero item id (numeric or 'libraryKey/itemKey')."""
+    return "ref" + re.sub(r"[^A-Za-z0-9_]", "_", str(raw))
+
+
+def _initials(given: str) -> str:
+    """'Ruth H.' -> 'R. H.', 'William M.K.' -> 'W. M. K.', 'Jean-Pierre' -> 'J.-P.'.
+
+    APA prints initials anyway; normalising them makes citeproc recognise the same
+    person across items (otherwise it disambiguates with full given names)."""
+    tokens = [t for t in re.split(r"[\s.]+", given) if t]
+    return " ".join("-".join(p[0] + "." for p in t.split("-") if p) for t in tokens)
+
+
+def _item_signature(it: dict) -> str:
+    names = [(a.get("family", ""), a.get("given", "")) for a in it.get("author", []) or it.get("editor", [])]
+    return json.dumps([names, it.get("issued"), it.get("title")], ensure_ascii=False)
+
+
+NAME = r"[A-Z][A-Za-z'’\-]+"
+TYPED_PAREN = re.compile(r"\((?:(?:e\.g\.|i\.e\.|see|cf\.|see also),? )?" + NAME + r"(?: et al\.| & " + NAME + r")?, \d{4}[a-z]?"
+                         r"(?:, [A-Z][a-z]+)?(?:; " + NAME + r"(?: et al\.| & " + NAME + r")?, \d{4}[a-z]?)*\)")
+TYPED_SEG = re.compile(r"^(?:(e\.g\.|i\.e\.|see|cf\.|see also),? )?(" + NAME + r")(?: et al\.| & " + NAME + r")?, (\d{4}[a-z]?)(?:, ([A-Z][a-z]+))?$")
+TYPED_NARR = re.compile(r"\b(" + NAME + r")((?: et al\.| & " + NAME + r")?) \((\d{4}[a-z]?(?:, \d{4}[a-z]?)*)\)")
+
+
+def link_typed_citations(files: dict, refs: list):
+    """Citations typed by hand rather than inserted with Zotero, e.g. "(Card et al.,
+    2007)" or "Newman (2024, 2025)", become pandoc citations when the first author's
+    family name and the year identify exactly one item in the bibliography."""
+    index = {}
+    for it in refs:
+        people = it.get("author") or it.get("editor") or [{}]
+        fam = people[0].get("family") or people[0].get("literal")
+        try:
+            year = str(it["issued"]["date-parts"][0][0])
+        except (KeyError, IndexError, TypeError):
+            continue
+        index.setdefault((fam, year), []).append(it["id"])
+
+    def resolve(fam, year):
+        hits = index.get((fam, year[:4]), [])
+        return hits[0] if len(hits) == 1 and not year[4:] else None
+
+    converted, unresolved = [], set()
+
+    def paren(m):
+        segs = m.group(0)[1:-1].split("; ")
+        parts = []
+        for seg in segs:
+            sm = TYPED_SEG.match(seg)
+            key = sm and resolve(sm.group(2), sm.group(3))
+            if not key:
+                unresolved.add(m.group(0)); return m.group(0)
+            pre, suf = sm.group(1), sm.group(4)
+            parts.append((f"{pre} " if pre else "") + "@" + key + (f", {suf}" if suf else ""))
+        converted.append(m.group(0))
+        return "[" + "; ".join(parts) + "]"
+
+    def narr(m):
+        fam, rest, years = m.group(1), m.group(2), m.group(3).split(", ")
+        keys = [resolve(fam, y) for y in years]
+        if not all(keys):
+            unresolved.add(m.group(0)); return m.group(0)
+        converted.append(m.group(0))
+        cite = "[" + "; ".join("-@" + k for k in keys) + "]"
+        if len(keys) > 1:
+            cite = f"[{cite}]{{.cite-suppressed}}"
+        return f"{fam}{rest} {cite}"
+
+    for fname, flines in files.items():
+        in_simple = False
+        for i, line in enumerate(flines):
+            if re.match(r"^\s*-{5,}\s*$", line):      # solid rule opening/closing a simple table
+                in_simple = not in_simple
+                continue
+            if in_simple or not line.strip() or line[:1] in "#|+<":
+                continue
+            line = TYPED_PAREN.sub(paren, line)
+            flines[i] = TYPED_NARR.sub(narr, line)
+    if converted:
+        print(f"hand-typed citations linked ({len(converted)}):", converted)
+    if unresolved:
+        print(f"hand-typed citations left as text ({len(unresolved)}):", sorted(unresolved))
+
+
+def extract_zotero_items(docx: Path) -> list:
+    """Collect the CSL-JSON item data that Zotero stores inside each citation field.
+
+    A field inserted before an item was edited in the Zotero library carries the
+    older metadata, so an item can appear in more than one version; the version
+    used by most fields is kept and the conflict is reported.
+    """
+    z = zipfile.ZipFile(docx)
+    variants = {}            # key -> {signature: [itemData, count]}
     for part in ("word/document.xml", "word/footnotes.xml", "word/endnotes.xml"):
         if part not in z.namelist():
             continue
@@ -97,36 +317,36 @@ def extract_zotero_items(docx: Path) -> list:
                 continue
             for ci in d.get("citationItems", []):
                 it = ci.get("itemData")
-                if it:
-                    items[it["id"]] = it
+                if not it:
+                    continue
+                key = cite_key(ci.get("id", it.get("id")))
+                sig = _item_signature(it)
+                slot = variants.setdefault(key, {}).setdefault(sig, [it, 0])
+                slot[1] += 1
     out = []
-    for it in items.values():
-        it = dict(it)
-        it["id"] = f"ref{it['id']}"
+    for key, vs in variants.items():
+        if len(vs) > 1:
+            print(f"NOTE: item {key} has {len(vs)} metadata versions in the Word file "
+                  f"(refresh Zotero citations in Word to reconcile):")
+            for sig, (it, n) in vs.items():
+                print(f"    {n:3d} fields: {sig[:150]}")
+        it = dict(max(vs.values(), key=lambda v: v[1])[0])
+        it["id"] = key
         for k in ("abstract", "note", "source", "archive", "archive_location", "call-number"):
             it.pop(k, None)
+        for role in ("author", "editor", "translator"):
+            if role in it:
+                it[role] = [dict(p, given=_initials(p["given"])) if p.get("given") and p.get("family") else p
+                            for p in it[role]]
         out.append(it)
     out.sort(key=lambda d: json.dumps(d.get("author", d.get("editor", [{}]))[0]).lower())
     return out
 
 
-def write_reference_page(refs_json: Path, csl: Path, out: Path):
-    """Render the reference list (APA) with pandoc's citeproc into references.qmd.
-
-    The citations in the text are plain text (Word/Zotero output), so the list is
-    produced once here rather than by Quarto at render time. Quarto's book
-    post-processing hides any div with id `refs`, so a different id is used.
-    """
-    src = "---\nnocite: '@*'\n---\n\n::: {#refs}\n:::\n"
-    html_out = subprocess.run(
-        ["pandoc", "-f", "markdown", "-t", "html", "--wrap=none", "--citeproc",
-         "--bibliography", str(refs_json), "--csl", str(csl)],
-        input=src, check=True, capture_output=True, text=True).stdout
-    html_out = html_out.replace('id="refs"', 'id="bibliography"', 1)
-    n = html_out.count('class="csl-entry"')
-    out.write_text("# References {.unnumbered}\n\n```{=html}\n" + html_out.strip() + "\n```\n",
-                   encoding="utf8")
-    print(f"reference list: {n} entries")
+def write_reference_page(out: Path):
+    """Quarto fills the `#refs` div with the APA reference list at render time
+    (bibliography, csl and nocite are set in _quarto.yml)."""
+    out.write_text("# References {.unnumbered}\n\n::: {#refs}\n:::\n", encoding="utf8")
 
 
 # --------------------------------------------------------------------------
@@ -218,6 +438,26 @@ def is_table_line(line: str) -> bool:
     return line == "" or line[:1] in "+|" or line.startswith("  ")
 
 
+def multiline_to_pipe(block: list) -> list:
+    """Pandoc 'multiline' table (column widths fixed by dashes) -> pipe table.
+
+    Pipe tables are not sensitive to cell text length, so citations inside the
+    cells can be turned into links; column proportions follow the dash lengths.
+    """
+    lines = [l[2:] if l.startswith("  ") else l for l in block]
+    sep = next(l for l in lines if re.match(r"^-+( +-+)+\s*$", l))
+    cols = [(m.start(), m.end()) for m in re.finditer(r"-+", sep)]
+
+    def cells(row):
+        return [row[s:(e if i < len(cols) - 1 else len(row))].strip().replace("|", r"\|")
+                for i, (s, e) in enumerate(cols)]
+    body = [l for l in lines if l.strip() and not re.match(r"^-+( +-+)*\s*$", l)]
+    header, rows = cells(body[0]), [cells(l) for l in body[1:]]
+    widths = [max(3, round((e - s) / 6)) for s, e in cols]
+    return (["| " + " | ".join(header) + " |", "|" + "|".join(":" + "-" * w for w in widths) + "|"]
+            + ["| " + " | ".join(r) + " |" for r in rows])
+
+
 def rebuild_tables_and_boxes(md: str, registry: dict) -> str:
     lines = md.split("\n")
     out_lines = list(lines)
@@ -255,6 +495,9 @@ def rebuild_tables_and_boxes(md: str, registry: dict) -> str:
             registry.setdefault("tables", {})[num] = anchor
             if text.startswith("A hypothetical RCT"):
                 new = TABLE_2_1_HTML.split("\n")
+            elif block[0].lstrip().startswith("-"):
+                body = multiline_to_pipe(block)
+                new = [f"::: {{#{anchor}}}", ""] + body + ["", f": **Table {num}:** {text}", "", ":::"]
             else:
                 # display math inside cells -> inline math; pad so the grid columns stay aligned
                 body = [re.sub(r"\$\$(.+?)\$\$", r"$\1$  ", l) for l in block]
@@ -264,7 +507,9 @@ def rebuild_tables_and_boxes(md: str, registry: dict) -> str:
 
 
 def rebuild_equation(md: str, registry: dict) -> str:
-    pat = re.compile(r"^\s*-{10,}\n\s*(\$\$.*?)\$\$\s*\(Equation 5\.1\)\n\s*-{5,} -{5,}\n", re.M)
+    # pandoc emits the Word layout table as a simple table: solid rule, the equation
+    # row, a gapped header rule, a blank line and a closing solid rule
+    pat = re.compile(r"^\s*-{10,}\n\s*(\$\$.*?)\$\$\s*\(Equation 5\.1\)\n\s*-{5,} -{5,}\n(?:\n\s*-{5,}\n)?", re.M)
     registry.setdefault("equations", {})["5.1"] = "equation-5-1"
     return pat.sub(lambda m: f"\n::: {{#equation-5-1}}\n\n{m.group(1)} \\tag{{5.1}}$$\n\n:::\n", md)
 
@@ -403,7 +648,7 @@ def link_xrefs(files: dict, registry: dict):
     for fname, flines in files.items():
         in_simple = False
         for i, line in enumerate(flines):
-            if re.match(r"^\s*-{5,}(\s+-{3,})*\s*$", line):
+            if re.match(r"^\s*-{5,}\s*$", line):      # solid rule opening/closing a simple table
                 in_simple = not in_simple
                 continue
             if in_simple or not line.strip() or line[:1] in "#|+<:" or line.startswith("![") \
@@ -438,11 +683,12 @@ def link_xrefs(files: dict, registry: dict):
 # main
 # --------------------------------------------------------------------------
 def main():
-    md = run_pandoc(DOCX)
+    prepared, cites = prepare_docx(DOCX)
+    md = run_pandoc(prepared)
     refs = extract_zotero_items(DOCX)
     (OUT / "references.json").write_text(json.dumps(refs, indent=1, ensure_ascii=False), encoding="utf8")
     print(f"references: {len(refs)}")
-    write_reference_page(OUT / "references.json", OUT / "apa.csl", OUT / "references.qmd")
+    write_reference_page(OUT / "references.qmd")
 
     # keep everything from the Introduction heading onwards (drops NOTES + Word TOC)
     md = md[md.index("\n# Introduction\n") + 1:]
@@ -480,6 +726,8 @@ def main():
     toc.append("")
     files["05-methods.qmd"] += toc
 
+    replace_citation_tokens(files, cites)
+    link_typed_citations(files, refs)
     link_xrefs(files, registry)
 
     for f in OUT.glob("0[1-8]-*.qmd"):

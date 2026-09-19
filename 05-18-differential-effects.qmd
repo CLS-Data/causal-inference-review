@@ -2,11 +2,11 @@
 
 ## 5.18.1 Method {#method}
 
-The negative control exposure design exploits situations where the same set of confounders has effects on multiple 'exposures' only some of which plausibly have a causal effect upon the outcome of interest. Confounders like these are said to be "generic" (Rosenbaum, 2019), having multiple impacts on the world. For instance, a generalised disposition to risk may influence consumption of several drugs, meaning that people who are more likely to smoke crack cocaine may be more likely to inject heroin. A generalised interest in health could lead one to exercise more and follow a good diet.
+The negative control exposure design exploits situations where the same set of confounders has effects on multiple 'exposures' only some of which plausibly have a causal effect upon the outcome of interest. Confounders like these are said to be "generic" [@ref1502], having multiple impacts on the world. For instance, a generalised disposition to risk may influence consumption of several drugs, meaning that people who are more likely to smoke crack cocaine may be more likely to inject heroin. A generalised interest in health could lead one to exercise more and follow a good diet.
 
-The effects of a generic bias may be competing or the overlap between them incomplete -- for instance, one may become addicted to one drug, but not another. Those who perform just one of these behaviours may be more similar in terms of the confounding factor to those who perform only the other than to those who perform neither, but in standard observational research both would appear in the comparison group. Instead of comparing exposed vs. non-exposed groups, the differential effect design (Rosenbaum, 2006, 2013) compares individuals exposed to only one of two factors in lieu of the other to reduce imbalances on generic confounders -- e.g., those who exercise a lot but don't follow a good diet may be more similar to those who follow a good diet but don't exercise a lot, than those who exercise a lot are similar to those who don't exercise a lot (regardless of either group's diet).
+The effects of a generic bias may be competing or the overlap between them incomplete -- for instance, one may become addicted to one drug, but not another. Those who perform just one of these behaviours may be more similar in terms of the confounding factor to those who perform only the other than to those who perform neither, but in standard observational research both would appear in the comparison group. Instead of comparing exposed vs. non-exposed groups, the differential effect design [@ref92; @ref580] compares individuals exposed to only one of two factors in lieu of the other to reduce imbalances on generic confounders -- e.g., those who exercise a lot but don't follow a good diet may be more similar to those who follow a good diet but don't exercise a lot, than those who exercise a lot are similar to those who don't exercise a lot (regardless of either group's diet).
 
-The differential effects design is another expression of the principle Zubizarreta et al. (2018) term 'isolation' -- a smaller comparison is made that is less biased than the overall association in the wider system. Two examples discussed by Paul Rosenbaum in *Design of Observational Studies* (Rosenbaum, 2020) clarify the differential effects design as well as highlight its limitations:
+The differential effects design is another expression of the principle Zubizarreta et al. [-@ref79] term 'isolation' -- a smaller comparison is made that is less biased than the overall association in the wider system. Two examples discussed by Paul Rosenbaum in *Design of Observational Studies* [@ref454] clarify the differential effects design as well as highlight its limitations:
 
 1.  Non-steroidal anti-inflammatory drugs, such as ibuprofen, may reduce the risk of Alzheimer's, but pre-clinical Alzheimer's may reduce pain sensitivity leading to lower ibuprofen use. However, pain sensitivity should affect the use of other analgesics, too, including ones that are not anti-inflammatory, such as paracetamol. Comparing exclusive ibuprofen users with exclusive paracetamol users is useful for gauging the effect of anti-inflammatory drugs on Alzheimer's as this would likely reduce imbalance on pain sensitivity, though other confounders may remain.[^52]
 
@@ -34,7 +34,7 @@ The differential effects design is another expression of the principle Zubizarre
 | Did not want to get pregnant    | 32%     | 46%      | 59%     | 80%     |
 +---------------------------------+---------+----------+---------+---------+
 
-: **Table 5.6:** An Example Differential Effect Study (figures from Rosenbaum, 2020).
+: **Table 5.6:** An Example Differential Effect Study [figures from @ref454].
 
 :::
 
@@ -42,7 +42,7 @@ By comparing two exposures, the 'effect' identified is not directly informative 
 
 ## 5.18.2 Applications {#applications}
 
-Applications of this method using any data appear to be few and we identified none using CLS data -- according to Google Scholar, the Rosenbaum (2006) paper only has 45 citations (as of January 2026), many of which are other methodological papers.
+Applications of this method using any data appear to be few and we identified none using CLS data -- according to Google Scholar, the Rosenbaum [-@ref92] paper only has 45 citations (as of January 2026), many of which are other methodological papers.
 
 ## 5.18.3 Opportunities {#opportunities}
 

@@ -21,7 +21,27 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
-</style>
+/* CSS for citations */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+  margin-bottom: 0em;
+}
+.hanging-indent div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}</style>
 
 
 <script src="site_libs/quarto-nav/quarto-nav.js"></script>
@@ -316,21 +336,66 @@ ul.task-list li input[type="checkbox"] {
 
 <section id="method" class="level2">
 <h2 class="anchored" data-anchor-id="method">5.19.1 Method</h2>
-<p>Theories that predict a causal effect of an exposure on an outcome typically invoke a set of mechanisms linking the two. One way of making a theory elaborate is to consider intermediate effects. For instance, the theory that cognitive ability improves health by influencing health-related decision making assumes that (a) cognitive ability influences health-related decision making and that (b) decision making influences health. While it may be difficult to directly empirically assess the causal effects of cognitive ability upon health, in general, these ‘reasons for effects’ provide extra targets for empirical study (Rosenbaum, 2005, 2020). A causal theory may fail at the first step, if no link between intermediate factors can be shown. For instance, one may discard a hypothesis that blood alcohol limits reduce car fatalities by disincentivising drink-driving, if these limits have no observed effects on drivers’ drinking behaviour.</p>
-<p>One advantage of subjecting reasons to empirical scrutiny is that certain links in a causal chain may be more amenable to causal effect estimation or to more persuasive testing than others. For instance, in their sociological study of diabetes patients, Lutfey &amp; Freese (2005) provide compelling evidence of the difficulties individuals with lower cognitive resources have in managing the illness. From there, if one is interested in the effect of cognitive ability upon diabetes survival, one needs to establish that poor disease management negatively affects prognoses, which some might consider self-evident. Consider also papers that repeatedly show that youth unemployment is related to poorer mental health later in life (see L. Wright, 2021, for a review). This association is hypothesised to partly reflect youth unemployment having a deleterious long-term effect on labour market outcomes – i.e., individuals who were previously unemployed may have poorer mental health later because they are more likely to earn low wages at the point of measurement of mental health. One would therefore expect youth unemployment to negatively affect labour market prospects. This can be tested experimentally, albeit in a somewhat artificial way, with correspondence studies – a type of field experiment in which curricula vitae (CVs) are sent to real-world employers and interview offers recorded. These CVs are manipulated and sent randomly to determine the effect of applicant attributes on job prospects. For instance, CVs may vary in whether an individual has experienced an episode of unemployment (Eriksson &amp; Rooth, 2014). Thus, while the main estimate of interest may be biased, one can still have good, empirically well-supported reasons for thinking a causal effect exists. Indeed, because of their expense, RCTs frequently use surrogate outcomes – outcomes preceding the true outcome of interest (e.g., blood pressure in an RCT of a drug designed to reduce cardiovascular disease mortality) – on the logic that established ‘reasons for effects’ will translate into clinical outcomes.</p>
-<p>Reasons for effects are conceptually similar to Bradford Hill’s (1965) ‘criterion’ of “biologic plausibility” and form further pieces of evidence to assess whether an association of interest is causal. To be clear, here the object of inquiry is independent assessment of the effect of the exposure upon intermediate outcomes, or intermediate outcomes upon final outcomes or even other intermediate outcomes, in the causal chain, rather than performing a mediation analysis.</p>
-<p>There are four issues with solely relying on ‘reasons for effects’. First, there may be several mechanisms of action – cognitive ability is proposed to influence health not just through decision making, but also by affecting socioeconomic position (Deary et al., 2021). Discounting one mechanism does not mean causal effects may not be transmitted through other pathways (Gerring, 2010), including pathways that have not yet been thought of. Second, mechanisms may counteract, producing an unknown aggregate effect – this indeterminacy may in fact be motivation for assessing total causal effects empirically in the first place. Third (and related), assessing reasons for effects does not straightforwardly translate into determining effect sizes. Rather, it most straightforwardly informs qualitative judgements about a causal effect being present or not, limiting its usefulness, especially given effects may need to be of a certain minimum size to be practically important.</p>
+<p>Theories that predict a causal effect of an exposure on an outcome typically invoke a set of mechanisms linking the two. One way of making a theory elaborate is to consider intermediate effects. For instance, the theory that cognitive ability improves health by influencing health-related decision making assumes that (a) cognitive ability influences health-related decision making and that (b) decision making influences health. While it may be difficult to directly empirically assess the causal effects of cognitive ability upon health, in general, these ‘reasons for effects’ provide extra targets for empirical study <span class="citation" data-cites="ref75 ref454">(<a href="references.html#ref-ref75" role="doc-biblioref">Rosenbaum, 2005</a>, <a href="references.html#ref-ref454" role="doc-biblioref">2020</a>)</span>. A causal theory may fail at the first step, if no link between intermediate factors can be shown. For instance, one may discard a hypothesis that blood alcohol limits reduce car fatalities by disincentivising drink-driving, if these limits have no observed effects on drivers’ drinking behaviour.</p>
+<p>One advantage of subjecting reasons to empirical scrutiny is that certain links in a causal chain may be more amenable to causal effect estimation or to more persuasive testing than others. For instance, in their sociological study of diabetes patients, Lutfey &amp; Freese <span class="citation" data-cites="ref5112">(<a href="references.html#ref-ref5112" role="doc-biblioref">2005</a>)</span> provide compelling evidence of the difficulties individuals with lower cognitive resources have in managing the illness. From there, if one is interested in the effect of cognitive ability upon diabetes survival, one needs to establish that poor disease management negatively affects prognoses, which some might consider self-evident. Consider also papers that repeatedly show that youth unemployment is related to poorer mental health later in life <span class="citation" data-cites="ref591">(see <a href="references.html#ref-ref591" role="doc-biblioref">L. Wright, 2021</a>, for a review)</span>. This association is hypothesised to partly reflect youth unemployment having a deleterious long-term effect on labour market outcomes – i.e., individuals who were previously unemployed may have poorer mental health later because they are more likely to earn low wages at the point of measurement of mental health. One would therefore expect youth unemployment to negatively affect labour market prospects. This can be tested experimentally, albeit in a somewhat artificial way, with correspondence studies – a type of field experiment in which curricula vitae (CVs) are sent to real-world employers and interview offers recorded. These CVs are manipulated and sent randomly to determine the effect of applicant attributes on job prospects. For instance, CVs may vary in whether an individual has experienced an episode of unemployment <span class="citation" data-cites="ref3120">(<a href="references.html#ref-ref3120" role="doc-biblioref">Eriksson &amp; Rooth, 2014</a>)</span>. Thus, while the main estimate of interest may be biased, one can still have good, empirically well-supported reasons for thinking a causal effect exists. Indeed, because of their expense, RCTs frequently use surrogate outcomes – outcomes preceding the true outcome of interest (e.g., blood pressure in an RCT of a drug designed to reduce cardiovascular disease mortality) – on the logic that established ‘reasons for effects’ will translate into clinical outcomes.</p>
+<p>Reasons for effects are conceptually similar to Bradford Hill’s <span class="citation" data-cites="ref1509">(<a href="references.html#ref-ref1509" role="doc-biblioref">1965</a>)</span> ‘criterion’ of “biologic plausibility” and form further pieces of evidence to assess whether an association of interest is causal. To be clear, here the object of inquiry is independent assessment of the effect of the exposure upon intermediate outcomes, or intermediate outcomes upon final outcomes or even other intermediate outcomes, in the causal chain, rather than performing a mediation analysis.</p>
+<p>There are four issues with solely relying on ‘reasons for effects’. First, there may be several mechanisms of action – cognitive ability is proposed to influence health not just through decision making, but also by affecting socioeconomic position <span class="citation" data-cites="ref1391">(<a href="references.html#ref-ref1391" role="doc-biblioref">Deary et al., 2021</a>)</span>. Discounting one mechanism does not mean causal effects may not be transmitted through other pathways <span class="citation" data-cites="ref74">(<a href="references.html#ref-ref74" role="doc-biblioref">Gerring, 2010</a>)</span>, including pathways that have not yet been thought of. Second, mechanisms may counteract, producing an unknown aggregate effect – this indeterminacy may in fact be motivation for assessing total causal effects empirically in the first place. Third (and related), assessing reasons for effects does not straightforwardly translate into determining effect sizes. Rather, it most straightforwardly informs qualitative judgements about a causal effect being present or not, limiting its usefulness, especially given effects may need to be of a certain minimum size to be practically important.</p>
 <p>Fourth, the populations used to estimate effects at each step along a causal chain may vary and results may not generalise across these. It is possible that the overall chain may be broken for the target population of interest. For instance, one may observe a causal effect of youth unemployment on short-term employment prospects and a later effect of contemporaneous income on obesity at age 50 years, but by age 50 years, any labour market disadvantage arising from an episode of youth unemployment may be compensated for (e.g., through faster within-firm job promotions once a job is found).</p>
 </section>
 <section id="applications" class="level2">
 <h2 class="anchored" data-anchor-id="applications">5.19.2 Applications</h2>
-<p>Decades of research has shown that socioeconomic and psychosocial adversities are related to poorer health outcomes (Marmot, 2016). Major theories conceptualise adversities as stressors that, experienced chronically, alter and cause “wear and tear” of multiple systems within the body’s regulatory systems (cardiovascular, metabolic, immune, etc.; Delpierre et al., 2016) and lead to a state of chronic inflammation. Wear and tear is operationalised as measures of “allostatic load”, which combine measures of biomarkers across multiple systems, while chronic inflammation is most commonly indexed by elevated levels of C-reactive protein (CRP). Several studies have used data from the biomedical sweep of the NCDS to examine associations between socioeconomic (Barboza Solís et al., 2016) and psychosocial (e.g., adverse childhood experiences; Barboza Solís et al., 2015; M. Chen &amp; Lacey, 2018) adversity and allostatic load or CRP, in an effort to provide mechanistic understanding of the association between these adversities and clinical health outcomes. While these studies show such associations, issues are that (1) chronic stress is only one pathway and (2) the same factors that may confound the association between adversity and health plausibly also confound the association between adversity and allostatic load and CRP. Counterclaims would make the same set of predictions; biases are replicated (Rosenbaum, 2001).</p>
+<p>Decades of research has shown that socioeconomic and psychosocial adversities are related to poorer health outcomes <span class="citation" data-cites="ref1506">(<a href="references.html#ref-ref1506" role="doc-biblioref">Marmot, 2016</a>)</span>. Major theories conceptualise adversities as stressors that, experienced chronically, alter and cause “wear and tear” of multiple systems within the body’s regulatory systems <span class="citation" data-cites="ref2305">(cardiovascular, metabolic, immune, etc.; <a href="references.html#ref-ref2305" role="doc-biblioref">Delpierre et al., 2016</a>)</span> and lead to a state of chronic inflammation. Wear and tear is operationalised as measures of “allostatic load”, which combine measures of biomarkers across multiple systems, while chronic inflammation is most commonly indexed by elevated levels of C-reactive protein (CRP). Several studies have used data from the biomedical sweep of the NCDS to examine associations between socioeconomic <span class="citation" data-cites="ref71">(<a href="references.html#ref-ref71" role="doc-biblioref">Barboza Solís et al., 2016</a>)</span> and psychosocial <span class="citation" data-cites="ref73 ref72">(e.g., adverse childhood experiences; <a href="references.html#ref-ref73" role="doc-biblioref">Barboza Solís et al., 2015</a>; <a href="references.html#ref-ref72" role="doc-biblioref">M. Chen &amp; Lacey, 2018</a>)</span> adversity and allostatic load or CRP, in an effort to provide mechanistic understanding of the association between these adversities and clinical health outcomes. While these studies show such associations, issues are that (1) chronic stress is only one pathway and (2) the same factors that may confound the association between adversity and health plausibly also confound the association between adversity and allostatic load and CRP. Counterclaims would make the same set of predictions; biases are replicated <span class="citation" data-cites="ref69">(<a href="references.html#ref-ref69" role="doc-biblioref">Rosenbaum, 2001</a>)</span>.</p>
 </section>
 <section id="opportunities" class="level2">
 <h2 class="anchored" data-anchor-id="opportunities">5.19.3 Opportunities</h2>
 <p>Given the rich data collection reflected in CLS’s cohorts, data related to causal mechanisms may be available (e.g., on biomarkers, health behaviours, and so on).</p>
 
 
+<div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0" data-line-spacing="2" role="list" style="display: none">
+
+<div id="ref-ref71" class="csl-entry" role="listitem">
+Barboza Solís, C., Fantin, R., Castagné, R., Lang, T., Delpierre, C., &amp; Kelly-Irving, M. (2016). Mediating pathways between parental socio-economic position and allostatic load in mid-life: Findings from the 1958 British birth cohort. <em>Social Science &amp; Medicine</em>, <em>165</em>, 19–27. <a href="https://doi.org/10.1016/j.socscimed.2016.07.031">https://doi.org/10.1016/j.socscimed.2016.07.031</a>
+</div>
+<div id="ref-ref73" class="csl-entry" role="listitem">
+Barboza Solís, C., Kelly-Irving, M., Fantin, R., Darnaudéry, M., Torrisani, J., Lang, T., &amp; Delpierre, C. (2015). Adverse childhood experiences and physiological wear-and-tear in midlife: Findings from the 1958 British birth cohort. <em>Proceedings of the National Academy of Sciences</em>, <em>112</em>(7), E738–E746. <a href="https://doi.org/10.1073/pnas.1417325112">https://doi.org/10.1073/pnas.1417325112</a>
+</div>
+<div id="ref-ref1509" class="csl-entry" role="listitem">
+Bradford Hill, A. (1965). <a href="https://www.ncbi.nlm.nih.gov/pmc/articles/PMC1898525">The Environment and Disease: Association Or Causation?</a> <em>Proceedings of the Royal Society of Medicine</em>, <em>58</em>, 295–300.
+</div>
+<div id="ref-ref72" class="csl-entry" role="listitem">
+Chen, M., &amp; Lacey, R. E. (2018). Adverse childhood experiences and adult inflammation: Findings from the 1958 British birth cohort. <em>Brain, Behavior, and Immunity</em>, <em>69</em>, 582–590. <a href="https://doi.org/10.1016/j.bbi.2018.02.007">https://doi.org/10.1016/j.bbi.2018.02.007</a>
+</div>
+<div id="ref-ref1391" class="csl-entry" role="listitem">
+Deary, I. J., Hill, W. D., &amp; Gale, C. R. (2021). Intelligence, health and death. <em>Nature Human Behaviour</em>, <em>5</em>(4), 416–430. <a href="https://doi.org/10.1038/s41562-021-01078-9">https://doi.org/10.1038/s41562-021-01078-9</a>
+</div>
+<div id="ref-ref2305" class="csl-entry" role="listitem">
+Delpierre, C., Barbosa-Solis, C., Torrisani, J., Darnaudery, M., Bartley, M., Blane, D., Kelly-Irving, M., Getz, L., Tomasdottir, M. O., Roberston, T., &amp; Gustafsson, P. E. (2016). Origins of heath inequalities: the case for Allostatic Load. <em>Longitudinal and Life Course Studies</em>, <em>7</em>(1). <a href="https://doi.org/10.14301/llcs.v7i1.325">https://doi.org/10.14301/llcs.v7i1.325</a>
+</div>
+<div id="ref-ref3120" class="csl-entry" role="listitem">
+Eriksson, S., &amp; Rooth, D. O. (2014). Do employers use unemployment as a sorting criterion when hiring? evidence from a field experiment. <em>American Economic Review</em>, <em>104</em>(3), 1014–1039. <a href="https://doi.org/10.1257/aer.104.3.1014">https://doi.org/10.1257/aer.104.3.1014</a>
+</div>
+<div id="ref-ref74" class="csl-entry" role="listitem">
+Gerring, J. (2010). Causal Mechanisms: Yes, But…. <em>Comparative Political Studies</em>, <em>43</em>(11), 1499–1526. <a href="https://doi.org/10.1177/0010414010376911">https://doi.org/10.1177/0010414010376911</a>
+</div>
+<div id="ref-ref5112" class="csl-entry" role="listitem">
+Lutfey, K., &amp; Freese, J. (2005). Toward Some Fundamentals of Fundamental Causality: Socioeconomic Status and Health in the Routine Clinic Visit for Diabetes. <em>American Journal of Sociology</em>, <em>110</em>(5), 1326–1372. <a href="https://doi.org/10.1086/428914">https://doi.org/10.1086/428914</a>
+</div>
+<div id="ref-ref1506" class="csl-entry" role="listitem">
+Marmot, M. (2016). <em>The health gap: the challenge of an unequal world</em> (1st ed.). Bloomsbury.
+</div>
+<div id="ref-ref69" class="csl-entry" role="listitem">
+Rosenbaum, P. R. (2001). Replicating Effects and Biases. <em>The American Statistician</em>, <em>55</em>(3), 223–227. <a href="https://doi.org/10.1198/000313001317098220">https://doi.org/10.1198/000313001317098220</a>
+</div>
+<div id="ref-ref75" class="csl-entry" role="listitem">
+Rosenbaum, P. R. (2005). Reasons for Effects. <em>CHANCE</em>, <em>18</em>(1), 5–10. <a href="https://doi.org/10.1080/09332480.2005.10722702">https://doi.org/10.1080/09332480.2005.10722702</a>
+</div>
+<div id="ref-ref454" class="csl-entry" role="listitem">
+Rosenbaum, P. R. (2020). <em>Design of Observational Studies</em> (2nd ed). Springer International Publishing AG.
+</div>
+<div id="ref-ref591" class="csl-entry" role="listitem">
+Wright, L. (2021). <em>Investigating the Association between Youth Unemployment and Mental Health Later in Life</em> [University College London]. <a href="https://discovery.ucl.ac.uk/id/eprint/10128339/">https://discovery.ucl.ac.uk/id/eprint/10128339/</a>
+</div>
+</div>
 </section>
 
 </main> <!-- /main -->

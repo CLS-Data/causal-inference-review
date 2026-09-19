@@ -21,7 +21,27 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
-</style>
+/* CSS for citations */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+  margin-bottom: 0em;
+}
+.hanging-indent div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}</style>
 
 
 <script src="site_libs/quarto-nav/quarto-nav.js"></script>
@@ -316,16 +336,16 @@ ul.task-list li input[type="checkbox"] {
 
 <section id="method" class="level2">
 <h2 class="anchored" data-anchor-id="method">5.18.1 Method</h2>
-<p>The negative control exposure design exploits situations where the same set of confounders has effects on multiple ‘exposures’ only some of which plausibly have a causal effect upon the outcome of interest. Confounders like these are said to be “generic” (Rosenbaum, 2019), having multiple impacts on the world. For instance, a generalised disposition to risk may influence consumption of several drugs, meaning that people who are more likely to smoke crack cocaine may be more likely to inject heroin. A generalised interest in health could lead one to exercise more and follow a good diet.</p>
-<p>The effects of a generic bias may be competing or the overlap between them incomplete – for instance, one may become addicted to one drug, but not another. Those who perform just one of these behaviours may be more similar in terms of the confounding factor to those who perform only the other than to those who perform neither, but in standard observational research both would appear in the comparison group. Instead of comparing exposed vs.&nbsp;non-exposed groups, the differential effect design (Rosenbaum, 2006, 2013) compares individuals exposed to only one of two factors in lieu of the other to reduce imbalances on generic confounders – e.g., those who exercise a lot but don’t follow a good diet may be more similar to those who follow a good diet but don’t exercise a lot, than those who exercise a lot are similar to those who don’t exercise a lot (regardless of either group’s diet).</p>
-<p>The differential effects design is another expression of the principle Zubizarreta et al.&nbsp;(2018) term ‘isolation’ – a smaller comparison is made that is less biased than the overall association in the wider system. Two examples discussed by Paul Rosenbaum in <em>Design of Observational Studies</em> (Rosenbaum, 2020) clarify the differential effects design as well as highlight its limitations:</p>
+<p>The negative control exposure design exploits situations where the same set of confounders has effects on multiple ‘exposures’ only some of which plausibly have a causal effect upon the outcome of interest. Confounders like these are said to be “generic” <span class="citation" data-cites="ref1502">(<a href="references.html#ref-ref1502" role="doc-biblioref">Rosenbaum, 2019</a>)</span>, having multiple impacts on the world. For instance, a generalised disposition to risk may influence consumption of several drugs, meaning that people who are more likely to smoke crack cocaine may be more likely to inject heroin. A generalised interest in health could lead one to exercise more and follow a good diet.</p>
+<p>The effects of a generic bias may be competing or the overlap between them incomplete – for instance, one may become addicted to one drug, but not another. Those who perform just one of these behaviours may be more similar in terms of the confounding factor to those who perform only the other than to those who perform neither, but in standard observational research both would appear in the comparison group. Instead of comparing exposed vs.&nbsp;non-exposed groups, the differential effect design <span class="citation" data-cites="ref92 ref580">(<a href="references.html#ref-ref92" role="doc-biblioref">Rosenbaum, 2006</a>, <a href="references.html#ref-ref580" role="doc-biblioref">2013</a>)</span> compares individuals exposed to only one of two factors in lieu of the other to reduce imbalances on generic confounders – e.g., those who exercise a lot but don’t follow a good diet may be more similar to those who follow a good diet but don’t exercise a lot, than those who exercise a lot are similar to those who don’t exercise a lot (regardless of either group’s diet).</p>
+<p>The differential effects design is another expression of the principle Zubizarreta et al. <span class="citation" data-cites="ref79">(<a href="references.html#ref-ref79" role="doc-biblioref">2018</a>)</span> term ‘isolation’ – a smaller comparison is made that is less biased than the overall association in the wider system. Two examples discussed by Paul Rosenbaum in <em>Design of Observational Studies</em> <span class="citation" data-cites="ref454">(<a href="references.html#ref-ref454" role="doc-biblioref">Rosenbaum, 2020</a>)</span> clarify the differential effects design as well as highlight its limitations:</p>
 <ol type="1">
 <li><p>Non-steroidal anti-inflammatory drugs, such as ibuprofen, may reduce the risk of Alzheimer’s, but pre-clinical Alzheimer’s may reduce pain sensitivity leading to lower ibuprofen use. However, pain sensitivity should affect the use of other analgesics, too, including ones that are not anti-inflammatory, such as paracetamol. Comparing exclusive ibuprofen users with exclusive paracetamol users is useful for gauging the effect of anti-inflammatory drugs on Alzheimer’s as this would likely reduce imbalance on pain sensitivity, though other confounders may remain.<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a></p></li>
 <li><p>Understanding the effect of cannabis use during pregnancy on child development is challenging as mothers who smoke cannabis during pregnancy differ sharply from those who do not (Columns 2, 3 &amp; 5, <a href="#table-5-6">Table 5.6</a>). Cannabis users are more similar to those who use crack cocaine than those who use no drug, however; comparing exclusive cannabis users with exclusive crack cocaine users leads to an analytical sample less imbalanced on potential confounders (Columns 3-4, <a href="#table-5-6">Table 5.6</a>). Nevertheless, maternal crack cocaine use likely has an independent effect on childhood development.</p></li>
 </ol>
 <div id="table-5-6">
 <table class="caption-top table">
-<caption><strong>Table 5.6:</strong> An Example Differential Effect Study (figures from Rosenbaum, 2020).</caption>
+<caption><strong>Table 5.6:</strong> An Example Differential Effect Study <span class="citation" data-cites="ref454">(figures from <a href="references.html#ref-ref454" role="doc-biblioref">Rosenbaum, 2020</a>)</span>.</caption>
 <colgroup>
 <col style="width: 43%">
 <col style="width: 12%">
@@ -398,13 +418,31 @@ ul.task-list li input[type="checkbox"] {
 </section>
 <section id="applications" class="level2">
 <h2 class="anchored" data-anchor-id="applications">5.18.2 Applications</h2>
-<p>Applications of this method using any data appear to be few and we identified none using CLS data – according to Google Scholar, the Rosenbaum (2006) paper only has 45 citations (as of January 2026), many of which are other methodological papers.</p>
+<p>Applications of this method using any data appear to be few and we identified none using CLS data – according to Google Scholar, the Rosenbaum <span class="citation" data-cites="ref92">(<a href="references.html#ref-ref92" role="doc-biblioref">2006</a>)</span> paper only has 45 citations (as of January 2026), many of which are other methodological papers.</p>
 </section>
 <section id="opportunities" class="level2">
 <h2 class="anchored" data-anchor-id="opportunities">5.18.3 Opportunities</h2>
 <p>Several behaviours plausibly reflect common traits and impulses – e.g., health-seeking behaviour or risk aversion, in general. Given the variety of behaviours (e.g., on drug use) measured in the cohorts, there may be many possible applications. However, as the differential effects design uses only subsets of the data, the opportunities to obtain sufficient sample sizes with the method in CLS data may be fewer, though will increase if the cohorts are combined together or with similar studies.</p>
 
 
+<div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0" data-line-spacing="2" role="list" style="display: none">
+
+<div id="ref-ref92" class="csl-entry" role="listitem">
+Rosenbaum, P. R. (2006). Differential Effects and Generic Biases in Observational Studies. <em>Biometrika</em>, <em>93</em>(3), 573–586.
+</div>
+<div id="ref-ref580" class="csl-entry" role="listitem">
+Rosenbaum, P. R. (2013). Using Differential Comparisons in Observational Studies. <em>CHANCE</em>, <em>26</em>(3), 18–25. <a href="https://doi.org/10.1080/09332480.2013.845002">https://doi.org/10.1080/09332480.2013.845002</a>
+</div>
+<div id="ref-ref1502" class="csl-entry" role="listitem">
+Rosenbaum, P. R. (2019). <em>Observation and experiment: an introduction to causal inference</em>. Harvard University Press.
+</div>
+<div id="ref-ref454" class="csl-entry" role="listitem">
+Rosenbaum, P. R. (2020). <em>Design of Observational Studies</em> (2nd ed). Springer International Publishing AG.
+</div>
+<div id="ref-ref79" class="csl-entry" role="listitem">
+Zubizarreta, J. R., Small, D. S., &amp; Rosenbaum, P. R. (2018). A Simple Example of Isolation in Building a Natural Experiment. <em>CHANCE</em>, <em>31</em>(4), 16–23. <a href="https://doi.org/10.1080/09332480.2018.1549811">https://doi.org/10.1080/09332480.2018.1549811</a>
+</div>
+</div>
 </section>
 <section id="footnotes" class="footnotes footnotes-end-of-document" role="doc-endnotes">
 <hr>

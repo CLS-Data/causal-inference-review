@@ -1,6 +1,8 @@
 project:
   type: book
   output-dir: docs
+  post-render:
+    - tools/prune_bibliographies.py
 
 book:
   title: "Causal Inference in the CLS Cohort Studies"
@@ -60,6 +62,16 @@ book:
     - 07-statements.qmd
     - 08-appendix.qmd
     - references.qmd
+
+# Citations: every chapter cites against the full list (nocite) so that
+# author-year disambiguation (2018a/2018b, initials) is identical on every page
+# and in the References chapter. tools/prune_bibliographies.py trims the hidden
+# per-page copies after rendering.
+bibliography: references.json
+csl: apa.csl
+nocite: |
+  @*
+link-citations: true
 
 format:
   html:

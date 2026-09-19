@@ -21,7 +21,27 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
-</style>
+/* CSS for citations */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+  margin-bottom: 0em;
+}
+.hanging-indent div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}</style>
 
 
 <script src="site_libs/quarto-nav/quarto-nav.js"></script>
@@ -325,7 +345,7 @@ ul.task-list li input[type="checkbox"] {
 <table class="caption-top table">
 <caption><strong>Table 5.4:</strong> Experiments in CLS’s Cohort Studies.</caption>
 <colgroup>
-<col style="width: 9%">
+<col style="width: 10%">
 <col style="width: 89%">
 </colgroup>
 <thead>
@@ -349,7 +369,7 @@ ul.task-list li input[type="checkbox"] {
 </tr>
 <tr class="even">
 <td style="text-align: left;">Next Steps Age 25y (Sweep 8) Progress Bar Experiment</td>
-<td style="text-align: left;">Participants responding via web were randomised to see a progress bar or not while completing the questionnaire, though an error in coding meant no participants early in fieldwork saw the progress bar. The experiment was originally intended to be run only during the soft launch but continued when there was no clear evidence of effects on completion rates; such results-driven decisions can increase the risk of false positives (Simmons et al., 2011).</td>
+<td style="text-align: left;">Participants responding via web were randomised to see a progress bar or not while completing the questionnaire, though an error in coding meant no participants early in fieldwork saw the progress bar. The experiment was originally intended to be run only during the soft launch but continued when there was no clear evidence of effects on completion rates; such results-driven decisions can increase the risk of false positives <span class="citation" data-cites="ref153">(<a href="references.html#ref-ref153" role="doc-biblioref">Simmons et al., 2011</a>)</span>.</td>
 </tr>
 <tr class="odd">
 <td style="text-align: left;">Next Steps Age 32y (Sweep 9) Differential Incentive Experiment</td>
@@ -386,7 +406,7 @@ ul.task-list li input[type="checkbox"] {
 </tbody>
 </table>
 </div>
-<p>An important feature of these experiments is that the interventions implemented could have effects on both response rates and measurement. For instance, offering a web questionnaire in a sequential mixed-mode design can incentivise more cohort members to respond (Goodman et al., 2022), but it may also affect data quality if, for instance, lack of interviewer presence in the web mode leads to more hurried interview completion. Given that measurements are only taken from cohort members who choose to participate, simple comparisons of observations across experimental arms may be biased due to implicitly conditioning on participation, a collider variable (Figure 5.8).</p>
+<p>An important feature of these experiments is that the interventions implemented could have effects on both response rates and measurement. For instance, offering a web questionnaire in a sequential mixed-mode design can incentivise more cohort members to respond <span class="citation" data-cites="ref853">(<a href="references.html#ref-ref853" role="doc-biblioref">Goodman et al., 2022</a>)</span>, but it may also affect data quality if, for instance, lack of interviewer presence in the web mode leads to more hurried interview completion. Given that measurements are only taken from cohort members who choose to participate, simple comparisons of observations across experimental arms may be biased due to implicitly conditioning on participation, a collider variable (<a href="#figure-5-8">Figure 5.8</a>).</p>
 <div id="figure-5-8">
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
@@ -395,20 +415,38 @@ ul.task-list li input[type="checkbox"] {
 </figure>
 </div>
 </div>
-<p>The differential non-response this implies should be accounted for in statistical analysis. Potentially suitable methods include multiple imputation (Section 5.4) and/or quantitative bias analysis (Section 5.20). Bias from differential non-response may be detected by examining the distribution of baseline covariates in each experimental arm or using <em>negative controls</em> (variables unlikely to be impacted by the experimental treatment; Section 5.15) as alternate outcome variables. In practice, absolute differences in response rates may be small, limiting the size of the bias arising from selection.</p>
+<p>The differential non-response this implies should be accounted for in statistical analysis. Potentially suitable methods include multiple imputation (<a href="./05-04-missing-data-methods.html">Section 5.4</a>) and/or quantitative bias analysis (<a href="./05-20-quantitative-bias-analysis.html">Section 5.20</a>). Bias from differential non-response may be detected by examining the distribution of baseline covariates in each experimental arm or using <em>negative controls</em> (variables unlikely to be impacted by the experimental treatment; <a href="./05-15-negative-control-outcomes-and-exposures.html">Section 5.15</a>) as alternate outcome variables. In practice, absolute differences in response rates may be small, limiting the size of the bias arising from selection.</p>
 </section>
 <section id="applications" class="level2">
 <h2 class="anchored" data-anchor-id="applications">5.7.2 Applications</h2>
-<p>Several studies have used data from experiments in Table 5.4. Goodman et al.&nbsp;(2022) used data from the NCDS Age 55y mixed-mode experiment in which eligible cohort members were randomised to telephone-only or sequential mixed-mode (web-then-telephone) survey designs, in order to estimate effects of survey mode (telephone interview vs.&nbsp;web questionnaire) upon item and sweep non-response rates and measured responses (e.g., on socioeconomic status, health behaviours, and physical and mental health). Sweep response rates were higher for cohort members in the sequential mixed-mode arm, and there were differences across arms in reported values for several socially valent characteristics such as mental health and alcohol consumption (the web survey was entirely anonymous, unlike the telephone survey). Given the (small) difference in response rates by mode, missing values for non-respondents were imputed via multiple imputation under the Missing at Random assumption. As ‘treated’ participants were randomised to the web-then-telephone sequential mixed-mode design, rather than to web specifically, treatment group was used as an instrumental variable (Section 5.9) to obtain a ‘complier average causal effect’ (CACE) – here, the average causal effect of web participation (relative to telephone response) among those who ‘complied’, i.e., responded via web instead of telephone when offered. Among other things, this analysis assumes that assignment to mixed-mode itself did not influence measured responses among those who instead responded via telephone.</p>
-<p>Calderwood (2014) examined the effectiveness of a redesigned letter sent to MCS participants between waves to minimise loss to follow-up. She found that cohort families sent the redesigned letter were more likely to return the completed forms early, including among non-English-speaking families and families with parents who had no qualifications, subpopulations for whom effects were expected to be greatest. However, longer-term effects on returning of forms were more muted. Booth et al.&nbsp;(2024) investigated the effect of a monetary incentive given to MCS participants to complete a COVID-19 survey – the incentive was associated with both increased response rates and improved data quality. As data quality could only be ascertained from respondents, statistical adjustment was used to account for selection resulting from differences in response rates by treatment arm.</p>
+<p>Several studies have used data from experiments in <a href="#table-5-4">Table 5.4</a>. Goodman et al. <span class="citation" data-cites="ref853">(<a href="references.html#ref-ref853" role="doc-biblioref">2022</a>)</span> used data from the NCDS Age 55y mixed-mode experiment in which eligible cohort members were randomised to telephone-only or sequential mixed-mode (web-then-telephone) survey designs, in order to estimate effects of survey mode (telephone interview vs.&nbsp;web questionnaire) upon item and sweep non-response rates and measured responses (e.g., on socioeconomic status, health behaviours, and physical and mental health). Sweep response rates were higher for cohort members in the sequential mixed-mode arm, and there were differences across arms in reported values for several socially valent characteristics such as mental health and alcohol consumption (the web survey was entirely anonymous, unlike the telephone survey). Given the (small) difference in response rates by mode, missing values for non-respondents were imputed via multiple imputation under the Missing at Random assumption. As ‘treated’ participants were randomised to the web-then-telephone sequential mixed-mode design, rather than to web specifically, treatment group was used as an instrumental variable (<a href="./05-09-instrumental-variables.html">Section 5.9</a>) to obtain a ‘complier average causal effect’ (CACE) – here, the average causal effect of web participation (relative to telephone response) among those who ‘complied’, i.e., responded via web instead of telephone when offered. Among other things, this analysis assumes that assignment to mixed-mode itself did not influence measured responses among those who instead responded via telephone.</p>
+<p>Calderwood <span class="citation" data-cites="ref525">(<a href="references.html#ref-ref525" role="doc-biblioref">2014</a>)</span> examined the effectiveness of a redesigned letter sent to MCS participants between waves to minimise loss to follow-up. She found that cohort families sent the redesigned letter were more likely to return the completed forms early, including among non-English-speaking families and families with parents who had no qualifications, subpopulations for whom effects were expected to be greatest. However, longer-term effects on returning of forms were more muted. Booth et al. <span class="citation" data-cites="ref524">(<a href="references.html#ref-ref524" role="doc-biblioref">2024</a>)</span> investigated the effect of a monetary incentive given to MCS participants to complete a COVID-19 survey – the incentive was associated with both increased response rates and improved data quality. As data quality could only be ascertained from respondents, statistical adjustment was used to account for selection resulting from differences in response rates by treatment arm.</p>
 </section>
 <section id="opportunities" class="level2">
 <h2 class="anchored" data-anchor-id="opportunities">5.7.3 Opportunities</h2>
-<p>Existing studies that have exploited experiments embedded within the cohorts have focused on short-term outcomes – e.g., response rates or measurement at the sweep in which the experiment took place. As further sweeps become available it will be possible to examine long-term outcomes – for instance on attrition from the cohorts or the measurement of change across time (e.g., ageing and other trajectories). It is possible that incentives to participate have only short-term effects on retention if marginal participants drop out at subsequent sweeps. Alternatively, the offering of incentives in just one sweep could reduce long-term response, if the removal of financial incentives reduces intrinsic motivation (cf.&nbsp;Gneezy &amp; Rustichini, 2000). Existing studies assessing effects of survey design on measurement have also focused on univariate descriptive statistics, but this is only one type of analysis performed with cohort data. Bias in sample means and proportions may not translate into material levels of bias in, e.g., associational analyses, which could be tested in the experimental data.</p>
-<p>Studies that have investigated the effects of survey design on measurement and data quality have used statistical control (Booth et al., 2024) or multiple imputation (Goodman et al., 2022) to account for differential non-response. Quantitative Bias Analysis (Section 5.20) could instead be used to estimate effects under various plausible models of selection, though differences in response rates across treatment arms are typically small and selection effects may not be large enough to make substantive differences to results.</p>
+<p>Existing studies that have exploited experiments embedded within the cohorts have focused on short-term outcomes – e.g., response rates or measurement at the sweep in which the experiment took place. As further sweeps become available it will be possible to examine long-term outcomes – for instance on attrition from the cohorts or the measurement of change across time (e.g., ageing and other trajectories). It is possible that incentives to participate have only short-term effects on retention if marginal participants drop out at subsequent sweeps. Alternatively, the offering of incentives in just one sweep could reduce long-term response, if the removal of financial incentives reduces intrinsic motivation <span class="citation" data-cites="ref237">(cf. <a href="references.html#ref-ref237" role="doc-biblioref">Gneezy &amp; Rustichini, 2000</a>)</span>. Existing studies assessing effects of survey design on measurement have also focused on univariate descriptive statistics, but this is only one type of analysis performed with cohort data. Bias in sample means and proportions may not translate into material levels of bias in, e.g., associational analyses, which could be tested in the experimental data.</p>
+<p>Studies that have investigated the effects of survey design on measurement and data quality have used statistical control <span class="citation" data-cites="ref524">(<a href="references.html#ref-ref524" role="doc-biblioref">Booth et al., 2024</a>)</span> or multiple imputation <span class="citation" data-cites="ref853">(<a href="references.html#ref-ref853" role="doc-biblioref">Goodman et al., 2022</a>)</span> to account for differential non-response. Quantitative Bias Analysis (<a href="./05-20-quantitative-bias-analysis.html">Section 5.20</a>) could instead be used to estimate effects under various plausible models of selection, though differences in response rates across treatment arms are typically small and selection effects may not be large enough to make substantive differences to results.</p>
 <p>It is sometimes the case that variables capturing treatment arm within the experiment are not available in the standard datasets on the UK Data Service and require bespoke data access instead. It is also sometimes the case that data on the UK Data Service are only available for participants at a given sweep, though non-respondents may have been part of the experiment, too. As noted, non-response can lead to bias in analyses of experiments, so data from non-respondents may be required. This is the case for the NCDS Age 55y mixed-mode experiment, at least. Data enquiries can be sent to the <a href="mailto:clsdata@ucl.ac.uk">CLS Data team</a>.</p>
 
 
+<div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0" data-line-spacing="2" role="list" style="display: none">
+
+<div id="ref-ref524" class="csl-entry" role="listitem">
+Booth, C., Wong, E., Brown, M., &amp; Fitzsimons, E. (2024). Evaluating the Effect of Monetary Incentives on Web Survey Response Rates in the UK Millennium Cohort Study. <em>Survey Research Methods</em>, <em>18</em>(1), 47–58. <a href="https://doi.org/10.18148/srm/2024.v18i1.8210">https://doi.org/10.18148/srm/2024.v18i1.8210</a>
+</div>
+<div id="ref-ref525" class="csl-entry" role="listitem">
+Calderwood, L. (2014). Improving between-wave mailings on longitudinal surveys: A randomised experiment on the UK Millennium Cohort Study. <em>Survey Research Methods</em>, <em>8</em>(2), 99–108. <a href="https://doi.org/10.18148/srm/2014.v8i2.5391">https://doi.org/10.18148/srm/2014.v8i2.5391</a>
+</div>
+<div id="ref-ref237" class="csl-entry" role="listitem">
+Gneezy, U., &amp; Rustichini, A. (2000). A Fine is a Price. <em>The Journal of Legal Studies</em>, <em>29</em>(1), 1–17. <a href="https://doi.org/10.1086/468061">https://doi.org/10.1086/468061</a>
+</div>
+<div id="ref-ref853" class="csl-entry" role="listitem">
+Goodman, A., Brown, M., Silverwood, R. J., Sakshaug, J. W., Calderwood, L., Williams, J., &amp; Ploubidis, G. B. (2022). The Impact of Using the Web in a Mixed-Mode Follow-up of a Longitudinal Birth Cohort Study: Evidence from the National Child Development Study. <em>Journal of the Royal Statistical Society Series A: Statistics in Society</em>, <em>185</em>(3), 822–850. <a href="https://doi.org/10.1111/rssa.12786">https://doi.org/10.1111/rssa.12786</a>
+</div>
+<div id="ref-ref153" class="csl-entry" role="listitem">
+Simmons, J. P., Nelson, L. D., &amp; Simonsohn, U. (2011). False-Positive Psychology: Undisclosed Flexibility in Data Collection and Analysis Allows Presenting Anything as Significant. <em>Psychological Science</em>, <em>22</em>(11), 1359–1366. <a href="https://doi.org/10.1177/0956797611417632">https://doi.org/10.1177/0956797611417632</a>
+</div>
+</div>
 </section>
 
 </main> <!-- /main -->

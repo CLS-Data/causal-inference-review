@@ -49,5 +49,9 @@ Requirements: [Quarto](https://quarto.org/docs/get-started/) (1.4 or later),
   one page per method.
 - "Section 5.10", "Figure 2.8b", "Table 5.2", "Box 2.1" and "Equation 5.1" mentions are
   turned into links automatically.
-- The reference list is rebuilt from the citation metadata embedded in the Word file, so it
-  stays in sync with the citations in the text.
+- Every Zotero citation in the Word file becomes a pandoc citation, and the reference list is
+  rebuilt from the citation metadata embedded in the field codes. Quarto renders both in APA
+  style; each in-text citation links to its entry and shows the full reference on hover.
+  Because every page cites against the full list (`nocite`), author-year labels such as
+  2018a/2018b are identical on every page; `tools/prune_bibliographies.py` (run automatically
+  after rendering) trims the hidden per-page copies of the list to the entries each page cites.

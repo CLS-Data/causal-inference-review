@@ -16,19 +16,19 @@
   "author": [
    {
     "family": "Abdellaoui",
-    "given": "Abdel"
+    "given": "A."
    },
    {
     "family": "Dolan",
-    "given": "Conor V."
+    "given": "C. V."
    },
    {
     "family": "Verweij",
-    "given": "Karin J. H."
+    "given": "K. J. H."
    },
    {
     "family": "Nivard",
-    "given": "Michel G."
+    "given": "M. G."
    }
   ],
   "issued": {
@@ -57,55 +57,55 @@
   "author": [
    {
     "family": "Abdellaoui",
-    "given": "Abdel"
+    "given": "A."
    },
    {
     "family": "Hugh-Jones",
-    "given": "David"
+    "given": "D."
    },
    {
     "family": "Yengo",
-    "given": "Loic"
+    "given": "L."
    },
    {
     "family": "Kemper",
-    "given": "Kathryn E."
+    "given": "K. E."
    },
    {
     "family": "Nivard",
-    "given": "Michel G."
+    "given": "M. G."
    },
    {
     "family": "Veul",
-    "given": "Laura"
+    "given": "L."
    },
    {
     "family": "Holtz",
-    "given": "Yan"
+    "given": "Y."
    },
    {
     "family": "Zietsch",
-    "given": "Brendan P."
+    "given": "B. P."
    },
    {
     "family": "Frayling",
-    "given": "Timothy M."
+    "given": "T. M."
    },
    {
     "family": "Wray",
-    "given": "Naomi R."
+    "given": "N. R."
    },
    {
     "family": "Yang",
-    "given": "Jian"
+    "given": "J."
    },
    {
     "family": "Verweij",
-    "given": "Karin J. H."
+    "given": "K. J. H."
    },
    {
     "family": "Visscher",
-    "given": "Peter M."
+    "given": "P. M."
    }
   ],
   "issued": {
@@ -131,15 +131,15 @@
   "author": [
    {
     "family": "Acemoglu",
-    "given": "Daron"
+    "given": "D."
    },
    {
     "family": "Johnson",
-    "given": "Simon"
+    "given": "S."
    },
    {
     "family": "Robinson",
-    "given": "James A."
+    "given": "J. A."
    }
   ],
   "issued": {
@@ -160,15 +160,15 @@
   "author": [
    {
     "family": "Adhikari",
-    "given": "Ani"
+    "given": "A."
    },
    {
     "family": "DeNero",
-    "given": "John"
+    "given": "J."
    },
    {
     "family": "Wagner",
-    "given": "David"
+    "given": "D."
    }
   ],
   "accessed": {
@@ -201,11 +201,11 @@
   "author": [
    {
     "family": "Anders",
-    "given": "Jake"
+    "given": "J."
    },
    {
     "family": "Dorsett",
-    "given": "Richard"
+    "given": "R."
    }
   ],
   "issued": {
@@ -218,37 +218,7 @@
   }
  },
  {
-  "id": "ref562",
-  "type": "article-journal",
-  "container-title": "Epidemiology",
-  "DOI": "10.1097/EDE.0000000000001313",
-  "ISSN": "1044-3983",
-  "issue": "2",
-  "language": "en-US",
-  "page": "209",
-  "title": "Insights into the Cross-world Independence Assumption of Causal Mediation Analysis",
-  "volume": "32",
-  "author": [
-   {
-    "family": "Andrews",
-    "given": "Ryan M."
-   },
-   {
-    "family": "Didelez",
-    "given": "Vanessa"
-   }
-  ],
-  "issued": {
-   "date-parts": [
-    [
-     "2021",
-     3
-    ]
-   ]
-  }
- },
- {
-  "id": "ref14",
+  "id": "refgBdfcUY6_cq0rAZAq",
   "type": "article-journal",
   "container-title": "The Journals of Gerontology: Series A",
   "DOI": "10.1093/gerona/glad077",
@@ -261,27 +231,27 @@
   "author": [
    {
     "family": "Andrews",
-    "given": "Ryan M"
+    "given": "R. M."
    },
    {
     "family": "Shpitser",
-    "given": "Ilya"
+    "given": "I."
    },
    {
     "family": "Didelez",
-    "given": "Vanessa"
+    "given": "V."
    },
    {
     "family": "Chaves",
-    "given": "Paulo H M"
+    "given": "P. H. M."
    },
    {
     "family": "Lopez",
-    "given": "Oscar L"
+    "given": "O. L."
    },
    {
     "family": "Carlson",
-    "given": "Michelle C"
+    "given": "M. C."
    }
   ],
   "issued": {
@@ -290,6 +260,36 @@
      "2023",
      7,
      1
+    ]
+   ]
+  }
+ },
+ {
+  "id": "refgBdfcUY6_p6SijbvQ",
+  "type": "article-journal",
+  "container-title": "Epidemiology",
+  "DOI": "10.1097/EDE.0000000000001313",
+  "ISSN": "1044-3983",
+  "issue": "2",
+  "language": "en-US",
+  "page": "209",
+  "title": "Insights into the Cross-world Independence Assumption of Causal Mediation Analysis",
+  "volume": "32",
+  "author": [
+   {
+    "family": "Andrews",
+    "given": "R. M."
+   },
+   {
+    "family": "Didelez",
+    "given": "V."
+   }
+  ],
+  "issued": {
+   "date-parts": [
+    [
+     "2021",
+     3
     ]
    ]
   }
@@ -312,19 +312,19 @@
   "author": [
    {
     "family": "Arnold",
-    "given": "Benjamin F."
+    "given": "B. F."
    },
    {
     "family": "Ercumen",
-    "given": "Ayse"
+    "given": "A."
    },
    {
     "family": "Benjamin-Chung",
-    "given": "Jade"
+    "given": "J."
    },
    {
     "family": "Colford",
-    "given": "John M."
+    "given": "J. M."
    }
   ],
   "issued": {
@@ -353,15 +353,15 @@
   "author": [
    {
     "family": "Ashcraft",
-    "given": "Adam"
+    "given": "A."
    },
    {
     "family": "Fernández-Val",
-    "given": "Iván"
+    "given": "I."
    },
    {
     "family": "Lang",
-    "given": "Kevin"
+    "given": "K."
    }
   ],
   "issued": {
@@ -390,7 +390,7 @@
   "author": [
    {
     "family": "Astorga-Rojas",
-    "given": "Diego"
+    "given": "D."
    }
   ],
   "issued": {
@@ -417,23 +417,23 @@
   "author": [
    {
     "family": "Athey",
-    "given": "Susan"
+    "given": "S."
    },
    {
     "family": "Bayati",
-    "given": "Mohsen"
+    "given": "M."
    },
    {
     "family": "Doudchenko",
-    "given": "Nikolay"
+    "given": "N."
    },
    {
     "family": "Imbens",
-    "given": "Guido"
+    "given": "G."
    },
    {
     "family": "Khosravi",
-    "given": "Khashayar"
+    "given": "K."
    }
   ],
   "issued": {
@@ -466,11 +466,11 @@
   "author": [
    {
     "family": "Avendano",
-    "given": "Mauricio"
+    "given": "M."
    },
    {
     "family": "Panico",
-    "given": "Lidia"
+    "given": "L."
    }
   ],
   "issued": {
@@ -479,6 +479,87 @@
      "2018",
      3,
      1
+    ]
+   ]
+  }
+ },
+ {
+  "id": "ref49",
+  "type": "article-journal",
+  "container-title": "Nature Human Behaviour",
+  "DOI": "10.1038/s41562-024-01939-z",
+  "ISSN": "2397-3374",
+  "issue": "8",
+  "journalAbbreviation": "Nat Hum Behav",
+  "language": "en",
+  "license": "2024 Springer Nature Limited",
+  "page": "1448-1459",
+  "publisher": "Nature Publishing Group",
+  "title": "Causal inference on human behaviour",
+  "volume": "8",
+  "author": [
+   {
+    "family": "Bailey",
+    "given": "D. H."
+   },
+   {
+    "family": "Jung",
+    "given": "A. J."
+   },
+   {
+    "family": "Beltz",
+    "given": "A. M."
+   },
+   {
+    "family": "Eronen",
+    "given": "M. I."
+   },
+   {
+    "family": "Gische",
+    "given": "C."
+   },
+   {
+    "family": "Hamaker",
+    "given": "E. L."
+   },
+   {
+    "family": "Kording",
+    "given": "K. P."
+   },
+   {
+    "family": "Lebel",
+    "given": "C."
+   },
+   {
+    "family": "Lindquist",
+    "given": "M. A."
+   },
+   {
+    "family": "Moeller",
+    "given": "J."
+   },
+   {
+    "family": "Razi",
+    "given": "A."
+   },
+   {
+    "family": "Rohrer",
+    "given": "J. M."
+   },
+   {
+    "family": "Zhang",
+    "given": "B."
+   },
+   {
+    "family": "Murayama",
+    "given": "K."
+   }
+  ],
+  "issued": {
+   "date-parts": [
+    [
+     "2024",
+     8
     ]
    ]
   }
@@ -500,15 +581,15 @@
   "author": [
    {
     "family": "Baiocchi",
-    "given": "Michael"
+    "given": "M."
    },
    {
     "family": "Cheng",
-    "given": "Jing"
+    "given": "J."
    },
    {
     "family": "Small",
-    "given": "Dylan S."
+    "given": "D. S."
    }
   ],
   "issued": {
@@ -535,11 +616,11 @@
   "author": [
    {
     "family": "Banack",
-    "given": "Hailey R."
+    "given": "H. R."
    },
    {
     "family": "Kaufman",
-    "given": "Jay S."
+    "given": "J. S."
    }
   ],
   "issued": {
@@ -553,7 +634,7 @@
   }
  },
  {
-  "id": "ref492",
+  "id": "refgBdfcUY6_OaanUcio",
   "type": "article-journal",
   "container-title": "Biometrics",
   "DOI": "10.1111/j.1541-0420.2005.00377.x",
@@ -566,11 +647,11 @@
   "author": [
    {
     "family": "Bang",
-    "given": "Heejung"
+    "given": "H."
    },
    {
     "family": "Robins",
-    "given": "James M."
+    "given": "J. M."
    }
   ],
   "issued": {
@@ -601,19 +682,19 @@
   "author": [
    {
     "family": "Bann",
-    "given": "David"
+    "given": "D."
    },
    {
     "family": "Wright",
-    "given": "Liam"
+    "given": "L."
    },
    {
     "family": "Hughes",
-    "given": "Alun"
+    "given": "A."
    },
    {
     "family": "Chaturvedi",
-    "given": "Nish"
+    "given": "N."
    }
   ],
   "issued": {
@@ -639,19 +720,19 @@
   "author": [
    {
     "family": "Bann",
-    "given": "David"
+    "given": "D."
    },
    {
     "family": "Wright",
-    "given": "Liam"
+    "given": "L."
    },
    {
     "family": "Davies",
-    "given": "Neil M"
+    "given": "N. M."
    },
    {
     "family": "Moulton",
-    "given": "Vanessa"
+    "given": "V."
    }
   ],
   "issued": {
@@ -677,27 +758,27 @@
   "author": [
    {
     "family": "Bann",
-    "given": "David"
+    "given": "D."
    },
    {
     "family": "Wang",
-    "given": "Mengyao"
+    "given": "M."
    },
    {
     "family": "Davies",
-    "given": "Neil M."
+    "given": "N. M."
    },
    {
     "family": "Wright",
-    "given": "Liam"
+    "given": "L."
    },
    {
     "family": "O’Connor",
-    "given": "Meredith"
+    "given": "M."
    },
    {
     "family": "Courtin",
-    "given": "Emilie"
+    "given": "E."
    }
   ],
   "accessed": {
@@ -734,7 +815,7 @@
   "author": [
    {
     "family": "Baratz",
-    "given": "Daphna"
+    "given": "D."
    }
   ],
   "accessed": {
@@ -768,27 +849,27 @@
   "author": [
    {
     "family": "Barboza Solís",
-    "given": "Cristina"
+    "given": "C."
    },
    {
     "family": "Fantin",
-    "given": "Romain"
+    "given": "R."
    },
    {
     "family": "Castagné",
-    "given": "Raphaële"
+    "given": "R."
    },
    {
     "family": "Lang",
-    "given": "Thierry"
+    "given": "T."
    },
    {
     "family": "Delpierre",
-    "given": "Cyrille"
+    "given": "C."
    },
    {
     "family": "Kelly-Irving",
-    "given": "Michelle"
+    "given": "M."
    }
   ],
   "issued": {
@@ -815,31 +896,31 @@
   "author": [
    {
     "family": "Barboza Solís",
-    "given": "Cristina"
+    "given": "C."
    },
    {
     "family": "Kelly-Irving",
-    "given": "Michelle"
+    "given": "M."
    },
    {
     "family": "Fantin",
-    "given": "Romain"
+    "given": "R."
    },
    {
     "family": "Darnaudéry",
-    "given": "Muriel"
+    "given": "M."
    },
    {
     "family": "Torrisani",
-    "given": "Jérôme"
+    "given": "J."
    },
    {
     "family": "Lang",
-    "given": "Thierry"
+    "given": "T."
    },
    {
     "family": "Delpierre",
-    "given": "Cyrille"
+    "given": "C."
    }
   ],
   "issued": {
@@ -867,11 +948,11 @@
   "author": [
    {
     "family": "Baron",
-    "given": "Reuben M."
+    "given": "R. M."
    },
    {
     "family": "Kenny",
-    "given": "David A."
+    "given": "D. A."
    }
   ],
   "issued": {
@@ -895,11 +976,11 @@
   "author": [
    {
     "family": "Bartlett",
-    "given": "Jonathan W"
+    "given": "J. W."
    },
    {
     "family": "Hughes",
-    "given": "Rachael A"
+    "given": "R. A."
    }
   ],
   "issued": {
@@ -926,11 +1007,11 @@
   "author": [
    {
     "family": "Basta",
-    "given": "Nicole E"
+    "given": "N. E."
    },
    {
     "family": "Halloran",
-    "given": "M Elizabeth"
+    "given": "M. E."
    }
   ],
   "issued": {
@@ -958,39 +1039,39 @@
   "author": [
    {
     "family": "Bates",
-    "given": "Timothy C."
+    "given": "T. C."
    },
    {
     "family": "Maher",
-    "given": "Brion S."
+    "given": "B. S."
    },
    {
     "family": "Medland",
-    "given": "Sarah E."
+    "given": "S. E."
    },
    {
     "family": "McAloney",
-    "given": "Kerrie"
+    "given": "K."
    },
    {
     "family": "Wright",
-    "given": "Margaret J."
+    "given": "M. J."
    },
    {
     "family": "Hansell",
-    "given": "Narelle K."
+    "given": "N. K."
    },
    {
     "family": "Kendler",
-    "given": "Kenneth S."
+    "given": "K. S."
    },
    {
     "family": "Martin",
-    "given": "Nicholas G."
+    "given": "N. G."
    },
    {
     "family": "Gillespie",
-    "given": "Nathan A."
+    "given": "N. A."
    }
   ],
   "issued": {
@@ -1017,19 +1098,19 @@
   "author": [
    {
     "family": "Baxter",
-    "given": "Andrew J."
+    "given": "A. J."
    },
    {
     "family": "Dundas",
-    "given": "Ruth"
+    "given": "R."
    },
    {
     "family": "Popham",
-    "given": "Frank"
+    "given": "F."
    },
    {
     "family": "Craig",
-    "given": "Peter"
+    "given": "P."
    }
   ],
   "issued": {
@@ -1058,15 +1139,15 @@
   "author": [
    {
     "family": "Bell",
-    "given": "Andrew"
+    "given": "A."
    },
    {
     "family": "Fairbrother",
-    "given": "Malcolm"
+    "given": "M."
    },
    {
     "family": "Jones",
-    "given": "Kelvyn"
+    "given": "K."
    }
   ],
   "issued": {
@@ -1093,11 +1174,11 @@
   "author": [
    {
     "family": "Bell",
-    "given": "Andrew"
+    "given": "A."
    },
    {
     "family": "Jones",
-    "given": "Kelvyn"
+    "given": "K."
    }
   ],
   "issued": {
@@ -1123,11 +1204,11 @@
   "author": [
    {
     "family": "Ben-Shlomo",
-    "given": "Yoav"
+    "given": "Y."
    },
    {
     "family": "Kuh",
-    "given": "Diana"
+    "given": "D."
    }
   ],
   "issued": {
@@ -1153,7 +1234,7 @@
   "author": [
    {
     "family": "Bishop",
-    "given": "Dorothy"
+    "given": "D."
    }
   ],
   "issued": {
@@ -1179,15 +1260,15 @@
   "author": [
    {
     "family": "Blum",
-    "given": "Manuel R"
+    "given": "M. R."
    },
    {
     "family": "Tan",
-    "given": "Yuan Jin"
+    "given": "Y. J."
    },
    {
     "family": "Ioannidis",
-    "given": "John P A"
+    "given": "J. P. A."
    }
   ],
   "issued": {
@@ -1196,6 +1277,46 @@
      "2020",
      10,
      1
+    ]
+   ]
+  }
+ },
+ {
+  "id": "ref524",
+  "type": "article-journal",
+  "container-title": "Survey Research Methods",
+  "DOI": "10.18148/srm/2024.v18i1.8210",
+  "ISSN": "1864-3361",
+  "issue": "1",
+  "language": "en",
+  "license": "Copyright (c) 2024 Charlotte Booth, Erica Wong, Matt Brown, Emla Fitzsimons",
+  "page": "47-58",
+  "title": "Evaluating the Effect of Monetary Incentives on Web Survey Response Rates in the UK Millennium Cohort Study",
+  "volume": "18",
+  "author": [
+   {
+    "family": "Booth",
+    "given": "C."
+   },
+   {
+    "family": "Wong",
+    "given": "E."
+   },
+   {
+    "family": "Brown",
+    "given": "M."
+   },
+   {
+    "family": "Fitzsimons",
+    "given": "E."
+   }
+  ],
+  "issued": {
+   "date-parts": [
+    [
+     "2024",
+     4,
+     16
     ]
    ]
   }
@@ -1215,39 +1336,39 @@
   "author": [
    {
     "family": "Bröckelmann",
-    "given": "Nils"
+    "given": "N."
    },
    {
     "family": "Balduzzi",
-    "given": "Sara"
+    "given": "S."
    },
    {
     "family": "Harms",
-    "given": "Louisa"
+    "given": "L."
    },
    {
     "family": "Beyerbach",
-    "given": "Jessica"
+    "given": "J."
    },
    {
     "family": "Petropoulou",
-    "given": "Maria"
+    "given": "M."
    },
    {
     "family": "Kubiak",
-    "given": "Charlotte"
+    "given": "C."
    },
    {
     "family": "Wolkewitz",
-    "given": "Martin"
+    "given": "M."
    },
    {
     "family": "Meerpohl",
-    "given": "Joerg J."
+    "given": "J. J."
    },
    {
     "family": "Schwingshackl",
-    "given": "Lukas"
+    "given": "L."
    }
   ],
   "issued": {
@@ -1276,7 +1397,7 @@
   "author": [
    {
     "family": "Bradford Hill",
-    "given": "Austin"
+    "given": "A."
    }
   ],
   "issued": {
@@ -1298,7 +1419,7 @@
   "author": [
    {
     "family": "Branwen",
-    "given": "Gwern"
+    "given": "G."
    }
   ],
   "accessed": {
@@ -1330,7 +1451,7 @@
   "author": [
    {
     "family": "Branwen",
-    "given": "Gwern"
+    "given": "G."
    }
   ],
   "accessed": {
@@ -1353,7 +1474,7 @@
   }
  },
  {
-  "id": "ref519",
+  "id": "refgBdfcUY6_IcaL14jz",
   "type": "article",
   "DOI": "10.48550/arXiv.2512.11549",
   "number": "arXiv:2512.11549",
@@ -1363,19 +1484,19 @@
   "author": [
    {
     "family": "Breum",
-    "given": "Marie S."
+    "given": "M. S."
    },
    {
     "family": "Didelez",
-    "given": "Vanessa"
+    "given": "V."
    },
    {
     "family": "Gabriel",
-    "given": "Erin E."
+    "given": "E. E."
    },
    {
     "family": "Sachs",
-    "given": "Michael C."
+    "given": "M. C."
    }
   ],
   "accessed": {
@@ -1409,39 +1530,39 @@
   "author": [
    {
     "family": "Brion",
-    "given": "Marie-Jo A"
+    "given": "M.-J. A."
    },
    {
     "family": "Lawlor",
-    "given": "Debbie A"
+    "given": "D. A."
    },
    {
     "family": "Matijasevich",
-    "given": "Alicia"
+    "given": "A."
    },
    {
     "family": "Horta",
-    "given": "Bernardo"
+    "given": "B."
    },
    {
     "family": "Anselmi",
-    "given": "Luciana"
+    "given": "L."
    },
    {
     "family": "Araújo",
-    "given": "Cora L"
+    "given": "C. L."
    },
    {
     "family": "Menezes",
-    "given": "Ana Maria B"
+    "given": "A. M. B."
    },
    {
     "family": "Victora",
-    "given": "Cesar G"
+    "given": "C. G."
    },
    {
     "family": "Smith",
-    "given": "George Davey"
+    "given": "G. D."
    }
   ],
   "issued": {
@@ -1467,19 +1588,19 @@
   "author": [
    {
     "family": "Brion",
-    "given": "Marie-Jo A."
+    "given": "M.-J. A."
    },
    {
     "family": "Leary",
-    "given": "Sam D."
+    "given": "S. D."
    },
    {
     "family": "Smith",
-    "given": "George Davey"
+    "given": "G. D."
    },
    {
     "family": "Ness",
-    "given": "Andy R."
+    "given": "A. R."
    }
   ],
   "issued": {
@@ -1508,135 +1629,135 @@
   "author": [
    {
     "family": "Brumpton",
-    "given": "Ben"
+    "given": "B."
    },
    {
     "family": "Sanderson",
-    "given": "Eleanor"
+    "given": "E."
    },
    {
     "family": "Heilbron",
-    "given": "Karl"
+    "given": "K."
    },
    {
     "family": "Hartwig",
-    "given": "Fernando Pires"
+    "given": "F. P."
    },
    {
     "family": "Harrison",
-    "given": "Sean"
+    "given": "S."
    },
    {
     "family": "Vie",
-    "given": "Gunnhild Åberge"
+    "given": "G. Å."
    },
    {
     "family": "Cho",
-    "given": "Yoonsu"
+    "given": "Y."
    },
    {
     "family": "Howe",
-    "given": "Laura D."
+    "given": "L. D."
    },
    {
     "family": "Hughes",
-    "given": "Amanda"
+    "given": "A."
    },
    {
     "family": "Boomsma",
-    "given": "Dorret I."
+    "given": "D. I."
    },
    {
     "family": "Havdahl",
-    "given": "Alexandra"
+    "given": "A."
    },
    {
     "family": "Hopper",
-    "given": "John"
+    "given": "J."
    },
    {
     "family": "Neale",
-    "given": "Michael"
+    "given": "M."
    },
    {
     "family": "Nivard",
-    "given": "Michel G."
+    "given": "M. G."
    },
    {
     "family": "Pedersen",
-    "given": "Nancy L."
+    "given": "N. L."
    },
    {
     "family": "Reynolds",
-    "given": "Chandra A."
+    "given": "C. A."
    },
    {
     "family": "Tucker-Drob",
-    "given": "Elliot M."
+    "given": "E. M."
    },
    {
     "family": "Grotzinger",
-    "given": "Andrew"
+    "given": "A."
    },
    {
     "family": "Howe",
-    "given": "Laurence"
+    "given": "L."
    },
    {
     "family": "Morris",
-    "given": "Tim"
+    "given": "T."
    },
    {
     "family": "Li",
-    "given": "Shuai"
+    "given": "S."
    },
    {
     "family": "Auton",
-    "given": "Adam"
+    "given": "A."
    },
    {
     "family": "Windmeijer",
-    "given": "Frank"
+    "given": "F."
    },
    {
     "family": "Chen",
-    "given": "Wei-Min"
+    "given": "W.-M."
    },
    {
     "family": "Bjørngaard",
-    "given": "Johan Håkon"
+    "given": "J. H."
    },
    {
     "family": "Hveem",
-    "given": "Kristian"
+    "given": "K."
    },
    {
     "family": "Willer",
-    "given": "Cristen"
+    "given": "C."
    },
    {
     "family": "Evans",
-    "given": "David M."
+    "given": "D. M."
    },
    {
     "family": "Kaprio",
-    "given": "Jaakko"
+    "given": "J."
    },
    {
     "family": "Davey Smith",
-    "given": "George"
+    "given": "G."
    },
    {
     "family": "Åsvold",
-    "given": "Bjørn Olav"
+    "given": "B. O."
    },
    {
     "family": "Hemani",
-    "given": "Gibran"
+    "given": "G."
    },
    {
     "family": "Davies",
-    "given": "Neil M."
+    "given": "N. M."
    }
   ],
   "issued": {
@@ -1662,7 +1783,7 @@
   "author": [
    {
     "family": "Buuren",
-    "given": "Stef",
+    "given": "S.",
     "non-dropping-particle": "van"
    }
   ],
@@ -1690,7 +1811,7 @@
   "author": [
    {
     "family": "Calderwood",
-    "given": "Lisa"
+    "given": "L."
    }
   ],
   "issued": {
@@ -1719,11 +1840,11 @@
   "author": [
    {
     "family": "Caniglia",
-    "given": "Ellen C."
+    "given": "E. C."
    },
    {
     "family": "Murray",
-    "given": "Eleanor J."
+    "given": "E. J."
    }
   ],
   "issued": {
@@ -1751,15 +1872,15 @@
   "author": [
    {
     "family": "Card",
-    "given": "David"
+    "given": "D."
    },
    {
     "family": "Chetty",
-    "given": "Raj"
+    "given": "R."
    },
    {
     "family": "Weber",
-    "given": "Andrea"
+    "given": "A."
    }
   ],
   "issued": {
@@ -1782,19 +1903,19 @@
   "author": [
    {
     "family": "Cesarini",
-    "given": "David"
+    "given": "D."
    },
    {
     "family": "Lindqvist",
-    "given": "Erik"
+    "given": "E."
    },
    {
     "family": "Östling",
-    "given": "Robert"
+    "given": "R."
    },
    {
     "family": "Wallace",
-    "given": "Björn"
+    "given": "B."
    }
   ],
   "issued": {
@@ -1821,23 +1942,23 @@
   "author": [
    {
     "family": "Chabris",
-    "given": "Christopher F."
+    "given": "C. F."
    },
    {
     "family": "Lee",
-    "given": "James J."
+    "given": "J. J."
    },
    {
     "family": "Cesarini",
-    "given": "David"
+    "given": "D."
    },
    {
     "family": "Benjamin",
-    "given": "Daniel J."
+    "given": "D. J."
    },
    {
     "family": "Laibson",
-    "given": "David I."
+    "given": "D. I."
    }
   ],
   "issued": {
@@ -1867,19 +1988,19 @@
   "author": [
    {
     "family": "Chen",
-    "given": "Lina"
+    "given": "L."
    },
    {
     "family": "Smith",
-    "given": "George Davey"
+    "given": "G. D."
    },
    {
     "family": "Harbord",
-    "given": "Roger M."
+    "given": "R. M."
    },
    {
     "family": "Lewis",
-    "given": "Sarah J."
+    "given": "S. J."
    }
   ],
   "issued": {
@@ -1906,11 +2027,11 @@
   "author": [
    {
     "family": "Chen",
-    "given": "Mingyi"
+    "given": "M."
    },
    {
     "family": "Lacey",
-    "given": "Rebecca E."
+    "given": "R. E."
    }
   ],
   "issued": {
@@ -1937,31 +2058,31 @@
   "author": [
    {
     "family": "Chernozhukov",
-    "given": "Victor"
+    "given": "V."
    },
    {
     "family": "Chetverikov",
-    "given": "Denis"
+    "given": "D."
    },
    {
     "family": "Demirer",
-    "given": "Mert"
+    "given": "M."
    },
    {
     "family": "Duflo",
-    "given": "Esther"
+    "given": "E."
    },
    {
     "family": "Hansen",
-    "given": "Christian"
+    "given": "C."
    },
    {
     "family": "Newey",
-    "given": "Whitney"
+    "given": "W."
    },
    {
     "family": "Robins",
-    "given": "James"
+    "given": "J."
    }
   ],
   "issued": {
@@ -1990,15 +2111,15 @@
   "author": [
    {
     "family": "Choi",
-    "given": "Shing Wan"
+    "given": "S. W."
    },
    {
     "family": "Mak",
-    "given": "Timothy Shin-Heng"
+    "given": "T. S.-H."
    },
    {
     "family": "O’Reilly",
-    "given": "Paul F."
+    "given": "P. F."
    }
   ],
   "issued": {
@@ -2026,11 +2147,11 @@
   "author": [
    {
     "family": "Christakis",
-    "given": "Nicholas A."
+    "given": "N. A."
    },
    {
     "family": "Fowler",
-    "given": "James H."
+    "given": "J. H."
    }
   ],
   "issued": {
@@ -2058,15 +2179,15 @@
   "author": [
    {
     "family": "Cinelli",
-    "given": "Carlos"
+    "given": "C."
    },
    {
     "family": "Forney",
-    "given": "Andrew"
+    "given": "A."
    },
    {
     "family": "Pearl",
-    "given": "Judea"
+    "given": "J."
    }
   ],
   "issued": {
@@ -2094,11 +2215,11 @@
   "author": [
    {
     "family": "Cinelli",
-    "given": "Carlos"
+    "given": "C."
    },
    {
     "family": "Hazlett",
-    "given": "Chad"
+    "given": "C."
    }
   ],
   "issued": {
@@ -2125,11 +2246,11 @@
   "author": [
    {
     "family": "Cinelli",
-    "given": "Carlos"
+    "given": "C."
    },
    {
     "family": "Hazlett",
-    "given": "Chad"
+    "given": "C."
    }
   ],
   "issued": {
@@ -2153,27 +2274,27 @@
   "author": [
    {
     "family": "Cinelli",
-    "given": "Carlos"
+    "given": "C."
    },
    {
     "family": "Ferwerda",
-    "given": "Jeremy"
+    "given": "J."
    },
    {
     "family": "Hazlett",
-    "given": "Chad"
+    "given": "C."
    },
    {
     "family": "Tsao",
-    "given": "Danielle"
+    "given": "D."
    },
    {
     "family": "Rudkin",
-    "given": "Aaron"
+    "given": "A."
    },
    {
     "family": "Ljubownikow",
-    "given": "Grigorij"
+    "given": "G."
    }
   ],
   "accessed": {
@@ -2210,19 +2331,19 @@
   "author": [
    {
     "family": "Clouston",
-    "given": "Sean A. P."
+    "given": "S. A. P."
    },
    {
     "family": "Rubin",
-    "given": "Marcie S."
+    "given": "M. S."
    },
    {
     "family": "Phelan",
-    "given": "Jo C."
+    "given": "J. C."
    },
    {
     "family": "Link",
-    "given": "Bruce G."
+    "given": "B. G."
    }
   ],
   "issued": {
@@ -2280,7 +2401,7 @@
    },
    {
     "family": "Fletcher",
-    "given": "J. M"
+    "given": "J. M."
    }
   ],
   "issued": {
@@ -2308,7 +2429,7 @@
   "author": [
    {
     "family": "Coleman",
-    "given": "Thomas"
+    "given": "T."
    }
   ],
   "accessed": {
@@ -2345,11 +2466,11 @@
   "author": [
    {
     "family": "Conley",
-    "given": "Dalton"
+    "given": "D."
    },
    {
     "family": "Heerwig",
-    "given": "Jennifer"
+    "given": "J."
    }
   ],
   "issued": {
@@ -2379,19 +2500,19 @@
   "author": [
    {
     "family": "Conley",
-    "given": "Dalton"
+    "given": "D."
    },
    {
     "family": "Laidley",
-    "given": "Thomas M."
+    "given": "T. M."
    },
    {
     "family": "Boardman",
-    "given": "Jason D."
+    "given": "J. D."
    },
    {
     "family": "Domingue",
-    "given": "Benjamin W."
+    "given": "B. W."
    }
   ],
   "issued": {
@@ -2448,27 +2569,27 @@
   "author": [
    {
     "family": "Cornfield",
-    "given": "Jerome"
+    "given": "J."
    },
    {
     "family": "Haenszel",
-    "given": "William"
+    "given": "W."
    },
    {
     "family": "Hammond",
-    "given": "E. Cuyler"
+    "given": "E. C."
    },
    {
     "family": "Lilienfeld",
-    "given": "Abraham M."
+    "given": "A. M."
    },
    {
     "family": "Shimkin",
-    "given": "Michael B."
+    "given": "M. B."
    },
    {
     "family": "Wynder",
-    "given": "Ernst L."
+    "given": "E. L."
    }
   ],
   "issued": {
@@ -2496,11 +2617,11 @@
   "author": [
    {
     "family": "Cornish",
-    "given": "Rosie"
+    "given": "R."
    },
    {
     "family": "Brennan",
-    "given": "Iain"
+    "given": "I."
    }
   ],
   "issued": {
@@ -2529,23 +2650,23 @@
   "author": [
    {
     "family": "Courtin",
-    "given": "Emilie"
+    "given": "E."
    },
    {
     "family": "Kim",
-    "given": "Sooyoung"
+    "given": "S."
    },
    {
     "family": "Song",
-    "given": "Shanshan"
+    "given": "S."
    },
    {
     "family": "Yu",
-    "given": "Wenya"
+    "given": "W."
    },
    {
     "family": "Muennig",
-    "given": "Peter"
+    "given": "P."
    }
   ],
   "issued": {
@@ -2573,39 +2694,39 @@
   "author": [
    {
     "family": "Crüwell",
-    "given": "Sophia"
+    "given": "S."
    },
    {
     "family": "Van Doorn",
-    "given": "Johnny"
+    "given": "J."
    },
    {
     "family": "Etz",
-    "given": "Alexander"
+    "given": "A."
    },
    {
     "family": "Makel",
-    "given": "Matthew C."
+    "given": "M. C."
    },
    {
     "family": "Moshontz",
-    "given": "Hannah"
+    "given": "H."
    },
    {
     "family": "Niebaum",
-    "given": "Jesse C."
+    "given": "J. C."
    },
    {
     "family": "Orben",
-    "given": "Amy"
+    "given": "A."
    },
    {
     "family": "Parsons",
-    "given": "Sam"
+    "given": "S."
    },
    {
     "family": "Schulte-Mecklenbeck",
-    "given": "Michael"
+    "given": "M."
    }
   ],
   "issued": {
@@ -2631,19 +2752,19 @@
   "author": [
    {
     "family": "Craig",
-    "given": "Peter"
+    "given": "P."
    },
    {
     "family": "Dundas",
-    "given": "Ruth"
+    "given": "R."
    },
    {
     "family": "Leyland",
-    "given": "Alastair"
+    "given": "A."
    },
    {
     "family": "Popham",
-    "given": "Frank"
+    "given": "F."
    }
   ],
   "issued": {
@@ -2664,11 +2785,11 @@
   "author": [
    {
     "family": "Crawford",
-    "given": "Claire"
+    "given": "C."
    },
    {
     "family": "Dearden",
-    "given": "Lorraine"
+    "given": "L."
    },
    {
     "family": "Greaves, Ellen",
@@ -2696,7 +2817,7 @@
   "author": [
    {
     "family": "Cunningham",
-    "given": "Scott"
+    "given": "S."
    }
   ],
   "issued": {
@@ -2723,11 +2844,11 @@
   "author": [
    {
     "family": "Dahabreh",
-    "given": "Issa J."
+    "given": "I. J."
    },
    {
     "family": "Bibbins-Domingo",
-    "given": "Kirsten"
+    "given": "K."
    }
   ],
   "issued": {
@@ -2753,108 +2874,108 @@
   "author": [
    {
     "family": "Dang",
-    "given": "Lauren E."
+    "given": "L. E."
    },
    {
     "family": "Gruber",
-    "given": "Susan"
+    "given": "S."
    },
    {
     "family": "Lee",
-    "given": "Hana"
+    "given": "H."
    },
    {
     "family": "Dahabreh",
-    "given": "Issa J."
+    "given": "I. J."
    },
    {
     "family": "Stuart",
-    "given": "Elizabeth A."
+    "given": "E. A."
    },
    {
     "family": "Williamson",
-    "given": "Brian D."
+    "given": "B. D."
    },
    {
     "family": "Wyss",
-    "given": "Richard"
+    "given": "R."
    },
    {
     "family": "Díaz",
-    "given": "Iván"
+    "given": "I."
    },
    {
     "family": "Ghosh",
-    "given": "Debashis"
+    "given": "D."
    },
    {
     "family": "Kıcıman",
-    "given": "Emre"
+    "given": "E."
    },
    {
     "family": "Alemayehu",
-    "given": "Demissie"
+    "given": "D."
    },
    {
     "family": "Hoffman",
-    "given": "Katherine L."
+    "given": "K. L."
    },
    {
     "family": "Vossen",
-    "given": "Carla Y."
+    "given": "C. Y."
    },
    {
     "family": "Huml",
-    "given": "Raymond A."
+    "given": "R. A."
    },
    {
     "family": "Ravn",
-    "given": "Henrik"
+    "given": "H."
    },
    {
     "family": "Kvist",
-    "given": "Kajsa"
+    "given": "K."
    },
    {
     "family": "Pratley",
-    "given": "Richard"
+    "given": "R."
    },
    {
     "family": "Shih",
-    "given": "Mei-Chiung"
+    "given": "M.-C."
    },
    {
     "family": "Pennello",
-    "given": "Gene"
+    "given": "G."
    },
    {
     "family": "Martin",
-    "given": "David"
+    "given": "D."
    },
    {
     "family": "Waddy",
-    "given": "Salina P."
+    "given": "S. P."
    },
    {
     "family": "Barr",
-    "given": "Charles E."
+    "given": "C. E."
    },
    {
     "family": "Akacha",
-    "given": "Mouna"
+    "given": "M."
    },
    {
     "family": "Buse",
-    "given": "John B."
+    "given": "J. B."
    },
    {
     "family": "Laan",
-    "given": "Mark",
+    "given": "M.",
     "dropping-particle": "van der"
    },
    {
     "family": "Petersen",
-    "given": "Maya"
+    "given": "M."
    }
   ],
   "issued": {
@@ -2882,11 +3003,11 @@
   "author": [
    {
     "family": "Dang",
-    "given": "Lauren E."
+    "given": "L. E."
    },
    {
     "family": "Balzer",
-    "given": "Laura B."
+    "given": "L. B."
    }
   ],
   "issued": {
@@ -2899,7 +3020,103 @@
   }
  },
  {
-  "id": "ref3",
+  "id": "refgBdfcUY6_NqCJeKbi",
+  "type": "chapter",
+  "container-title": "Pathways to Health",
+  "DOI": "10.1007/978-94-024-1707-4_1",
+  "ISBN": "978-94-024-1707-4",
+  "page": "1-40",
+  "publisher": "Springer Netherlands",
+  "publisher-place": "Dordrecht",
+  "title": "Mediation Analysis for Life Course Studies",
+  "URL": "https://doi.org/10.1007/978-94-024-1707-4_1",
+  "author": [
+   {
+    "family": "Daniel",
+    "given": "R. M."
+   },
+   {
+    "family": "De Stavola",
+    "given": "B. L."
+   }
+  ],
+  "editor": [
+   {
+    "family": "Ploubidis",
+    "given": "G. B."
+   },
+   {
+    "family": "Pongiglione",
+    "given": "B."
+   },
+   {
+    "family": "De Stavola",
+    "given": "B."
+   },
+   {
+    "family": "Daniel",
+    "given": "R."
+   },
+   {
+    "family": "Benova",
+    "given": "L."
+   },
+   {
+    "family": "Grundy",
+    "given": "E."
+   },
+   {
+    "family": "Read",
+    "given": "S."
+   }
+  ],
+  "issued": {
+   "date-parts": [
+    [
+     "2019"
+    ]
+   ]
+  }
+ },
+ {
+  "id": "refgBdfcUY6_CT1dSYk3",
+  "type": "article-journal",
+  "container-title": "The Stata Journal",
+  "DOI": "10.1177/1536867X1201100401",
+  "ISSN": "1536-867X",
+  "issue": "4",
+  "language": "EN",
+  "page": "479-517",
+  "publisher": "SAGE Publications",
+  "title": "Gformula: Estimating Causal Effects in the Presence of Time-Varying Confounding or Mediation using the G-Computation Formula",
+  "title-short": "Gformula",
+  "volume": "11",
+  "author": [
+   {
+    "family": "Daniel",
+    "given": "R. M."
+   },
+   {
+    "family": "De Stavola",
+    "given": "B. L."
+   },
+   {
+    "family": "Cousens",
+    "given": "S. N."
+   }
+  ],
+  "issued": {
+   "date-parts": [
+    [
+     "2011",
+     12,
+     1
+    ]
+   ]
+  }
+ },
+ {
+  "id": "refgBdfcUY6_fENWhzQ7",
   "type": "article-journal",
   "container-title": "Biometrics",
   "DOI": "10.1111/biom.12248",
@@ -2938,102 +3155,6 @@
   }
  },
  {
-  "id": "ref538",
-  "type": "chapter",
-  "container-title": "Pathways to Health",
-  "DOI": "10.1007/978-94-024-1707-4_1",
-  "ISBN": "978-94-024-1707-4",
-  "page": "1-40",
-  "publisher": "Springer Netherlands",
-  "publisher-place": "Dordrecht",
-  "title": "Mediation Analysis for Life Course Studies",
-  "URL": "https://doi.org/10.1007/978-94-024-1707-4_1",
-  "author": [
-   {
-    "family": "Daniel",
-    "given": "Rhian M."
-   },
-   {
-    "family": "De Stavola",
-    "given": "Bianca L."
-   }
-  ],
-  "editor": [
-   {
-    "family": "Ploubidis",
-    "given": "George B."
-   },
-   {
-    "family": "Pongiglione",
-    "given": "Benedetta"
-   },
-   {
-    "family": "De Stavola",
-    "given": "Bianca"
-   },
-   {
-    "family": "Daniel",
-    "given": "Rhian"
-   },
-   {
-    "family": "Benova",
-    "given": "Lenka"
-   },
-   {
-    "family": "Grundy",
-    "given": "Emily"
-   },
-   {
-    "family": "Read",
-    "given": "Sanna"
-   }
-  ],
-  "issued": {
-   "date-parts": [
-    [
-     "2019"
-    ]
-   ]
-  }
- },
- {
-  "id": "ref522",
-  "type": "article-journal",
-  "container-title": "The Stata Journal",
-  "DOI": "10.1177/1536867X1201100401",
-  "ISSN": "1536-867X",
-  "issue": "4",
-  "language": "EN",
-  "page": "479-517",
-  "publisher": "SAGE Publications",
-  "title": "Gformula: Estimating Causal Effects in the Presence of Time-Varying Confounding or Mediation using the G-Computation Formula",
-  "title-short": "Gformula",
-  "volume": "11",
-  "author": [
-   {
-    "family": "Daniel",
-    "given": "Rhian M."
-   },
-   {
-    "family": "De Stavola",
-    "given": "Bianca L."
-   },
-   {
-    "family": "Cousens",
-    "given": "Simon N."
-   }
-  ],
-  "issued": {
-   "date-parts": [
-    [
-     "2011",
-     12,
-     1
-    ]
-   ]
-  }
- },
- {
   "id": "ref2051",
   "type": "article-journal",
   "container-title": "The Lancet",
@@ -3053,11 +3174,11 @@
    },
    {
     "family": "Phillips",
-    "given": "A.N."
+    "given": "A. N."
    },
    {
     "family": "Neaton",
-    "given": "J.D."
+    "given": "J. D."
    }
   ],
   "issued": {
@@ -3065,6 +3186,112 @@
     [
      "1992",
      9
+    ]
+   ]
+  }
+ },
+ {
+  "id": "ref21071",
+  "type": "article-journal",
+  "container-title": "BMJ",
+  "DOI": "10.1136/bmj.b5043",
+  "ISSN": "0959-8138, 1468-5833",
+  "journalAbbreviation": "BMJ",
+  "language": "en",
+  "license": "© Davey Smith et al 2009. This is an open-access article distributed under the terms of the Creative Commons Attribution Non-commercial License, which permits use, distribution, and reproduction in any medium, provided the original work is properly cited, the use is non commercial and is otherwise in compliance with the license. See: http://creativecommons.org/licenses/by-nc/2.0/  and  http://creativecommons.org/licenses/by-nc/2.0/legalcode.",
+  "page": "b5043",
+  "PMID": "20028778",
+  "publisher": "British Medical Journal Publishing Group",
+  "section": "Research",
+  "title": "The association between BMI and mortality using offspring BMI as an indicator of own BMI: large intergenerational mortality study",
+  "title-short": "The association between BMI and mortality using offspring BMI as an indicator of own BMI",
+  "volume": "339",
+  "author": [
+   {
+    "family": "Davey Smith",
+    "given": "G."
+   },
+   {
+    "family": "Sterne",
+    "given": "J. A."
+   },
+   {
+    "family": "Fraser",
+    "given": "A."
+   },
+   {
+    "family": "Tynelius",
+    "given": "P."
+   },
+   {
+    "family": "Lawlor",
+    "given": "D. A."
+   },
+   {
+    "family": "Rasmussen",
+    "given": "F."
+   }
+  ],
+  "issued": {
+   "date-parts": [
+    [
+     "2009",
+     12,
+     23
+    ]
+   ]
+  }
+ },
+ {
+  "id": "ref210",
+  "type": "article-journal",
+  "container-title": "International Journal of Epidemiology",
+  "DOI": "10.1093/ije/dyr117",
+  "ISSN": "1464-3685, 0300-5771",
+  "issue": "3",
+  "language": "en",
+  "page": "537-562",
+  "title": "Epidemiology, epigenetics and the ‘Gloomy Prospect’: embracing randomness in population health research and practice",
+  "title-short": "Epidemiology, epigenetics and the ‘Gloomy Prospect’",
+  "volume": "40",
+  "author": [
+   {
+    "family": "Davey Smith",
+    "given": "G."
+   }
+  ],
+  "issued": {
+   "date-parts": [
+    [
+     "2011",
+     6
+    ]
+   ]
+  }
+ },
+ {
+  "id": "ref211",
+  "type": "article-journal",
+  "container-title": "Basic & Clinical Pharmacology & Toxicology",
+  "DOI": "10.1111/j.1742-7843.2007.00191.x",
+  "ISSN": "1742-7843",
+  "issue": "2",
+  "language": "en",
+  "license": "© 2008 The Author",
+  "page": "245-256",
+  "title": "Assessing Intrauterine Influences on Offspring Health Outcomes: Can Epidemiological Studies Yield Robust Findings?",
+  "title-short": "Assessing Intrauterine Influences on Offspring Health Outcomes",
+  "volume": "102",
+  "author": [
+   {
+    "family": "Davey Smith",
+    "given": "G."
+   }
+  ],
+  "issued": {
+   "date-parts": [
+    [
+     "2008"
     ]
    ]
   }
@@ -3102,107 +3329,61 @@
   }
  },
  {
-  "id": "ref21071",
+  "id": "ref1130",
   "type": "article-journal",
-  "container-title": "BMJ",
-  "DOI": "10.1136/bmj.b5043",
-  "ISSN": "0959-8138, 1468-5833",
-  "journalAbbreviation": "BMJ",
-  "language": "en",
-  "license": "© Davey Smith et al 2009. This is an open-access article distributed under the terms of the Creative Commons Attribution Non-commercial License, which permits use, distribution, and reproduction in any medium, provided the original work is properly cited, the use is non commercial and is otherwise in compliance with the license. See: http://creativecommons.org/licenses/by-nc/2.0/  and  http://creativecommons.org/licenses/by-nc/2.0/legalcode.",
-  "page": "b5043",
-  "PMID": "20028778",
-  "publisher": "British Medical Journal Publishing Group",
-  "section": "Research",
-  "title": "The association between BMI and mortality using offspring BMI as an indicator of own BMI: large intergenerational mortality study",
-  "title-short": "The association between BMI and mortality using offspring BMI as an indicator of own BMI",
-  "volume": "339",
+  "container-title": "eLife",
+  "DOI": "10.7554/eLife.43990",
+  "ISSN": "2050-084X",
+  "page": "e43990",
+  "publisher": "eLife Sciences Publications, Ltd",
+  "title": "Multivariable two-sample Mendelian randomization estimates of the effects of intelligence and education on health",
+  "volume": "8",
   "author": [
    {
+    "family": "Davies",
+    "given": "N. M."
+   },
+   {
+    "family": "Hill",
+    "given": "W. D."
+   },
+   {
+    "family": "Anderson",
+    "given": "E. L."
+   },
+   {
+    "family": "Sanderson",
+    "given": "E."
+   },
+   {
+    "family": "Deary",
+    "given": "I. J."
+   },
+   {
     "family": "Davey Smith",
-    "given": "George"
+    "given": "G."
+   }
+  ],
+  "editor": [
+   {
+    "family": "Teare",
+    "given": "M. D."
    },
    {
-    "family": "Sterne",
-    "given": "Jonathan AC"
+    "family": "Franco",
+    "given": "E."
    },
    {
-    "family": "Fraser",
-    "given": "Abigail"
-   },
-   {
-    "family": "Tynelius",
-    "given": "Per"
-   },
-   {
-    "family": "Lawlor",
-    "given": "Debbie A."
-   },
-   {
-    "family": "Rasmussen",
-    "given": "Finn"
+    "family": "Burgess",
+    "given": "S."
    }
   ],
   "issued": {
    "date-parts": [
     [
-     "2009",
-     12,
-     23
-    ]
-   ]
-  }
- },
- {
-  "id": "ref210",
-  "type": "article-journal",
-  "container-title": "International Journal of Epidemiology",
-  "DOI": "10.1093/ije/dyr117",
-  "ISSN": "1464-3685, 0300-5771",
-  "issue": "3",
-  "language": "en",
-  "page": "537-562",
-  "title": "Epidemiology, epigenetics and the ‘Gloomy Prospect’: embracing randomness in population health research and practice",
-  "title-short": "Epidemiology, epigenetics and the ‘Gloomy Prospect’",
-  "volume": "40",
-  "author": [
-   {
-    "family": "Davey Smith",
-    "given": "George"
-   }
-  ],
-  "issued": {
-   "date-parts": [
-    [
-     "2011",
-     6
-    ]
-   ]
-  }
- },
- {
-  "id": "ref211",
-  "type": "article-journal",
-  "container-title": "Basic & Clinical Pharmacology & Toxicology",
-  "DOI": "10.1111/j.1742-7843.2007.00191.x",
-  "ISSN": "1742-7843",
-  "issue": "2",
-  "language": "en",
-  "license": "© 2008 The Author",
-  "page": "245-256",
-  "title": "Assessing Intrauterine Influences on Offspring Health Outcomes: Can Epidemiological Studies Yield Robust Findings?",
-  "title-short": "Assessing Intrauterine Influences on Offspring Health Outcomes",
-  "volume": "102",
-  "author": [
-   {
-    "family": "Davey Smith",
-    "given": "George"
-   }
-  ],
-  "issued": {
-   "date-parts": [
-    [
-     "2008"
+     "2019",
+     9,
+     17
     ]
    ]
   }
@@ -3222,23 +3403,23 @@
   "author": [
    {
     "family": "Davies",
-    "given": "Neil M"
+    "given": "N. M."
    },
    {
     "family": "Dickson",
-    "given": "Matt"
+    "given": "M."
    },
    {
     "family": "Davey Smith",
-    "given": "George"
+    "given": "G."
    },
    {
     "family": "Windmeijer",
-    "given": "Frank"
+    "given": "F."
    },
    {
     "family": "Berg",
-    "given": "Gerard J",
+    "given": "G. J.",
     "non-dropping-particle": "van den"
    }
   ],
@@ -3253,67 +3434,7 @@
   }
  },
  {
-  "id": "ref1130",
-  "type": "article-journal",
-  "container-title": "eLife",
-  "DOI": "10.7554/eLife.43990",
-  "ISSN": "2050-084X",
-  "page": "e43990",
-  "publisher": "eLife Sciences Publications, Ltd",
-  "title": "Multivariable two-sample Mendelian randomization estimates of the effects of intelligence and education on health",
-  "volume": "8",
-  "author": [
-   {
-    "family": "Davies",
-    "given": "Neil Martin"
-   },
-   {
-    "family": "Hill",
-    "given": "W David"
-   },
-   {
-    "family": "Anderson",
-    "given": "Emma L"
-   },
-   {
-    "family": "Sanderson",
-    "given": "Eleanor"
-   },
-   {
-    "family": "Deary",
-    "given": "Ian J"
-   },
-   {
-    "family": "Davey Smith",
-    "given": "George"
-   }
-  ],
-  "editor": [
-   {
-    "family": "Teare",
-    "given": "M Dawn"
-   },
-   {
-    "family": "Franco",
-    "given": "Eduardo"
-   },
-   {
-    "family": "Burgess",
-    "given": "Stephen"
-   }
-  ],
-  "issued": {
-   "date-parts": [
-    [
-     "2019",
-     9,
-     17
-    ]
-   ]
-  }
- },
- {
-  "id": "ref480",
+  "id": "refgBdfcUY6_WXKrNfmS",
   "type": "article-journal",
   "container-title": "American Journal of Epidemiology",
   "DOI": "10.1093/aje/kwu239",
@@ -3327,19 +3448,19 @@
   "author": [
    {
     "family": "De Stavola",
-    "given": "Bianca L."
+    "given": "B. L."
    },
    {
     "family": "Daniel",
-    "given": "Rhian M."
+    "given": "R. M."
    },
    {
     "family": "Ploubidis",
-    "given": "George B."
+    "given": "G. B."
    },
    {
     "family": "Micali",
-    "given": "Nadia"
+    "given": "N."
    }
   ],
   "issued": {
@@ -3365,15 +3486,15 @@
   "author": [
    {
     "family": "Dearden",
-    "given": "Lorraine"
+    "given": "L."
    },
    {
     "family": "Machin",
-    "given": "Stephen"
+    "given": "S."
    },
    {
     "family": "Reed",
-    "given": "Howard"
+    "given": "H."
    }
   ],
   "issued": {
@@ -3400,15 +3521,15 @@
   "author": [
    {
     "family": "Deary",
-    "given": "Ian J."
+    "given": "I. J."
    },
    {
     "family": "Hill",
-    "given": "W. David"
+    "given": "W. D."
    },
    {
     "family": "Gale",
-    "given": "Catharine R."
+    "given": "C. R."
    }
   ],
   "issued": {
@@ -3434,11 +3555,11 @@
   "author": [
    {
     "family": "Deaton",
-    "given": "Angus"
+    "given": "A."
    },
    {
     "family": "Cartwright",
-    "given": "Nancy"
+    "given": "N."
    }
   ],
   "issued": {
@@ -3464,11 +3585,11 @@
   "author": [
    {
     "family": "Del Bono",
-    "given": "Emilia"
+    "given": "E."
    },
    {
     "family": "Galindo-Rueda",
-    "given": "Fernando"
+    "given": "F."
    }
   ],
   "accessed": {
@@ -3504,47 +3625,47 @@
   "author": [
    {
     "family": "Delpierre",
-    "given": "Cyrille"
+    "given": "C."
    },
    {
     "family": "Barbosa-Solis",
-    "given": "Cristina"
+    "given": "C."
    },
    {
     "family": "Torrisani",
-    "given": "Jerome"
+    "given": "J."
    },
    {
     "family": "Darnaudery",
-    "given": "Muriel"
+    "given": "M."
    },
    {
     "family": "Bartley",
-    "given": "Melanie"
+    "given": "M."
    },
    {
     "family": "Blane",
-    "given": "David"
+    "given": "D."
    },
    {
     "family": "Kelly-Irving",
-    "given": "Michelle"
+    "given": "M."
    },
    {
     "family": "Getz",
-    "given": "Linn"
+    "given": "L."
    },
    {
     "family": "Tomasdottir",
-    "given": "Margret Olafia"
+    "given": "M. O."
    },
    {
     "family": "Roberston",
-    "given": "Tony"
+    "given": "T."
    },
    {
     "family": "Gustafsson",
-    "given": "Per E."
+    "given": "P. E."
    }
   ],
   "accessed": {
@@ -3581,11 +3702,11 @@
   "author": [
    {
     "family": "Diamond",
-    "given": "Alexis"
+    "given": "A."
    },
    {
     "family": "Sekhon",
-    "given": "Jasjeet S."
+    "given": "J. S."
    }
   ],
   "issued": {
@@ -3616,23 +3737,23 @@
   "author": [
    {
     "family": "Dickerman",
-    "given": "Barbra A."
+    "given": "B. A."
    },
    {
     "family": "García-Albéniz",
-    "given": "Xabier"
+    "given": "X."
    },
    {
     "family": "Logan",
-    "given": "Roger W."
+    "given": "R. W."
    },
    {
     "family": "Denaxas",
-    "given": "Spiros"
+    "given": "S."
    },
    {
     "family": "Hernán",
-    "given": "Miguel A."
+    "given": "M. A."
    }
   ],
   "issued": {
@@ -3645,7 +3766,7 @@
   }
  },
  {
-  "id": "ref18",
+  "id": "refgBdfcUY6_su7m1iE1",
   "type": "paper-conference",
   "collection-title": "UAI'06",
   "container-title": "Proceedings of the Twenty-Second Conference on Uncertainty in Artificial Intelligence",
@@ -3657,15 +3778,15 @@
   "author": [
    {
     "family": "Didelez",
-    "given": "Vanessa"
+    "given": "V."
    },
    {
     "family": "Dawid",
-    "given": "A. Philip"
+    "given": "A. P."
    },
    {
     "family": "Geneletti",
-    "given": "Sara"
+    "given": "S."
    }
   ],
   "accessed": {
@@ -3700,15 +3821,15 @@
   "author": [
    {
     "family": "Digitale",
-    "given": "Jean C."
+    "given": "J. C."
    },
    {
     "family": "Martin",
-    "given": "Jeffrey N."
+    "given": "J. N."
    },
    {
     "family": "Glymour",
-    "given": "Medellena Maria"
+    "given": "M. M."
    }
   ],
   "issued": {
@@ -3739,7 +3860,7 @@
    },
    {
     "family": "Vanderweele",
-    "given": "T.J."
+    "given": "T. J."
    },
    {
     "family": "Robins",
@@ -3770,11 +3891,11 @@
   "author": [
    {
     "family": "Ding",
-    "given": "Peng"
+    "given": "P."
    },
    {
     "family": "Li",
-    "given": "Fan"
+    "given": "F."
    }
   ],
   "issued": {
@@ -3844,11 +3965,11 @@
   "author": [
    {
     "family": "Doll",
-    "given": "Richard"
+    "given": "R."
    },
    {
     "family": "Hill",
-    "given": "A. Bradford"
+    "given": "A. B."
    }
   ],
   "issued": {
@@ -3875,12 +3996,12 @@
   "author": [
    {
     "family": "Donohue",
-    "given": "John J.",
+    "given": "J. J.",
     "suffix": "III"
    },
    {
     "family": "Levitt",
-    "given": "Steven D."
+    "given": "S. D."
    }
   ],
   "issued": {
@@ -3908,11 +4029,11 @@
   "author": [
    {
     "family": "Donovan",
-    "given": "Stephen J"
+    "given": "S. J."
    },
    {
     "family": "Susser",
-    "given": "Ezra"
+    "given": "E."
    }
   ],
   "issued": {
@@ -3940,15 +4061,15 @@
   "author": [
    {
     "family": "Dräger",
-    "given": "Jascha"
+    "given": "J."
    },
    {
     "family": "Klein",
-    "given": "Markus"
+    "given": "M."
    },
    {
     "family": "Sosu",
-    "given": "Edward M."
+    "given": "E. M."
    }
   ],
   "issued": {
@@ -3977,19 +4098,19 @@
   "author": [
    {
     "family": "Dwan",
-    "given": "Kerry"
+    "given": "K."
    },
    {
     "family": "Gamble",
-    "given": "Carrol"
+    "given": "C."
    },
    {
     "family": "Williamson",
-    "given": "Paula R."
+    "given": "P. R."
    },
    {
     "family": "Kirkham",
-    "given": "Jamie J."
+    "given": "J. J."
    }
   ],
   "issued": {
@@ -4017,11 +4138,11 @@
   "author": [
    {
     "family": "Eggers",
-    "given": "Andrew C."
+    "given": "A. C."
    },
    {
     "family": "Hainmueller",
-    "given": "Jens"
+    "given": "J."
    }
   ],
   "issued": {
@@ -4048,15 +4169,15 @@
   "author": [
    {
     "family": "Eggers",
-    "given": "Andrew C."
+    "given": "A. C."
    },
    {
     "family": "Tuñón",
-    "given": "Guadalupe"
+    "given": "G."
    },
    {
     "family": "Dafoe",
-    "given": "Allan"
+    "given": "A."
    }
   ],
   "issued": {
@@ -4084,11 +4205,11 @@
   "author": [
    {
     "family": "Erikson",
-    "given": "Robert"
+    "given": "R."
    },
    {
     "family": "Goldthorpe",
-    "given": "John H."
+    "given": "J. H."
    }
   ],
   "issued": {
@@ -4113,11 +4234,11 @@
   "author": [
    {
     "family": "Eriksson",
-    "given": "Stefan"
+    "given": "S."
    },
    {
     "family": "Rooth",
-    "given": "Dan Olof"
+    "given": "D. O."
    }
   ],
   "issued": {
@@ -4143,11 +4264,11 @@
   "author": [
    {
     "family": "Ermisch",
-    "given": "John"
+    "given": "J."
    },
    {
     "family": "Pevalin",
-    "given": "David  J."
+    "given": "D. J."
    }
   ],
   "issued": {
@@ -4174,7 +4295,7 @@
   "author": [
    {
     "family": "Evans",
-    "given": "Leonard"
+    "given": "L."
    }
   ],
   "issued": {
@@ -4202,15 +4323,15 @@
   "editor": [
    {
     "family": "Ferri",
-    "given": "Elsa"
+    "given": "E."
    },
    {
     "family": "Bynner",
-    "given": "John"
+    "given": "J."
    },
    {
     "family": "Wadsworth",
-    "given": "Michael"
+    "given": "M."
    }
   ],
   "issued": {
@@ -4231,7 +4352,7 @@
   "author": [
    {
     "family": "Feynman",
-    "given": "Richard"
+    "given": "R."
    }
   ],
   "accessed": {
@@ -4265,11 +4386,11 @@
   "author": [
    {
     "family": "Fitzsimons",
-    "given": "Emla"
+    "given": "E."
    },
    {
     "family": "Vera-Hernández",
-    "given": "Marcos"
+    "given": "M."
    }
   ],
   "issued": {
@@ -4296,11 +4417,11 @@
   "author": [
    {
     "family": "Fitzsimons",
-    "given": "Emla"
+    "given": "E."
    },
    {
     "family": "Pongiglione",
-    "given": "Benedetta"
+    "given": "B."
    }
   ],
   "issued": {
@@ -4328,7 +4449,7 @@
   "author": [
    {
     "family": "Flanders",
-    "given": "W. Dana"
+    "given": "W. D."
    },
    {
     "family": "Klein",
@@ -4336,23 +4457,23 @@
    },
    {
     "family": "Darrow",
-    "given": "L.A."
+    "given": "L. A."
    },
    {
     "family": "Strickland",
-    "given": "M.J."
+    "given": "M. J."
    },
    {
     "family": "Sarnat",
-    "given": "S.E."
+    "given": "S. E."
    },
    {
     "family": "Sarnat",
-    "given": "J.A."
+    "given": "J. A."
    },
    {
     "family": "Waller",
-    "given": "L.A."
+    "given": "L. A."
    },
    {
     "family": "Winquist",
@@ -4360,7 +4481,7 @@
    },
    {
     "family": "Tolbert",
-    "given": "P.E."
+    "given": "P. E."
    }
   ],
   "issued": {
@@ -4387,15 +4508,15 @@
   "author": [
    {
     "family": "Fox",
-    "given": "Matthew P."
+    "given": "M. P."
    },
    {
     "family": "MacLehose",
-    "given": "Richard F."
+    "given": "R. F."
    },
    {
     "family": "Lash",
-    "given": "Timothy L."
+    "given": "T. L."
    }
   ],
   "accessed": {
@@ -4416,6 +4537,37 @@
   }
  },
  {
+  "id": "ref223",
+  "type": "article-journal",
+  "container-title": "The Economic Journal",
+  "DOI": "10.1093/ej/uez003",
+  "ISSN": "0013-0133",
+  "issue": "622",
+  "journalAbbreviation": "Econ J",
+  "page": "2459-2521",
+  "title": "Neighbourhood Ethnic Composition and Social Participation of Young People in England",
+  "volume": "129",
+  "author": [
+   {
+    "family": "Fumagalli",
+    "given": "E."
+   },
+   {
+    "family": "Fumagalli",
+    "given": "L."
+   }
+  ],
+  "issued": {
+   "date-parts": [
+    [
+     "2019",
+     8,
+     1
+    ]
+   ]
+  }
+ },
+ {
   "id": "ref2800",
   "type": "book",
   "title": "Sequence Analysis for Social Scientists",
@@ -4423,11 +4575,11 @@
   "author": [
    {
     "family": "Gabadinho",
-    "given": "Alexis"
+    "given": "A."
    },
    {
     "family": "Studer",
-    "given": "Matthias"
+    "given": "M."
    }
   ],
   "accessed": {
@@ -4462,15 +4614,15 @@
   "author": [
    {
     "family": "Gage",
-    "given": "Suzanne H."
+    "given": "S. H."
    },
    {
     "family": "Munafò",
-    "given": "Marcus R."
+    "given": "M. R."
    },
    {
     "family": "Davey Smith",
-    "given": "George"
+    "given": "G."
    }
   ],
   "issued": {
@@ -4497,11 +4649,11 @@
   "author": [
    {
     "family": "Gallen",
-    "given": "Trevor"
+    "given": "T."
    },
    {
     "family": "Raymond",
-    "given": "Ben"
+    "given": "B."
    }
   ],
   "accessed": {
@@ -4538,11 +4690,11 @@
   "author": [
    {
     "family": "Gallop",
-    "given": "Max"
+    "given": "M."
    },
    {
     "family": "Weschle",
-    "given": "Simon"
+    "given": "S."
    }
   ],
   "issued": {
@@ -4570,15 +4722,15 @@
   "author": [
    {
     "family": "Garicano",
-    "given": "Luis"
+    "given": "L."
    },
    {
     "family": "Lelarge",
-    "given": "Claire"
+    "given": "C."
    },
    {
     "family": "Van Reenen",
-    "given": "John"
+    "given": "J."
    }
   ],
   "issued": {
@@ -4605,11 +4757,11 @@
   "author": [
    {
     "family": "Gelman",
-    "given": "Andrew"
+    "given": "A."
    },
    {
     "family": "Imbens",
-    "given": "Guido"
+    "given": "G."
    }
   ],
   "issued": {
@@ -4638,7 +4790,7 @@
   "author": [
    {
     "family": "Gerring",
-    "given": "John"
+    "given": "J."
    }
   ],
   "issued": {
@@ -4652,7 +4804,7 @@
   }
  },
  {
-  "id": "ref6",
+  "id": "refgBdfcUY6_uEFnvTbc",
   "type": "article-journal",
   "container-title": "Statistics in Medicine",
   "DOI": "10.1002/sim.70038",
@@ -4667,15 +4819,15 @@
   "author": [
    {
     "family": "Gervais",
-    "given": "Jesse"
+    "given": "J."
    },
    {
     "family": "Lefebvre",
-    "given": "Geneviève"
+    "given": "G."
    },
    {
     "family": "Moodie",
-    "given": "Erica E. M."
+    "given": "E. E. M."
    }
   ],
   "issued": {
@@ -4702,31 +4854,31 @@
   "author": [
    {
     "family": "Gilsanz",
-    "given": "Paola"
+    "given": "P."
    },
    {
     "family": "Young",
-    "given": "Jessica G"
+    "given": "J. G."
    },
    {
     "family": "Glymour",
-    "given": "M Maria"
+    "given": "M. M."
    },
    {
     "family": "Tchetgen Tchetgen",
-    "given": "Eric J"
+    "given": "E. J."
    },
    {
     "family": "Eng",
-    "given": "Chloe W"
+    "given": "C. W."
    },
    {
     "family": "Koenen",
-    "given": "Karestan C"
+    "given": "K. C."
    },
    {
     "family": "Kubzansky",
-    "given": "Laura D"
+    "given": "L. D."
    }
   ],
   "issued": {
@@ -4753,11 +4905,11 @@
   "author": [
    {
     "family": "Girma",
-    "given": "Sourafel"
+    "given": "S."
    },
    {
     "family": "Paton",
-    "given": "David"
+    "given": "D."
    }
   ],
   "issued": {
@@ -4785,15 +4937,15 @@
   "author": [
    {
     "family": "Glazerman",
-    "given": "Steven"
+    "given": "S."
    },
    {
     "family": "Levy",
-    "given": "Dan M."
+    "given": "D. M."
    },
    {
     "family": "Myers",
-    "given": "David"
+    "given": "D."
    }
   ],
   "issued": {
@@ -4820,11 +4972,11 @@
   "author": [
    {
     "family": "Gneezy",
-    "given": "Uri"
+    "given": "U."
    },
    {
     "family": "Rustichini",
-    "given": "Aldo"
+    "given": "A."
    }
   ],
   "issued": {
@@ -4850,24 +5002,24 @@
   "author": [
    {
     "family": "Goetghebeur",
-    "given": "Els"
+    "given": "E."
    },
    {
     "family": "Cessie",
-    "given": "Saskia",
+    "given": "S.",
     "dropping-particle": "le"
    },
    {
     "family": "Stavola",
-    "given": "Bianca De"
+    "given": "B. D."
    },
    {
     "family": "Moodie",
-    "given": "Erica EM"
+    "given": "E. E."
    },
    {
     "family": "Waernbaum",
-    "given": "Ingeborg"
+    "given": "I."
    }
   ],
   "issued": {
@@ -4897,15 +5049,15 @@
   "author": [
    {
     "family": "Golder",
-    "given": "Su"
+    "given": "S."
    },
    {
     "family": "Loke",
-    "given": "Yoon K."
+    "given": "Y. K."
    },
    {
     "family": "Bland",
-    "given": "Martin"
+    "given": "M."
    }
   ],
   "issued": {
@@ -4928,31 +5080,31 @@
   "author": [
    {
     "family": "Gondek",
-    "given": "Dawid"
+    "given": "D."
    },
    {
     "family": "Bann",
-    "given": "David"
+    "given": "D."
    },
    {
     "family": "Patalay",
-    "given": "Praveetha"
+    "given": "P."
    },
    {
     "family": "Goodman",
-    "given": "Alissa"
+    "given": "A."
    },
    {
     "family": "McElroy",
-    "given": "Eoin"
+    "given": "E."
    },
    {
     "family": "Richards",
-    "given": "Marcus"
+    "given": "M."
    },
    {
     "family": "Ploubidis",
-    "given": "George B"
+    "given": "G. B."
    }
   ],
   "issued": {
@@ -4979,27 +5131,27 @@
   "author": [
    {
     "family": "Gondek",
-    "given": "Dawid"
+    "given": "D."
    },
    {
     "family": "Bann",
-    "given": "David"
+    "given": "D."
    },
    {
     "family": "Brown",
-    "given": "Matt"
+    "given": "M."
    },
    {
     "family": "Hamer",
-    "given": "Mark"
+    "given": "M."
    },
    {
     "family": "Sullivan",
-    "given": "Alice"
+    "given": "A."
    },
    {
     "family": "Ploubidis",
-    "given": "George B."
+    "given": "G. B."
    }
   ],
   "issued": {
@@ -5027,31 +5179,31 @@
   "author": [
    {
     "family": "Goodman",
-    "given": "Alissa"
+    "given": "A."
    },
    {
     "family": "Brown",
-    "given": "Matt"
+    "given": "M."
    },
    {
     "family": "Silverwood",
-    "given": "Richard J."
+    "given": "R. J."
    },
    {
     "family": "Sakshaug",
-    "given": "Joseph W."
+    "given": "J. W."
    },
    {
     "family": "Calderwood",
-    "given": "Lisa"
+    "given": "L."
    },
    {
     "family": "Williams",
-    "given": "Joel"
+    "given": "J."
    },
    {
     "family": "Ploubidis",
-    "given": "George B."
+    "given": "G. B."
    }
   ],
   "issued": {
@@ -5079,7 +5231,7 @@
   "author": [
    {
     "family": "Goodman-Bacon",
-    "given": "Andrew"
+    "given": "A."
    }
   ],
   "issued": {
@@ -5104,7 +5256,7 @@
   "author": [
    {
     "family": "Gottfredson",
-    "given": "Linda S"
+    "given": "L. S."
    }
   ],
   "issued": {
@@ -5130,7 +5282,7 @@
   "author": [
    {
     "family": "Greenland",
-    "given": "Sander"
+    "given": "S."
    }
   ],
   "issued": {
@@ -5159,15 +5311,15 @@
   "author": [
    {
     "family": "Grosz",
-    "given": "Michael P."
+    "given": "M. P."
    },
    {
     "family": "Rohrer",
-    "given": "Julia M."
+    "given": "J. M."
    },
    {
     "family": "Thoemmes",
-    "given": "Felix"
+    "given": "F."
    }
   ],
   "issued": {
@@ -5195,15 +5347,15 @@
   "author": [
    {
     "family": "Gutierrez",
-    "given": "Sirena"
+    "given": "S."
    },
    {
     "family": "Glymour",
-    "given": "M. Maria"
+    "given": "M. M."
    },
    {
     "family": "Smith",
-    "given": "George Davey"
+    "given": "G. D."
    }
   ],
   "issued": {
@@ -5229,7 +5381,7 @@
   "author": [
    {
     "family": "Haack",
-    "given": "Susan"
+    "given": "S."
    }
   ],
   "issued": {
@@ -5258,199 +5410,199 @@
   "author": [
    {
     "family": "Haber",
-    "given": "Noah A."
+    "given": "N. A."
    },
    {
     "family": "Wieten",
-    "given": "Sarah E."
+    "given": "S. E."
    },
    {
     "family": "Rohrer",
-    "given": "Julia M."
+    "given": "J. M."
    },
    {
     "family": "Arah",
-    "given": "Onyebuchi A."
+    "given": "O. A."
    },
    {
     "family": "Tennant",
-    "given": "Peter W. G."
+    "given": "P. W. G."
    },
    {
     "family": "Stuart",
-    "given": "Elizabeth A."
+    "given": "E. A."
    },
    {
     "family": "Murray",
-    "given": "Eleanor J."
+    "given": "E. J."
    },
    {
     "family": "Pilleron",
-    "given": "Sophie"
+    "given": "S."
    },
    {
     "family": "Lam",
-    "given": "Sze Tung"
+    "given": "S. T."
    },
    {
     "family": "Riederer",
-    "given": "Emily"
+    "given": "E."
    },
    {
     "family": "Howcutt",
-    "given": "Sarah Jane"
+    "given": "S. J."
    },
    {
     "family": "Simmons",
-    "given": "Alison E."
+    "given": "A. E."
    },
    {
     "family": "Leyrat",
-    "given": "Clémence"
+    "given": "C."
    },
    {
     "family": "Schoenegger",
-    "given": "Philipp"
+    "given": "P."
    },
    {
     "family": "Booman",
-    "given": "Anna"
+    "given": "A."
    },
    {
     "family": "Dufour",
-    "given": "Mi-Suk Kang"
+    "given": "M.-S. K."
    },
    {
     "family": "O'Donoghue",
-    "given": "Ashley L."
+    "given": "A. L."
    },
    {
     "family": "Baglini",
-    "given": "Rebekah"
+    "given": "R."
    },
    {
     "family": "Do",
-    "given": "Stefanie"
+    "given": "S."
    },
    {
     "family": "Takashima",
-    "given": "Mari De La Rosa"
+    "given": "M. D. L. R."
    },
    {
     "family": "Evans",
-    "given": "Thomas Rhys"
+    "given": "T. R."
    },
    {
     "family": "Rodriguez-Molina",
-    "given": "Daloha"
+    "given": "D."
    },
    {
     "family": "Alsalti",
-    "given": "Taym M."
+    "given": "T. M."
    },
    {
     "family": "Dunleavy",
-    "given": "Daniel J."
+    "given": "D. J."
    },
    {
     "family": "Meyerowitz-Katz",
-    "given": "Gideon"
+    "given": "G."
    },
    {
     "family": "Antonietti",
-    "given": "Alberto"
+    "given": "A."
    },
    {
     "family": "Calvache",
-    "given": "Jose A."
+    "given": "J. A."
    },
    {
     "family": "Kelson",
-    "given": "Mark J."
+    "given": "M. J."
    },
    {
     "family": "Salvia",
-    "given": "Meg G."
+    "given": "M. G."
    },
    {
     "family": "Parra",
-    "given": "Camila Olarte"
+    "given": "C. O."
    },
    {
     "family": "Khalatbari-Soltani",
-    "given": "Saman"
+    "given": "S."
    },
    {
     "family": "McLinden",
-    "given": "Taylor"
+    "given": "T."
    },
    {
     "family": "Chatton",
-    "given": "Arthur"
+    "given": "A."
    },
    {
     "family": "Seiler",
-    "given": "Jessie"
+    "given": "J."
    },
    {
     "family": "Steriu",
-    "given": "Andreea"
+    "given": "A."
    },
    {
     "family": "Alshihayb",
-    "given": "Talal S."
+    "given": "T. S."
    },
    {
     "family": "Twardowski",
-    "given": "Sarah E."
+    "given": "S. E."
    },
    {
     "family": "Dabravolskaj",
-    "given": "Julia"
+    "given": "J."
    },
    {
     "family": "Au",
-    "given": "Eric"
+    "given": "E."
    },
    {
     "family": "Hoopsick",
-    "given": "Rachel A."
+    "given": "R. A."
    },
    {
     "family": "Suresh",
-    "given": "Shashank"
+    "given": "S."
    },
    {
     "family": "Judd",
-    "given": "Nicholas"
+    "given": "N."
    },
    {
     "family": "Peña",
-    "given": "Sebastián"
+    "given": "S."
    },
    {
     "family": "Axfors",
-    "given": "Cathrine"
+    "given": "C."
    },
    {
     "family": "Khan",
-    "given": "Palwasha"
+    "given": "P."
    },
    {
     "family": "Rivera Aguirre",
-    "given": "Ariadne E."
+    "given": "A. E."
    },
    {
     "family": "Odo",
-    "given": "Nnaemeka U."
+    "given": "N. U."
    },
    {
     "family": "Schmid",
-    "given": "Ian"
+    "given": "I."
    },
    {
     "family": "Fox",
-    "given": "Matthew P."
+    "given": "M. P."
    }
   ],
   "issued": {
@@ -5473,7 +5625,7 @@
   "author": [
    {
     "family": "Hadley",
-    "given": "Alison"
+    "given": "A."
    }
   ],
   "issued": {
@@ -5499,7 +5651,7 @@
   "author": [
    {
     "family": "Hainmueller",
-    "given": "Jens"
+    "given": "J."
    }
   ],
   "issued": {
@@ -5526,15 +5678,15 @@
   "author": [
    {
     "family": "Hamaker",
-    "given": "Ellen L."
+    "given": "E. L."
    },
    {
     "family": "Kuiper",
-    "given": "Rebecca M."
+    "given": "R. M."
    },
    {
     "family": "Grasman",
-    "given": "Raoul P. P. P."
+    "given": "R. P. P. P."
    }
   ],
   "issued": {
@@ -5593,11 +5745,11 @@
   "author": [
    {
     "family": "Hamer",
-    "given": "Mark"
+    "given": "M."
    },
    {
     "family": "Batty",
-    "given": "G. David"
+    "given": "G. D."
    }
   ],
   "issued": {
@@ -5625,15 +5777,15 @@
   "author": [
    {
     "family": "Hasegawa",
-    "given": "Raiden B."
+    "given": "R. B."
    },
    {
     "family": "Webster",
-    "given": "Daniel W."
+    "given": "D. W."
    },
    {
     "family": "Small",
-    "given": "Dylan S."
+    "given": "D. S."
    }
   ],
   "issued": {
@@ -5663,15 +5815,15 @@
   "author": [
    {
     "family": "Hawkins",
-    "given": "Summer Sherburne"
+    "given": "S. S."
    },
    {
     "family": "Cole",
-    "given": "Tim J."
+    "given": "T. J."
    },
    {
     "family": "Law",
-    "given": "Catherine"
+    "given": "C."
    }
   ],
   "issued": {
@@ -5700,31 +5852,31 @@
   "author": [
    {
     "family": "Herd",
-    "given": "Pamela"
+    "given": "P."
    },
    {
     "family": "Freese",
-    "given": "Jeremy"
+    "given": "J."
    },
    {
     "family": "Sicinski",
-    "given": "Kamil"
+    "given": "K."
    },
    {
     "family": "Domingue",
-    "given": "Benjamin W."
+    "given": "B. W."
    },
    {
     "family": "Mullan Harris",
-    "given": "Kathleen"
+    "given": "K."
    },
    {
     "family": "Wei",
-    "given": "Caiping"
+    "given": "C."
    },
    {
     "family": "Hauser",
-    "given": "Robert M."
+    "given": "R. M."
    }
   ],
   "issued": {
@@ -5755,7 +5907,7 @@
   "author": [
    {
     "family": "Hernán",
-    "given": "Miguel A."
+    "given": "M. A."
    }
   ],
   "issued": {
@@ -5782,15 +5934,15 @@
   "author": [
    {
     "family": "Hernán",
-    "given": "Miguel A."
+    "given": "M. A."
    },
    {
     "family": "Hsu",
-    "given": "John"
+    "given": "J."
    },
    {
     "family": "Healy",
-    "given": "Brian"
+    "given": "B."
    }
   ],
   "issued": {
@@ -5819,19 +5971,19 @@
   "author": [
    {
     "family": "Hernán",
-    "given": "Miguel A."
+    "given": "M. A."
    },
    {
     "family": "Dahabreh",
-    "given": "Issa J."
+    "given": "I. J."
    },
    {
     "family": "Dickerman",
-    "given": "Barbra A."
+    "given": "B. A."
    },
    {
     "family": "Swanson",
-    "given": "Sonja A."
+    "given": "S. A."
    }
   ],
   "issued": {
@@ -5857,11 +6009,11 @@
   "author": [
    {
     "family": "Hernán",
-    "given": "Miguel A."
+    "given": "M. A."
    },
    {
     "family": "Robins",
-    "given": "James M."
+    "given": "J. M."
    }
   ],
   "issued": {
@@ -5888,7 +6040,7 @@
   "author": [
    {
     "family": "Hernán",
-    "given": "Miguel A."
+    "given": "M. A."
    }
   ],
   "issued": {
@@ -5909,7 +6061,7 @@
   "author": [
    {
     "family": "Hernán",
-    "given": "Miguel A."
+    "given": "M. A."
    }
   ],
   "accessed": {
@@ -5942,23 +6094,23 @@
   "author": [
    {
     "family": "Hernán",
-    "given": "Miguel A."
+    "given": "M. A."
    },
    {
     "family": "Sauer",
-    "given": "Brian C."
+    "given": "B. C."
    },
    {
     "family": "Hernández-Díaz",
-    "given": "Sonia"
+    "given": "S."
    },
    {
     "family": "Platt",
-    "given": "Robert"
+    "given": "R."
    },
    {
     "family": "Shrier",
-    "given": "Ian"
+    "given": "I."
    }
   ],
   "issued": {
@@ -5989,35 +6141,35 @@
   "author": [
    {
     "family": "Hernán",
-    "given": "Miguel A."
+    "given": "M. A."
    },
    {
     "family": "Alonso",
-    "given": "Alvaro"
+    "given": "A."
    },
    {
     "family": "Logan",
-    "given": "Roger"
+    "given": "R."
    },
    {
     "family": "Grodstein",
-    "given": "Francine"
+    "given": "F."
    },
    {
     "family": "Michels",
-    "given": "Karin B."
+    "given": "K. B."
    },
    {
     "family": "Willett",
-    "given": "Walter C."
+    "given": "W. C."
    },
    {
     "family": "Manson",
-    "given": "Joann E."
+    "given": "J. E."
    },
    {
     "family": "Robins",
-    "given": "James M."
+    "given": "J. M."
    }
   ],
   "issued": {
@@ -6045,11 +6197,11 @@
   "author": [
    {
     "family": "Hernán",
-    "given": "Miguel A."
+    "given": "M. A."
    },
    {
     "family": "Robins",
-    "given": "James M."
+    "given": "J. M."
    }
   ],
   "issued": {
@@ -6076,19 +6228,19 @@
   "author": [
    {
     "family": "Ho",
-    "given": "Daniel E."
+    "given": "D. E."
    },
    {
     "family": "Imai",
-    "given": "Kosuke"
+    "given": "K."
    },
    {
     "family": "King",
-    "given": "Gary"
+    "given": "G."
    },
    {
     "family": "Stuart",
-    "given": "Elizabeth A."
+    "given": "E. A."
    }
   ],
   "issued": {
@@ -6115,11 +6267,11 @@
   "author": [
    {
     "family": "Hole",
-    "given": "Arne Risa"
+    "given": "A. R."
    },
    {
     "family": "Ratcliffe",
-    "given": "Anita"
+    "given": "A."
    }
   ],
   "issued": {
@@ -6144,7 +6296,7 @@
   "author": [
    {
     "family": "Holland",
-    "given": "Paul W."
+    "given": "P. W."
    }
   ],
   "issued": {
@@ -6174,39 +6326,39 @@
   "author": [
    {
     "family": "Hope",
-    "given": "Steven"
+    "given": "S."
    },
    {
     "family": "Pearce",
-    "given": "Anna"
+    "given": "A."
    },
    {
     "family": "Chittleborough",
-    "given": "Catherine"
+    "given": "C."
    },
    {
     "family": "Deighton",
-    "given": "Jessica"
+    "given": "J."
    },
    {
     "family": "Maika",
-    "given": "Amelia"
+    "given": "A."
    },
    {
     "family": "Micali",
-    "given": "Nadia"
+    "given": "N."
    },
    {
     "family": "Mittinty",
-    "given": "Murthy"
+    "given": "M."
    },
    {
     "family": "Law",
-    "given": "Catherine"
+    "given": "C."
    },
    {
     "family": "Lynch",
-    "given": "John"
+    "given": "J."
    }
   ],
   "issued": {
@@ -6233,27 +6385,27 @@
   "author": [
    {
     "family": "Hope",
-    "given": "Steven"
+    "given": "S."
    },
    {
     "family": "Pearce",
-    "given": "Anna"
+    "given": "A."
    },
    {
     "family": "Cortina-Borja",
-    "given": "Mario"
+    "given": "M."
    },
    {
     "family": "Chittleborough",
-    "given": "Catherine"
+    "given": "C."
    },
    {
     "family": "Barlow",
-    "given": "Jane"
+    "given": "J."
    },
    {
     "family": "Law",
-    "given": "Catherine"
+    "given": "C."
    }
   ],
   "issued": {
@@ -6266,7 +6418,7 @@
   }
  },
  {
-  "id": "ref02w9uLqN/uYE2IfRf",
+  "id": "ref02w9uLqN_uYE2IfRf",
   "type": "article-journal",
   "container-title": "Journal of Causal Inference",
   "DOI": "10.1515/jci-2017-0002",
@@ -6280,11 +6432,11 @@
   "author": [
    {
     "family": "Huffman",
-    "given": "Curtis"
+    "given": "C."
    },
    {
     "family": "Gameren",
-    "given": "Edwin",
+    "given": "E.",
     "non-dropping-particle": "van"
    }
   ],
@@ -6315,48 +6467,48 @@
   "author": [
    {
     "family": "Hughes",
-    "given": "Amanda M."
+    "given": "A. M."
    },
    {
     "family": "Torvik",
-    "given": "Fartein Ask"
+    "given": "F. A."
    },
    {
     "family": "Bergen",
-    "given": "Elsje",
+    "given": "E.",
     "non-dropping-particle": "van"
    },
    {
     "family": "Hannigan",
-    "given": "Laurie J."
+    "given": "L. J."
    },
    {
     "family": "Corfield",
-    "given": "Elizabeth C."
+    "given": "E. C."
    },
    {
     "family": "Andreassen",
-    "given": "Ole A."
+    "given": "O. A."
    },
    {
     "family": "Ystrom",
-    "given": "Eivind"
+    "given": "E."
    },
    {
     "family": "Ask",
-    "given": "Helga"
+    "given": "H."
    },
    {
     "family": "Smith",
-    "given": "George Davey"
+    "given": "G. D."
    },
    {
     "family": "Davies",
-    "given": "Neil M."
+    "given": "N. M."
    },
    {
     "family": "Havdahl",
-    "given": "Alexandra"
+    "given": "A."
    }
   ],
   "issued": {
@@ -6382,7 +6534,7 @@
   "author": [
    {
     "family": "Huntington-Klein",
-    "given": "Nick"
+    "given": "N."
    }
   ],
   "issued": {
@@ -6408,7 +6560,7 @@
   "author": [
    {
     "family": "Huntington-Klein",
-    "given": "Nick"
+    "given": "N."
    }
   ],
   "issued": {
@@ -6437,15 +6589,15 @@
   "author": [
    {
     "family": "Hutcheon",
-    "given": "Jennifer A."
+    "given": "J. A."
    },
    {
     "family": "Chiolero",
-    "given": "Arnaud"
+    "given": "A."
    },
    {
     "family": "Hanley",
-    "given": "James A."
+    "given": "J. A."
    }
   ],
   "issued": {
@@ -6473,23 +6625,23 @@
   "author": [
    {
     "family": "Hyppönen",
-    "given": "Elina"
+    "given": "E."
    },
    {
     "family": "Carslake",
-    "given": "David"
+    "given": "D."
    },
    {
     "family": "Berry",
-    "given": "Diane J."
+    "given": "D. J."
    },
    {
     "family": "Power",
-    "given": "Chris"
+    "given": "C."
    },
    {
     "family": "Davey Smith",
-    "given": "George"
+    "given": "G."
    }
   ],
   "issued": {
@@ -6497,34 +6649,6 @@
     [
      "2022",
      1
-    ]
-   ]
-  }
- },
- {
-  "id": "ref497",
-  "type": "article-journal",
-  "container-title": "JAMA",
-  "DOI": "10.1001/jama.286.7.821",
-  "ISSN": "0098-7484",
-  "issue": "7",
-  "journalAbbreviation": "JAMA",
-  "language": "en",
-  "page": "821",
-  "title": "Comparison of Evidence of Treatment Effects in Randomized and Nonrandomized Studies",
-  "volume": "286",
-  "author": [
-   {
-    "family": "Ioannidis",
-    "given": "John P. A."
-   }
-  ],
-  "issued": {
-   "date-parts": [
-    [
-     "2001",
-     8,
-     15
     ]
    ]
   }
@@ -6544,15 +6668,15 @@
   "author": [
    {
     "family": "Ioannidis",
-    "given": "John P.A."
+    "given": "J. P. A."
    },
    {
     "family": "Tan",
-    "given": "Yuan Jin"
+    "given": "Y. J."
    },
    {
     "family": "Blum",
-    "given": "Manuel R."
+    "given": "M. R."
    }
   ],
   "issued": {
@@ -6560,6 +6684,34 @@
     [
      "2019",
      1,
+     15
+    ]
+   ]
+  }
+ },
+ {
+  "id": "ref497",
+  "type": "article-journal",
+  "container-title": "JAMA",
+  "DOI": "10.1001/jama.286.7.821",
+  "ISSN": "0098-7484",
+  "issue": "7",
+  "journalAbbreviation": "JAMA",
+  "language": "en",
+  "page": "821",
+  "title": "Comparison of Evidence of Treatment Effects in Randomized and Nonrandomized Studies",
+  "volume": "286",
+  "author": [
+   {
+    "family": "Ioannidis",
+    "given": "J. P. A."
+   }
+  ],
+  "issued": {
+   "date-parts": [
+    [
+     "2001",
+     8,
      15
     ]
    ]
@@ -6581,11 +6733,11 @@
   "author": [
    {
     "family": "Jackson",
-    "given": "John W."
+    "given": "J. W."
    },
    {
     "family": "Swanson",
-    "given": "Sonja A."
+    "given": "S. A."
    }
   ],
   "issued": {
@@ -6611,23 +6763,23 @@
   "author": [
    {
     "family": "Jackson",
-    "given": "Lisa A"
+    "given": "L. A."
    },
    {
     "family": "Jackson",
-    "given": "Michael L"
+    "given": "M. L."
    },
    {
     "family": "Nelson",
-    "given": "Jennifer C"
+    "given": "J. C."
    },
    {
     "family": "Neuzil",
-    "given": "Kathleen M"
+    "given": "K. M."
    },
    {
     "family": "Weiss",
-    "given": "Noel S"
+    "given": "N. S."
    }
   ],
   "issued": {
@@ -6656,7 +6808,7 @@
   "author": [
    {
     "family": "James",
-    "given": "Jonathan"
+    "given": "J."
    }
   ],
   "issued": {
@@ -6682,31 +6834,31 @@
   "author": [
    {
     "family": "Janiaud",
-    "given": "Perrine"
+    "given": "P."
    },
    {
     "family": "Agarwal",
-    "given": "Arnav"
+    "given": "A."
    },
    {
     "family": "Tzoulaki",
-    "given": "Ioanna"
+    "given": "I."
    },
    {
     "family": "Theodoratou",
-    "given": "Evropi"
+    "given": "E."
    },
    {
     "family": "Tsilidis",
-    "given": "Konstantinos K."
+    "given": "K. K."
    },
    {
     "family": "Evangelou",
-    "given": "Evangelos"
+    "given": "E."
    },
    {
     "family": "Ioannidis",
-    "given": "John P. A."
+    "given": "J. P. A."
    }
   ],
   "issued": {
@@ -6735,11 +6887,11 @@
   "author": [
    {
     "family": "Jerrim",
-    "given": "John"
+    "given": "J."
    },
    {
     "family": "Sims",
-    "given": "Sam"
+    "given": "S."
    }
   ],
   "issued": {
@@ -6764,11 +6916,11 @@
   "author": [
    {
     "family": "Jerrim",
-    "given": "John"
+    "given": "J."
    },
    {
     "family": "Sims",
-    "given": "Sam"
+    "given": "S."
    }
   ],
   "issued": {
@@ -6798,19 +6950,19 @@
   "author": [
    {
     "family": "Johnson",
-    "given": "William"
+    "given": "W."
    },
    {
     "family": "Li",
-    "given": "Leah"
+    "given": "L."
    },
    {
     "family": "Kuh",
-    "given": "Diana"
+    "given": "D."
    },
    {
     "family": "Hardy",
-    "given": "Rebecca"
+    "given": "R."
    }
   ],
   "issued": {
@@ -6839,11 +6991,11 @@
   "author": [
    {
     "family": "Joshi",
-    "given": "Heather"
+    "given": "H."
    },
    {
     "family": "Fitzsimons",
-    "given": "Emla"
+    "given": "E."
    }
   ],
   "issued": {
@@ -6871,15 +7023,15 @@
   "author": [
    {
     "family": "Küchenhoff",
-    "given": "Helmut"
+    "given": "H."
    },
    {
     "family": "Mwalili",
-    "given": "Samuel M."
+    "given": "S. M."
    },
    {
     "family": "Lesaffre",
-    "given": "Emmanuel"
+    "given": "E."
    }
   ],
   "issued": {
@@ -6893,7 +7045,7 @@
   }
  },
  {
-  "id": "ref02w9uLqN/F2NRGq3a",
+  "id": "ref02w9uLqN_F2NRGq3a",
   "type": "article-journal",
   "container-title": "Statistics in Medicine",
   "DOI": "10.1002/sim.7266",
@@ -6907,15 +7059,15 @@
   "author": [
    {
     "family": "Karim",
-    "given": "Mohammad Ehsanul"
+    "given": "M. E."
    },
    {
     "family": "Platt",
-    "given": "Robert W."
+    "given": "R. W."
    },
    {
     "family": "Group",
-    "given": "The BeAMS",
+    "given": "T. B.",
     "dropping-particle": "study"
    }
   ],
@@ -6939,23 +7091,23 @@
   "author": [
    {
     "family": "Katsoulis",
-    "given": "Michail"
+    "given": "M."
    },
    {
     "family": "Narayanan",
-    "given": "Martina"
+    "given": "M."
    },
    {
     "family": "Dodgeon",
-    "given": "Brian"
+    "given": "B."
    },
    {
     "family": "Ploubidis",
-    "given": "George"
+    "given": "G."
    },
    {
     "family": "Silverwood",
-    "given": "Richard"
+    "given": "R."
    }
   ],
   "accessed": {
@@ -6988,31 +7140,31 @@
   "author": [
    {
     "family": "Kelly",
-    "given": "Yvonne"
+    "given": "Y."
    },
    {
     "family": "Xue",
-    "given": "Baowen"
+    "given": "B."
    },
    {
     "family": "Booker",
-    "given": "Cara"
+    "given": "C."
    },
    {
     "family": "Sacker",
-    "given": "Amanda"
+    "given": "A."
    },
    {
     "family": "Lacey",
-    "given": "Rebecca"
+    "given": "R."
    },
    {
     "family": "Ploubidis",
-    "given": "George"
+    "given": "G."
    },
    {
     "family": "Patalay",
-    "given": "Praveetha"
+    "given": "P."
    }
   ],
   "accessed": {
@@ -7035,6 +7187,38 @@
   }
  },
  {
+  "id": "ref1402",
+  "type": "article-journal",
+  "container-title": "Statistics in Medicine",
+  "DOI": "10.1002/sim.6095",
+  "ISSN": "0277-6715, 1097-0258",
+  "issue": "12",
+  "journalAbbreviation": "Statist. Med.",
+  "language": "en",
+  "page": "2137-2155",
+  "title": "A toolkit for measurement error correction, with a focus on nutritional epidemiology",
+  "volume": "33",
+  "author": [
+   {
+    "family": "Keogh",
+    "given": "R. H."
+   },
+   {
+    "family": "White",
+    "given": "I. R."
+   }
+  ],
+  "issued": {
+   "date-parts": [
+    [
+     "2014",
+     5,
+     30
+    ]
+   ]
+  }
+ },
+ {
   "id": "ref56",
   "type": "article-journal",
   "container-title": "Statistics in Medicine",
@@ -7050,85 +7234,53 @@
   "author": [
    {
     "family": "Keogh",
-    "given": "Ruth H."
+    "given": "R. H."
    },
    {
     "family": "Shaw",
-    "given": "Pamela A."
+    "given": "P. A."
    },
    {
     "family": "Gustafson",
-    "given": "Paul"
+    "given": "P."
    },
    {
     "family": "Carroll",
-    "given": "Raymond J."
+    "given": "R. J."
    },
    {
     "family": "Deffner",
-    "given": "Veronika"
+    "given": "V."
    },
    {
     "family": "Dodd",
-    "given": "Kevin W."
+    "given": "K. W."
    },
    {
     "family": "Küchenhoff",
-    "given": "Helmut"
+    "given": "H."
    },
    {
     "family": "Tooze",
-    "given": "Janet A."
+    "given": "J. A."
    },
    {
     "family": "Wallace",
-    "given": "Michael P."
+    "given": "M. P."
    },
    {
     "family": "Kipnis",
-    "given": "Victor"
+    "given": "V."
    },
    {
     "family": "Freedman",
-    "given": "Laurence S."
+    "given": "L. S."
    }
   ],
   "issued": {
    "date-parts": [
     [
      "2020"
-    ]
-   ]
-  }
- },
- {
-  "id": "ref1402",
-  "type": "article-journal",
-  "container-title": "Statistics in Medicine",
-  "DOI": "10.1002/sim.6095",
-  "ISSN": "0277-6715, 1097-0258",
-  "issue": "12",
-  "journalAbbreviation": "Statist. Med.",
-  "language": "en",
-  "page": "2137-2155",
-  "title": "A toolkit for measurement error correction, with a focus on nutritional epidemiology",
-  "volume": "33",
-  "author": [
-   {
-    "family": "Keogh",
-    "given": "Ruth H."
-   },
-   {
-    "family": "White",
-    "given": "Ian R."
-   }
-  ],
-  "issued": {
-   "date-parts": [
-    [
-     "2014",
-     5,
-     30
     ]
    ]
   }
@@ -7147,11 +7299,11 @@
   "author": [
    {
     "family": "King",
-    "given": "Gary"
+    "given": "G."
    },
    {
     "family": "Nielsen",
-    "given": "Richard"
+    "given": "R."
    }
   ],
   "issued": {
@@ -7180,63 +7332,63 @@
   "author": [
    {
     "family": "Kong",
-    "given": "Augustine"
+    "given": "A."
    },
    {
     "family": "Thorleifsson",
-    "given": "Gudmar"
+    "given": "G."
    },
    {
     "family": "Frigge",
-    "given": "Michael L."
+    "given": "M. L."
    },
    {
     "family": "Vilhjalmsson",
-    "given": "Bjarni J."
+    "given": "B. J."
    },
    {
     "family": "Young",
-    "given": "Alexander I."
+    "given": "A. I."
    },
    {
     "family": "Thorgeirsson",
-    "given": "Thorgeir E."
+    "given": "T. E."
    },
    {
     "family": "Benonisdottir",
-    "given": "Stefania"
+    "given": "S."
    },
    {
     "family": "Oddsson",
-    "given": "Asmundur"
+    "given": "A."
    },
    {
     "family": "Halldorsson",
-    "given": "Bjarni V."
+    "given": "B. V."
    },
    {
     "family": "Masson",
-    "given": "Gisli"
+    "given": "G."
    },
    {
     "family": "Gudbjartsson",
-    "given": "Daniel F."
+    "given": "D. F."
    },
    {
     "family": "Helgason",
-    "given": "Agnar"
+    "given": "A."
    },
    {
     "family": "Bjornsdottir",
-    "given": "Gyda"
+    "given": "G."
    },
    {
     "family": "Thorsteinsdottir",
-    "given": "Unnur"
+    "given": "U."
    },
    {
     "family": "Stefansson",
-    "given": "Kari"
+    "given": "K."
    }
   ],
   "issued": {
@@ -7264,67 +7416,67 @@
   "author": [
    {
     "family": "Kuh",
-    "given": "Diana"
+    "given": "D."
    },
    {
     "family": "Pierce",
-    "given": "Mary"
+    "given": "M."
    },
    {
     "family": "Adams",
-    "given": "Judith"
+    "given": "J."
    },
    {
     "family": "Deanfield",
-    "given": "John"
+    "given": "J."
    },
    {
     "family": "Ekelund",
-    "given": "Ulf"
+    "given": "U."
    },
    {
     "family": "Friberg",
-    "given": "Peter"
+    "given": "P."
    },
    {
     "family": "Ghosh",
-    "given": "Arjun K"
+    "given": "A. K."
    },
    {
     "family": "Harwood",
-    "given": "Nikki"
+    "given": "N."
    },
    {
     "family": "Hughes",
-    "given": "Alun"
+    "given": "A."
    },
    {
     "family": "Macfarlane",
-    "given": "Peter W"
+    "given": "P. W."
    },
    {
     "family": "Mishra",
-    "given": "Gita"
+    "given": "G."
    },
    {
     "family": "Pellerin",
-    "given": "Denis"
+    "given": "D."
    },
    {
     "family": "Wong",
-    "given": "Andrew"
+    "given": "A."
    },
    {
     "family": "Stephen",
-    "given": "Alison M"
+    "given": "A. M."
    },
    {
     "family": "Richards",
-    "given": "Marcus"
+    "given": "M."
    },
    {
     "family": "Hardy",
-    "given": "Rebecca"
+    "given": "R."
    },
    {
     "literal": "on behalf of the NSHD scientific and data collection team"
@@ -7360,7 +7512,7 @@
    },
    {
     "family": "Oxman",
-    "given": "A. D"
+    "given": "A. D."
    }
   ],
   "issued": {
@@ -7369,6 +7521,47 @@
      "1998",
      10,
      31
+    ]
+   ]
+  }
+ },
+ {
+  "id": "refgBdfcUY6_uzY2JvPD",
+  "type": "article-journal",
+  "container-title": "The International Journal of Biostatistics",
+  "DOI": "10.1515/1557-4679.1370",
+  "ISSN": "1557-4679",
+  "issue": "1",
+  "language": "en",
+  "license": "De Gruyter expressly reserves the right to use all content for commercial text and data mining within the meaning of Section 44b of the German Copyright Act.",
+  "publisher": "De Gruyter",
+  "title": "Targeted Minimum Loss Based Estimation of Causal Effects of Multiple Time Point Interventions",
+  "URL": "https://www.degruyterbrill.com/document/doi/10.1515/1557-4679.1370/html",
+  "volume": "8",
+  "author": [
+   {
+    "family": "Laan",
+    "given": "M. J.",
+    "non-dropping-particle": "van der"
+   },
+   {
+    "family": "Gruber",
+    "given": "S."
+   }
+  ],
+  "accessed": {
+   "date-parts": [
+    [
+     "2026",
+     4,
+     22
+    ]
+   ]
+  },
+  "issued": {
+   "date-parts": [
+    [
+     "2012"
     ]
    ]
   }
@@ -7391,11 +7584,11 @@
   "author": [
    {
     "family": "Labrecque",
-    "given": "Jeremy A."
+    "given": "J. A."
    },
    {
     "family": "Kezios",
-    "given": "Katrina L."
+    "given": "K. L."
    }
   ],
   "issued": {
@@ -7418,7 +7611,7 @@
   "author": [
    {
     "family": "Labrecque",
-    "given": "Jeremy A."
+    "given": "J. A."
    }
   ],
   "accessed": {
@@ -7456,27 +7649,27 @@
   "author": [
    {
     "family": "Lash",
-    "given": "Timothy L."
+    "given": "T. L."
    },
    {
     "family": "Fox",
-    "given": "Matthew P."
+    "given": "M. P."
    },
    {
     "family": "MacLehose",
-    "given": "Richard F."
+    "given": "R. F."
    },
    {
     "family": "Maldonado",
-    "given": "George"
+    "given": "G."
    },
    {
     "family": "McCandless",
-    "given": "Lawrence C."
+    "given": "L. C."
    },
    {
     "family": "Greenland",
-    "given": "Sander"
+    "given": "S."
    }
   ],
   "issued": {
@@ -7501,15 +7694,15 @@
   "author": [
    {
     "family": "Lawlor",
-    "given": "Debbie A."
+    "given": "D. A."
    },
    {
     "family": "Tilling",
-    "given": "Kate"
+    "given": "K."
    },
    {
     "family": "Davey Smith",
-    "given": "George"
+    "given": "G."
    }
   ],
   "issued": {
@@ -7538,23 +7731,23 @@
   "author": [
    {
     "family": "Lawlor",
-    "given": "Debbie A."
+    "given": "D. A."
    },
    {
     "family": "Smith",
-    "given": "George Davey"
+    "given": "G. D."
    },
    {
     "family": "Bruckdorfer",
-    "given": "K. Richard"
+    "given": "K. R."
    },
    {
     "family": "Kundu",
-    "given": "Devi"
+    "given": "D."
    },
    {
     "family": "Ebrahim",
-    "given": "Shah"
+    "given": "S."
    }
   ],
   "issued": {
@@ -7585,27 +7778,27 @@
   "author": [
    {
     "family": "Leurent",
-    "given": "Baptiste"
+    "given": "B."
    },
    {
     "family": "Gomes",
-    "given": "Manuel"
+    "given": "M."
    },
    {
     "family": "Faria",
-    "given": "Rita"
+    "given": "R."
    },
    {
     "family": "Morris",
-    "given": "Stephen"
+    "given": "S."
    },
    {
     "family": "Grieve",
-    "given": "Richard"
+    "given": "R."
    },
    {
     "family": "Carpenter",
-    "given": "James R."
+    "given": "J. R."
    }
   ],
   "issued": {
@@ -7631,11 +7824,11 @@
   "author": [
    {
     "family": "Li",
-    "given": "Liming"
+    "given": "L."
    },
    {
     "family": "Avendano",
-    "given": "Mauricio"
+    "given": "M."
    }
   ],
   "issued": {
@@ -7664,19 +7857,19 @@
   "author": [
    {
     "family": "Libuy",
-    "given": "Nicolás"
+    "given": "N."
    },
    {
     "family": "Church",
-    "given": "David"
+    "given": "D."
    },
    {
     "family": "Ploubidis",
-    "given": "George"
+    "given": "G."
    },
    {
     "family": "Fitzsimons",
-    "given": "Emla"
+    "given": "E."
    }
   ],
   "issued": {
@@ -7699,11 +7892,11 @@
   "author": [
    {
     "family": "Link",
-    "given": "Bruce G."
+    "given": "B. G."
    },
    {
     "family": "Phelan",
-    "given": "Jo"
+    "given": "J."
    }
   ],
   "issued": {
@@ -7730,15 +7923,15 @@
   "author": [
    {
     "family": "Lipsitch",
-    "given": "Marc"
+    "given": "M."
    },
    {
     "family": "Tchetgen Tchetgen",
-    "given": "Eric"
+    "given": "E."
    },
    {
     "family": "Cohen",
-    "given": "Ted"
+    "given": "T."
    }
   ],
   "issued": {
@@ -7765,23 +7958,23 @@
   "author": [
    {
     "family": "Liu",
-    "given": "Wei"
+    "given": "W."
    },
    {
     "family": "Brookhart",
-    "given": "M. Alan"
+    "given": "M. A."
    },
    {
     "family": "Schneeweiss",
-    "given": "Sebastian"
+    "given": "S."
    },
    {
     "family": "Mi",
-    "given": "Xiaojuan"
+    "given": "X."
    },
    {
     "family": "Setoguchi",
-    "given": "Soko"
+    "given": "S."
    }
   ],
   "issued": {
@@ -7809,15 +8002,15 @@
   "author": [
    {
     "family": "Liu",
-    "given": "Yan"
+    "given": "Y."
    },
    {
     "family": "Zhou",
-    "given": "Kehua"
+    "given": "K."
    },
    {
     "family": "Sims",
-    "given": "Kendra D."
+    "given": "K. D."
    }
   ],
   "issued": {
@@ -7846,11 +8039,11 @@
   "author": [
    {
     "family": "Lortie-Forgues",
-    "given": "Hugues"
+    "given": "H."
    },
    {
     "family": "Inglis",
-    "given": "Matthew"
+    "given": "M."
    }
   ],
   "issued": {
@@ -7859,6 +8052,44 @@
      "2019",
      4,
      1
+    ]
+   ]
+  }
+ },
+ {
+  "id": "ref6",
+  "type": "article-journal",
+  "container-title": "American Journal of Epidemiology",
+  "DOI": "10.1093/aje/kwad213",
+  "ISSN": "0002-9262",
+  "issue": "3",
+  "journalAbbreviation": "Am J Epidemiol",
+  "language": "en",
+  "page": "407-409",
+  "publisher": "Oxford Academic",
+  "title": "Selection Bias Requires Selection: The Case of Collider Stratification Bias",
+  "title-short": "Selection Bias Requires Selection",
+  "volume": "193",
+  "author": [
+   {
+    "family": "Lu",
+    "given": "H."
+   },
+   {
+    "family": "Gonsalves",
+    "given": "G. S."
+   },
+   {
+    "family": "Westreich",
+    "given": "D."
+   }
+  ],
+  "issued": {
+   "date-parts": [
+    [
+     "2024",
+     3,
+     4
     ]
    ]
   }
@@ -7876,19 +8107,19 @@
   "author": [
    {
     "family": "Lu",
-    "given": "Haidong"
+    "given": "H."
    },
    {
     "family": "Cole",
-    "given": "Stephen R."
+    "given": "S. R."
    },
    {
     "family": "Howe",
-    "given": "Chanelle J."
+    "given": "C. J."
    },
    {
     "family": "Westreich",
-    "given": "Daniel"
+    "given": "D."
    }
   ],
   "issued": {
@@ -7915,19 +8146,19 @@
   "author": [
    {
     "family": "Lu",
-    "given": "Haidong"
+    "given": "H."
    },
    {
     "family": "Cole",
-    "given": "Stephen R."
+    "given": "S. R."
    },
    {
     "family": "Platt",
-    "given": "Robert W."
+    "given": "R. W."
    },
    {
     "family": "Schisterman",
-    "given": "Enrique F."
+    "given": "E. F."
    }
   ],
   "issued": {
@@ -7956,15 +8187,15 @@
   "author": [
    {
     "family": "Lundberg",
-    "given": "Ian"
+    "given": "I."
    },
    {
     "family": "Johnson",
-    "given": "Rebecca"
+    "given": "R."
    },
    {
     "family": "Stewart",
-    "given": "Brandon M."
+    "given": "B. M."
    }
   ],
   "issued": {
@@ -7993,11 +8224,11 @@
   "author": [
    {
     "family": "Lutfey",
-    "given": "Karen"
+    "given": "K."
    },
    {
     "family": "Freese",
-    "given": "Jeremy"
+    "given": "J."
    }
   ],
   "issued": {
@@ -8018,7 +8249,7 @@
   "author": [
    {
     "family": "Mackenbach",
-    "given": "Johan P"
+    "given": "J. P."
    }
   ],
   "issued": {
@@ -8030,7 +8261,7 @@
   }
  },
  {
-  "id": "refgBdfcUY6/isvLjaZi",
+  "id": "refgBdfcUY6_isvLjaZi",
   "type": "article-journal",
   "container-title": "Annual Review of Psychology",
   "DOI": "10.1146/annurev.psych.58.110405.085542",
@@ -8044,15 +8275,15 @@
   "author": [
    {
     "family": "MacKinnon",
-    "given": "David P."
+    "given": "D. P."
    },
    {
     "family": "Fairchild",
-    "given": "Amanda J."
+    "given": "A. J."
    },
    {
     "family": "Fritz",
-    "given": "Matthew S."
+    "given": "M. S."
    }
   ],
   "issued": {
@@ -8066,7 +8297,7 @@
   }
  },
  {
-  "id": "refQ2n2he3p/J5nhU5Kt",
+  "id": "refgBdfcUY6_pnEuvp9T",
   "type": "book",
   "collection-title": "Multivariate Applications",
   "DOI": "10.4324/9780203809556",
@@ -8079,7 +8310,7 @@
   "author": [
    {
     "family": "MacKinnon",
-    "given": "David Peter"
+    "given": "D. P."
    }
   ],
   "issued": {
@@ -8106,23 +8337,23 @@
   "author": [
    {
     "family": "Madia",
-    "given": "Joan E."
+    "given": "J. E."
    },
    {
     "family": "Obsuth",
-    "given": "Ingrid"
+    "given": "I."
    },
    {
     "family": "Thompson",
-    "given": "Ian"
+    "given": "I."
    },
    {
     "family": "Daniels",
-    "given": "Harry"
+    "given": "H."
    },
    {
     "family": "Murray",
-    "given": "Aja L."
+    "given": "A. L."
    }
   ],
   "issued": {
@@ -8146,7 +8377,7 @@
   "author": [
    {
     "family": "Marmot",
-    "given": "Michael"
+    "given": "M."
    }
   ],
   "issued": {
@@ -8172,7 +8403,7 @@
   "author": [
    {
     "family": "Marmot",
-    "given": "Michael"
+    "given": "M."
    }
   ],
   "issued": {
@@ -8194,19 +8425,19 @@
   "author": [
    {
     "family": "Mathur",
-    "given": "Maya B."
+    "given": "M. B."
    },
    {
     "family": "Smith",
-    "given": "Louisa H."
+    "given": "L. H."
    },
    {
     "family": "Ding",
-    "given": "Peng"
+    "given": "P."
    },
    {
     "family": "VanderWeele",
-    "given": "Tyler J."
+    "given": "T. J."
    }
   ],
   "accessed": {
@@ -8248,51 +8479,51 @@
   "author": [
    {
     "family": "Matilla-Santander",
-    "given": "Nuria"
+    "given": "N."
    },
    {
     "family": "Matthews",
-    "given": "Anthony A."
+    "given": "A. A."
    },
    {
     "family": "Gunn",
-    "given": "Virginia"
+    "given": "V."
    },
    {
     "family": "Muntaner",
-    "given": "Carles"
+    "given": "C."
    },
    {
     "family": "Kreshpaj",
-    "given": "Bertina"
+    "given": "B."
    },
    {
     "family": "Wegman",
-    "given": "David H."
+    "given": "D. H."
    },
    {
     "family": "Sánchez-Martínez",
-    "given": "Néstor"
+    "given": "N."
    },
    {
     "family": "Hernando-Rodriguez",
-    "given": "Julio C."
+    "given": "J. C."
    },
    {
     "family": "Albin",
-    "given": "Maria"
+    "given": "M."
    },
    {
     "family": "Balogh",
-    "given": "Rebeka"
+    "given": "R."
    },
    {
     "family": "Davis",
-    "given": "Letitia"
+    "given": "L."
    },
    {
     "family": "Bodin",
-    "given": "Theo"
+    "given": "T."
    }
   ],
   "issued": {
@@ -8318,7 +8549,7 @@
   "author": [
    {
     "family": "McElreath",
-    "given": "Richard"
+    "given": "R."
    }
   ],
   "issued": {
@@ -8345,7 +8576,7 @@
   "author": [
    {
     "family": "Meehl",
-    "given": "Paul E."
+    "given": "P. E."
    }
   ],
   "issued": {
@@ -8374,7 +8605,7 @@
   "author": [
    {
     "family": "Mellon",
-    "given": "Jonathan"
+    "given": "J."
    }
   ],
   "issued": {
@@ -8398,15 +8629,15 @@
   "author": [
    {
     "family": "Metherell",
-    "given": "Thomas E."
+    "given": "T. E."
    },
    {
     "family": "Ploubidis",
-    "given": "George B."
+    "given": "G. B."
    },
    {
     "family": "Moreno-Agostino",
-    "given": "Darío"
+    "given": "D."
    }
   ],
   "accessed": {
@@ -8429,7 +8660,7 @@
   }
  },
  {
-  "id": "ref539",
+  "id": "refgBdfcUY6_JczgRvwF",
   "type": "article-journal",
   "container-title": "Journal of the Royal Statistical Society Series B: Statistical Methodology",
   "DOI": "10.1093/jrsssb/qkad066",
@@ -8442,7 +8673,7 @@
   "author": [
    {
     "family": "Miles",
-    "given": "Caleb H"
+    "given": "C. H."
    }
   ],
   "issued": {
@@ -8456,7 +8687,7 @@
   }
  },
  {
-  "id": "ref542",
+  "id": "refgBdfcUY6_tOHRxI4S",
   "type": "article-journal",
   "container-title": "Epidemiology",
   "DOI": "10.1097/EDE.0000000000000866",
@@ -8470,11 +8701,11 @@
   "author": [
    {
     "family": "Moreno-Betancur",
-    "given": "Margarita"
+    "given": "M."
    },
    {
     "family": "Carlin",
-    "given": "John B."
+    "given": "J. B."
    }
   ],
   "issued": {
@@ -8497,19 +8728,19 @@
   "author": [
    {
     "family": "Morris",
-    "given": "Tim"
+    "given": "T."
    },
    {
     "family": "Wright",
-    "given": "Liam"
+    "given": "L."
    },
    {
     "family": "Shireby",
-    "given": "Gemma"
+    "given": "G."
    },
    {
     "family": "Bann",
-    "given": "David"
+    "given": "D."
    }
   ],
   "accessed": {
@@ -8545,31 +8776,31 @@
   "author": [
    {
     "family": "Mostafa",
-    "given": "Tarek"
+    "given": "T."
    },
    {
     "family": "Narayanan",
-    "given": "Martina"
+    "given": "M."
    },
    {
     "family": "Pongiglione",
-    "given": "Benedetta"
+    "given": "B."
    },
    {
     "family": "Dodgeon",
-    "given": "Brian"
+    "given": "B."
    },
    {
     "family": "Goodman",
-    "given": "Alissa"
+    "given": "A."
    },
    {
     "family": "Silverwood",
-    "given": "Richard J."
+    "given": "R. J."
    },
    {
     "family": "Ploubidis",
-    "given": "George B."
+    "given": "G. B."
    }
   ],
   "issued": {
@@ -8648,15 +8879,15 @@
   "author": [
    {
     "family": "Muñoz",
-    "given": "Jordi"
+    "given": "J."
    },
    {
     "family": "Falcó-Gimeno",
-    "given": "Albert"
+    "given": "A."
    },
    {
     "family": "Hernández",
-    "given": "Enrique"
+    "given": "E."
    }
   ],
   "issued": {
@@ -8682,11 +8913,11 @@
   "author": [
    {
     "family": "Mulder",
-    "given": "Jeroen D."
+    "given": "J. D."
    },
    {
     "family": "Hamaker",
-    "given": "Ellen L."
+    "given": "E. L."
    }
   ],
   "issued": {
@@ -8715,11 +8946,11 @@
   "author": [
    {
     "family": "Mumford",
-    "given": "Stephen"
+    "given": "S."
    },
    {
     "family": "Anjum",
-    "given": "Rani Lill"
+    "given": "R. L."
    }
   ],
   "issued": {
@@ -8742,7 +8973,7 @@
   "author": [
    {
     "family": "Newman",
-    "given": "Saul Justin"
+    "given": "S. J."
    }
   ],
   "accessed": {
@@ -8776,7 +9007,7 @@
   "author": [
    {
     "family": "Newman",
-    "given": "Saul Justin"
+    "given": "S. J."
    }
   ],
   "accessed": {
@@ -8810,24 +9041,24 @@
   "author": [
    {
     "family": "Nguyen",
-    "given": "Cattram D."
+    "given": "C. D."
    },
    {
     "family": "Lee",
-    "given": "Katherine J."
+    "given": "K. J."
    },
    {
     "family": "White",
-    "given": "Ian R."
+    "given": "I. R."
    },
    {
     "family": "Buuren",
-    "given": "Stef",
+    "given": "S.",
     "dropping-particle": "van"
    },
    {
     "family": "Moreno-Betancur",
-    "given": "Margarita"
+    "given": "M."
    }
   ],
   "accessed": {
@@ -8850,6 +9081,40 @@
   }
  },
  {
+  "id": "refgBdfcUY6_ip5S6lpc",
+  "type": "article-journal",
+  "container-title": "Psychological Methods",
+  "DOI": "10.1037/met0000299",
+  "ISSN": "1939-1463",
+  "issue": "2",
+  "page": "255-271",
+  "publisher": "American Psychological Association",
+  "title": "Clarifying causal mediation analysis for the applied researcher: Defining effects based on what we want to learn",
+  "title-short": "Clarifying causal mediation analysis for the applied researcher",
+  "volume": "26",
+  "author": [
+   {
+    "family": "Nguyen",
+    "given": "T. Q."
+   },
+   {
+    "family": "Schmid",
+    "given": "I."
+   },
+   {
+    "family": "Stuart",
+    "given": "E. A."
+   }
+  ],
+  "issued": {
+   "date-parts": [
+    [
+     "2021"
+    ]
+   ]
+  }
+ },
+ {
   "id": "ref21075",
   "type": "article-journal",
   "container-title": "European Child & Adolescent Psychiatry",
@@ -8865,19 +9130,19 @@
   "author": [
    {
     "family": "Ning",
-    "given": "Ke"
+    "given": "K."
    },
    {
     "family": "Gondek",
-    "given": "Dawid"
+    "given": "D."
    },
    {
     "family": "Pereira",
-    "given": "Snehal M. Pinto"
+    "given": "S. M. P."
    },
    {
     "family": "Lacey",
-    "given": "Rebecca E."
+    "given": "R. E."
    }
   ],
   "issued": {
@@ -8905,19 +9170,19 @@
   "author": [
    {
     "family": "Ning",
-    "given": "Ke"
+    "given": "K."
    },
    {
     "family": "Patalay",
-    "given": "Praveetha"
+    "given": "P."
    },
    {
     "family": "L. Maggs",
-    "given": "Jennifer"
+    "given": "J."
    },
    {
     "family": "Ploubidis",
-    "given": "George B."
+    "given": "G. B."
    }
   ],
   "issued": {
@@ -8946,11 +9211,11 @@
   "author": [
    {
     "family": "Orben",
-    "given": "Amy"
+    "given": "A."
    },
    {
     "family": "Przybylski",
-    "given": "Andrew K."
+    "given": "A. K."
    }
   ],
   "issued": {
@@ -8977,7 +9242,7 @@
   "author": [
    {
     "family": "Oster",
-    "given": "Emily"
+    "given": "E."
    }
   ],
   "issued": {
@@ -9006,15 +9271,15 @@
   "author": [
    {
     "family": "Papanikolaou",
-    "given": "Panagiotis N."
+    "given": "P. N."
    },
    {
     "family": "Christidi",
-    "given": "Georgia D."
+    "given": "G. D."
    },
    {
     "family": "Ioannidis",
-    "given": "John P.A."
+    "given": "J. P. A."
    }
   ],
   "issued": {
@@ -9039,15 +9304,15 @@
   "author": [
    {
     "family": "Parra",
-    "given": "Camila Olarte"
+    "given": "C. O."
    },
    {
     "family": "Daniel",
-    "given": "Rhian M."
+    "given": "R. M."
    },
    {
     "family": "Bartlett",
-    "given": "Jonathan W."
+    "given": "J. W."
    }
   ],
   "accessed": {
@@ -9082,11 +9347,11 @@
   "author": [
    {
     "family": "Pastore",
-    "given": "Chiara"
+    "given": "C."
    },
    {
     "family": "Jones",
-    "given": "Andrew M."
+    "given": "A. M."
    }
   ],
   "issued": {
@@ -9114,11 +9379,11 @@
   "author": [
    {
     "family": "Patacchini",
-    "given": "Eleonora"
+    "given": "E."
    },
    {
     "family": "Zenou",
-    "given": "Yves"
+    "given": "Y."
    }
   ],
   "issued": {
@@ -9140,11 +9405,11 @@
   "author": [
    {
     "family": "Patel",
-    "given": "Asha"
+    "given": "A."
    },
    {
     "family": "Sissons",
-    "given": "Rob"
+    "given": "R."
    }
   ],
   "accessed": {
@@ -9180,7 +9445,7 @@
   "author": [
    {
     "family": "Pearl",
-    "given": "Judea"
+    "given": "J."
    }
   ],
   "issued": {
@@ -9204,11 +9469,11 @@
   "author": [
    {
     "family": "Pearl",
-    "given": "Judea"
+    "given": "J."
    },
    {
     "family": "Mackenzie",
-    "given": "Dana"
+    "given": "D."
    }
   ],
   "issued": {
@@ -9220,7 +9485,7 @@
   }
  },
  {
-  "id": "ref534",
+  "id": "refgBdfcUY6_ap40KqKf",
   "type": "paper-conference",
   "collection-title": "UAI'01",
   "container-title": "Proceedings of the Seventeenth conference on Uncertainty in artificial intelligence",
@@ -9233,7 +9498,7 @@
   "author": [
    {
     "family": "Pearl",
-    "given": "Judea"
+    "given": "J."
    }
   ],
   "accessed": {
@@ -9268,7 +9533,7 @@
   "author": [
    {
     "family": "Pearson",
-    "given": "Helen W."
+    "given": "H. W."
    }
   ],
   "issued": {
@@ -9288,33 +9553,33 @@
   "author": [
    {
     "family": "Pereira",
-    "given": "Rita Dias"
+    "given": "R. D."
    },
    {
     "family": "Biroli",
-    "given": "Pietro"
+    "given": "P."
    },
    {
     "family": "Galama",
-    "given": "Titus"
+    "given": "T."
    },
    {
     "family": "Hinke",
-    "given": "Stephanie",
+    "given": "S.",
     "dropping-particle": "von"
    },
    {
     "family": "Kippersluis",
-    "given": "Hans",
+    "given": "H.",
     "dropping-particle": "van"
    },
    {
     "family": "Rietveld",
-    "given": "Cornelius A."
+    "given": "C. A."
    },
    {
     "family": "Thom",
-    "given": "Kevin"
+    "given": "K."
    }
   ],
   "accessed": {
@@ -9351,7 +9616,7 @@
   "author": [
    {
     "family": "Persson",
-    "given": "Mikael"
+    "given": "M."
    }
   ],
   "issued": {
@@ -9380,11 +9645,11 @@
   "author": [
    {
     "family": "Petersen",
-    "given": "Maya L."
+    "given": "M. L."
    },
    {
     "family": "Laan",
-    "given": "Mark J.",
+    "given": "M. J.",
     "non-dropping-particle": "van der"
    }
   ],
@@ -9398,7 +9663,7 @@
   }
  },
  {
-  "id": "ref28",
+  "id": "refgBdfcUY6_PTngU6qp",
   "type": "article-journal",
   "container-title": "Epidemiology",
   "DOI": "10.1097/01.ede.0000208475.99429.2d",
@@ -9411,15 +9676,15 @@
   "author": [
    {
     "family": "Petersen",
-    "given": "Maya L."
+    "given": "M. L."
    },
    {
     "family": "Sinisi",
-    "given": "Sandra E."
+    "given": "S. E."
    },
    {
     "family": "Laan",
-    "given": "Mark J.",
+    "given": "M. J.",
     "non-dropping-particle": "van der"
    }
   ],
@@ -9447,15 +9712,15 @@
   "author": [
    {
     "family": "Petitti",
-    "given": "Diana B."
+    "given": "D. B."
    },
    {
     "family": "Perlman",
-    "given": "Jeffrey A."
+    "given": "J. A."
    },
    {
     "family": "Sidney",
-    "given": "Steven"
+    "given": "S."
    }
   ],
   "issued": {
@@ -9516,11 +9781,11 @@
   "author": [
    {
     "family": "Piccininni",
-    "given": "Marco"
+    "given": "M."
    },
    {
     "family": "Stensrud",
-    "given": "Mats Julius"
+    "given": "M. J."
    }
   ],
   "issued": {
@@ -9548,19 +9813,19 @@
   "author": [
    {
     "family": "Pina-Sánchez",
-    "given": "Jose"
+    "given": "J."
    },
    {
     "family": "Brunton-Smith",
-    "given": "Ian"
+    "given": "I."
    },
    {
     "family": "Buil-Gil",
-    "given": "David"
+    "given": "D."
    },
    {
     "family": "Cernat",
-    "given": "Alexandru"
+    "given": "A."
    }
   ],
   "issued": {
@@ -9589,27 +9854,27 @@
   "author": [
    {
     "family": "Pinto Pereira",
-    "given": "Snehal M"
+    "given": "S. M."
    },
    {
     "family": "De Stavola",
-    "given": "Bianca L"
+    "given": "B. L."
    },
    {
     "family": "Rogers",
-    "given": "Nina T"
+    "given": "N. T."
    },
    {
     "family": "Hardy",
-    "given": "Rebecca"
+    "given": "R."
    },
    {
     "family": "Cooper",
-    "given": "Rachel"
+    "given": "R."
    },
    {
     "family": "Power",
-    "given": "Chris"
+    "given": "C."
    }
   ],
   "issued": {
@@ -9632,7 +9897,7 @@
   "author": [
    {
     "family": "Plomin",
-    "given": "Robert"
+    "given": "R."
    }
   ],
   "issued": {
@@ -9658,11 +9923,11 @@
   "author": [
    {
     "family": "Plomin",
-    "given": "Robert"
+    "given": "R."
    },
    {
     "family": "Daniels",
-    "given": "Denise"
+    "given": "D."
    }
   ],
   "issued": {
@@ -9691,33 +9956,33 @@
   "author": [
    {
     "family": "Polderman",
-    "given": "Tinca J. C."
+    "given": "T. J. C."
    },
    {
     "family": "Benyamin",
-    "given": "Beben"
+    "given": "B."
    },
    {
     "family": "Leeuw",
-    "given": "Christiaan A.",
+    "given": "C. A.",
     "non-dropping-particle": "de"
    },
    {
     "family": "Sullivan",
-    "given": "Patrick F."
+    "given": "P. F."
    },
    {
     "family": "Bochoven",
-    "given": "Arjen",
+    "given": "A.",
     "non-dropping-particle": "van"
    },
    {
     "family": "Visscher",
-    "given": "Peter M."
+    "given": "P. M."
    },
    {
     "family": "Posthuma",
-    "given": "Danielle"
+    "given": "D."
    }
   ],
   "issued": {
@@ -9744,7 +10009,7 @@
   "author": [
    {
     "family": "Poole",
-    "given": "Charles"
+    "given": "C."
    }
   ],
   "issued": {
@@ -9772,23 +10037,23 @@
   "author": [
    {
     "family": "Purba",
-    "given": "Amrit Kaur"
+    "given": "A. K."
    },
    {
     "family": "Henderson",
-    "given": "Marion"
+    "given": "M."
    },
    {
     "family": "Baxter",
-    "given": "Andrew"
+    "given": "A."
    },
    {
     "family": "Pearce",
-    "given": "Anna"
+    "given": "A."
    },
    {
     "family": "Katikireddi",
-    "given": "S Vittal"
+    "given": "S. V."
    }
   ],
   "issued": {
@@ -9819,27 +10084,27 @@
   "author": [
    {
     "family": "Rajah",
-    "given": "Nasir"
+    "given": "N."
    },
    {
     "family": "Calderwood",
-    "given": "Lisa"
+    "given": "L."
    },
    {
     "family": "De Stavola",
-    "given": "Bianca L."
+    "given": "B. L."
    },
    {
     "family": "Harron",
-    "given": "Katie"
+    "given": "K."
    },
    {
     "family": "Ploubidis",
-    "given": "George B."
+    "given": "G. B."
    },
    {
     "family": "Silverwood",
-    "given": "Richard J."
+    "given": "R. J."
    }
   ],
   "issued": {
@@ -9867,11 +10132,11 @@
   "author": [
    {
     "family": "Rambachan",
-    "given": "Ashesh"
+    "given": "A."
    },
    {
     "family": "Roth",
-    "given": "Jonathan"
+    "given": "J."
    }
   ],
   "issued": {
@@ -9898,19 +10163,19 @@
   "author": [
    {
     "family": "Reeves",
-    "given": "Aaron"
+    "given": "A."
    },
    {
     "family": "Clair",
-    "given": "Amy"
+    "given": "A."
    },
    {
     "family": "McKee",
-    "given": "Martin"
+    "given": "M."
    },
    {
     "family": "Stuckler",
-    "given": "David"
+    "given": "D."
    }
   ],
   "issued": {
@@ -9933,13 +10198,13 @@
   "author": [
    {
     "family": "Reichardt",
-    "given": "Charles S."
+    "given": "C. S."
    }
   ],
   "editor": [
    {
     "family": "Little",
-    "given": "Todd D."
+    "given": "T. D."
    }
   ],
   "accessed": {
@@ -9972,7 +10237,7 @@
   "author": [
    {
     "family": "Rich Harris",
-    "given": "Judith"
+    "given": "J."
    }
   ],
   "issued": {
@@ -9993,23 +10258,23 @@
   "author": [
    {
     "family": "Richardson",
-    "given": "Tom G"
+    "given": "T. G."
    },
    {
     "family": "Sanderson",
-    "given": "Eleanor"
+    "given": "E."
    },
    {
     "family": "Elsworth",
-    "given": "Benjamin"
+    "given": "B."
    },
    {
     "family": "Tilling",
-    "given": "Kate"
+    "given": "K."
    },
    {
     "family": "Smith",
-    "given": "George Davey"
+    "given": "G. D."
    }
   ],
   "issued": {
@@ -10036,19 +10301,19 @@
   "author": [
    {
     "family": "Richmond",
-    "given": "Rebecca C."
+    "given": "R. C."
    },
    {
     "family": "Al-Amin",
-    "given": "Aleef"
+    "given": "A."
    },
    {
     "family": "Davey Smith",
-    "given": "George"
+    "given": "G."
    },
    {
     "family": "Relton",
-    "given": "Caroline L."
+    "given": "C. L."
    }
   ],
   "issued": {
@@ -10075,23 +10340,23 @@
   "author": [
    {
     "family": "Ripollone",
-    "given": "John E"
+    "given": "J. E."
    },
    {
     "family": "Huybrechts",
-    "given": "Krista F"
+    "given": "K. F."
    },
    {
     "family": "Rothman",
-    "given": "Kenneth J"
+    "given": "K. J."
    },
    {
     "family": "Ferguson",
-    "given": "Ryan E"
+    "given": "R. E."
    },
    {
     "family": "Franklin",
-    "given": "Jessica M"
+    "given": "J. M."
    }
   ],
   "issued": {
@@ -10116,11 +10381,11 @@
   "author": [
    {
     "family": "Ritchie",
-    "given": "Stuart J"
+    "given": "S. J."
    },
    {
     "family": "Tucker-Drob",
-    "given": "Elliot M"
+    "given": "E. M."
    }
   ],
   "issued": {
@@ -10132,7 +10397,34 @@
   }
  },
  {
-  "id": "ref223",
+  "id": "refgBdfcUY6_P4en83rU",
+  "type": "article-journal",
+  "container-title": "Mathematical Modelling",
+  "DOI": "10.1016/0270-0255(86)90088-6",
+  "ISSN": "0270-0255",
+  "issue": "9",
+  "journalAbbreviation": "Mathematical Modelling",
+  "page": "1393-1512",
+  "title": "A new approach to causal inference in mortality studies with a sustained exposure period—application to control of the healthy worker survivor effect",
+  "volume": "7",
+  "author": [
+   {
+    "family": "Robins",
+    "given": "J. M."
+   }
+  ],
+  "issued": {
+   "date-parts": [
+    [
+     "1986",
+     1,
+     1
+    ]
+   ]
+  }
+ },
+ {
+  "id": "refgBdfcUY6_zxg7VP3f",
   "type": "article-journal",
   "container-title": "Epidemiology",
   "DOI": "10.1097/00001648-200009000-00011",
@@ -10147,15 +10439,15 @@
   "author": [
    {
     "family": "Robins",
-    "given": "James M."
+    "given": "J. M."
    },
    {
     "family": "Hernán",
-    "given": "Miguel Ángel"
+    "given": "M. Á."
    },
    {
     "family": "Brumback",
-    "given": "Babette"
+    "given": "B."
    }
   ],
   "issued": {
@@ -10168,34 +10460,45 @@
   }
  },
  {
-  "id": "ref483",
-  "type": "article-journal",
-  "container-title": "Mathematical Modelling",
-  "DOI": "10.1016/0270-0255(86)90088-6",
-  "ISSN": "0270-0255",
-  "issue": "9",
-  "journalAbbreviation": "Mathematical Modelling",
-  "page": "1393-1512",
-  "title": "A new approach to causal inference in mortality studies with a sustained exposure period—application to control of the healthy worker survivor effect",
-  "volume": "7",
+  "id": "refgBdfcUY6_hV4k7gp3",
+  "type": "chapter",
+  "container-title": "Health service research methodology: A focus on AIDS",
+  "ISBN": "0935316107",
+  "page": "113-159",
+  "publisher": "U.S. Public Health Service",
+  "publisher-place": "Washington, DC",
+  "title": "The analysis of randomized and non-randomized AIDS treatment trials using a new approach to causal inference in longitudinal studies",
   "author": [
    {
     "family": "Robins",
-    "given": "James M."
+    "given": "J. M."
+   }
+  ],
+  "editor": [
+   {
+    "family": "Sechrest",
+    "given": "L."
+   },
+   {
+    "family": "Freeman",
+    "given": "H. E."
+   },
+   {
+    "family": "Mulley",
+    "given": "A. H.",
+    "suffix": "Jr."
    }
   ],
   "issued": {
    "date-parts": [
     [
-     "1986",
-     1,
-     1
+     "1989"
     ]
    ]
   }
  },
  {
-  "id": "ref532",
+  "id": "refgBdfcUY6_4U4YiTkh",
   "type": "article-journal",
   "container-title": "Epidemiology",
   "ISSN": "1044-3983",
@@ -10207,11 +10510,11 @@
   "author": [
    {
     "family": "Robins",
-    "given": "James M."
+    "given": "J. M."
    },
    {
     "family": "Greenland",
-    "given": "Sander"
+    "given": "S."
    }
   ],
   "issued": {
@@ -10224,7 +10527,7 @@
   }
  },
  {
-  "id": "ref529",
+  "id": "refgBdfcUY6_dQLXgHCa",
   "type": "chapter",
   "container-title": "Probabilistic and Causal Inference: The Works of Judea Pearl",
   "edition": "1",
@@ -10238,15 +10541,15 @@
   "author": [
    {
     "family": "Robins",
-    "given": "James M."
+    "given": "J. M."
    },
    {
     "family": "Richardson",
-    "given": "Thomas S."
+    "given": "T. S."
    },
    {
     "family": "Shpitser",
-    "given": "Ilya"
+    "given": "I."
    }
   ],
   "accessed": {
@@ -10269,6 +10572,76 @@
   }
  },
  {
+  "id": "ref3",
+  "type": "article-journal",
+  "container-title": "Biological Psychiatry",
+  "DOI": "10.1016/j.biopsych.2025.02.902",
+  "ISSN": "0006-3223, 1873-2402",
+  "issue": "9",
+  "journalAbbreviation": "Biological Psychiatry",
+  "language": "English",
+  "page": "689-697",
+  "PMID": "40073922",
+  "publisher": "Elsevier",
+  "title": "Immune-Developmental Processes Contribute to Schizophrenia Risk: Insights From a Genetic Overlap Study With Height",
+  "title-short": "Immune-Developmental Processes Contribute to Schizophrenia Risk",
+  "volume": "98",
+  "author": [
+   {
+    "family": "Romero",
+    "given": "C."
+   },
+   {
+    "family": "Leeuw",
+    "given": "C.",
+    "dropping-particle": "de"
+   },
+   {
+    "family": "Schipper",
+    "given": "M."
+   },
+   {
+    "family": "Maciel",
+    "given": "B. d. A. P. C."
+   },
+   {
+    "family": "Heuvel",
+    "given": "M. P.",
+    "dropping-particle": "van den"
+   },
+   {
+    "family": "Brouwer",
+    "given": "R. M."
+   },
+   {
+    "family": "Smit",
+    "given": "A. B."
+   },
+   {
+    "family": "Koopmans",
+    "given": "F."
+   },
+   {
+    "family": "Posthuma",
+    "given": "D."
+   },
+   {
+    "family": "Sluis",
+    "given": "S.",
+    "dropping-particle": "van der"
+   }
+  ],
+  "issued": {
+   "date-parts": [
+    [
+     "2025",
+     11,
+     1
+    ]
+   ]
+  }
+ },
+ {
   "id": "ref512",
   "type": "book",
   "ISBN": "978-0-330-37545-0",
@@ -10281,7 +10654,7 @@
   "author": [
    {
     "family": "Ronson",
-    "given": "Jon"
+    "given": "J."
    }
   ],
   "issued": {
@@ -10304,20 +10677,20 @@
   "author": [
    {
     "family": "Roo",
-    "given": "Marthe",
+    "given": "M.",
     "non-dropping-particle": "de"
    },
    {
     "family": "Hartman",
-    "given": "Catharina"
+    "given": "C."
    },
    {
     "family": "Wiertsema",
-    "given": "Maria"
+    "given": "M."
    },
    {
     "family": "Kretschmer",
-    "given": "Tina"
+    "given": "T."
    }
   ],
   "accessed": {
@@ -10340,56 +10713,6 @@
   }
  },
  {
-  "id": "ref1502",
-  "type": "book",
-  "ISBN": "978-0-674-24163-3",
-  "language": "English",
-  "publisher": "Harvard University Press",
-  "publisher-place": "Cambridge, MA",
-  "title": "Observation and experiment: an introduction to causal inference",
-  "title-short": "Observation and experiment",
-  "author": [
-   {
-    "family": "Rosenbaum",
-    "given": "Paul R"
-   }
-  ],
-  "issued": {
-   "date-parts": [
-    [
-     "2019"
-    ]
-   ]
-  }
- },
- {
-  "id": "ref69",
-  "type": "article-journal",
-  "container-title": "The American Statistician",
-  "DOI": "10.1198/000313001317098220",
-  "ISSN": "0003-1305",
-  "issue": "3",
-  "page": "223-227",
-  "publisher": "Taylor & Francis",
-  "title": "Replicating Effects and Biases",
-  "volume": "55",
-  "author": [
-   {
-    "family": "Rosenbaum",
-    "given": "Paul R"
-   }
-  ],
-  "issued": {
-   "date-parts": [
-    [
-     "2001",
-     8,
-     1
-    ]
-   ]
-  }
- },
- {
   "id": "ref20993",
   "type": "book",
   "DOI": "10.7551/mitpress/14244.001.0001",
@@ -10401,7 +10724,7 @@
   "author": [
    {
     "family": "Rosenbaum",
-    "given": "Paul R."
+    "given": "P. R."
    }
   ],
   "accessed": {
@@ -10437,13 +10760,36 @@
   "author": [
    {
     "family": "Rosenbaum",
-    "given": "Paul R."
+    "given": "P. R."
    }
   ],
   "issued": {
    "date-parts": [
     [
      "2020"
+    ]
+   ]
+  }
+ },
+ {
+  "id": "ref1502",
+  "type": "book",
+  "ISBN": "978-0-674-24163-3",
+  "language": "English",
+  "publisher": "Harvard University Press",
+  "publisher-place": "Cambridge, MA",
+  "title": "Observation and experiment: an introduction to causal inference",
+  "title-short": "Observation and experiment",
+  "author": [
+   {
+    "family": "Rosenbaum",
+    "given": "P. R."
+   }
+  ],
+  "issued": {
+   "date-parts": [
+    [
+     "2019"
     ]
    ]
   }
@@ -10463,11 +10809,11 @@
   "author": [
    {
     "family": "Rosenbaum",
-    "given": "Paul R."
+    "given": "P. R."
    },
    {
     "family": "Rubin",
-    "given": "Donald B."
+    "given": "D. B."
    }
   ],
   "issued": {
@@ -10492,7 +10838,7 @@
   "author": [
    {
     "family": "Rosenbaum",
-    "given": "Paul R."
+    "given": "P. R."
    }
   ],
   "issued": {
@@ -10517,7 +10863,7 @@
   "author": [
    {
     "family": "Rosenbaum",
-    "given": "Paul R."
+    "given": "P. R."
    }
   ],
   "accessed": {
@@ -10552,7 +10898,7 @@
   "author": [
    {
     "family": "Rosenbaum",
-    "given": "Paul R."
+    "given": "P. R."
    }
   ],
   "issued": {
@@ -10577,7 +10923,7 @@
   "author": [
    {
     "family": "Rosenbaum",
-    "given": "Paul R."
+    "given": "P. R."
    }
   ],
   "issued": {
@@ -10605,13 +10951,40 @@
   "author": [
    {
     "family": "Rosenbaum",
-    "given": "Paul R."
+    "given": "P. R."
    }
   ],
   "issued": {
    "date-parts": [
     [
      "2005",
+     1
+    ]
+   ]
+  }
+ },
+ {
+  "id": "ref69",
+  "type": "article-journal",
+  "container-title": "The American Statistician",
+  "DOI": "10.1198/000313001317098220",
+  "ISSN": "0003-1305",
+  "issue": "3",
+  "page": "223-227",
+  "publisher": "Taylor & Francis",
+  "title": "Replicating Effects and Biases",
+  "volume": "55",
+  "author": [
+   {
+    "family": "Rosenbaum",
+    "given": "P. R."
+   }
+  ],
+  "issued": {
+   "date-parts": [
+    [
+     "2001",
+     8,
      1
     ]
    ]
@@ -10632,7 +11005,7 @@
   "author": [
    {
     "family": "Rosenbaum",
-    "given": "Paul R."
+    "given": "P. R."
    }
   ],
   "issued": {
@@ -10654,7 +11027,7 @@
   "author": [
    {
     "family": "Rubin",
-    "given": "Donald B."
+    "given": "D. B."
    }
   ],
   "issued": {
@@ -10681,19 +11054,19 @@
   "author": [
    {
     "family": "Rushton",
-    "given": "Alan"
+    "given": "A."
    },
    {
     "family": "Maughan",
-    "given": "Barbara"
+    "given": "B."
    },
    {
     "family": "Grant",
-    "given": "Margaret"
+    "given": "M."
    },
    {
     "family": "Sehmi",
-    "given": "Rukmen"
+    "given": "R."
    }
   ],
   "issued": {
@@ -10721,11 +11094,11 @@
   "author": [
    {
     "family": "Sabates",
-    "given": "Ricardo"
+    "given": "R."
    },
    {
     "family": "Duckworth",
-    "given": "Kathryn"
+    "given": "K."
    }
   ],
   "issued": {
@@ -10752,7 +11125,7 @@
   "author": [
    {
     "family": "Sacerdote",
-    "given": "Bruce"
+    "given": "B."
    }
   ],
   "issued": {
@@ -10778,19 +11151,19 @@
   "author": [
    {
     "family": "Sanderson",
-    "given": "Eleanor"
+    "given": "E."
    },
    {
     "family": "Richardson",
-    "given": "Tom G"
+    "given": "T. G."
    },
    {
     "family": "Hemani",
-    "given": "Gibran"
+    "given": "G."
    },
    {
     "family": "Davey Smith",
-    "given": "George"
+    "given": "G."
    }
   ],
   "issued": {
@@ -10814,15 +11187,15 @@
   "author": [
    {
     "family": "Schisterman",
-    "given": "Enrique F"
+    "given": "E. F."
    },
    {
     "family": "Cole",
-    "given": "Stephen R"
+    "given": "S. R."
    },
    {
     "family": "Platt",
-    "given": "Robert W"
+    "given": "R. W."
    }
   ],
   "issued": {
@@ -10849,7 +11222,7 @@
   "author": [
    {
     "family": "Schmitz",
-    "given": "Hendrik"
+    "given": "H."
    }
   ],
   "issued": {
@@ -10877,11 +11250,11 @@
   "author": [
    {
     "family": "Schomaker",
-    "given": "Michael"
+    "given": "M."
    },
    {
     "family": "Heumann",
-    "given": "Christian"
+    "given": "C."
    }
   ],
   "issued": {
@@ -10909,7 +11282,7 @@
   "author": [
    {
     "family": "Scott",
-    "given": "Ralph"
+    "given": "R."
    }
   ],
   "issued": {
@@ -10937,11 +11310,11 @@
   "author": [
    {
     "family": "Seaman",
-    "given": "Shaun R."
+    "given": "S. R."
    },
    {
     "family": "Vansteelandt",
-    "given": "Stijn"
+    "given": "S."
    }
   ],
   "issued": {
@@ -10964,35 +11337,35 @@
   "author": [
    {
     "family": "Sellers",
-    "given": "Ruth"
+    "given": "R."
    },
    {
     "family": "Warne",
-    "given": "Naomi"
+    "given": "N."
    },
    {
     "family": "Rice",
-    "given": "Frances"
+    "given": "F."
    },
    {
     "family": "Langley",
-    "given": "Kate"
+    "given": "K."
    },
    {
     "family": "Maughan",
-    "given": "Barbara"
+    "given": "B."
    },
    {
     "family": "Pickles",
-    "given": "Andrew"
+    "given": "A."
    },
    {
     "family": "Thapar",
-    "given": "Anita"
+    "given": "A."
    },
    {
     "family": "Collishaw",
-    "given": "Stephan"
+    "given": "S."
    }
   ],
   "issued": {
@@ -11020,31 +11393,31 @@
   "author": [
    {
     "family": "Selzam",
-    "given": "Saskia"
+    "given": "S."
    },
    {
     "family": "McAdams",
-    "given": "Tom A."
+    "given": "T. A."
    },
    {
     "family": "Coleman",
-    "given": "Jonathan R. I."
+    "given": "J. R. I."
    },
    {
     "family": "Carnell",
-    "given": "Susan"
+    "given": "S."
    },
    {
     "family": "O’Reilly",
-    "given": "Paul F."
+    "given": "P. F."
    },
    {
     "family": "Plomin",
-    "given": "Robert"
+    "given": "R."
    },
    {
     "family": "Llewellyn",
-    "given": "Clare H."
+    "given": "C. H."
    }
   ],
   "issued": {
@@ -11071,11 +11444,11 @@
   "author": [
    {
     "family": "Shadish",
-    "given": "William R."
+    "given": "W. R."
    },
    {
     "family": "Cook",
-    "given": "Thomas D."
+    "given": "T. D."
    }
   ],
   "issued": {
@@ -11099,15 +11472,15 @@
   "author": [
    {
     "family": "Shadish",
-    "given": "William R."
+    "given": "W. R."
    },
    {
     "family": "Cook",
-    "given": "Thomas D."
+    "given": "T. D."
    },
    {
     "family": "Campbell",
-    "given": "Donald T."
+    "given": "D. T."
    }
   ],
   "issued": {
@@ -11134,47 +11507,47 @@
   "author": [
    {
     "family": "Shaw",
-    "given": "Pamela A."
+    "given": "P. A."
    },
    {
     "family": "Gustafson",
-    "given": "Paul"
+    "given": "P."
    },
    {
     "family": "Carroll",
-    "given": "Raymond J."
+    "given": "R. J."
    },
    {
     "family": "Deffner",
-    "given": "Veronika"
+    "given": "V."
    },
    {
     "family": "Dodd",
-    "given": "Kevin W."
+    "given": "K. W."
    },
    {
     "family": "Keogh",
-    "given": "Ruth H."
+    "given": "R. H."
    },
    {
     "family": "Kipnis",
-    "given": "Victor"
+    "given": "V."
    },
    {
     "family": "Tooze",
-    "given": "Janet A."
+    "given": "J. A."
    },
    {
     "family": "Wallace",
-    "given": "Michael P."
+    "given": "M. P."
    },
    {
     "family": "Küchenhoff",
-    "given": "Helmut"
+    "given": "H."
    },
    {
     "family": "Freedman",
-    "given": "Laurence S."
+    "given": "L. S."
    }
   ],
   "issued": {
@@ -11199,15 +11572,15 @@
   "author": [
    {
     "family": "Sheikh",
-    "given": "Mashhood A."
+    "given": "M. A."
    },
    {
     "family": "Abelsen",
-    "given": "Birgit"
+    "given": "B."
    },
    {
     "family": "Olsen",
-    "given": "Jan Abel"
+    "given": "J. A."
    }
   ],
   "accessed": {
@@ -11230,7 +11603,7 @@
   }
  },
  {
-  "id": "ref524",
+  "id": "refgBdfcUY6_GHMKYCCO",
   "type": "article-journal",
   "container-title": "Epidemiology",
   "DOI": "10.1097/EDE.0000000000001378",
@@ -11244,23 +11617,23 @@
   "author": [
    {
     "family": "Shi",
-    "given": "Baoyi"
+    "given": "B."
    },
    {
     "family": "Choirat",
-    "given": "Christine"
+    "given": "C."
    },
    {
     "family": "Coull",
-    "given": "Brent A."
+    "given": "B. A."
    },
    {
     "family": "VanderWeele",
-    "given": "Tyler J."
+    "given": "T. J."
    },
    {
     "family": "Valeri",
-    "given": "Linda"
+    "given": "L."
    }
   ],
   "issued": {
@@ -11287,15 +11660,15 @@
   "author": [
    {
     "family": "Shi",
-    "given": "Xu"
+    "given": "X."
    },
    {
     "family": "Miao",
-    "given": "Wang"
+    "given": "W."
    },
    {
     "family": "Tchetgen",
-    "given": "Eric Tchetgen"
+    "given": "E. T."
    }
   ],
   "issued": {
@@ -11322,47 +11695,47 @@
   "author": [
    {
     "family": "Shireby",
-    "given": "Gemma"
+    "given": "G."
    },
    {
     "family": "Morris",
-    "given": "Tim T"
+    "given": "T. T."
    },
    {
     "family": "Wong",
-    "given": "Andrew"
+    "given": "A."
    },
    {
     "family": "Chaturvedi",
-    "given": "Nish"
+    "given": "N."
    },
    {
     "family": "Ploubidis",
-    "given": "George B"
+    "given": "G. B."
    },
    {
     "family": "Fitzsimons",
-    "given": "Emla"
+    "given": "E."
    },
    {
     "family": "Goodman",
-    "given": "Alissa"
+    "given": "A."
    },
    {
     "family": "Sanchez-Galvez",
-    "given": "Adelaida"
+    "given": "A."
    },
    {
     "family": "Davies",
-    "given": "Neil M"
+    "given": "N. M."
    },
    {
     "family": "Wright",
-    "given": "Liam"
+    "given": "L."
    },
    {
     "family": "Bann",
-    "given": "David"
+    "given": "D."
    }
   ],
   "issued": {
@@ -11390,15 +11763,15 @@
   "author": [
    {
     "family": "Silva",
-    "given": "Laura"
+    "given": "L."
    },
    {
     "family": "Tropf",
-    "given": "Felix C"
+    "given": "F. C."
    },
    {
     "family": "Wolfram",
-    "given": "Tobias"
+    "given": "T."
    }
   ],
   "issued": {
@@ -11426,23 +11799,23 @@
   "author": [
    {
     "family": "Silverwood",
-    "given": "Richard J."
+    "given": "R. J."
    },
    {
     "family": "Calderwood",
-    "given": "Lisa"
+    "given": "L."
    },
    {
     "family": "Henderson",
-    "given": "Morag"
+    "given": "M."
    },
    {
     "family": "Sakshaug",
-    "given": "Joseph W."
+    "given": "J. W."
    },
    {
     "family": "Ploubidis",
-    "given": "George B."
+    "given": "G. B."
    }
   ],
   "issued": {
@@ -11451,6 +11824,54 @@
      "2024",
      4,
      1
+    ]
+   ]
+  }
+ },
+ {
+  "id": "ref555",
+  "type": "report",
+  "genre": "User guide",
+  "page": "117",
+  "publisher": "UCL Centre for Longitudinal Studies",
+  "publisher-place": "London",
+  "title": "Handling missing data in the CLS cohort studies",
+  "URL": "https://cls.ucl.ac.uk/wp-content/uploads/2020/04/Handling-Missing-Data-User-Guide-2024.pdf",
+  "author": [
+   {
+    "family": "Silverwood",
+    "given": "R. J."
+   },
+   {
+    "family": "Narayanan",
+    "given": "M."
+   },
+   {
+    "family": "Dodgeon",
+    "given": "B."
+   },
+   {
+    "family": "Katsoulis",
+    "given": "M."
+   },
+   {
+    "family": "Ploubidis",
+    "given": "G. B."
+   }
+  ],
+  "accessed": {
+   "date-parts": [
+    [
+     "2024",
+     10,
+     10
+    ]
+   ]
+  },
+  "issued": {
+   "date-parts": [
+    [
+     "2024"
     ]
    ]
   }
@@ -11471,15 +11892,15 @@
   "author": [
    {
     "family": "Simmons",
-    "given": "Joseph P."
+    "given": "J. P."
    },
    {
     "family": "Nelson",
-    "given": "Leif D."
+    "given": "L. D."
    },
    {
     "family": "Simonsohn",
-    "given": "Uri"
+    "given": "U."
    }
   ],
   "issued": {
@@ -11506,15 +11927,15 @@
   "author": [
    {
     "family": "Simonsohn",
-    "given": "Uri"
+    "given": "U."
    },
    {
     "family": "Simmons",
-    "given": "Joseph P."
+    "given": "J. P."
    },
    {
     "family": "Nelson",
-    "given": "Leif D."
+    "given": "L. D."
    }
   ],
   "issued": {
@@ -11542,19 +11963,19 @@
   "author": [
    {
     "family": "Singh-Manoux",
-    "given": "Archana"
+    "given": "A."
    },
    {
     "family": "Ferrie",
-    "given": "Jane E."
+    "given": "J. E."
    },
    {
     "family": "Lynch",
-    "given": "John W."
+    "given": "J. W."
    },
    {
     "family": "Marmot",
-    "given": "Michael"
+    "given": "M."
    }
   ],
   "issued": {
@@ -11579,15 +12000,15 @@
   "author": [
    {
     "family": "Sjölander",
-    "given": "Arvid"
+    "given": "A."
    },
    {
     "family": "Frisell",
-    "given": "Thomas"
+    "given": "T."
    },
    {
     "family": "Öberg",
-    "given": "Sara"
+    "given": "S."
    }
   ],
   "issued": {
@@ -11611,23 +12032,23 @@
   "author": [
    {
     "family": "Sjölander",
-    "given": "Arvid"
+    "given": "A."
    },
    {
     "family": "Frisell",
-    "given": "Thomas"
+    "given": "T."
    },
    {
     "family": "Kuja-Halkola",
-    "given": "Ralf"
+    "given": "R."
    },
    {
     "family": "Öberg",
-    "given": "Sara"
+    "given": "S."
    },
    {
     "family": "Zetterqvist",
-    "given": "Johan"
+    "given": "J."
    }
   ],
   "issued": {
@@ -11655,11 +12076,11 @@
   "author": [
    {
     "family": "Sjölander",
-    "given": "Arvid"
+    "given": "A."
    },
    {
     "family": "Greenland",
-    "given": "Sander"
+    "given": "S."
    }
   ],
   "issued": {
@@ -11722,19 +12143,19 @@
   "author": [
    {
     "family": "Speyer",
-    "given": "Lydia Gabriela"
+    "given": "L. G."
    },
    {
     "family": "Hang",
-    "given": "Yuzhan"
+    "given": "Y."
    },
    {
     "family": "Hall",
-    "given": "Hildigunnur Anna"
+    "given": "H. A."
    },
    {
     "family": "Murray",
-    "given": "Aja Louise"
+    "given": "A. L."
    }
   ],
   "issued": {
@@ -11748,7 +12169,7 @@
   }
  },
  {
-  "id": "ref548",
+  "id": "refgBdfcUY6_xwb8Ap0v",
   "type": "article-journal",
   "container-title": "BJOG: An International Journal of Obstetrics & Gynaecology",
   "DOI": "10.1111/1471-0528.15659",
@@ -11762,43 +12183,43 @@
   "author": [
    {
     "family": "Stacey",
-    "given": "T"
+    "given": "T."
    },
    {
     "family": "Tennant",
-    "given": "Pwg"
+    "given": "P."
    },
    {
     "family": "McCowan",
-    "given": "Lme"
+    "given": "L."
    },
    {
     "family": "Mitchell",
-    "given": "Ea"
+    "given": "E."
    },
    {
     "family": "Budd",
-    "given": "J"
+    "given": "J."
    },
    {
     "family": "Li",
-    "given": "M"
+    "given": "M."
    },
    {
     "family": "Thompson",
-    "given": "Jmd"
+    "given": "J."
    },
    {
     "family": "Martin",
-    "given": "B"
+    "given": "B."
    },
    {
     "family": "Roberts",
-    "given": "D"
+    "given": "D."
    },
    {
     "family": "Heazell",
-    "given": "Aep"
+    "given": "A."
    }
   ],
   "issued": {
@@ -11825,19 +12246,19 @@
   "author": [
    {
     "family": "Steegen",
-    "given": "Sara"
+    "given": "S."
    },
    {
     "family": "Tuerlinckx",
-    "given": "Francis"
+    "given": "F."
    },
    {
     "family": "Gelman",
-    "given": "Andrew"
+    "given": "A."
    },
    {
     "family": "Vanpaemel",
-    "given": "Wolf"
+    "given": "W."
    }
   ],
   "issued": {
@@ -11850,7 +12271,7 @@
   }
  },
  {
-  "id": "ref526",
+  "id": "refgBdfcUY6_fqnTXg4u",
   "type": "article-journal",
   "container-title": "Journal of the American Statistical Association",
   "DOI": "10.1080/01621459.2020.1765783",
@@ -11863,23 +12284,23 @@
   "author": [
    {
     "family": "Stensrud",
-    "given": "Mats J."
+    "given": "M. J."
    },
    {
     "family": "Young",
-    "given": "Jessica G."
+    "given": "J. G."
    },
    {
     "family": "Didelez",
-    "given": "Vanessa"
+    "given": "V."
    },
    {
     "family": "Robins",
-    "given": "James M."
+    "given": "J. M."
    },
    {
     "family": "Hernán",
-    "given": "Miguel A."
+    "given": "M. A."
    }
   ],
   "issued": {
@@ -11908,7 +12329,7 @@
   "author": [
    {
     "family": "Strenze",
-    "given": "Tarmo"
+    "given": "T."
    }
   ],
   "issued": {
@@ -11938,7 +12359,7 @@
   "author": [
    {
     "family": "Stuart",
-    "given": "Elizabeth A."
+    "given": "E. A."
    }
   ],
   "issued": {
@@ -11964,15 +12385,15 @@
   "author": [
    {
     "family": "Tabor",
-    "given": "Evangeline"
+    "given": "E."
    },
    {
     "family": "Kneale",
-    "given": "Dylan"
+    "given": "D."
    },
    {
     "family": "Patalay",
-    "given": "Praveetha"
+    "given": "P."
    }
   ],
   "accessed": {
@@ -12010,68 +12431,68 @@
   "author": [
    {
     "family": "Tanksley",
-    "given": "Peter T."
+    "given": "P. T."
    },
    {
     "family": "Brislin",
-    "given": "Sarah J."
+    "given": "S. J."
    },
    {
     "family": "Wertz",
-    "given": "Jasmin"
+    "given": "J."
    },
    {
     "family": "Vlaming",
-    "given": "Ronald",
+    "given": "R.",
     "non-dropping-particle": "de"
    },
    {
     "family": "Courchesne-Krak",
-    "given": "Natasia S."
+    "given": "N. S."
    },
    {
     "family": "Mallard",
-    "given": "Travis T."
+    "given": "T. T."
    },
    {
     "family": "Raffington",
-    "given": "Laurel L."
+    "given": "L. L."
    },
    {
     "family": "Karlsson Linnér",
-    "given": "Richard"
+    "given": "R."
    },
    {
     "family": "Koellinger",
-    "given": "Philipp"
+    "given": "P."
    },
    {
     "family": "Palmer",
-    "given": "Abraham A."
+    "given": "A. A."
    },
    {
     "family": "Sanchez-Roige",
-    "given": "Sandra"
+    "given": "S."
    },
    {
     "family": "Waldman",
-    "given": "Irwin D."
+    "given": "I. D."
    },
    {
     "family": "Dick",
-    "given": "Danielle"
+    "given": "D."
    },
    {
     "family": "Moffitt",
-    "given": "Terrie E."
+    "given": "T. E."
    },
    {
     "family": "Caspi",
-    "given": "Avshalom"
+    "given": "A."
    },
    {
     "family": "Harden",
-    "given": "K. Paige"
+    "given": "K. P."
    }
   ],
   "issued": {
@@ -12080,6 +12501,47 @@
      "2025",
      3,
      1
+    ]
+   ]
+  }
+ },
+ {
+  "id": "ref562",
+  "type": "article-journal",
+  "container-title": "Addiction (Abingdon, England)",
+  "DOI": "10.1111/add.15348",
+  "ISSN": "0965-2140",
+  "issue": "5",
+  "journalAbbreviation": "Addiction",
+  "page": "982-984",
+  "PMID": "33226690",
+  "PMCID": "PMC7753816",
+  "title": "Assessing and addressing collider bias in addiction research: the curious case of smoking and COVID‐19",
+  "title-short": "Assessing and addressing collider bias in addiction research",
+  "volume": "116",
+  "author": [
+   {
+    "family": "Tattan‐Birch",
+    "given": "H."
+   },
+   {
+    "family": "Marsden",
+    "given": "J."
+   },
+   {
+    "family": "West",
+    "given": "R."
+   },
+   {
+    "family": "Gage",
+    "given": "S. H."
+   }
+  ],
+  "issued": {
+   "date-parts": [
+    [
+     "2021",
+     5
     ]
    ]
   }
@@ -12099,55 +12561,55 @@
   "author": [
    {
     "family": "Tennant",
-    "given": "Peter W G"
+    "given": "P. W. G."
    },
    {
     "family": "Murray",
-    "given": "Eleanor J"
+    "given": "E. J."
    },
    {
     "family": "Arnold",
-    "given": "Kellyn F"
+    "given": "K. F."
    },
    {
     "family": "Berrie",
-    "given": "Laurie"
+    "given": "L."
    },
    {
     "family": "Fox",
-    "given": "Matthew P"
+    "given": "M. P."
    },
    {
     "family": "Gadd",
-    "given": "Sarah C"
+    "given": "S. C."
    },
    {
     "family": "Harrison",
-    "given": "Wendy J"
+    "given": "W. J."
    },
    {
     "family": "Keeble",
-    "given": "Claire"
+    "given": "C."
    },
    {
     "family": "Ranker",
-    "given": "Lynsie R"
+    "given": "L. R."
    },
    {
     "family": "Textor",
-    "given": "Johannes"
+    "given": "J."
    },
    {
     "family": "Tomova",
-    "given": "Georgia D"
+    "given": "G. D."
    },
    {
     "family": "Gilthorpe",
-    "given": "Mark S"
+    "given": "M. S."
    },
    {
     "family": "Ellison",
-    "given": "George T H"
+    "given": "G. T. H."
    }
   ],
   "issued": {
@@ -12174,11 +12636,11 @@
   "author": [
    {
     "family": "Tennant",
-    "given": "Peter W. G."
+    "given": "P. W. G."
    },
    {
     "family": "Murray",
-    "given": "Eleanor J."
+    "given": "E. J."
    }
   ],
   "issued": {
@@ -12205,24 +12667,24 @@
   "author": [
    {
     "family": "Textor",
-    "given": "Johannes"
+    "given": "J."
    },
    {
     "family": "Zander",
-    "given": "Benito",
+    "given": "B.",
     "non-dropping-particle": "van der"
    },
    {
     "family": "Gilthorpe",
-    "given": "Mark S"
+    "given": "M. S."
    },
    {
     "family": "Liśkiewicz",
-    "given": "Maciej"
+    "given": "M."
    },
    {
     "family": "Ellison",
-    "given": "George TH"
+    "given": "G. T."
    }
   ],
   "issued": {
@@ -12251,11 +12713,11 @@
   "author": [
    {
     "family": "Thistlethwaite",
-    "given": "Donald L."
+    "given": "D. L."
    },
    {
     "family": "Campbell",
-    "given": "Donald T."
+    "given": "D. T."
    }
   ],
   "issued": {
@@ -12267,7 +12729,7 @@
   }
  },
  {
-  "id": "ref518",
+  "id": "refgBdfcUY6_FmFWobBO",
   "type": "article-journal",
   "container-title": "Emerging Adulthood",
   "DOI": "10.1177/2167696815621645",
@@ -12281,11 +12743,11 @@
   "author": [
    {
     "family": "Thoemmes",
-    "given": "Felix"
+    "given": "F."
    },
    {
     "family": "Ong",
-    "given": "Anthony D."
+    "given": "A. D."
    }
   ],
   "issued": {
@@ -12315,35 +12777,35 @@
   "author": [
    {
     "family": "Toews",
-    "given": "Ingrid"
+    "given": "I."
    },
    {
     "family": "Anglemyer",
-    "given": "Andrew"
+    "given": "A."
    },
    {
     "family": "Nyirenda",
-    "given": "John Lz"
+    "given": "J. L."
    },
    {
     "family": "Alsaid",
-    "given": "Dima"
+    "given": "D."
    },
    {
     "family": "Balduzzi",
-    "given": "Sara"
+    "given": "S."
    },
    {
     "family": "Grummich",
-    "given": "Kathrin"
+    "given": "K."
    },
    {
     "family": "Schwingshackl",
-    "given": "Lukas"
+    "given": "L."
    },
    {
     "family": "Bero",
-    "given": "Lisa"
+    "given": "L."
    }
   ],
   "issued": {
@@ -12367,15 +12829,15 @@
   "author": [
    {
     "family": "Tomova",
-    "given": "Georgia D"
+    "given": "G. D."
    },
    {
     "family": "Silverwood",
-    "given": "Richard J"
+    "given": "R. J."
    },
    {
     "family": "Wright",
-    "given": "Liam"
+    "given": "L."
    }
   ],
   "accessed": {
@@ -12411,19 +12873,19 @@
   "author": [
    {
     "family": "Tomova",
-    "given": "Georgia D"
+    "given": "G. D."
    },
    {
     "family": "Silverwood",
-    "given": "Richard J"
+    "given": "R. J."
    },
    {
     "family": "Tennant",
-    "given": "Peter W G"
+    "given": "P. W. G."
    },
    {
     "family": "Wright",
-    "given": "Liam"
+    "given": "L."
    }
   ],
   "issued": {
@@ -12448,15 +12910,15 @@
   "author": [
    {
     "family": "Tomova",
-    "given": "Georgia D"
+    "given": "G. D."
    },
    {
     "family": "Silverwood",
-    "given": "Richard J."
+    "given": "R. J."
    },
    {
     "family": "Wright",
-    "given": "Liam"
+    "given": "L."
    }
   ],
   "accessed": {
@@ -12494,23 +12956,23 @@
   "author": [
    {
     "family": "Tompsett",
-    "given": "Daniel Mark"
+    "given": "D. M."
    },
    {
     "family": "Leacy",
-    "given": "Finbarr"
+    "given": "F."
    },
    {
     "family": "Moreno‐Betancur",
-    "given": "Margarita"
+    "given": "M."
    },
    {
     "family": "Heron",
-    "given": "Jon"
+    "given": "J."
    },
    {
     "family": "White",
-    "given": "Ian R."
+    "given": "I. R."
    }
   ],
   "issued": {
@@ -12519,34 +12981,6 @@
      "2018",
      7,
      10
-    ]
-   ]
-  }
- },
- {
-  "id": "ref21011",
-  "type": "article-journal",
-  "collection-title": "Special Issue: The Theory-Driven Perspective",
-  "container-title": "Evaluation and Program Planning",
-  "DOI": "10.1016/0149-7189(89)90052-9",
-  "ISSN": "0149-7189",
-  "issue": "4",
-  "journalAbbreviation": "Evaluation and Program Planning",
-  "page": "355-366",
-  "title": "Outcome pattern matching and program theory",
-  "volume": "12",
-  "author": [
-   {
-    "family": "Trochim",
-    "given": "William M. K."
-   }
-  ],
-  "issued": {
-   "date-parts": [
-    [
-     "1989",
-     1,
-     1
     ]
    ]
   }
@@ -12567,7 +13001,7 @@
   "author": [
    {
     "family": "Trochim",
-    "given": "William M.K."
+    "given": "W. M. K."
    }
   ],
   "issued": {
@@ -12575,6 +13009,34 @@
     [
      "1985",
      10
+    ]
+   ]
+  }
+ },
+ {
+  "id": "ref21011",
+  "type": "article-journal",
+  "collection-title": "Special Issue: The Theory-Driven Perspective",
+  "container-title": "Evaluation and Program Planning",
+  "DOI": "10.1016/0149-7189(89)90052-9",
+  "ISSN": "0149-7189",
+  "issue": "4",
+  "journalAbbreviation": "Evaluation and Program Planning",
+  "page": "355-366",
+  "title": "Outcome pattern matching and program theory",
+  "volume": "12",
+  "author": [
+   {
+    "family": "Trochim",
+    "given": "W. M. K."
+   }
+  ],
+  "issued": {
+   "date-parts": [
+    [
+     "1989",
+     1,
+     1
     ]
    ]
   }
@@ -12595,15 +13057,15 @@
   "author": [
    {
     "family": "Tuffaha",
-    "given": "Haitham W."
+    "given": "H. W."
    },
    {
     "family": "Gordon",
-    "given": "Louisa G."
+    "given": "L. G."
    },
    {
     "family": "Scuffham",
-    "given": "Paul A."
+    "given": "P. A."
    }
   ],
   "issued": {
@@ -12631,7 +13093,7 @@
   "author": [
    {
     "family": "Turkheimer",
-    "given": "Eric"
+    "given": "E."
    }
   ],
   "issued": {
@@ -12658,7 +13120,7 @@
   "author": [
    {
     "family": "Vagni",
-    "given": "Giacomo"
+    "given": "G."
    }
   ],
   "issued": {
@@ -12685,48 +13147,17 @@
   "author": [
    {
     "family": "Vagni",
-    "given": "Giacomo"
+    "given": "G."
    },
    {
     "family": "Breen",
-    "given": "Richard"
+    "given": "R."
    }
   ],
   "issued": {
    "date-parts": [
     [
      "2021",
-     10,
-     1
-    ]
-   ]
-  }
- },
- {
-  "id": "ref277",
-  "type": "article-journal",
-  "container-title": "American Journal of Epidemiology",
-  "DOI": "10.1093/aje/kwz133",
-  "ISSN": "0002-9262",
-  "issue": "10",
-  "journalAbbreviation": "Am J Epidemiol",
-  "page": "1823-1829",
-  "title": "Simple Sensitivity Analysis for Differential Measurement Error",
-  "volume": "188",
-  "author": [
-   {
-    "family": "VanderWeele",
-    "given": "Tyler J"
-   },
-   {
-    "family": "Li",
-    "given": "Yige"
-   }
-  ],
-  "issued": {
-   "date-parts": [
-    [
-     "2019",
      10,
      1
     ]
@@ -12749,15 +13180,15 @@
   "author": [
    {
     "family": "VanderWeele",
-    "given": "Tyler J."
+    "given": "T. J."
    },
    {
     "family": "Jackson",
-    "given": "John W."
+    "given": "J. W."
    },
    {
     "family": "Li",
-    "given": "Shanshan"
+    "given": "S."
    }
   ],
   "issued": {
@@ -12785,15 +13216,15 @@
   "author": [
    {
     "family": "VanderWeele",
-    "given": "Tyler J."
+    "given": "T. J."
    },
    {
     "family": "Mathur",
-    "given": "Maya B."
+    "given": "M. B."
    },
    {
     "family": "Chen",
-    "given": "Ying"
+    "given": "Y."
    }
   ],
   "accessed": {
@@ -12830,7 +13261,7 @@
   "author": [
    {
     "family": "VanderWeele",
-    "given": "Tyler J."
+    "given": "T. J."
    }
   ],
   "issued": {
@@ -12858,7 +13289,7 @@
   "author": [
    {
     "family": "VanderWeele",
-    "given": "Tyler J."
+    "given": "T. J."
    }
   ],
   "issued": {
@@ -12871,7 +13302,7 @@
   }
  },
  {
-  "id": "ref535",
+  "id": "refgBdfcUY6_R7VUgAt3",
   "type": "article-journal",
   "container-title": "Statistics and Its Interface",
   "DOI": "10.4310/SII.2009.v2.n4.a7",
@@ -12886,11 +13317,11 @@
   "author": [
    {
     "family": "Vanderweele",
-    "given": "Tyler J."
+    "given": "T. J."
    },
    {
     "family": "Vansteelandt",
-    "given": "Stijn"
+    "given": "S."
    }
   ],
   "issued": {
@@ -12902,7 +13333,7 @@
   }
  },
  {
-  "id": "ref24",
+  "id": "refgBdfcUY6_TGzKF3iJ",
   "type": "article-journal",
   "container-title": "Epidemiology",
   "DOI": "10.1097/EDE.0000000000000034",
@@ -12915,15 +13346,15 @@
   "author": [
    {
     "family": "VanderWeele",
-    "given": "Tyler J."
+    "given": "T. J."
    },
    {
     "family": "Vansteelandt",
-    "given": "Stijn"
+    "given": "S."
    },
    {
     "family": "Robins",
-    "given": "James M."
+    "given": "J. M."
    }
   ],
   "issued": {
@@ -12950,7 +13381,7 @@
   "author": [
    {
     "family": "VanderWeele",
-    "given": "Tyler J."
+    "given": "T. J."
    }
   ],
   "issued": {
@@ -12978,11 +13409,11 @@
   "author": [
    {
     "family": "VanderWeele",
-    "given": "Tyler J."
+    "given": "T. J."
    },
    {
     "family": "Ding",
-    "given": "Peng"
+    "given": "P."
    }
   ],
   "issued": {
@@ -12996,37 +13427,38 @@
   }
  },
  {
-  "id": "ref49",
+  "id": "ref277",
   "type": "article-journal",
-  "container-title": "Epidemiology",
-  "DOI": "10.1097/EDE.0000000000000596",
-  "ISSN": "1044-3983",
-  "issue": "2",
-  "language": "en-US",
-  "page": "258",
-  "title": "Interventional Effects for Mediation Analysis with Multiple Mediators",
-  "volume": "28",
+  "container-title": "American Journal of Epidemiology",
+  "DOI": "10.1093/aje/kwz133",
+  "ISSN": "0002-9262",
+  "issue": "10",
+  "journalAbbreviation": "Am J Epidemiol",
+  "page": "1823-1829",
+  "title": "Simple Sensitivity Analysis for Differential Measurement Error",
+  "volume": "188",
   "author": [
    {
-    "family": "Vansteelandt",
-    "given": "Stijn"
+    "family": "VanderWeele",
+    "given": "T. J."
    },
    {
-    "family": "Daniel",
-    "given": "Rhian M."
+    "family": "Li",
+    "given": "Y."
    }
   ],
   "issued": {
    "date-parts": [
     [
-     "2017",
-     3
+     "2019",
+     10,
+     1
     ]
    ]
   }
  },
  {
-  "id": "ref514",
+  "id": "refgBdfcUY6_gLlVaZrf",
   "type": "article-journal",
   "container-title": "Epidemiologic Methods",
   "DOI": "10.1515/em-2015-0005",
@@ -13041,11 +13473,11 @@
   "author": [
    {
     "family": "Vansteelandt",
-    "given": "Stijn"
+    "given": "S."
    },
    {
     "family": "Sjolander",
-    "given": "Arvid"
+    "given": "A."
    }
   ],
   "issued": {
@@ -13059,6 +13491,36 @@
   }
  },
  {
+  "id": "refgBdfcUY6_UEAHVudx",
+  "type": "article-journal",
+  "container-title": "Epidemiology",
+  "DOI": "10.1097/EDE.0000000000000596",
+  "ISSN": "1044-3983",
+  "issue": "2",
+  "language": "en-US",
+  "page": "258",
+  "title": "Interventional Effects for Mediation Analysis with Multiple Mediators",
+  "volume": "28",
+  "author": [
+   {
+    "family": "Vansteelandt",
+    "given": "S."
+   },
+   {
+    "family": "Daniel",
+    "given": "R. M."
+   }
+  ],
+  "issued": {
+   "date-parts": [
+    [
+     "2017",
+     3
+    ]
+   ]
+  }
+ },
+ {
   "id": "ref468",
   "type": "webpage",
   "language": "en",
@@ -13067,7 +13529,7 @@
   "author": [
    {
     "family": "Vignen",
-    "given": "Tyler"
+    "given": "T."
    }
   ],
   "accessed": {
@@ -13102,19 +13564,19 @@
   "author": [
    {
     "family": "Wadsworth",
-    "given": "Michael"
+    "given": "M."
    },
    {
     "family": "Kuh",
-    "given": "Diana"
+    "given": "D."
    },
    {
     "family": "Richards",
-    "given": "Marcus"
+    "given": "M."
    },
    {
     "family": "Hardy",
-    "given": "Rebecca"
+    "given": "R."
    }
   ],
   "issued": {
@@ -13141,67 +13603,67 @@
   "author": [
    {
     "family": "Wellings",
-    "given": "Kaye"
+    "given": "K."
    },
    {
     "family": "Palmer",
-    "given": "Melissa J."
+    "given": "M. J."
    },
    {
     "family": "Geary",
-    "given": "Rebecca S."
+    "given": "R. S."
    },
    {
     "family": "Gibson",
-    "given": "Lorna J."
+    "given": "L. J."
    },
    {
     "family": "Copas",
-    "given": "Andrew"
+    "given": "A."
    },
    {
     "family": "Datta",
-    "given": "Jessica"
+    "given": "J."
    },
    {
     "family": "Glasier",
-    "given": "Anna"
+    "given": "A."
    },
    {
     "family": "Scott",
-    "given": "Rachel H."
+    "given": "R. H."
    },
    {
     "family": "Mercer",
-    "given": "Catherine H."
+    "given": "C. H."
    },
    {
     "family": "Erens",
-    "given": "Bob"
+    "given": "B."
    },
    {
     "family": "Macdowall",
-    "given": "Wendy"
+    "given": "W."
    },
    {
     "family": "French",
-    "given": "Rebecca S."
+    "given": "R. S."
    },
    {
     "family": "Jones",
-    "given": "Kyle"
+    "given": "K."
    },
    {
     "family": "Johnson",
-    "given": "Anne M."
+    "given": "A. M."
    },
    {
     "family": "Tanton",
-    "given": "Clare"
+    "given": "C."
    },
    {
     "family": "Wilkinson",
-    "given": "Paul"
+    "given": "P."
    }
   ],
   "issued": {
@@ -13229,39 +13691,39 @@
   "author": [
    {
     "family": "Wertz",
-    "given": "Jasmin"
+    "given": "J."
    },
    {
     "family": "Belsky",
-    "given": "Jay"
+    "given": "J."
    },
    {
     "family": "Moffitt",
-    "given": "Terrie E."
+    "given": "T. E."
    },
    {
     "family": "Belsky",
-    "given": "Daniel W."
+    "given": "D. W."
    },
    {
     "family": "Harrington",
-    "given": "HonaLee"
+    "given": "H."
    },
    {
     "family": "Avinun",
-    "given": "Reut"
+    "given": "R."
    },
    {
     "family": "Poulton",
-    "given": "Richie"
+    "given": "R."
    },
    {
     "family": "Ramrakha",
-    "given": "Sandhya"
+    "given": "S."
    },
    {
     "family": "Caspi",
-    "given": "Avshalom"
+    "given": "A."
    }
   ],
   "issued": {
@@ -13290,11 +13752,11 @@
   "author": [
    {
     "family": "Westerman",
-    "given": "Kenneth E."
+    "given": "K. E."
    },
    {
     "family": "Sofer",
-    "given": "Tamar"
+    "given": "T."
    }
   ],
   "issued": {
@@ -13322,19 +13784,19 @@
   "author": [
    {
     "family": "Weston",
-    "given": "Sara J."
+    "given": "S. J."
    },
    {
     "family": "Ritchie",
-    "given": "Stuart J."
+    "given": "S. J."
    },
    {
     "family": "Rohrer",
-    "given": "Julia M."
+    "given": "J. M."
    },
    {
     "family": "Przybylski",
-    "given": "Andrew K."
+    "given": "A. K."
    }
   ],
   "issued": {
@@ -13364,23 +13826,23 @@
   "author": [
    {
     "family": "Williams",
-    "given": "Thomas C."
+    "given": "T. C."
    },
    {
     "family": "Bach",
-    "given": "Cathrine C."
+    "given": "C. C."
    },
    {
     "family": "Matthiesen",
-    "given": "Niels B."
+    "given": "N. B."
    },
    {
     "family": "Henriksen",
-    "given": "Tine B."
+    "given": "T. B."
    },
    {
     "family": "Gagliardi",
-    "given": "Luigi"
+    "given": "L."
    }
   ],
   "issued": {
@@ -13405,7 +13867,7 @@
   "author": [
    {
     "family": "Wooldridge",
-    "given": "Jeffrey M."
+    "given": "J. M."
    }
   ],
   "issued": {
@@ -13434,19 +13896,19 @@
   "author": [
    {
     "family": "Woolf",
-    "given": "Benjamin"
+    "given": "B."
    },
    {
     "family": "Gill",
-    "given": "Dipender"
+    "given": "D."
    },
    {
     "family": "Sallis",
-    "given": "Hannah"
+    "given": "H."
    },
    {
     "family": "Munafò",
-    "given": "Marcus R."
+    "given": "M. R."
    }
   ],
   "issued": {
@@ -13468,15 +13930,15 @@
   "author": [
    {
     "family": "Wright",
-    "given": "Liam"
+    "given": "L."
    },
    {
     "family": "Ploubidis",
-    "given": "George B."
+    "given": "G. B."
    },
    {
     "family": "Silverwood",
-    "given": "Richard J."
+    "given": "R. J."
    }
   ],
   "issued": {
@@ -13500,27 +13962,27 @@
   "author": [
    {
     "family": "Wright",
-    "given": "Liam"
+    "given": "L."
    },
    {
     "family": "Davies",
-    "given": "Neil M."
+    "given": "N. M."
    },
    {
     "family": "Shireby",
-    "given": "Gemma"
+    "given": "G."
    },
    {
     "family": "Williams",
-    "given": "Dylan M."
+    "given": "D. M."
    },
    {
     "family": "Morris",
-    "given": "Tim T."
+    "given": "T. T."
    },
    {
     "family": "Bann",
-    "given": "David"
+    "given": "D."
    }
   ],
   "accessed": {
@@ -13559,23 +14021,23 @@
   "author": [
    {
     "family": "Wright",
-    "given": "Liam"
+    "given": "L."
    },
    {
     "family": "Shireby",
-    "given": "Gemma"
+    "given": "G."
    },
    {
     "family": "Morris",
-    "given": "Tim T."
+    "given": "T. T."
    },
    {
     "family": "Davies",
-    "given": "Neil M."
+    "given": "N. M."
    },
    {
     "family": "Bann",
-    "given": "David"
+    "given": "D."
    }
   ],
   "issued": {
@@ -13602,7 +14064,7 @@
   "author": [
    {
     "family": "Wright",
-    "given": "Liam"
+    "given": "L."
    }
   ],
   "issued": {
@@ -13629,15 +14091,15 @@
   "author": [
    {
     "family": "Wright",
-    "given": "Liam"
+    "given": "L."
    },
    {
     "family": "Head",
-    "given": "Jenny A"
+    "given": "J. A."
    },
    {
     "family": "Jivraj",
-    "given": "Stephen"
+    "given": "S."
    }
   ],
   "issued": {
@@ -13659,7 +14121,7 @@
   "author": [
    {
     "family": "Wright",
-    "given": "Liam"
+    "given": "L."
    }
   ],
   "issued": {
@@ -13708,7 +14170,7 @@
   }
  },
  {
-  "id": "ref555",
+  "id": "refgBdfcUY6_JnUu1ZVx",
   "type": "article-journal",
   "container-title": "The Annals of Mathematical Statistics",
   "DOI": "10.1214/aoms/1177732676",
@@ -13722,7 +14184,7 @@
   "author": [
    {
     "family": "Wright",
-    "given": "Sewall"
+    "given": "S."
    }
   ],
   "issued": {
@@ -13748,27 +14210,27 @@
   "author": [
    {
     "family": "Yang",
-    "given": "Qingqing"
+    "given": "Q."
    },
    {
     "family": "Yang",
-    "given": "Zhirong"
+    "given": "Z."
    },
    {
     "family": "Cai",
-    "given": "Xianming"
+    "given": "X."
    },
    {
     "family": "Zhao",
-    "given": "Houyu"
+    "given": "H."
    },
    {
     "family": "Jia",
-    "given": "Jinzhu"
+    "given": "J."
    },
    {
     "family": "Sun",
-    "given": "Feng"
+    "given": "F."
    }
   ],
   "issued": {
@@ -13795,19 +14257,19 @@
   "author": [
    {
     "family": "Ye",
-    "given": "Ting"
+    "given": "T."
    },
    {
     "family": "Keele",
-    "given": "Luke"
+    "given": "L."
    },
    {
     "family": "Hasegawa",
-    "given": "Raiden"
+    "given": "R."
    },
    {
     "family": "Small",
-    "given": "Dylan S."
+    "given": "D. S."
    }
   ],
   "issued": {
@@ -13829,7 +14291,7 @@
   "author": [
    {
     "family": "Yudkowsky",
-    "given": "Eliezer"
+    "given": "E."
    }
   ],
   "accessed": {
@@ -13867,11 +14329,11 @@
   "author": [
    {
     "family": "Zaadstra",
-    "given": "Bm"
+    "given": "B."
    },
    {
     "family": "Chorus",
-    "given": "Amj"
+    "given": "A."
    },
    {
     "family": "Van Buuren",
@@ -13883,7 +14345,7 @@
    },
    {
     "family": "Van Noort",
-    "given": "Jm"
+    "given": "J."
    }
   ],
   "issued": {
@@ -13896,7 +14358,7 @@
   }
  },
  {
-  "id": "ref02w9uLqN/LsLWvkX3",
+  "id": "ref02w9uLqN_LsLWvkX3",
   "type": "article-journal",
   "container-title": "Statistics in Medicine",
   "DOI": "10.1002/sim.10255",
@@ -13910,23 +14372,23 @@
   "author": [
    {
     "family": "Zivich",
-    "given": "Paul N."
+    "given": "P. N."
    },
    {
     "family": "Ross",
-    "given": "Rachael K."
+    "given": "R. K."
    },
    {
     "family": "Shook-Sa",
-    "given": "Bonnie E."
+    "given": "B. E."
    },
    {
     "family": "Cole",
-    "given": "Stephen R."
+    "given": "S. R."
    },
    {
     "family": "Edwards",
-    "given": "Jessie K."
+    "given": "J. K."
    }
   ],
   "issued": {
@@ -13951,15 +14413,15 @@
   "author": [
    {
     "family": "Zubizarreta",
-    "given": "Jose R."
+    "given": "J. R."
    },
    {
     "family": "Small",
-    "given": "Dylan S."
+    "given": "D. S."
    },
    {
     "family": "Rosenbaum",
-    "given": "Paul R."
+    "given": "P. R."
    }
   ],
   "issued": {
@@ -13986,47 +14448,47 @@
   "author": [
    {
     "family": "Zyphur",
-    "given": "Michael J."
+    "given": "M. J."
    },
    {
     "family": "Voelkle",
-    "given": "Manuel C."
+    "given": "M. C."
    },
    {
     "family": "Tay",
-    "given": "Louis"
+    "given": "L."
    },
    {
     "family": "Allison",
-    "given": "Paul D."
+    "given": "P. D."
    },
    {
     "family": "Preacher",
-    "given": "Kristopher J."
+    "given": "K. J."
    },
    {
     "family": "Zhang",
-    "given": "Zhen"
+    "given": "Z."
    },
    {
     "family": "Hamaker",
-    "given": "Ellen L."
+    "given": "E. L."
    },
    {
     "family": "Shamsollahi",
-    "given": "Ali"
+    "given": "A."
    },
    {
     "family": "Pierides",
-    "given": "Dean C."
+    "given": "D. C."
    },
    {
     "family": "Koval",
-    "given": "Peter"
+    "given": "P."
    },
    {
     "family": "Diener",
-    "given": "Ed"
+    "given": "E."
    }
   ],
   "issued": {
@@ -14055,47 +14517,47 @@
   "author": [
    {
     "family": "Zyphur",
-    "given": "Michael J."
+    "given": "M. J."
    },
    {
     "family": "Allison",
-    "given": "Paul D."
+    "given": "P. D."
    },
    {
     "family": "Tay",
-    "given": "Louis"
+    "given": "L."
    },
    {
     "family": "Voelkle",
-    "given": "Manuel C."
+    "given": "M. C."
    },
    {
     "family": "Preacher",
-    "given": "Kristopher J."
+    "given": "K. J."
    },
    {
     "family": "Zhang",
-    "given": "Zhen"
+    "given": "Z."
    },
    {
     "family": "Hamaker",
-    "given": "Ellen L."
+    "given": "E. L."
    },
    {
     "family": "Shamsollahi",
-    "given": "Ali"
+    "given": "A."
    },
    {
     "family": "Pierides",
-    "given": "Dean C."
+    "given": "D. C."
    },
    {
     "family": "Koval",
-    "given": "Peter"
+    "given": "P."
    },
    {
     "family": "Diener",
-    "given": "Ed"
+    "given": "E."
    }
   ],
   "issued": {
