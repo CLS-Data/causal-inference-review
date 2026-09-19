@@ -1,0 +1,37 @@
+# About this guide {.unnumbered}
+
+Liam Wright[^corr], Georgia D. Tomova, Martin N. Danka, George B. Ploubidis and Richard J. Silverwood\
+*Centre for Longitudinal Studies, Institute of Education, University College London*
+
+[^corr]: Corresponding author: Liam Wright, 55-59 Gordon Square, London, WC1H 0NU, <liam.wright@ucl.ac.uk>.
+
+::: {.abstract-box}
+**Abstract.** Correlations between variables in cohort and other observational studies do not necessarily indicate causal effects and may instead reflect bias due to confounding, sample selection processes, or measurement issues. Thankfully, multiple statistical methods, frameworks, and research designs have been developed that -- when used judiciously -- can aid making causal inferences with observational data. This is especially the case with CLS's cohorts, which have several properties (e.g., longitudinal assessment and rich and varied data collection) that may meet the assumptions of these methods or provide ample opportunities for each methods' use. In this guide, we provide an overview of the possibilities for causal inference in CLS's cohorts. Specifically, we: (1) provide background on the problem of causal inference in observational data, (2) detail the attributes of CLS's cohorts that can support causal inference, and (3) outline an extensive set of methods and research designs that -- assumptions permitting -- can be used to estimate causal effects in CLS's cohort data, illustrating each with existing applications and highlighting opportunities for further work.
+
+**Keywords:** causal inference; observational studies; elaborate theories; cohort studies; quasi-experiments; research design; quasi-experimental devices
+:::
+
+## How the guide is organised {.unnumbered}
+
+- [Chapter 1](01-introduction.qmd) introduces the aims of the guide.
+- [Chapter 2](02-problem.qmd) sets out the problem of causal inference with observational data: the potential outcomes framework, causal directed acyclic graphs (DAGs), and the three threats to internal validity -- confounding, selection and information bias.
+- [Chapter 3](03-approaches.qmd) describes three broad approaches to causal inference: model-based, design-based, and elaborate theories.
+- [Chapter 4](04-attributes.qmd) details the attributes of CLS's cohort studies that support causal inference.
+- [Chapter 5](05-methods.qmd) covers twenty methods and research designs. For each, we describe the *method*, existing *applications* using CLS data, and *opportunities* for further work.
+- [Chapter 6](06-discussion.qmd) discusses how individual studies fit into a wider body of evidence, and the [Appendix](08-appendix.qmd) reviews the empirical evidence that correlation often does not equal causation, and why.
+
+Use the sidebar to navigate between chapters, the search box to find a method or topic, and the contents list on the right of each page to move within a chapter. Figures can be clicked to enlarge them.
+
+## Status and feedback {.unnumbered}
+
+This is a working draft of the guide (version dated 16 September 2026). We welcome comments, corrections and suggestions of further applications: please email [liam.wright@ucl.ac.uk](mailto:liam.wright@ucl.ac.uk) or [open an issue on GitHub](https://github.com/CLS-Data/causal-inference-review/issues).
+
+## How to cite {.unnumbered}
+
+::: {.cite-box}
+Wright, L., Tomova, G. D., Danka, M. N., Ploubidis, G. B., & Silverwood, R. J. (2026). *Causal Inference in the CLS Cohort Studies*. Centre for Longitudinal Studies, University College London. <https://cls-data.github.io/causal-inference-review/>
+:::
+
+## Funding and code {.unnumbered}
+
+This work was supported by the Economic and Social Research Council (ES/W013142/1). The code used to create the plots and DAGs in this guide is available at <https://osf.io/ta5bk>. Further statements are given in [Chapter 7](07-statements.qmd).

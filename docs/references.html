@@ -1,0 +1,1863 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en-GB" xml:lang="en-GB"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.8.27">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="description" content="A guide to methods and research designs for causal inference with the Centre for Longitudinal Studies’ cohort data.">
+
+<title>References – Causal Inference in the CLS Cohort Studies</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+</style>
+
+
+<script src="site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="site_libs/quarto-nav/headroom.min.js"></script>
+<script src="site_libs/clipboard/clipboard.min.js"></script>
+<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="site_libs/quarto-search/fuse.min.js"></script>
+<script src="site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="./">
+<link href="./08-appendix.html" rel="prev">
+<link href="./images/favicon.svg" rel="icon" type="image/svg+xml">
+<script src="site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="site_libs/quarto-html/axe/axe-check.js" type="module"></script>
+<script src="site_libs/quarto-html/popper.min.js"></script>
+<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="site_libs/quarto-html/anchor.min.js"></script>
+<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-ed96de9b727972fe78a7b5d16c58bf87.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="site_libs/bootstrap/bootstrap-6be7f6e0362b36c773b9fb5cb1e95ee5.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "sidebar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "start",
+  "type": "textbox",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+<style>html{ scroll-behavior: smooth; }</style>
+
+
+</head>
+
+<body class="nav-sidebar docked quarto-light">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+  <nav class="quarto-secondary-nav">
+    <div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
+      </button>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./references.html">References</a></li></ol></nav>
+        <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        </a>
+      <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
+        <i class="bi bi-search"></i>
+      </button>
+    </div>
+  </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation docked overflow-auto">
+    <div class="pt-lg-2 mt-2 text-left sidebar-header sidebar-header-stacked">
+      <a href="./index.html" class="sidebar-logo-link">
+      <img src="./images/cover.svg" alt="Cover: Causal Inference in the CLS Cohort Studies" class="sidebar-logo light-content py-0 d-lg-inline d-none">
+      <img src="./images/cover.svg" alt="Cover: Causal Inference in the CLS Cohort Studies" class="sidebar-logo dark-content py-0 d-lg-inline d-none">
+      </a>
+    <div class="sidebar-title mb-0 py-0">
+      <a href="./">Causal Inference in the CLS Cohort Studies</a> 
+        <div class="sidebar-tools-main">
+    <a href="https://github.com/CLS-Data/causal-inference-review" title="Source Code" class="quarto-navigation-tool px-1" aria-label="Source Code"><i class="bi bi-github"></i></a>
+</div>
+    </div>
+      </div>
+        <div class="mt-2 flex-shrink-0 align-items-center">
+        <div class="sidebar-search">
+        <div id="quarto-search" class="" title="Search"></div>
+        </div>
+        </div>
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">About this guide</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./01-introduction.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">1 Introduction</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./02-problem.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">2 The Problem of Causal Inference with Observational Data</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./03-approaches.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">3 Three Approaches to Causal Inference</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./04-attributes.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">4 Attributes of CLS’s Cohort Studies That Support Causal Inference</span></a>
+  </div>
+</li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a href="./05-methods.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">5 The Methods of Causal Inference</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="false" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./05-01-control-via-regression-adjustment.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">5.1 Control via Regression Adjustment</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./05-02-matching.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">5.2 Matching</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./05-03-inverse-probability-of-treatment-weighting.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">5.3 Inverse Probability of Treatment Weighting</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./05-04-missing-data-methods.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">5.4 Missing Data Methods</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./05-05-longitudinal-fixed-effects.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">5.5 (Longitudinal) Fixed Effects</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./05-06-difference-in-differences.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">5.6 Difference in Differences</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./05-07-study-initiated-experiments.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">5.7 Study-Initiated Experiments</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./05-08-natural-experiments.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">5.8 Natural Experiments</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./05-09-instrumental-variables.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">5.9 Instrumental Variables</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./05-10-regression-discontinuity-designs.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">5.10 Regression Discontinuity Designs</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./05-11-target-trial-emulation.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">5.11 Target Trial Emulation</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./05-12-g-methods-for-time-varying-exposures.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">5.12 G-methods for Time-Varying Exposures</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./05-13-causal-mediation.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">5.13 Causal Mediation</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./05-14-family-designs.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">5.14 Family Designs</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./05-15-negative-control-outcomes-and-exposures.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">5.15 Negative Control Outcomes and Exposures</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./05-16-cross-context-analysis.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">5.16 Cross-Context Analysis</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./05-17-biases-of-known-direction.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">5.17 Biases of Known Direction</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./05-18-differential-effects.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">5.18 Differential Effects</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./05-19-reasons-for-effects.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">5.19 Reasons for Effects</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./05-20-quantitative-bias-analysis.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">5.20 Quantitative Bias Analysis</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./06-discussion.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">6 Discussion</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./07-statements.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">7 Statements</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./08-appendix.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">8 Appendix</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./references.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text">References</span></a>
+  </div>
+</li>
+    </ul>
+    </div>
+</nav>
+<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
+        
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">References</h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<div id="bibliography" class="references csl-bib-body hanging-indent" data-entry-spacing="0" data-line-spacing="2" role="list">
+<div id="ref-ref812" class="csl-entry" role="listitem">
+Abdellaoui, A., Dolan, C. V., Verweij, K. J. H., &amp; Nivard, M. G. (2022). Gene–environment correlations across geographic regions affect genome-wide association studies. <em>Nature Genetics</em>, <em>54</em>(9), 1345–1354. <a href="https://doi.org/10.1038/s41588-022-01158-0">https://doi.org/10.1038/s41588-022-01158-0</a>
+</div>
+<div id="ref-ref39" class="csl-entry" role="listitem">
+Abdellaoui, A., Hugh-Jones, D., Yengo, L., Kemper, K. E., Nivard, M. G., Veul, L., Holtz, Y., Zietsch, B. P., Frayling, T. M., Wray, N. R., Yang, J., Verweij, K. J. H., &amp; Visscher, P. M. (2019). Genetic correlates of social stratification in Great Britain. <em>Nature Human Behaviour</em>, <em>3</em>(12), 1332–1342. <a href="https://doi.org/10.1038/s41562-019-0757-5">https://doi.org/10.1038/s41562-019-0757-5</a>
+</div>
+<div id="ref-ref458" class="csl-entry" role="listitem">
+Acemoglu, D., Johnson, S., &amp; Robinson, J. A. (2001). The Colonial Origins of Comparative Development: An Empirical Investigation. <em>The American Economic Review</em>, <em>91</em>(5), 1369–1401.
+</div>
+<div id="ref-ref20777" class="csl-entry" role="listitem">
+Adhikari, A., DeNero, J., &amp; Wagner, D. (2024). <em>Computational and Inferential Thinking: The Foundations of Data Science</em> (2nd ed.). <a href="https://inferentialthinking.com/">https://inferentialthinking.com/</a>
+</div>
+<div id="ref-ref194" class="csl-entry" role="listitem">
+Anders, J., &amp; Dorsett, R. (2017). What young English people do once they reach school-leaving age: A cross-cohort comparison for the last 30 years. <em>Longitudinal and Life Course Studies</em>, <em>8</em>(1), 75–103. <a href="https://doi.org/10.14301/llcs.v8i1.399">https://doi.org/10.14301/llcs.v8i1.399</a>
+</div>
+<div id="ref-ref562" class="csl-entry" role="listitem">
+Andrews, R. M., &amp; Didelez, V. (2021). Insights into the Cross-world Independence Assumption of Causal Mediation Analysis. <em>Epidemiology</em>, <em>32</em>(2), 209. <a href="https://doi.org/10.1097/EDE.0000000000001313">https://doi.org/10.1097/EDE.0000000000001313</a>
+</div>
+<div id="ref-ref14" class="csl-entry" role="listitem">
+Andrews, R., Shpitser, I., Didelez, V., Chaves, P., Lopez, O., &amp; Carlson, M. (2023). Examining the Causal Mediating Role of Cardiovascular Disease on the Effect of Subclinical Cardiovascular Disease on Cognitive Impairment via Separable&nbsp;Effects. <em>The Journals of Gerontology: Series A</em>, <em>78</em>(7), 1172–1178. <a href="https://doi.org/10.1093/gerona/glad077">https://doi.org/10.1093/gerona/glad077</a>
+</div>
+<div id="ref-ref202" class="csl-entry" role="listitem">
+Arnold, B. F., Ercumen, A., Benjamin-Chung, J., &amp; Colford, J. M. (2016). Brief Report: Negative Controls to Detect Selection Bias and Measurement Bias in Epidemiologic Studies. <em>Epidemiology (Cambridge, Mass.)</em>, <em>27</em>(5), 637–641. <a href="https://doi.org/10.1097/EDE.0000000000000504">https://doi.org/10.1097/EDE.0000000000000504</a>
+</div>
+<div id="ref-ref21077" class="csl-entry" role="listitem">
+Ashcraft, A., Fernández-Val, I., &amp; Lang, K. (2013). The Consequences of Teenage Childbearing: Consistent Estimates When Abortion Makes Miscarriage Nonrandom. <em>Economic Journal (London, England)</em>, <em>123</em>(571), 875–905. <a href="https://doi.org/10.1111/ecoj.12005">https://doi.org/10.1111/ecoj.12005</a>
+</div>
+<div id="ref-ref220" class="csl-entry" role="listitem">
+Astorga-Rojas, D. (2023). Should I stay or should I go? The effect of London’s terrorist attack on the educational choices of Muslims. <em>SERIEs</em>, <em>14</em>(3), 463–501. <a href="https://doi.org/10.1007/s13209-023-00282-2">https://doi.org/10.1007/s13209-023-00282-2</a>
+</div>
+<div id="ref-ref263" class="csl-entry" role="listitem">
+Athey, S., Bayati, M., Doudchenko, N., Imbens, G., &amp; Khosravi, K. (2021). Matrix Completion Methods for Causal Panel Data Models. <em>Journal of the American Statistical Association</em>, <em>116</em>(536), 1716–1730. <a href="https://doi.org/10.1080/01621459.2021.1891924">https://doi.org/10.1080/01621459.2021.1891924</a>
+</div>
+<div id="ref-ref20812" class="csl-entry" role="listitem">
+Atlas of Longitudinal Datasets. (2024). <em>Atlas of Longitudinal Datasets</em>. <a href="https://atlaslongitudinaldatasets.ac.uk/">https://atlaslongitudinaldatasets.ac.uk/</a>
+</div>
+<div id="ref-ref646" class="csl-entry" role="listitem">
+Avendano, M., &amp; Panico, L. (2018). Do flexible work policies improve parents’ health? A natural experiment based on the UK Millennium Cohort Study. <em>J Epidemiol Community Health</em>, <em>72</em>(3), 244–251. <a href="https://doi.org/10.1136/jech-2017-209847">https://doi.org/10.1136/jech-2017-209847</a>
+</div>
+<div id="ref-ref21022" class="csl-entry" role="listitem">
+Baiocchi, M., Cheng, J., &amp; Small, D. S. (2014). Instrumental variable methods for causal inference. <em>Statistics in Medicine</em>, <em>33</em>(13), 2297–2340. <a href="https://doi.org/10.1002/sim.6128">https://doi.org/10.1002/sim.6128</a>
+</div>
+<div id="ref-ref8" class="csl-entry" role="listitem">
+Banack, H. R., &amp; Kaufman, J. S. (2014). The obesity paradox: Understanding the effect of obesity on mortality among individuals with cardiovascular disease. <em>Preventive Medicine</em>, <em>62</em>, 96–102. <a href="https://doi.org/10.1016/j.ypmed.2014.02.003">https://doi.org/10.1016/j.ypmed.2014.02.003</a>
+</div>
+<div id="ref-ref492" class="csl-entry" role="listitem">
+Bang, H., &amp; Robins, J. M. (2005). Doubly Robust Estimation in Missing Data and Causal Inference Models. <em>Biometrics</em>, <em>61</em>(4), 962–973. <a href="https://doi.org/10.1111/j.1541-0420.2005.00377.x">https://doi.org/10.1111/j.1541-0420.2005.00377.x</a>
+</div>
+<div id="ref-ref20831" class="csl-entry" role="listitem">
+Bann, D., Wang, M., Davies, N. M., Wright, L., O’Connor, M., &amp; Courtin, E. (2025). <em>Science or Advocacy? The Global Rise of Policy Claims in Population Health Research (1990-2024)</em>. medRxiv. <a href="https://doi.org/10.1101/2025.11.13.25340175">https://doi.org/10.1101/2025.11.13.25340175</a>
+</div>
+<div id="ref-ref1030" class="csl-entry" role="listitem">
+Bann, D., Wright, L., Davies, N. M., &amp; Moulton, V. (2023). Weakening of the cognition and height association from 1957 to 2018: Findings from four British birth cohort studies. <em>eLife</em>, <em>12</em>, e81099. <a href="https://doi.org/10.7554/eLife.81099">https://doi.org/10.7554/eLife.81099</a>
+</div>
+<div id="ref-ref9" class="csl-entry" role="listitem">
+Bann, D., Wright, L., Hughes, A., &amp; Chaturvedi, N. (2024). Socioeconomic inequalities in cardiovascular disease: a causal perspective. <em>Nature Reviews Cardiology</em>, <em>21</em>(4), 238–249. <a href="https://doi.org/10.1038/s41569-023-00941-8">https://doi.org/10.1038/s41569-023-00941-8</a>
+</div>
+<div id="ref-ref20783" class="csl-entry" role="listitem">
+Baratz, D. (1983). <em>How Justified Is the <span>“Obvious”</span> Reaction</em> [Ph.D., Stanford University]. <a href="https://www.proquest.com/docview/303182481/abstract/152AD577CB914075PQ/1">https://www.proquest.com/docview/303182481/abstract/152AD577CB914075PQ/1</a>
+</div>
+<div id="ref-ref71" class="csl-entry" role="listitem">
+Barboza Solís, C., Fantin, R., Castagné, R., Lang, T., Delpierre, C., &amp; Kelly-Irving, M. (2016). Mediating pathways between parental socio-economic position and allostatic load in mid-life: Findings from the 1958 British birth cohort. <em>Social Science &amp; Medicine</em>, <em>165</em>, 19–27. <a href="https://doi.org/10.1016/j.socscimed.2016.07.031">https://doi.org/10.1016/j.socscimed.2016.07.031</a>
+</div>
+<div id="ref-ref73" class="csl-entry" role="listitem">
+Barboza Solís, C., Kelly-Irving, M., Fantin, R., Darnaudéry, M., Torrisani, J., Lang, T., &amp; Delpierre, C. (2015). Adverse childhood experiences and physiological wear-and-tear in midlife: Findings from the 1958 British birth cohort. <em>Proceedings of the National Academy of Sciences</em>, <em>112</em>(7), E738–E746. <a href="https://doi.org/10.1073/pnas.1417325112">https://doi.org/10.1073/pnas.1417325112</a>
+</div>
+<div id="ref-ref464" class="csl-entry" role="listitem">
+Baron, R. M., &amp; Kenny, D. A. (1986). The moderator–mediator variable distinction in social psychological research: Conceptual, strategic, and statistical considerations. <em>Journal of Personality and Social Psychology</em>, <em>51</em>(6), 1173–1182. <a href="https://doi.org/10.1037/0022-3514.51.6.1173">https://doi.org/10.1037/0022-3514.51.6.1173</a>
+</div>
+<div id="ref-ref2017" class="csl-entry" role="listitem">
+Bartlett, J. W., &amp; Hughes, R. A. (2020). Bootstrap inference for multiple imputation under uncongeniality and misspecification. <em>Statistical Methods in Medical Research</em>, 096228022093218. <a href="https://doi.org/10.1177/0962280220932189">https://doi.org/10.1177/0962280220932189</a>
+</div>
+<div id="ref-ref20817" class="csl-entry" role="listitem">
+Basta, N. E., &amp; Halloran, M. E. (2019). Evaluating the Effectiveness of Vaccines Using a Regression Discontinuity Design. <em>American Journal of Epidemiology</em>, <em>188</em>(6), 987–990. <a href="https://doi.org/10.1093/aje/kwz043">https://doi.org/10.1093/aje/kwz043</a>
+</div>
+<div id="ref-ref407" class="csl-entry" role="listitem">
+Bates, T. C., Maher, B. S., Medland, S. E., McAloney, K., Wright, M. J., Hansell, N. K., Kendler, K. S., Martin, N. G., &amp; Gillespie, N. A. (2018). The Nature of Nurture: Using a Virtual-Parent Design to Test Parenting Effects on Children’s Educational Attainment in Genotyped Families. <em>Twin Research and Human Genetics</em>, <em>21</em>(2), 73–83. <a href="https://doi.org/10.1017/thg.2018.11">https://doi.org/10.1017/thg.2018.11</a>
+</div>
+<div id="ref-ref1462" class="csl-entry" role="listitem">
+Baxter, A. J., Dundas, R., Popham, F., &amp; Craig, P. (2021). How effective was England’s teenage pregnancy strategy? A comparative analysis of high-income countries. <em>Social Science &amp; Medicine</em>, <em>270</em>, 113685. <a href="https://doi.org/10.1016/j.socscimed.2021.113685">https://doi.org/10.1016/j.socscimed.2021.113685</a>
+</div>
+<div id="ref-ref2066" class="csl-entry" role="listitem">
+Bell, A., Fairbrother, M., &amp; Jones, K. (2019). Fixed and random effects models: making an informed choice. <em>Quality &amp; Quantity</em>, <em>53</em>(2), 1051–1074. <a href="https://doi.org/10.1007/s11135-018-0802-x">https://doi.org/10.1007/s11135-018-0802-x</a>
+</div>
+<div id="ref-ref261" class="csl-entry" role="listitem">
+Bell, A., &amp; Jones, K. (2015). Explaining Fixed Effects: Random Effects Modeling of Time-Series Cross-Sectional and Panel Data. <em>Political Science Research and Methods</em>, <em>3</em>(1), 133–153. <a href="https://doi.org/10.1017/psrm.2014.7">https://doi.org/10.1017/psrm.2014.7</a>
+</div>
+<div id="ref-ref2864" class="csl-entry" role="listitem">
+Ben-Shlomo, Y., &amp; Kuh, D. (2002). A life course approach to chronic disease epidemiology: conceptual models, empirical challenges and interdisciplinary perspectives. <em>International Journal of Epidemiology</em>, <em>31</em>(2), 285–293. <a href="https://doi.org/10.1093/intjepid/31.2.285">https://doi.org/10.1093/intjepid/31.2.285</a>
+</div>
+<div id="ref-ref1870" class="csl-entry" role="listitem">
+Bishop, D. (2019). Rein in the four horsemen of irreproducibility. <em>Nature</em>, <em>568</em>(7753), 435–435. <a href="https://doi.org/10.1038/d41586-019-01307-2">https://doi.org/10.1038/d41586-019-01307-2</a>
+</div>
+<div id="ref-ref60" class="csl-entry" role="listitem">
+Blum, M. R., Tan, Y. J., &amp; Ioannidis, J. P. A. (2020). Use of E-values for addressing confounding in observational studies—an empirical assessment of the literature. <em>International Journal of Epidemiology</em>, <em>49</em>(5), 1482–1494. <a href="https://doi.org/10.1093/ije/dyz261">https://doi.org/10.1093/ije/dyz261</a>
+</div>
+<div id="ref-ref1509" class="csl-entry" role="listitem">
+Bradford Hill, A. (1965). <a href="https://www.ncbi.nlm.nih.gov/pmc/articles/PMC1898525">The Environment and Disease: Association Or Causation?</a> <em>Proceedings of the Royal Society of Medicine</em>, <em>58</em>, 295–300.
+</div>
+<div id="ref-ref470" class="csl-entry" role="listitem">
+Branwen, G. (2019, December 9). <em>Why Correlation Usually ≠ Causation</em>. https://gwern.net/correlation. <a href="https://gwern.net/causality">https://gwern.net/causality</a>
+</div>
+<div id="ref-ref506" class="csl-entry" role="listitem">
+Branwen, G. (2022, June 14). <em>How Often Does Correlation = Causality?</em> https://gwern.net/correlation. <a href="https://gwern.net/correlation">https://gwern.net/correlation</a>
+</div>
+<div id="ref-ref519" class="csl-entry" role="listitem">
+Breum, M. S., Didelez, V., Gabriel, E. E., &amp; Sachs, M. C. (2025). <em>Bounds for causal mediation effects</em> (arXiv:2512.11549). arXiv. <a href="https://doi.org/10.48550/arXiv.2512.11549">https://doi.org/10.48550/arXiv.2512.11549</a>
+</div>
+<div id="ref-ref5460" class="csl-entry" role="listitem">
+Brion, M.-J. A., Lawlor, D. A., Matijasevich, A., Horta, B., Anselmi, L., Araújo, C. L., Menezes, A. M. B., Victora, C. G., &amp; Smith, G. D. (2011). What are the causal effects of breastfeeding on IQ, obesity and blood pressure? Evidence from comparing high-income with middle-income cohorts. <em>International Journal of Epidemiology</em>, <em>40</em>(3), 670–680.
+</div>
+<div id="ref-ref2050" class="csl-entry" role="listitem">
+Brion, M.-J. A., Leary, S. D., Smith, G. D., &amp; Ness, A. R. (2007). Similar Associations of Parental Prenatal Smoking Suggest Child Blood Pressure Is Not Influenced by Intrauterine Effects. <em>Hypertension</em>, <em>49</em>(6), 1422–1428. <a href="https://doi.org/10.1161/HYPERTENSIONAHA.106.085316">https://doi.org/10.1161/HYPERTENSIONAHA.106.085316</a>
+</div>
+<div id="ref-ref495" class="csl-entry" role="listitem">
+Bröckelmann, N., Balduzzi, S., Harms, L., Beyerbach, J., Petropoulou, M., Kubiak, C., Wolkewitz, M., Meerpohl, J. J., &amp; Schwingshackl, L. (2022). Evaluating agreement between bodies of evidence from randomized controlled trials and cohort studies in medical research: a meta-epidemiological study. <em>BMC Medicine</em>, <em>20</em>(1), 174. <a href="https://doi.org/10.1186/s12916-022-02369-2">https://doi.org/10.1186/s12916-022-02369-2</a>
+</div>
+<div id="ref-ref433" class="csl-entry" role="listitem">
+Brumpton, B., Sanderson, E., Heilbron, K., Hartwig, F. P., Harrison, S., Vie, G. Å., Cho, Y., Howe, L. D., Hughes, A., Boomsma, D. I., Havdahl, A., Hopper, J., Neale, M., Nivard, M. G., Pedersen, N. L., Reynolds, C. A., Tucker-Drob, E. M., Grotzinger, A., Howe, L., … Davies, N. M. (2020). Avoiding dynastic, assortative mating, and population stratification biases in Mendelian randomization through within-family analyses. <em>Nature Communications</em>, <em>11</em>(1), 3519. <a href="https://doi.org/10.1038/s41467-020-17117-4">https://doi.org/10.1038/s41467-020-17117-4</a>
+</div>
+<div id="ref-ref525" class="csl-entry" role="listitem">
+Calderwood, L. (2014). Improving between-wave mailings on longitudinal surveys: A randomised experiment on the UK Millennium Cohort Study. <em>Survey Research Methods</em>, <em>8</em>(2), 99–108. <a href="https://doi.org/10.18148/srm/2014.v8i2.5391">https://doi.org/10.18148/srm/2014.v8i2.5391</a>
+</div>
+<div id="ref-ref21035" class="csl-entry" role="listitem">
+Caniglia, E. C., &amp; Murray, E. J. (2020). Difference-in-Difference in the Time of Cholera: a Gentle Introduction for Epidemiologists. <em>Current Epidemiology Reports</em>, <em>7</em>(4), 203–211. <a href="https://doi.org/10.1007/s40471-020-00245-2">https://doi.org/10.1007/s40471-020-00245-2</a>
+</div>
+<div id="ref-ref20818" class="csl-entry" role="listitem">
+Card, D., Chetty, R., &amp; Weber, A. (2007). The Spike at Benefit Exhaustion: Leaving the Unemployment System or Starting a New Job? <em>American Economic Review</em>, <em>97</em>(2), 113–118. <a href="https://doi.org/10.1257/aer.97.2.113">https://doi.org/10.1257/aer.97.2.113</a>
+</div>
+<div id="ref-ref20813" class="csl-entry" role="listitem">
+Catalogue of Mental Health Measures. (2026). <em>Catalogue of Mental Health Measures</em>. <a href="https://www.cataloguementalhealth.ac.uk/">https://www.cataloguementalhealth.ac.uk/</a>
+</div>
+<div id="ref-ref20828" class="csl-entry" role="listitem">
+Centre for Longitudinal Studies. (2026). <em>Centre for Longitudinal Studies GitHub</em>. GitHub. <a href="https://github.com/CLS-Data">https://github.com/CLS-Data</a>
+</div>
+<div id="ref-ref6390" class="csl-entry" role="listitem">
+Cesarini, D., Lindqvist, E., Östling, R., &amp; Wallace, B. (2016). Wealth, Health, and Child Development: Evidence from Administrative Data on Swedish Lottery Players. <em>The Quarterly Journal of Economics</em>, <em>131</em>(2), 687–738.
+</div>
+<div id="ref-ref469" class="csl-entry" role="listitem">
+Chabris, C. F., Lee, J. J., Cesarini, D., Benjamin, D. J., &amp; Laibson, D. I. (2015). The Fourth Law of Behavior Genetics. <em>Current Directions in Psychological Science</em>, <em>24</em>(4), 304–312. <a href="https://doi.org/10.1177/0963721415580430">https://doi.org/10.1177/0963721415580430</a>
+</div>
+<div id="ref-ref136" class="csl-entry" role="listitem">
+Chen, L., Smith, G. D., Harbord, R. M., &amp; Lewis, S. J. (2008). Alcohol Intake and Blood Pressure: A Systematic Review Implementing a Mendelian Randomization Approach. <em>PLOS Medicine</em>, <em>5</em>(3), e52. <a href="https://doi.org/10.1371/journal.pmed.0050052">https://doi.org/10.1371/journal.pmed.0050052</a>
+</div>
+<div id="ref-ref72" class="csl-entry" role="listitem">
+Chen, M., &amp; Lacey, R. E. (2018). Adverse childhood experiences and adult inflammation: Findings from the 1958 British birth cohort. <em>Brain, Behavior, and Immunity</em>, <em>69</em>, 582–590. <a href="https://doi.org/10.1016/j.bbi.2018.02.007">https://doi.org/10.1016/j.bbi.2018.02.007</a>
+</div>
+<div id="ref-ref269" class="csl-entry" role="listitem">
+Chernozhukov, V., Chetverikov, D., Demirer, M., Duflo, E., Hansen, C., Newey, W., &amp; Robins, J. (2018). Double/debiased machine learning for treatment and structural parameters. <em>The Econometrics Journal</em>, <em>21</em>(1), C1–C68. <a href="https://doi.org/10.1111/ectj.12097">https://doi.org/10.1111/ectj.12097</a>
+</div>
+<div id="ref-ref394" class="csl-entry" role="listitem">
+Choi, S. W., Mak, T. S.-H., &amp; O’Reilly, P. F. (2020). Tutorial: a guide to performing polygenic risk score analyses. <em>Nature Protocols</em>, <em>15</em>(9), 2759–2772. <a href="https://doi.org/10.1038/s41596-020-0353-1">https://doi.org/10.1038/s41596-020-0353-1</a>
+</div>
+<div id="ref-ref2044" class="csl-entry" role="listitem">
+Christakis, N. A., &amp; Fowler, J. H. (2007). The Spread of Obesity in a Large Social Network over 32 Years. <em>New England Journal of Medicine</em>, <em>357</em>(4), 370–379. <a href="https://doi.org/10.1056/NEJMsa066082">https://doi.org/10.1056/NEJMsa066082</a>
+</div>
+<div id="ref-ref66" class="csl-entry" role="listitem">
+Cinelli, C., Ferwerda, J., Hazlett, C., Tsao, D., Rudkin, A., &amp; Ljubownikow, G. (2024). <em>sensemakr: Sensitivity Analysis Tools for Regression Models</em> (Version 0.1.6) [Computer software]. <a href="https://cran.r-project.org/web/packages/sensemakr/index.html">https://cran.r-project.org/web/packages/sensemakr/index.html</a>
+</div>
+<div id="ref-ref52" class="csl-entry" role="listitem">
+Cinelli, C., Forney, A., &amp; Pearl, J. (2024). A Crash Course in Good and Bad Controls. <em>Sociological Methods &amp; Research</em>, <em>53</em>(3), 1071–1104. <a href="https://doi.org/10.1177/00491241221099552">https://doi.org/10.1177/00491241221099552</a>
+</div>
+<div id="ref-ref450" class="csl-entry" role="listitem">
+Cinelli, C., &amp; Hazlett, C. (2020). Making Sense of Sensitivity: Extending Omitted Variable Bias. <em>Journal of the Royal Statistical Society Series B: Statistical Methodology</em>, <em>82</em>(1), 39–67. <a href="https://doi.org/10.1111/rssb.12348">https://doi.org/10.1111/rssb.12348</a>
+</div>
+<div id="ref-ref20907" class="csl-entry" role="listitem">
+Cinelli, C., &amp; Hazlett, C. (2025). An omitted variable bias framework for sensitivity analysis of instrumental variables. <em>Biometrika</em>, <em>112</em>(2), asaf004. <a href="https://doi.org/10.1093/biomet/asaf004">https://doi.org/10.1093/biomet/asaf004</a>
+</div>
+<div id="ref-ref20811" class="csl-entry" role="listitem">
+CLOSER. (2023). <em>CLOSER</em>. UK Data Service. <a href="https://doi.org/10.5255/UKDA-SERIES-2000111">https://doi.org/10.5255/UKDA-SERIES-2000111</a>
+</div>
+<div id="ref-ref1016" class="csl-entry" role="listitem">
+Clouston, S. A. P., Rubin, M. S., Phelan, J. C., &amp; Link, B. G. (2016). A Social History of Disease: Contextualizing the Rise and Fall of Social Inequalities in Cause-Specific Mortality. <em>Demography</em>, <em>53</em>(5), 1631–1656. <a href="https://doi.org/10.1007/s13524-016-0495-5">https://doi.org/10.1007/s13524-016-0495-5</a>
+</div>
+<div id="ref-ref1503" class="csl-entry" role="listitem">
+Cochran, W. G. (1965). The Planning of Observational Studies of Human Populations. <em>Journal of the Royal Statistical Society. Series A (General)</em>, <em>128</em>(2), 234–266. <a href="https://doi.org/10.2307/2344179">https://doi.org/10.2307/2344179</a>
+</div>
+<div id="ref-ref2045" class="csl-entry" role="listitem">
+Cohen-Cole, E., &amp; Fletcher, J. M. (2008). Detecting implausible social network effects in acne, height, and headaches: longitudinal analysis. <em>BMJ</em>, <em>337</em>(dec04 2), a2533–a2533. <a href="https://doi.org/10.1136/bmj.a2533">https://doi.org/10.1136/bmj.a2533</a>
+</div>
+<div id="ref-ref21036" class="csl-entry" role="listitem">
+Coleman, T. (2019). <em>Causality in the Time of Cholera: John Snow As a Prototype for Causal Inference</em> (SSRN Scholarly Paper No. 3262234). Social Science Research Network. <a href="https://doi.org/10.2139/ssrn.3262234">https://doi.org/10.2139/ssrn.3262234</a>
+</div>
+<div id="ref-ref456" class="csl-entry" role="listitem">
+Conley, D., &amp; Heerwig, J. (2012). The Long-Term Effects of Military Conscription on Mortality: Estimates From the Vietnam-Era Draft Lottery. <em>Demography</em>, <em>49</em>(3), 841–855. <a href="https://doi.org/10.1007/s13524-012-0103-2">https://doi.org/10.1007/s13524-012-0103-2</a>
+</div>
+<div id="ref-ref132" class="csl-entry" role="listitem">
+Conley, D., Laidley, T. M., Boardman, J. D., &amp; Domingue, B. W. (2016). Changing Polygenic Penetrance on Phenotypes in the 20th Century Among Adults in the US Population. <em>Scientific Reports</em>, <em>6</em>(1), 30348. <a href="https://doi.org/10.1038/srep30348">https://doi.org/10.1038/srep30348</a>
+</div>
+<div id="ref-ref55" class="csl-entry" role="listitem">
+Cook, J. R., &amp; Stefanski, L. A. (1994). Simulation-Extrapolation Estimation in Parametric Measurement Error Models. <em>Journal of the American Statistical Association</em>, <em>89</em>(428), 1314–1328. <a href="https://doi.org/10.2307/2290994">https://doi.org/10.2307/2290994</a>
+</div>
+<div id="ref-ref513" class="csl-entry" role="listitem">
+Cornfield, J., Haenszel, W., Hammond, E. C., Lilienfeld, A. M., Shimkin, M. B., &amp; Wynder, E. L. (1959). Smoking and Lung Cancer: Recent Evidence and a Discussion of Some Questions. <em>JNCI: Journal of the National Cancer Institute</em>, <em>22</em>(1), 173–203. <a href="https://doi.org/10.1093/jnci/22.1.173">https://doi.org/10.1093/jnci/22.1.173</a>
+</div>
+<div id="ref-ref20819" class="csl-entry" role="listitem">
+Cornish, R., &amp; Brennan, I. (2025). Exclusion from School and Risk of Serious Violence: A Target Trial Emulation Study. <em>The British Journal of Criminology</em>, <em>65</em>(6), 1221–1240. <a href="https://doi.org/10.1093/bjc/azaf015">https://doi.org/10.1093/bjc/azaf015</a>
+</div>
+<div id="ref-ref11" class="csl-entry" role="listitem">
+Courtin, E., Kim, S., Song, S., Yu, W., &amp; Muennig, P. (2020). Can Social Policies Improve Health? A Systematic Review and Meta-Analysis of 38 Randomized Trials. <em>The Milbank Quarterly</em>, <em>98</em>(2), 297–371. <a href="https://doi.org/10.1111/1468-0009.12451">https://doi.org/10.1111/1468-0009.12451</a>
+</div>
+<div id="ref-ref3168" class="csl-entry" role="listitem">
+Craig, P., Dundas, R., Leyland, A., &amp; Popham, F. (2016). How successful was the English teenage pregnancy strategy? <em>The Lancet</em>, <em>388</em>(10060), 2604. <a href="https://doi.org/10.1016/S0140-6736(16)32223-1">https://doi.org/10.1016/S0140-6736(16)32223-1</a>
+</div>
+<div id="ref-ref234" class="csl-entry" role="listitem">
+Crawford, C., Dearden, L., &amp; Greaves, Ellen. (2011). <em>Does when you are born matter? The impact of month of birth on children’s cognitive and non-cognitive skills in England</em> (p. 53). Institue for Fiscal Studies. <a href="https://ifs.org.uk/sites/default/files/output_url_files/bn122.pdf">https://ifs.org.uk/sites/default/files/output_url_files/bn122.pdf</a>
+</div>
+<div id="ref-ref21068" class="csl-entry" role="listitem">
+Crüwell, S., Van Doorn, J., Etz, A., Makel, M. C., Moshontz, H., Niebaum, J. C., Orben, A., Parsons, S., &amp; Schulte-Mecklenbeck, M. (2019). Seven Easy Steps to Open Science: An Annotated Reading List. <em>Zeitschrift Für Psychologie</em>, <em>227</em>(4), 237–248. <a href="https://doi.org/10.1027/2151-2604/a000387">https://doi.org/10.1027/2151-2604/a000387</a>
+</div>
+<div id="ref-ref451" class="csl-entry" role="listitem">
+Cunningham, S. (2021). <em>Causal inference: the mixtape</em>. Yale University Press. <a href="https://doi.org/10.2307/j.ctv1c29t27">https://doi.org/10.2307/j.ctv1c29t27</a>
+</div>
+<div id="ref-ref436" class="csl-entry" role="listitem">
+DAGitty. (2025). <em>Learn about DAGs and DAGitty</em>. <a href="https://dagitty.net/learn/">https://dagitty.net/learn/</a>
+</div>
+<div id="ref-ref19728" class="csl-entry" role="listitem">
+Dahabreh, I. J., &amp; Bibbins-Domingo, K. (2024). Causal inference about the effects of interventions from observational studies in medical journals. <em>JAMA : The Journal of the American Medical Association</em>, <em>331</em>(21), 1845. <a href="https://doi.org/10.1001/jama.2024.7741">https://doi.org/10.1001/jama.2024.7741</a>
+</div>
+<div id="ref-ref20797" class="csl-entry" role="listitem">
+Dang, L. E., &amp; Balzer, L. B. (2023). Start with the Target Trial Protocol, Then Follow the Roadmap for Causal Inference. <em>Epidemiology (Cambridge, Mass.)</em>, <em>34</em>(5), 619–623. <a href="https://doi.org/10.1097/EDE.0000000000001637">https://doi.org/10.1097/EDE.0000000000001637</a>
+</div>
+<div id="ref-ref20823" class="csl-entry" role="listitem">
+Dang, L. E., Gruber, S., Lee, H., Dahabreh, I. J., Stuart, E. A., Williamson, B. D., Wyss, R., Díaz, I., Ghosh, D., Kıcıman, E., Alemayehu, D., Hoffman, K. L., Vossen, C. Y., Huml, R. A., Ravn, H., Kvist, K., Pratley, R., Shih, M.-C., Pennello, G., … Petersen, M. (2023). A causal roadmap for generating high-quality real-world evidence. <em>Journal of Clinical and Translational Science</em>, <em>7</em>(1), e212. <a href="https://doi.org/10.1017/cts.2023.635">https://doi.org/10.1017/cts.2023.635</a>
+</div>
+<div id="ref-ref538" class="csl-entry" role="listitem">
+Daniel, R. M., &amp; De Stavola, B. L. (2019). Mediation Analysis for Life Course Studies. In G. B. Ploubidis, B. Pongiglione, B. De Stavola, R. Daniel, L. Benova, E. Grundy, &amp; S. Read (Eds.), <em>Pathways to Health</em> (pp. 1–40). Springer Netherlands. <a href="https://doi.org/10.1007/978-94-024-1707-4_1">https://doi.org/10.1007/978-94-024-1707-4_1</a>
+</div>
+<div id="ref-ref522" class="csl-entry" role="listitem">
+Daniel, R. M., De Stavola, B. L., &amp; Cousens, S. N. (2011). Gformula: Estimating Causal Effects in the Presence of Time-Varying Confounding or Mediation using the G-Computation Formula. <em>The Stata Journal</em>, <em>11</em>(4), 479–517. <a href="https://doi.org/10.1177/1536867X1201100401">https://doi.org/10.1177/1536867X1201100401</a>
+</div>
+<div id="ref-ref3" class="csl-entry" role="listitem">
+Daniel, R. M., De Stavola, B. L., Cousens, S. N., &amp; Vansteelandt, S. (2015). Causal Mediation Analysis with Multiple Mediators. <em>Biometrics</em>, <em>71</em>(1), 1–14. <a href="https://doi.org/10.1111/biom.12248">https://doi.org/10.1111/biom.12248</a>
+</div>
+<div id="ref-ref211" class="csl-entry" role="listitem">
+Davey Smith, G. (2008). Assessing Intrauterine Influences on Offspring Health Outcomes: Can Epidemiological Studies Yield Robust Findings? <em>Basic &amp; Clinical Pharmacology &amp; Toxicology</em>, <em>102</em>(2), 245–256. <a href="https://doi.org/10.1111/j.1742-7843.2007.00191.x">https://doi.org/10.1111/j.1742-7843.2007.00191.x</a>
+</div>
+<div id="ref-ref210" class="csl-entry" role="listitem">
+Davey Smith, G. (2011). Epidemiology, epigenetics and the <span>“Gloomy Prospect”</span>: embracing randomness in population health research and practice. <em>International Journal of Epidemiology</em>, <em>40</em>(3), 537–562. <a href="https://doi.org/10.1093/ije/dyr117">https://doi.org/10.1093/ije/dyr117</a>
+</div>
+<div id="ref-ref473" class="csl-entry" role="listitem">
+Davey Smith, G., &amp; Ebrahim, S. (2001). Epidemiology--is it time to call it a day? <em>International Journal of Epidemiology</em>, <em>30</em>(1), 1–11. <a href="https://doi.org/10.1093/ije/30.1.1">https://doi.org/10.1093/ije/30.1.1</a>
+</div>
+<div id="ref-ref2051" class="csl-entry" role="listitem">
+Davey Smith, G., Phillips, A. N., &amp; Neaton, J. D. (1992). Smoking as <span>“independent”</span> risk factor for suicide: illustration of an artifact from observational epidemiology? <em>The Lancet</em>, <em>340</em>(8821), 709–712. <a href="https://doi.org/10.1016/0140-6736(92)92242-8">https://doi.org/10.1016/0140-6736(92)92242-8</a>
+</div>
+<div id="ref-ref21071" class="csl-entry" role="listitem">
+Davey Smith, G., Sterne, J. A., Fraser, A., Tynelius, P., Lawlor, D. A., &amp; Rasmussen, F. (2009). The association between BMI and mortality using offspring BMI as an indicator of own BMI: large intergenerational mortality study. <em>BMJ</em>, <em>339</em>, b5043. <a href="https://doi.org/10.1136/bmj.b5043">https://doi.org/10.1136/bmj.b5043</a>
+</div>
+<div id="ref-ref487" class="csl-entry" role="listitem">
+Davies, N. M., Dickson, M., Davey Smith, G., Windmeijer, F., &amp; van den Berg, G. J. (2023). The causal effects of education on adult health, mortality and income: evidence from Mendelian randomization and the raising of the school leaving age. <em>International Journal of Epidemiology</em>, <em>52</em>(6), 1878–1886. <a href="https://doi.org/10.1093/ije/dyad104">https://doi.org/10.1093/ije/dyad104</a>
+</div>
+<div id="ref-ref1130" class="csl-entry" role="listitem">
+Davies, N. M., Hill, W. D., Anderson, E. L., Sanderson, E., Deary, I. J., &amp; Davey Smith, G. (2019). Multivariable two-sample Mendelian randomization estimates of the effects of intelligence and education on health. <em>eLife</em>, <em>8</em>, e43990. <a href="https://doi.org/10.7554/eLife.43990">https://doi.org/10.7554/eLife.43990</a>
+</div>
+<div id="ref-ref294" class="csl-entry" role="listitem">
+de Roo, M., Hartman, C., Wiertsema, M., &amp; Kretschmer, T. (2024). <em>Gene-environment interplay explaining individual variation in weight-related outcomes: A systematic review and meta-analysis of studies using polygenic indices</em>. OSF. <a href="https://doi.org/10.31234/osf.io/sfykx_v1">https://doi.org/10.31234/osf.io/sfykx_v1</a>
+</div>
+<div id="ref-ref480" class="csl-entry" role="listitem">
+De Stavola, B. L., Daniel, R. M., Ploubidis, G. B., &amp; Micali, N. (2015). Mediation Analysis With Intermediate Confounding: Structural Equation Modeling Viewed Through the Causal Inference Lens. <em>American Journal of Epidemiology</em>, <em>181</em>(1), 64–80. <a href="https://doi.org/10.1093/aje/kwu239">https://doi.org/10.1093/aje/kwu239</a>
+</div>
+<div id="ref-ref229" class="csl-entry" role="listitem">
+Dearden, L., Machin, S., &amp; Reed, H. (1997). Intergenerational Mobility in Britain. <em>The Economic Journal</em>, <em>107</em>(440), 47–66.
+</div>
+<div id="ref-ref1391" class="csl-entry" role="listitem">
+Deary, I. J., Hill, W. D., &amp; Gale, C. R. (2021). Intelligence, health and death. <em>Nature Human Behaviour</em>, <em>5</em>(4), 416–430. <a href="https://doi.org/10.1038/s41562-021-01078-9">https://doi.org/10.1038/s41562-021-01078-9</a>
+</div>
+<div id="ref-ref20790" class="csl-entry" role="listitem">
+Deaton, A., &amp; Cartwright, N. (2018). Understanding and misunderstanding randomized controlled trials. <em>Social Science &amp; Medicine, Randomized Controlled Trials and Evidence-Based Policy: A Multidisciplinary Dialogue</em>, <em>210</em>, 2–21. <a href="https://doi.org/10.1016/j.socscimed.2017.12.005">https://doi.org/10.1016/j.socscimed.2017.12.005</a>
+</div>
+<div id="ref-ref207" class="csl-entry" role="listitem">
+Del Bono, E., &amp; Galindo-Rueda, F. (2007). <em>The Long Term Impacts of Compulsory Schooling: Evidence from a Natural Experiment in School Leaving Dates</em> (No. 0074; CEE Discussion Papers). Centre for the Economics of Education, LSE. <a href="https://ideas.repec.org//p/cep/ceedps/0074.html">https://ideas.repec.org//p/cep/ceedps/0074.html</a>
+</div>
+<div id="ref-ref2305" class="csl-entry" role="listitem">
+Delpierre, C., Barbosa-Solis, C., Torrisani, J., Darnaudery, M., Bartley, M., Blane, D., Kelly-Irving, M., Getz, L., Tomasdottir, M. O., Roberston, T., &amp; Gustafsson, P. E. (2016). Origins of heath inequalities: the case for Allostatic Load. <em>Longitudinal and Life Course Studies</em>, <em>7</em>(1). <a href="https://doi.org/10.14301/llcs.v7i1.325">https://doi.org/10.14301/llcs.v7i1.325</a>
+</div>
+<div id="ref-ref21049" class="csl-entry" role="listitem">
+Diamond, A., &amp; Sekhon, J. S. (2013). Genetic Matching for Estimating Causal Effects: A General Multivariate Matching Method for Achieving Balance in Observational Studies. <em>The Review of Economics and Statistics</em>, <em>95</em>(3), 932–945. <a href="https://doi.org/10.1162/REST_a_00318">https://doi.org/10.1162/REST_a_00318</a>
+</div>
+<div id="ref-ref242" class="csl-entry" role="listitem">
+Dickerman, B. A., García-Albéniz, X., Logan, R. W., Denaxas, S., &amp; Hernán, M. A. (2019). Avoidable flaws in observational analyses: an application to statins and cancer. <em>Nature Medicine</em>, <em>25</em>(10), 1601–1606. <a href="https://doi.org/10.1038/s41591-019-0597-x">https://doi.org/10.1038/s41591-019-0597-x</a>
+</div>
+<div id="ref-ref18" class="csl-entry" role="listitem">
+Didelez, V., Dawid, A. P., &amp; Geneletti, S. (2006). Direct and indirect effects of sequential treatments. <em>Proceedings of the Twenty-Second Conference on Uncertainty in Artificial Intelligence, UAI’06</em>, 138–146.
+</div>
+<div id="ref-ref825" class="csl-entry" role="listitem">
+Digitale, J. C., Martin, J. N., &amp; Glymour, M. M. (2022). Tutorial on directed acyclic graphs. <em>Journal of Clinical Epidemiology</em>, <em>142</em>, 264–267. <a href="https://doi.org/10.1016/j.jclinepi.2021.08.001">https://doi.org/10.1016/j.jclinepi.2021.08.001</a>
+</div>
+<div id="ref-ref21069" class="csl-entry" role="listitem">
+Ding, P., &amp; Li, F. (2019). A Bracketing Relationship between Difference-in-Differences and Lagged-Dependent-Variable Adjustment. <em>Political Analysis</em>, <em>27</em>(4), 605–615. <a href="https://doi.org/10.1017/pan.2019.25">https://doi.org/10.1017/pan.2019.25</a>
+</div>
+<div id="ref-ref268" class="csl-entry" role="listitem">
+Ding, P., Vanderweele, T. J., &amp; Robins, J. M. (2017). Instrumental variables as bias amplifiers with general outcome and confounding. <em>Biometrika</em>, <em>104</em>(2), 291–302. <a href="https://doi.org/10.1093/biomet/asx009">https://doi.org/10.1093/biomet/asx009</a>
+</div>
+<div id="ref-ref78" class="csl-entry" role="listitem">
+Dinsa, G. D., Goryakin, Y., Fumagalli, E., &amp; Suhrcke, M. (2012). Obesity and socioeconomic status in developing countries: a systematic review. <em>Obesity Reviews: An Official Journal of the International Association for the Study of Obesity</em>, <em>13</em>(11), 1067–1079. <a href="https://doi.org/10.1111/j.1467-789X.2012.01017.x">https://doi.org/10.1111/j.1467-789X.2012.01017.x</a>
+</div>
+<div id="ref-ref20785" class="csl-entry" role="listitem">
+Doll, R., &amp; Hill, A. B. (1954). The Mortality of Doctors in Relation to Their Smoking Habits. <em>British Medical Journal</em>, <em>1</em>(4877), 1451–1455. <a href="https://doi.org/10.1136/bmj.1.4877.1451">https://doi.org/10.1136/bmj.1.4877.1451</a>
+</div>
+<div id="ref-ref18514" class="csl-entry" role="listitem">
+Donohue, J. J., III, &amp; Levitt, S. D. (2001). The Impact of Legalized Abortion on Crime*. <em>The Quarterly Journal of Economics</em>, <em>116</em>(2), 379–420. <a href="https://doi.org/10.1162/00335530151144050">https://doi.org/10.1162/00335530151144050</a>
+</div>
+<div id="ref-ref4892" class="csl-entry" role="listitem">
+Donovan, S. J., &amp; Susser, E. (2011). Commentary: Advent of sibling designs. <em>International Journal of Epidemiology</em>, <em>40</em>(2), 345–349. <a href="https://doi.org/10.1093/ije/dyr057">https://doi.org/10.1093/ije/dyr057</a>
+</div>
+<div id="ref-ref47" class="csl-entry" role="listitem">
+Dräger, J., Klein, M., &amp; Sosu, E. M. (2025). Does the impact of pupil absences on achievement depend on their timing? <em>American Educational Research Journal</em>, <em>62</em>(5), 872–908. <a href="https://doi.org/10.3102/00028312251347666">https://doi.org/10.3102/00028312251347666</a>
+</div>
+<div id="ref-ref471" class="csl-entry" role="listitem">
+Dwan, K., Gamble, C., Williamson, P. R., &amp; Kirkham, J. J. (2013). Systematic Review of the Empirical Evidence of Study Publication Bias and Outcome Reporting Bias — An Updated Review. <em>PLOS ONE</em>, <em>8</em>(7), e66844. <a href="https://doi.org/10.1371/journal.pone.0066844">https://doi.org/10.1371/journal.pone.0066844</a>
+</div>
+<div id="ref-ref511" class="csl-entry" role="listitem">
+Eggers, A. C., &amp; Hainmueller, J. (2009). MPs for Sale? Returns to Office in Postwar British Politics. <em>American Political Science Review</em>, <em>103</em>(4), 513–533. <a href="https://doi.org/10.1017/S0003055409990190">https://doi.org/10.1017/S0003055409990190</a>
+</div>
+<div id="ref-ref238" class="csl-entry" role="listitem">
+Eggers, A. C., Tuñón, G., &amp; Dafoe, A. (2024). Placebo Tests for Causal Inference. <em>American Journal of Political Science</em>, <em>68</em>(3), 1106–1121. <a href="https://doi.org/10.1111/ajps.12818">https://doi.org/10.1111/ajps.12818</a>
+</div>
+<div id="ref-ref516" class="csl-entry" role="listitem">
+Erikson, R., &amp; Goldthorpe, J. H. (2010). Has social mobility in Britain decreased? Reconciling divergent findings on income and class mobility. <em>The British Journal of Sociology</em>, <em>61</em>(2), 211–230. <a href="https://doi.org/10.1111/j.1468-4446.2010.01310.x">https://doi.org/10.1111/j.1468-4446.2010.01310.x</a>
+</div>
+<div id="ref-ref3120" class="csl-entry" role="listitem">
+Eriksson, S., &amp; Rooth, D. O. (2014). Do employers use unemployment as a sorting criterion when hiring? evidence from a field experiment. <em>American Economic Review</em>, <em>104</em>(3), 1014–1039. <a href="https://doi.org/10.1257/aer.104.3.1014">https://doi.org/10.1257/aer.104.3.1014</a>
+</div>
+<div id="ref-ref21079" class="csl-entry" role="listitem">
+Ermisch, J., &amp; Pevalin, D. J. (2005). Early motherhood and later partnerships. <em>Journal of Population Economics</em>, <em>18</em>(3), 469–489. <a href="https://doi.org/10.1007/s00148-004-0216-z">https://doi.org/10.1007/s00148-004-0216-z</a>
+</div>
+<div id="ref-ref258" class="csl-entry" role="listitem">
+Evans, L. (1986). The effectiveness of safety belts in preventing fatalities. <em>Accident Analysis &amp; Prevention</em>, <em>18</em>(3), 229–241. <a href="https://doi.org/10.1016/0001-4575(86)90007-2">https://doi.org/10.1016/0001-4575(86)90007-2</a>
+</div>
+<div id="ref-ref625" class="csl-entry" role="listitem">
+Ferri, E., Bynner, J., &amp; Wadsworth, M. (Eds.). (2003). <em>Changing Britain, changing lives: three generations at the turn of the century</em>. Inst. of Education, Univ. of London.
+</div>
+<div id="ref-ref20781" class="csl-entry" role="listitem">
+Feynman, R. (1974). <em>Cargo Cult Science</em>. Commencement Address, Caltech. <a href="https://calteches.library.caltech.edu/51/2/CargoCult.htm">https://calteches.library.caltech.edu/51/2/CargoCult.htm</a>
+</div>
+<div id="ref-ref21056" class="csl-entry" role="listitem">
+Fitzsimons, E., &amp; Pongiglione, B. (2019). The impact of maternal employment on children’s weight: Evidence from the UK. <em>SSM - Population Health</em>, <em>7</em>, 100333. <a href="https://doi.org/10.1016/j.ssmph.2018.100333">https://doi.org/10.1016/j.ssmph.2018.100333</a>
+</div>
+<div id="ref-ref649" class="csl-entry" role="listitem">
+Fitzsimons, E., &amp; Vera-Hernández, M. (2022). Breastfeeding and Child Development. <em>American Economic Journal: Applied Economics</em>, <em>14</em>(3), 329–366. <a href="https://doi.org/10.1257/app.20180385">https://doi.org/10.1257/app.20180385</a>
+</div>
+<div id="ref-ref206" class="csl-entry" role="listitem">
+Flanders, W. D., Klein, M., Darrow, L. A., Strickland, M. J., Sarnat, S. E., Sarnat, J. A., Waller, L. A., Winquist, A., &amp; Tolbert, P. E. (2011). A Method for Detection of Residual Confounding in Time-Series and Other Observational Studies. <em>Epidemiology (Cambridge, Mass.)</em>, <em>22</em>(1), 59–67. <a href="https://doi.org/10.1097/EDE.0b013e3181fdcabe">https://doi.org/10.1097/EDE.0b013e3181fdcabe</a>
+</div>
+<div id="ref-ref581" class="csl-entry" role="listitem">
+Fox, M. P., MacLehose, R. F., &amp; Lash, T. L. (2021). <em>Applying Quantitative Bias Analysis to Epidemiologic Data</em>. Springer International Publishing. <a href="https://doi.org/10.1007/978-3-030-82673-4">https://doi.org/10.1007/978-3-030-82673-4</a>
+</div>
+<div id="ref-ref2800" class="csl-entry" role="listitem">
+Gabadinho, A., &amp; Studer, M. (2010). <em>Sequence Analysis for Social Scientists</em>. <a href="http://www.bristol.ac.uk/cmm/software/support/workshops/materials/sequence.html">http://www.bristol.ac.uk/cmm/software/support/workshops/materials/sequence.html</a>
+</div>
+<div id="ref-ref2052" class="csl-entry" role="listitem">
+Gage, S. H., Munafò, M. R., &amp; Davey Smith, G. (2016). Causal Inference in Developmental Origins of Health and Disease (DOHaD) Research. <em>Annual Review of Psychology</em>, <em>67</em>(1), 567–585. <a href="https://doi.org/10.1146/annurev-psych-122414-033352">https://doi.org/10.1146/annurev-psych-122414-033352</a>
+</div>
+<div id="ref-ref218" class="csl-entry" role="listitem">
+Gallen, T., &amp; Raymond, B. (2020). <em>Broken Instruments</em> (No. 3671850). Social Science Research Network. <a href="https://doi.org/10.2139/ssrn.3671850">https://doi.org/10.2139/ssrn.3671850</a>
+</div>
+<div id="ref-ref808" class="csl-entry" role="listitem">
+Gallop, M., &amp; Weschle, S. (2019). Assessing the Impact of Non-Random Measurement Error on Inference: A Sensitivity Analysis Approach. <em>Political Science Research and Methods</em>, <em>7</em>(2), 367–384. <a href="https://doi.org/10.1017/psrm.2016.53">https://doi.org/10.1017/psrm.2016.53</a>
+</div>
+<div id="ref-ref216" class="csl-entry" role="listitem">
+Garicano, L., Lelarge, C., &amp; Van Reenen, J. (2016). Firm Size Distortions and the Productivity Distribution: Evidence from France. <em>American Economic Review</em>, <em>106</em>(11), 3439–3479. <a href="https://doi.org/10.1257/aer.20130232">https://doi.org/10.1257/aer.20130232</a>
+</div>
+<div id="ref-ref213" class="csl-entry" role="listitem">
+Gelman, A., &amp; Imbens, G. (2019). Why High-Order Polynomials Should Not Be Used in Regression Discontinuity Designs. <em>Journal of Business &amp; Economic Statistics</em>, <em>37</em>(3), 447–456. <a href="https://doi.org/10.1080/07350015.2017.1366909">https://doi.org/10.1080/07350015.2017.1366909</a>
+</div>
+<div id="ref-ref74" class="csl-entry" role="listitem">
+Gerring, J. (2010). Causal Mechanisms: Yes, But…. <em>Comparative Political Studies</em>, <em>43</em>(11), 1499–1526. <a href="https://doi.org/10.1177/0010414010376911">https://doi.org/10.1177/0010414010376911</a>
+</div>
+<div id="ref-ref6" class="csl-entry" role="listitem">
+Gervais, J., Lefebvre, G., &amp; Moodie, E. E. M. (2025). Natural Effects in the Presence of an Intermediate Confounder: Evaluation of Pragmatic Estimation Strategies With an Emphasis on the Relationship Between Natural and Interventional Effects. <em>Statistics in Medicine</em>, <em>44</em>(15-17), e70038. <a href="https://doi.org/10.1002/sim.70038">https://doi.org/10.1002/sim.70038</a>
+</div>
+<div id="ref-ref21063" class="csl-entry" role="listitem">
+Gilsanz, P., Young, J. G., Glymour, M. M., Tchetgen Tchetgen, E. J., Eng, C. W., Koenen, K. C., &amp; Kubzansky, L. D. (2022). Marginal Structural Models for Life-Course Theories and Social Epidemiology: Definitions, Sources of Bias, and Simulated Illustrations. <em>American Journal of Epidemiology</em>, <em>191</em>(2), 349–359. <a href="https://doi.org/10.1093/aje/kwab253">https://doi.org/10.1093/aje/kwab253</a>
+</div>
+<div id="ref-ref21041" class="csl-entry" role="listitem">
+Girma, S., &amp; Paton, D. (2011). The impact of emergency birth control on teen pregnancy and STIs. <em>Journal of Health Economics</em>, <em>30</em>(2), 373–380. <a href="https://doi.org/10.1016/j.jhealeco.2010.12.004">https://doi.org/10.1016/j.jhealeco.2010.12.004</a>
+</div>
+<div id="ref-ref488" class="csl-entry" role="listitem">
+Glazerman, S., Levy, D. M., &amp; Myers, D. (2003). Nonexperimental Versus Experimental Estimates of Earnings Impacts. <em>The ANNALS of the American Academy of Political and Social Science</em>, <em>589</em>(1), 63–93. <a href="https://doi.org/10.1177/0002716203254879">https://doi.org/10.1177/0002716203254879</a>
+</div>
+<div id="ref-ref237" class="csl-entry" role="listitem">
+Gneezy, U., &amp; Rustichini, A. (2000). A Fine is a Price. <em>The Journal of Legal Studies</em>, <em>29</em>(1), 1–17. <a href="https://doi.org/10.1086/468061">https://doi.org/10.1086/468061</a>
+</div>
+<div id="ref-ref21021" class="csl-entry" role="listitem">
+Goetghebeur, E., Cessie, S. le, Stavola, B. D., Moodie, E. E., &amp; Waernbaum, I. (2020). Formulating causal questions and principled statistical answers. <em>Statistics in Medicine</em>, <em>39</em>(30), 4922–4948. <a href="https://doi.org/10.1002/sim.8741">https://doi.org/10.1002/sim.8741</a>
+</div>
+<div id="ref-ref482" class="csl-entry" role="listitem">
+Golder, S., Loke, Y. K., &amp; Bland, M. (2011). Meta-analyses of Adverse Effects Data Derived from Randomised Controlled Trials as Compared to Observational Studies: Methodological Overview. <em>PLOS Medicine</em>, <em>8</em>(5), e1001026. <a href="https://doi.org/10.1371/journal.pmed.1001026">https://doi.org/10.1371/journal.pmed.1001026</a>
+</div>
+<div id="ref-ref45" class="csl-entry" role="listitem">
+Gondek, D., Bann, D., Brown, M., Hamer, M., Sullivan, A., &amp; Ploubidis, G. B. (2021). Prevalence and early-life determinants of mid-life multimorbidity: evidence from the 1970 British birth cohort. <em>BMC Public Health</em>, <em>21</em>(1), 1319. <a href="https://doi.org/10.1186/s12889-021-11291-w">https://doi.org/10.1186/s12889-021-11291-w</a>
+</div>
+<div id="ref-ref5464" class="csl-entry" role="listitem">
+Gondek, D., Bann, D., Patalay, P., Goodman, A., McElroy, E., Richards, M., &amp; Ploubidis, G. B. (2021). Psychological distress from early adulthood to early old age: evidence from the 1946, 1958 and 1970 British birth cohorts. <em>Psychological Medicine</em>, 1–10.
+</div>
+<div id="ref-ref853" class="csl-entry" role="listitem">
+Goodman, A., Brown, M., Silverwood, R. J., Sakshaug, J. W., Calderwood, L., Williams, J., &amp; Ploubidis, G. B. (2022). The Impact of Using the Web in a Mixed-Mode Follow-up of a Longitudinal Birth Cohort Study: Evidence from the National Child Development Study. <em>Journal of the Royal Statistical Society Series A: Statistics in Society</em>, <em>185</em>(3), 822–850. <a href="https://doi.org/10.1111/rssa.12786">https://doi.org/10.1111/rssa.12786</a>
+</div>
+<div id="ref-ref21034" class="csl-entry" role="listitem">
+Goodman-Bacon, A. (2021). Difference-in-differences with variation in treatment timing. <em>Journal of Econometrics, Themed Issue: Treatment Effect 1</em>, <em>225</em>(2), 254–277. <a href="https://doi.org/10.1016/j.jeconom.2021.03.014">https://doi.org/10.1016/j.jeconom.2021.03.014</a>
+</div>
+<div id="ref-ref5798" class="csl-entry" role="listitem">
+Gottfredson, L. S. (2004). Intelligence: is it the epidemiologists’ elusive" fundamental cause" of social class inequalities in health? <em>Journal of Personality and Social Psychology</em>, <em>86</em>(1), 174.
+</div>
+<div id="ref-ref21101" class="csl-entry" role="listitem">
+Greenland, S. (2020). Commentary: An argument against E-values for assessing the plausibility that an association could be explained away by residual confounding. <em>International Journal of Epidemiology</em>, <em>49</em>(5), 1501–1503. <a href="https://doi.org/10.1093/ije/dyaa095">https://doi.org/10.1093/ije/dyaa095</a>
+</div>
+<div id="ref-ref2" class="csl-entry" role="listitem">
+Grosz, M. P., Rohrer, J. M., &amp; Thoemmes, F. (2020). The Taboo Against Explicit Causal Inference in Nonexperimental Psychology. <em>Perspectives on Psychological Science</em>, <em>15</em>(5), 1243–1255. <a href="https://doi.org/10.1177/1745691620921521">https://doi.org/10.1177/1745691620921521</a>
+</div>
+<div id="ref-ref20795" class="csl-entry" role="listitem">
+Gutierrez, S., Glymour, M. M., &amp; Smith, G. D. (2025). Evidence triangulation in health research. <em>European Journal of Epidemiology</em>, <em>40</em>(7), 743–757. <a href="https://doi.org/10.1007/s10654-024-01194-6">https://doi.org/10.1007/s10654-024-01194-6</a>
+</div>
+<div id="ref-ref20788" class="csl-entry" role="listitem">
+Haack, S. (2009). <em>Evidence and inquiry: a pragmatist reconstruction of epistemology</em> (2nd, expanded ed). Prometheus Books.
+</div>
+<div id="ref-ref20791" class="csl-entry" role="listitem">
+Haber, N. A., Wieten, S. E., Rohrer, J. M., Arah, O. A., Tennant, P. W. G., Stuart, E. A., Murray, E. J., Pilleron, S., Lam, S. T., Riederer, E., Howcutt, S. J., Simmons, A. E., Leyrat, C., Schoenegger, P., Booman, A., Dufour, M.-S. K., O’Donoghue, A. L., Baglini, R., Do, S., … Fox, M. P. (2022). Causal and Associational Language in Observational Health Research: A Systematic Evaluation. <em>American Journal of Epidemiology</em>, <em>191</em>(12), 2084–2097. <a href="https://doi.org/10.1093/aje/kwac137">https://doi.org/10.1093/aje/kwac137</a>
+</div>
+<div id="ref-ref3191" class="csl-entry" role="listitem">
+Hadley, A. (2017). <em>Teenage Pregnancy and Young Parenthood: Effective Policy and Practice</em> (1st ed.). Routledge.
+</div>
+<div id="ref-ref267" class="csl-entry" role="listitem">
+Hainmueller, J. (2012). Entropy Balancing for Causal Effects: A Multivariate Reweighting Method to Produce Balanced Samples in Observational Studies. <em>Political Analysis</em>, <em>20</em>(1), 25–46. <a href="https://doi.org/10.1093/pan/mpr025">https://doi.org/10.1093/pan/mpr025</a>
+</div>
+<div id="ref-ref1874" class="csl-entry" role="listitem">
+Hamaker, E. L., Kuiper, R. M., &amp; Grasman, R. P. P. P. (2015). A critique of the cross-lagged panel model. <em>Psychological Methods</em>, <em>20</em>(1), 102–116. <a href="https://doi.org/10.1037/a0038889">https://doi.org/10.1037/a0038889</a>
+</div>
+<div id="ref-ref424" class="csl-entry" role="listitem">
+Hamer, D., &amp; Sirota, L. (2000). Beware the chopsticks gene. <em>Molecular Psychiatry</em>, <em>5</em>(1), 11–13. <a href="https://doi.org/10.1038/sj.mp.4000662">https://doi.org/10.1038/sj.mp.4000662</a>
+</div>
+<div id="ref-ref565" class="csl-entry" role="listitem">
+Hamer, M., &amp; Batty, G. D. (2020). Markers of Early Life Infection in Relation to Adult Diabetes: Prospective Evidence From a National Birth Cohort Study Over Four Decades. <em>Diabetes Care</em>, <em>43</em>(5), e61–e62. <a href="https://doi.org/10.2337/dc19-2471">https://doi.org/10.2337/dc19-2471</a>
+</div>
+<div id="ref-ref20814" class="csl-entry" role="listitem">
+Harmony. (2023). <em>Harmony</em>. <a href="https://harmonydata.ac.uk/">https://harmonydata.ac.uk/</a>
+</div>
+<div id="ref-ref21083" class="csl-entry" role="listitem">
+Hasegawa, R. B., Webster, D. W., &amp; Small, D. S. (2019). Evaluating Missouri’s Handgun Purchaser Law: A Bracketing Method for Addressing Concerns About History Interacting with Group. <em>Epidemiology</em>, <em>30</em>(3), 371–379. <a href="https://doi.org/10.1097/EDE.0000000000000989">https://doi.org/10.1097/EDE.0000000000000989</a>
+</div>
+<div id="ref-ref648" class="csl-entry" role="listitem">
+Hawkins, S. S., Cole, T. J., &amp; Law, C. (2011). Examining smoking behaviours among parents from the UK Millennium Cohort Study after the smoke-free legislation in Scotland. <em>Tobacco Control</em>, <em>20</em>(2), 112–118. <a href="https://doi.org/10.1136/tc.2010.037028">https://doi.org/10.1136/tc.2010.037028</a>
+</div>
+<div id="ref-ref5089" class="csl-entry" role="listitem">
+Herd, P., Freese, J., Sicinski, K., Domingue, B. W., Mullan Harris, K., Wei, C., &amp; Hauser, R. M. (2019). Genes, Gender Inequality, and Educational Attainment. <em>American Sociological Review</em>, <em>84</em>(6), 1069–1098. <a href="https://doi.org/10.1177/0003122419886550">https://doi.org/10.1177/0003122419886550</a>
+</div>
+<div id="ref-ref1248" class="csl-entry" role="listitem">
+Hernán, M. A. (2016). Does water kill? A call for less casual causal inferences. <em>Annals of Epidemiology</em>, <em>26</em>(10), 674–680. <a href="https://doi.org/10.1016/j.annepidem.2016.08.016">https://doi.org/10.1016/j.annepidem.2016.08.016</a>
+</div>
+<div id="ref-ref840" class="csl-entry" role="listitem">
+Hernán, M. A. (2018a). <em>HarvardX: Causal Diagrams: Draw Your Assumptions Before Your Conclusions</em>. edX. <a href="https://www.edx.org/learn/data-analysis/harvard-university-causal-diagrams-draw-your-assumptions-before-your-conclusions">https://www.edx.org/learn/data-analysis/harvard-university-causal-diagrams-draw-your-assumptions-before-your-conclusions</a>
+</div>
+<div id="ref-ref20803" class="csl-entry" role="listitem">
+Hernán, M. A. (2018b). The C-Word: Scientific Euphemisms Do Not Improve Causal Inference From Observational Data. <em>American Journal of Public Health</em>, <em>108</em>(5), 616–619. <a href="https://doi.org/10.2105/AJPH.2018.304337">https://doi.org/10.2105/AJPH.2018.304337</a>
+</div>
+<div id="ref-ref244" class="csl-entry" role="listitem">
+Hernán, M. A., Alonso, A., Logan, R., Grodstein, F., Michels, K. B., Willett, W. C., Manson, J. E., &amp; Robins, J. M. (2008). Observational studies analyzed like randomized experiments: an application to postmenopausal hormone therapy and coronary heart disease. <em>Epidemiology (Cambridge, Mass.)</em>, <em>19</em>(6), 766–779. <a href="https://doi.org/10.1097/EDE.0b013e3181875e61">https://doi.org/10.1097/EDE.0b013e3181875e61</a>
+</div>
+<div id="ref-ref241" class="csl-entry" role="listitem">
+Hernán, M. A., Dahabreh, I. J., Dickerman, B. A., &amp; Swanson, S. A. (2025). The Target Trial Framework for Causal Inference From Observational Data: Why and When Is It Helpful? <em>Annals of Internal Medicine</em>, <em>178</em>(3), 402–407. <a href="https://doi.org/10.7326/ANNALS-24-01871">https://doi.org/10.7326/ANNALS-24-01871</a>
+</div>
+<div id="ref-ref20995" class="csl-entry" role="listitem">
+Hernán, M. A., Hsu, J., &amp; Healy, B. (2019). A Second Chance to Get Causal Inference Right: A Classification of Data Science Tasks. <em>CHANCE</em>, <em>32</em>(1), 42–49. <a href="https://doi.org/10.1080/09332480.2019.1579578">https://doi.org/10.1080/09332480.2019.1579578</a>
+</div>
+<div id="ref-ref1247" class="csl-entry" role="listitem">
+Hernán, M. A., &amp; Robins, J. M. (2016). Using Big Data to Emulate a Target Trial When a Randomized Trial Is Not Available: Table 1. <em>American Journal of Epidemiology</em>, <em>183</em>(8), 758–764. <a href="https://doi.org/10.1093/aje/kwv254">https://doi.org/10.1093/aje/kwv254</a>
+</div>
+<div id="ref-ref826" class="csl-entry" role="listitem">
+Hernán, M. A., &amp; Robins, J. M. (2023). <em>Causal inference: what if</em> (First edition). Taylor and Francis.
+</div>
+<div id="ref-ref243" class="csl-entry" role="listitem">
+Hernán, M. A., Sauer, B. C., Hernández-Díaz, S., Platt, R., &amp; Shrier, I. (2016). Specifying a target trial prevents immortal time bias and other self-inflicted injuries in observational analyses. <em>Journal of Clinical Epidemiology</em>, <em>79</em>, 70–75. <a href="https://doi.org/10.1016/j.jclinepi.2016.04.014">https://doi.org/10.1016/j.jclinepi.2016.04.014</a>
+</div>
+<div id="ref-ref270" class="csl-entry" role="listitem">
+Ho, D. E., Imai, K., King, G., &amp; Stuart, E. A. (2007). Matching as Nonparametric Preprocessing for Reducing Model Dependence in Parametric Causal Inference. <em>Political Analysis</em>, <em>15</em>(3), 199–236. <a href="https://doi.org/10.1093/pan/mpl013">https://doi.org/10.1093/pan/mpl013</a>
+</div>
+<div id="ref-ref221" class="csl-entry" role="listitem">
+Hole, A. R., &amp; Ratcliffe, A. (2020). The Impact of the London Bombings on the Well-Being of Adolescent Muslims. <em>The Scandinavian Journal of Economics</em>, <em>122</em>(4), 1606–1639. <a href="https://doi.org/10.1111/sjoe.12379">https://doi.org/10.1111/sjoe.12379</a>
+</div>
+<div id="ref-ref284" class="csl-entry" role="listitem">
+Holland, P. W. (1986). Statistics and Causal Inference. <em>Journal of the American Statistical Association</em>, <em>81</em>(396), 945–960. <a href="https://doi.org/10.1080/01621459.1986.10478354">https://doi.org/10.1080/01621459.1986.10478354</a>
+</div>
+<div id="ref-ref21060" class="csl-entry" role="listitem">
+Hope, S., Pearce, A., Chittleborough, C., Deighton, J., Maika, A., Micali, N., Mittinty, M., Law, C., &amp; Lynch, J. (2019). Temporal effects of maternal psychological distress on child mental health problems at ages 3, 5, 7 and 11: analysis from the UK Millennium Cohort Study. <em>Psychological Medicine</em>, <em>49</em>(4), 664–674. <a href="https://doi.org/10.1017/S0033291718001368">https://doi.org/10.1017/S0033291718001368</a>
+</div>
+<div id="ref-ref21076" class="csl-entry" role="listitem">
+Hope, S., Pearce, A., Cortina-Borja, M., Chittleborough, C., Barlow, J., &amp; Law, C. (2021). Modelling the potential for parenting skills interventions to reduce inequalities and population prevalence of children’s mental health problems: Evidence from the Millennium Cohort Study. <em>SSM - Population Health</em>, <em>14</em>, 100817. <a href="https://doi.org/10.1016/j.ssmph.2021.100817">https://doi.org/10.1016/j.ssmph.2021.100817</a>
+</div>
+<div id="ref-ref02w9uLqN/uYE2IfRf" class="csl-entry" role="listitem">
+Huffman, C., &amp; van Gameren, E. (2018). Covariate Balancing Inverse Probability Weights for Time-Varying Continuous Interventions. <em>Journal of Causal Inference</em>, <em>6</em>(2), 20170002. <a href="https://doi.org/10.1515/jci-2017-0002">https://doi.org/10.1515/jci-2017-0002</a>
+</div>
+<div id="ref-ref233" class="csl-entry" role="listitem">
+Hughes, A. M., Torvik, F. A., van Bergen, E., Hannigan, L. J., Corfield, E. C., Andreassen, O. A., Ystrom, E., Ask, H., Smith, G. D., Davies, N. M., &amp; Havdahl, A. (2024). Parental education and children’s depression, anxiety, and ADHD traits, a within-family study in MoBa. <em>Npj Science of Learning</em>, <em>9</em>(1), 46. <a href="https://doi.org/10.1038/s41539-024-00260-8">https://doi.org/10.1038/s41539-024-00260-8</a>
+</div>
+<div id="ref-ref452" class="csl-entry" role="listitem">
+Huntington-Klein, N. (2022). <em>The Effect: An Introduction To Research Design And Causality</em> (1st ed.). CRC Press, Taylor &amp; Francis Group.
+</div>
+<div id="ref-ref21014" class="csl-entry" role="listitem">
+Huntington-Klein, N. (2026). <em>The Effect: An Introduction To Research Design And Causality</em> (2nd ed.). CRC Press.
+</div>
+<div id="ref-ref1416" class="csl-entry" role="listitem">
+Hutcheon, J. A., Chiolero, A., &amp; Hanley, J. A. (2010). Random measurement error and regression dilution bias. <em>BMJ</em>, <em>340</em>, c2289. <a href="https://doi.org/10.1136/bmj.c2289">https://doi.org/10.1136/bmj.c2289</a>
+</div>
+<div id="ref-ref21073" class="csl-entry" role="listitem">
+Hyppönen, E., Carslake, D., Berry, D. J., Power, C., &amp; Davey Smith, G. (2022). Estimating the influence of body mass index (BMI) on mortality using offspring BMI as an instrumental variable. <em>International Journal of Obesity</em>, <em>46</em>(1), 77–84. <a href="https://doi.org/10.1038/s41366-021-00962-8">https://doi.org/10.1038/s41366-021-00962-8</a>
+</div>
+<div id="ref-ref497" class="csl-entry" role="listitem">
+Ioannidis, J. P. A. (2001). Comparison of Evidence of Treatment Effects in Randomized and Nonrandomized Studies. <em>JAMA</em>, <em>286</em>(7), 821. <a href="https://doi.org/10.1001/jama.286.7.821">https://doi.org/10.1001/jama.286.7.821</a>
+</div>
+<div id="ref-ref21100" class="csl-entry" role="listitem">
+Ioannidis, J. P. A., Tan, Y. J., &amp; Blum, M. R. (2019). Limitations and Misinterpretations of E-Values for Sensitivity Analyses of Observational Studies. <em>Annals of Internal Medicine</em>, <em>170</em>(2), 108–111. <a href="https://doi.org/10.7326/M18-2159">https://doi.org/10.7326/M18-2159</a>
+</div>
+<div id="ref-ref21065" class="csl-entry" role="listitem">
+Jackson, J. W., &amp; Swanson, S. A. (2015). Toward a Clearer Portrayal of Confounding Bias in Instrumental Variable Applications: <em>Epidemiology</em>, <em>26</em>(4), 498–504. <a href="https://doi.org/10.1097/EDE.0000000000000287">https://doi.org/10.1097/EDE.0000000000000287</a>
+</div>
+<div id="ref-ref208" class="csl-entry" role="listitem">
+Jackson, L. A., Jackson, M. L., Nelson, J. C., Neuzil, K. M., &amp; Weiss, N. S. (2006). Evidence of bias in estimates of influenza vaccine effectiveness in seniors. <em>International Journal of Epidemiology</em>, <em>35</em>(2), 337–344. <a href="https://doi.org/10.1093/ije/dyi274">https://doi.org/10.1093/ije/dyi274</a>
+</div>
+<div id="ref-ref608" class="csl-entry" role="listitem">
+James, J. (2024). Smoking, information, and education: The Royal College of Physicians and the new public health movement. <em>Journal of Policy Analysis and Management</em>, <em>43</em>(2), 446–471. <a href="https://doi.org/10.1002/pam.22508">https://doi.org/10.1002/pam.22508</a>
+</div>
+<div id="ref-ref493" class="csl-entry" role="listitem">
+Janiaud, P., Agarwal, A., Tzoulaki, I., Theodoratou, E., Tsilidis, K. K., Evangelou, E., &amp; Ioannidis, J. P. A. (2021). Validity of observational evidence on putative risk and protective factors: appraisal of 3744 meta-analyses on 57 topics. <em>BMC Medicine</em>, <em>19</em>(1), 157. <a href="https://doi.org/10.1186/s12916-021-02020-6">https://doi.org/10.1186/s12916-021-02020-6</a>
+</div>
+<div id="ref-ref21047" class="csl-entry" role="listitem">
+Jerrim, J., &amp; Sims, S. (2019). Why do so few low- and middle-income children attend a grammar school? New evidence from the Millennium Cohort Study. <em>British Educational Research Journal</em>, <em>45</em>(3), 425–457. <a href="https://doi.org/10.1002/berj.3502">https://doi.org/10.1002/berj.3502</a>
+</div>
+<div id="ref-ref21048" class="csl-entry" role="listitem">
+Jerrim, J., &amp; Sims, S. (2020). The Association Between Attending a Grammar School and Children’s Socio-Emotional Outcomes. New Evidence from the Millennium Cohort Study. <em>British Journal of Educational Studies</em>, <em>68</em>(1), 25–42. <a href="https://doi.org/10.1080/00071005.2018.1518513">https://doi.org/10.1080/00071005.2018.1518513</a>
+</div>
+<div id="ref-ref765" class="csl-entry" role="listitem">
+Johnson, W., Li, L., Kuh, D., &amp; Hardy, R. (2015). How Has the Age-Related Process of Overweight or Obesity Development Changed over Time? Co-ordinated Analyses of Individual Participant Data from Five United Kingdom Birth Cohorts. <em>PLOS Medicine</em>, <em>12</em>(5), e1001828. <a href="https://doi.org/10.1371/journal.pmed.1001828">https://doi.org/10.1371/journal.pmed.1001828</a>
+</div>
+<div id="ref-ref20829" class="csl-entry" role="listitem">
+Joshi, H., &amp; Fitzsimons, E. (2016). The Millennium Cohort Study: the making of a multi-purpose resource for social science and policy. <em>Longitudinal and Life Course Studies</em>, <em>7</em>(4), 409–430. <a href="https://doi.org/10.14301/llcs.v7i4.410">https://doi.org/10.14301/llcs.v7i4.410</a>
+</div>
+<div id="ref-ref02w9uLqN/F2NRGq3a" class="csl-entry" role="listitem">
+Karim, M. E., Platt, R. W., &amp; Group, T. B. study. (2017). Estimating inverse probability weights using super learner when weight-model specification is unknown in a marginal structural Cox model context. <em>Statistics in Medicine</em>, <em>36</em>(13), 2032–2047. <a href="https://doi.org/10.1002/sim.7266">https://doi.org/10.1002/sim.7266</a>
+</div>
+<div id="ref-ref462" class="csl-entry" role="listitem">
+Katsoulis, M., Narayanan, M., Dodgeon, B., Ploubidis, G., &amp; Silverwood, R. (2024). <em>A data driven approach to address missing data in the 1970 British birth cohort</em>. medRxiv. <a href="https://doi.org/10.1101/2024.02.01.24302101">https://doi.org/10.1101/2024.02.01.24302101</a>
+</div>
+<div id="ref-ref21055" class="csl-entry" role="listitem">
+Kelly, Y., Xue, B., Booker, C., Sacker, A., Lacey, R., Ploubidis, G., &amp; Patalay, P. (2022). <em>What (if anything) is going on? Examining longitudinal associations between social media use and mental ill-health among young people</em>. <a href="https://doi.org/10.1101/2022.03.31.22273198">https://doi.org/10.1101/2022.03.31.22273198</a>
+</div>
+<div id="ref-ref56" class="csl-entry" role="listitem">
+Keogh, R. H., Shaw, P. A., Gustafson, P., Carroll, R. J., Deffner, V., Dodd, K. W., Küchenhoff, H., Tooze, J. A., Wallace, M. P., Kipnis, V., &amp; Freedman, L. S. (2020). STRATOS guidance document on measurement error and misclassification of variables in observational epidemiology: Part 1—Basic theory and simple methods of adjustment. <em>Statistics in Medicine</em>, <em>39</em>(16), 2197–2231. <a href="https://doi.org/10.1002/sim.8532">https://doi.org/10.1002/sim.8532</a>
+</div>
+<div id="ref-ref1402" class="csl-entry" role="listitem">
+Keogh, Ruth H., &amp; White, Ian R. (2014). A toolkit for measurement error correction, with a focus on nutritional epidemiology. <em>Statistics in Medicine</em>, <em>33</em>(12), 2137–2155. <a href="https://doi.org/10.1002/sim.6095">https://doi.org/10.1002/sim.6095</a>
+</div>
+<div id="ref-ref271" class="csl-entry" role="listitem">
+King, G., &amp; Nielsen, R. (2019). Why Propensity Scores Should Not Be Used for Matching. <em>Political Analysis</em>, <em>27</em>(4), 435–454. <a href="https://doi.org/10.1017/pan.2019.11">https://doi.org/10.1017/pan.2019.11</a>
+</div>
+<div id="ref-ref1325" class="csl-entry" role="listitem">
+Kong, A., Thorleifsson, G., Frigge, M. L., Vilhjalmsson, B. J., Young, A. I., Thorgeirsson, T. E., Benonisdottir, S., Oddsson, A., Halldorsson, B. V., Masson, G., Gudbjartsson, D. F., Helgason, A., Bjornsdottir, G., Thorsteinsdottir, U., &amp; Stefansson, K. (2018). The nature of nurture: Effects of parental genotypes. <em>Science</em>, <em>359</em>(6374), 424–428. <a href="https://doi.org/10.1126/science.aan6877">https://doi.org/10.1126/science.aan6877</a>
+</div>
+<div id="ref-ref54" class="csl-entry" role="listitem">
+Küchenhoff, H., Mwalili, S. M., &amp; Lesaffre, E. (2006). A General Method for Dealing with Misclassification in Regression: The Misclassification SIMEX. <em>Biometrics</em>, <em>62</em>(1), 85–96. <a href="https://doi.org/10.1111/j.1541-0420.2005.00396.x">https://doi.org/10.1111/j.1541-0420.2005.00396.x</a>
+</div>
+<div id="ref-ref617" class="csl-entry" role="listitem">
+<span class="nocase">Kuh, D., Pierce, M., Adams, J., Deanfield, J., Ekelund, U., Friberg, P., Ghosh, A. K., Harwood, N., Hughes, A., Macfarlane, P. W., Mishra, G., Pellerin, D., Wong, A., Stephen, A. M., Richards, M., Hardy, R., &amp; on behalf of the NSHD scientific and data collection team</span>. (2011). Cohort Profile: Updating the cohort profile for the MRC National Survey of Health and Development: a new clinic-based data collection for ageing research. <em>International Journal of Epidemiology</em>, <em>40</em>(1), e1–e9. <a href="https://doi.org/10.1093/ije/dyq231">https://doi.org/10.1093/ije/dyq231</a>
+</div>
+<div id="ref-ref496" class="csl-entry" role="listitem">
+Kunz, R., &amp; Oxman, A. D. (1998). The unpredictability paradox: review of empirical comparisons of randomised and non-randomised clinical trials. <em>BMJ</em>, <em>317</em>(7167), 1185–1190. <a href="https://doi.org/10.1136/bmj.317.7167.1185">https://doi.org/10.1136/bmj.317.7167.1185</a>
+</div>
+<div id="ref-ref20810" class="csl-entry" role="listitem">
+Labrecque, J. A. (2023, August 21). <em>So you want to estimate an association...</em> Jeremy Labrecque. <a href="https://www.jeremylabrecque.org/post/so_association/">https://www.jeremylabrecque.org/post/so_association/</a>
+</div>
+<div id="ref-ref20774" class="csl-entry" role="listitem">
+Labrecque, J. A., &amp; Kezios, K. L. (2026). How and when to use causal and associational language. <em>BMJ</em>, <em>392</em>, e085749. <a href="https://doi.org/10.1136/bmj-2025-085749">https://doi.org/10.1136/bmj-2025-085749</a>
+</div>
+<div id="ref-ref1401" class="csl-entry" role="listitem">
+Lash, T. L., Fox, M. P., MacLehose, R. F., Maldonado, G., McCandless, L. C., &amp; Greenland, S. (2014). Good practices for quantitative bias analysis. <em>International Journal of Epidemiology</em>, <em>43</em>(6), 1969–1985. <a href="https://doi.org/10.1093/ije/dyu149">https://doi.org/10.1093/ije/dyu149</a>
+</div>
+<div id="ref-ref481" class="csl-entry" role="listitem">
+Lawlor, D. A., Smith, G. D., Bruckdorfer, K. R., Kundu, D., &amp; Ebrahim, S. (2004). Those confounded vitamins: what can we learn from the differences between observational versus randomised trial evidence? <em>The Lancet</em>, <em>363</em>(9422), 1724–1727. <a href="https://doi.org/10.1016/S0140-6736(04)16260-0">https://doi.org/10.1016/S0140-6736(04)16260-0</a>
+</div>
+<div id="ref-ref3094" class="csl-entry" role="listitem">
+Lawlor, D. A., Tilling, K., &amp; Davey Smith, G. (2016). Triangulation in aetiological epidemiology. <em>International Journal of Epidemiology</em>, <em>45</em>(6), 1866–1886. <a href="https://doi.org/10.1093/ije/dyw314">https://doi.org/10.1093/ije/dyw314</a>
+</div>
+<div id="ref-ref1002" class="csl-entry" role="listitem">
+Leurent, B., Gomes, M., Faria, R., Morris, S., Grieve, R., &amp; Carpenter, J. R. (2018). Sensitivity Analysis for Not-at-Random Missing Data in Trial-Based Cost-Effectiveness Analysis: A Tutorial. <em>PharmacoEconomics</em>, <em>36</em>(8), 889–901. <a href="https://doi.org/10.1007/s40273-018-0650-5">https://doi.org/10.1007/s40273-018-0650-5</a>
+</div>
+<div id="ref-ref21050" class="csl-entry" role="listitem">
+Li, L., &amp; Avendano, M. (2023). Lone parents’ employment policy and adolescents’ socioemotional development: Quasi-experimental evidence from a UK reform. <em>Social Science &amp; Medicine</em>, <em>320</em>, 115754. <a href="https://doi.org/10.1016/j.socscimed.2023.115754">https://doi.org/10.1016/j.socscimed.2023.115754</a>
+</div>
+<div id="ref-ref704" class="csl-entry" role="listitem">
+Libuy, N., Church, D., Ploubidis, G., &amp; Fitzsimons, E. (2024). Fast food proximity and weight gain in childhood and adolescence: Evidence from Great Britain. <em>Health Economics</em>, <em>33</em>(3), 449–465. <a href="https://doi.org/10.1002/hec.4770">https://doi.org/10.1002/hec.4770</a>
+</div>
+<div id="ref-ref5141" class="csl-entry" role="listitem">
+Link, B. G., &amp; Phelan, J. (1995). Social Conditions As Fundamental Causes of Disease. <em>Journal of Health and Social Behavior</em>, 80–94. <a href="https://doi.org/10.2307/2626958">https://doi.org/10.2307/2626958</a>
+</div>
+<div id="ref-ref2244" class="csl-entry" role="listitem">
+Lipsitch, M., Tchetgen Tchetgen, E., &amp; Cohen, T. (2010). Negative Controls: A Tool for Detecting Confounding and Bias in Observational Studies. <em>Epidemiology</em>, <em>21</em>(3), 383–388. <a href="https://doi.org/10.1097/EDE.0b013e3181d61eeb">https://doi.org/10.1097/EDE.0b013e3181d61eeb</a>
+</div>
+<div id="ref-ref465" class="csl-entry" role="listitem">
+Liu, W., Brookhart, M. A., Schneeweiss, S., Mi, X., &amp; Setoguchi, S. (2012). Implications of M Bias in Epidemiologic Studies: A Simulation Study. <em>American Journal of Epidemiology</em>, <em>176</em>(10), 938–948. <a href="https://doi.org/10.1093/aje/kws165">https://doi.org/10.1093/aje/kws165</a>
+</div>
+<div id="ref-ref68" class="csl-entry" role="listitem">
+Liu, Y., Zhou, K., &amp; Sims, K. D. (2025). Tipping Point Analysis: Assessing the Potential Impact of Missing Data. <em>JAMA</em>, <em>334</em>(3), 265–266. <a href="https://doi.org/10.1001/jama.2025.7420">https://doi.org/10.1001/jama.2025.7420</a>
+</div>
+<div id="ref-ref485" class="csl-entry" role="listitem">
+Lortie-Forgues, H., &amp; Inglis, M. (2019). Rigorous Large-Scale Educational RCTs Are Often Uninformative: Should We Be Concerned? <em>Educational Researcher</em>, <em>48</em>(3), 158–166. <a href="https://doi.org/10.3102/0013189X19832850">https://doi.org/10.3102/0013189X19832850</a>
+</div>
+<div id="ref-ref20999" class="csl-entry" role="listitem">
+Lu, H., Cole, S. R., Howe, C. J., &amp; Westreich, D. (2022). Toward a Clearer Definition of Selection Bias When Estimating Causal Effects. <em>Epidemiology</em>, <em>33</em>(5), 699–706. <a href="https://doi.org/10.1097/EDE.0000000000001516">https://doi.org/10.1097/EDE.0000000000001516</a>
+</div>
+<div id="ref-ref21001" class="csl-entry" role="listitem">
+Lu, H., Cole, S. R., Platt, R. W., &amp; Schisterman, E. F. (2021). Revisiting Overadjustment Bias. <em>Epidemiology</em>, <em>32</em>(5), e22–e23. <a href="https://doi.org/10.1097/EDE.0000000000001377">https://doi.org/10.1097/EDE.0000000000001377</a>
+</div>
+<div id="ref-ref240" class="csl-entry" role="listitem">
+Lundberg, I., Johnson, R., &amp; Stewart, B. M. (2021). What Is Your Estimand? Defining the Target Quantity Connects Statistical Evidence to Theory. <em>American Sociological Review</em>, <em>86</em>(3), 532–565. <a href="https://doi.org/10.1177/00031224211004187">https://doi.org/10.1177/00031224211004187</a>
+</div>
+<div id="ref-ref5112" class="csl-entry" role="listitem">
+Lutfey, K., &amp; Freese, J. (2005). Toward Some Fundamentals of Fundamental Causality: Socioeconomic Status and Health in the Routine Clinic Visit for Diabetes. <em>American Journal of Sociology</em>, <em>110</em>(5), 1326–1372. <a href="https://doi.org/10.1086/428914">https://doi.org/10.1086/428914</a>
+</div>
+<div id="ref-ref5418" class="csl-entry" role="listitem">
+Mackenbach, J. P. (2019). <em>Health inequalities: Persistence and change in modern welfare states</em>. Oxford University Press, USA.
+</div>
+<div id="ref-refQ2n2he3p/J5nhU5Kt" class="csl-entry" role="listitem">
+MacKinnon, D. P. (2008). <em>Introduction to Statistical Mediation Analysis</em>. Routledge. <a href="https://doi.org/10.4324/9780203809556">https://doi.org/10.4324/9780203809556</a>
+</div>
+<div id="ref-refgBdfcUY6/isvLjaZi" class="csl-entry" role="listitem">
+MacKinnon, D. P., Fairchild, A. J., &amp; Fritz, M. S. (2007). Mediation Analysis. <em>Annual Review of Psychology</em>, <em>58</em>(Volume 58, 2007), 593–614. <a href="https://doi.org/10.1146/annurev.psych.58.110405.085542">https://doi.org/10.1146/annurev.psych.58.110405.085542</a>
+</div>
+<div id="ref-ref21043" class="csl-entry" role="listitem">
+Madia, J. E., Obsuth, I., Thompson, I., Daniels, H., &amp; Murray, A. L. (2022). Long-term labour market and economic consequences of school exclusions in England: Evidence from two counterfactual approaches. <em>British Journal of Educational Psychology</em>, <em>92</em>(3), 801–816. <a href="https://doi.org/10.1111/bjep.12487">https://doi.org/10.1111/bjep.12487</a>
+</div>
+<div id="ref-ref1507" class="csl-entry" role="listitem">
+Marmot, M. (2015). <em>Status syndrome: how your social standing directly affects your health</em> (1st ed.). Bloomsbury.
+</div>
+<div id="ref-ref1506" class="csl-entry" role="listitem">
+Marmot, M. (2016). <em>The health gap: the challenge of an unequal world</em> (1st ed.). Bloomsbury.
+</div>
+<div id="ref-ref67" class="csl-entry" role="listitem">
+Mathur, M. B., Smith, L. H., Ding, P., &amp; VanderWeele, T. J. (2025). <em>EValue: Sensitivity Analyses for Unmeasured Confounding and Other Biases in Observational Studies and Meta-Analyses</em> (Version 4.1.4) [Computer software]. <a href="https://cran.r-project.org/web/packages/EValue/index.html">https://cran.r-project.org/web/packages/EValue/index.html</a>
+</div>
+<div id="ref-ref20821" class="csl-entry" role="listitem">
+Matilla-Santander, N., Matthews, A. A., Gunn, V., Muntaner, C., Kreshpaj, B., Wegman, D. H., Sánchez-Martínez, N., Hernando-Rodriguez, J. C., Albin, M., Balogh, R., Davis, L., &amp; Bodin, T. (2023). Causal effect of shifting from precarious to standard employment on all-cause mortality in Sweden: an emulation of a target trial. <em>J Epidemiol Community Health</em>, <em>77</em>(11), 736–743. <a href="https://doi.org/10.1136/jech-2023-220734">https://doi.org/10.1136/jech-2023-220734</a>
+</div>
+<div id="ref-ref1782" class="csl-entry" role="listitem">
+McElreath, R. (2020). <em>Statistical rethinking: a Bayesian course with examples in R and Stan</em> (2nd ed.). Taylor and Francis, CRC Press.
+</div>
+<div id="ref-ref490" class="csl-entry" role="listitem">
+Meehl, P. E. (1990). Why Summaries of Research on Psychological Theories are Often Uninterpretable. <em>Psychological Reports</em>, <em>66</em>(1), 195–244. <a href="https://doi.org/10.2466/pr0.1990.66.1.195">https://doi.org/10.2466/pr0.1990.66.1.195</a>
+</div>
+<div id="ref-ref219" class="csl-entry" role="listitem">
+Mellon, J. (2025). Rain, rain, go away: 194 potential exclusion-restriction violations for studies using weather as an instrumental variable. <em>American Journal of Political Science</em>, <em>69</em>(3), 881–898. <a href="https://doi.org/10.1111/ajps.12894">https://doi.org/10.1111/ajps.12894</a>
+</div>
+<div id="ref-ref43" class="csl-entry" role="listitem">
+Metherell, T. E., Ploubidis, G. B., &amp; Moreno-Agostino, D. (2023). <em>Associations between early-life mental health and abnormal sleep duration in midlife: findings from a prospective cohort study in Great Britain</em>. medRxiv. <a href="https://doi.org/10.1101/2023.12.13.23299897">https://doi.org/10.1101/2023.12.13.23299897</a>
+</div>
+<div id="ref-ref539" class="csl-entry" role="listitem">
+Miles, C. H. (2023). On the causal interpretation of randomised interventional indirect effects. <em>Journal of the Royal Statistical Society Series B: Statistical Methodology</em>, <em>85</em>(4), 1154–1172. <a href="https://doi.org/10.1093/jrsssb/qkad066">https://doi.org/10.1093/jrsssb/qkad066</a>
+</div>
+<div id="ref-ref542" class="csl-entry" role="listitem">
+Moreno-Betancur, M., &amp; Carlin, J. B. (2018). Understanding Interventional Effects: A More Natural Approach to Mediation Analysis? <em>Epidemiology</em>, <em>29</em>(5), 614. <a href="https://doi.org/10.1097/EDE.0000000000000866">https://doi.org/10.1097/EDE.0000000000000866</a>
+</div>
+<div id="ref-ref83" class="csl-entry" role="listitem">
+Morris, T., Wright, L., Shireby, G., &amp; Bann, D. (2026). Genetic associations with education have increased and are patterned by socioeconomic context: evidence from 3 studies born 1946-1970. <em>Proceedings of the National Academy of Sciences</em>. <a href="https://discovery.ucl.ac.uk/id/eprint/10219068/">https://discovery.ucl.ac.uk/id/eprint/10219068/</a>
+</div>
+<div id="ref-ref461" class="csl-entry" role="listitem">
+Mostafa, T., Narayanan, M., Pongiglione, B., Dodgeon, B., Goodman, A., Silverwood, R. J., &amp; Ploubidis, G. B. (2021). Missing at random assumption made more plausible: evidence from the 1958 British birth cohort. <em>Journal of Clinical Epidemiology</em>, <em>136</em>, 44–54. <a href="https://doi.org/10.1016/j.jclinepi.2021.02.019">https://doi.org/10.1016/j.jclinepi.2021.02.019</a>
+</div>
+<div id="ref-ref44" class="csl-entry" role="listitem">
+Moulton, V., Sullivan, A., Patalay, P., Fitzsimons, E., Henderson, M., Bann, D., &amp; Ploubidis, G. B. (2023). Association between psychological distress trajectories from adolescence to midlife and mental health during the pandemic: evidence from two British birth cohorts. <em>Psychological Medicine</em>, <em>53</em>(14), 6547–6559. <a href="https://doi.org/10.1017/S0033291722003877">https://doi.org/10.1017/S0033291722003877</a>
+</div>
+<div id="ref-ref260" class="csl-entry" role="listitem">
+Mulder, J. D., &amp; Hamaker, E. L. (2021). Three Extensions of the Random Intercept Cross-Lagged Panel Model. <em>Structural Equation Modeling: A Multidisciplinary Journal</em>, <em>28</em>(4), 638–648. <a href="https://doi.org/10.1080/10705511.2020.1784738">https://doi.org/10.1080/10705511.2020.1784738</a>
+</div>
+<div id="ref-ref466" class="csl-entry" role="listitem">
+Mumford, S., &amp; Anjum, R. L. (2013). <em>Causation: a very short introduction</em> (1. ed). Oxford Univ. Press. <a href="https://doi.org/10.1093/actrade/9780199684434.001.0001">https://doi.org/10.1093/actrade/9780199684434.001.0001</a>
+</div>
+<div id="ref-ref453" class="csl-entry" role="listitem">
+Muñoz, J., Falcó-Gimeno, A., &amp; Hernández, E. (2020). Unexpected Event during Survey Design: Promise and Pitfalls for Causal Inference. <em>Political Analysis</em>, <em>28</em>(2), 186–206. <a href="https://doi.org/10.1017/pan.2019.27">https://doi.org/10.1017/pan.2019.27</a>
+</div>
+<div id="ref-ref214" class="csl-entry" role="listitem">
+Newman, S. J. (2024). <em>The global pattern of centenarians highlights deep problems in demography</em>. medRxiv. <a href="https://doi.org/10.1101/2024.09.06.24313170">https://doi.org/10.1101/2024.09.06.24313170</a>
+</div>
+<div id="ref-ref215" class="csl-entry" role="listitem">
+Newman, S. J. (2025). <em>Supercentenarian and remarkable age records exhibit patterns indicative of clerical errors and pension fraud</em>. bioRxiv. <a href="https://doi.org/10.1101/704080">https://doi.org/10.1101/704080</a>
+</div>
+<div id="ref-ref443" class="csl-entry" role="listitem">
+Nguyen, C. D., Lee, K. J., White, I. R., Buuren, S. van, &amp; Moreno-Betancur, M. (2025). <em>Sensitivity analysis for multivariable missing data using multiple imputation: a tutorial</em> (arXiv:2502.02892). arXiv. <a href="https://doi.org/10.48550/arXiv.2502.02892">https://doi.org/10.48550/arXiv.2502.02892</a>
+</div>
+<div id="ref-ref21075" class="csl-entry" role="listitem">
+Ning, K., Gondek, D., Pereira, S. M. P., &amp; Lacey, R. E. (2024). Mediating mechanisms of the relationship between exposure to deprivation and threat during childhood and adolescent psychopathology: evidence from the Millennium Cohort Study. <em>European Child &amp; Adolescent Psychiatry</em>, <em>33</em>(6), 1907–1920. <a href="https://doi.org/10.1007/s00787-023-02289-3">https://doi.org/10.1007/s00787-023-02289-3</a>
+</div>
+<div id="ref-ref42" class="csl-entry" role="listitem">
+Ning, K., Patalay, P., L. Maggs, J., &amp; Ploubidis, G. B. (2021). Early life mental health and problematic drinking in mid-adulthood: evidence from two British birth cohorts. <em>Social Psychiatry and Psychiatric Epidemiology</em>, <em>56</em>(10), 1847–1858. <a href="https://doi.org/10.1007/s00127-021-02063-3">https://doi.org/10.1007/s00127-021-02063-3</a>
+</div>
+<div id="ref-ref2057" class="csl-entry" role="listitem">
+Orben, A., &amp; Przybylski, A. K. (2019). Screens, Teens, and Psychological Well-Being: Evidence From Three Time-Use-Diary Studies. <em>Psychological Science</em>, <em>30</em>(5), 682–696. <a href="https://doi.org/10.1177/0956797619830329">https://doi.org/10.1177/0956797619830329</a>
+</div>
+<div id="ref-ref46" class="csl-entry" role="listitem">
+Oster, E. (2019). Unobservable Selection and Coefficient Stability: Theory and Evidence. <em>Journal of Business &amp; Economic Statistics</em>, <em>37</em>(2), 187–204. <a href="https://doi.org/10.1080/07350015.2016.1227711">https://doi.org/10.1080/07350015.2016.1227711</a>
+</div>
+<div id="ref-ref479" class="csl-entry" role="listitem">
+Papanikolaou, P. N., Christidi, G. D., &amp; Ioannidis, J. P. A. (2006). Comparison of evidence on harms of medical interventions in randomized and nonrandomized studies. <em>CMAJ : Canadian Medical Association Journal</em>, <em>174</em>(5), 635–641. <a href="https://doi.org/10.1503/cmaj.050873">https://doi.org/10.1503/cmaj.050873</a>
+</div>
+<div id="ref-ref262" class="csl-entry" role="listitem">
+Parra, C. O., Daniel, R. M., &amp; Bartlett, J. W. (2021). <em>Hypothetical estimands in clinical trials: a unification of causal inference and missing data methods</em> (arXiv:2107.04392). arXiv. <a href="https://doi.org/10.48550/arXiv.2107.04392">https://doi.org/10.48550/arXiv.2107.04392</a>
+</div>
+<div id="ref-ref510" class="csl-entry" role="listitem">
+Pastore, C., &amp; Jones, A. M. (2023). Human capital consequences of missing out on a grammar school education. <em>Economic Modelling</em>, <em>126</em>, 106414. <a href="https://doi.org/10.1016/j.econmod.2023.106414">https://doi.org/10.1016/j.econmod.2023.106414</a>
+</div>
+<div id="ref-ref222" class="csl-entry" role="listitem">
+Patacchini, E., &amp; Zenou, Y. (2011). Neighborhood Effects and Parental Involvement in the Intergenerational Transmission of Education. <em>Journal of Regional Science</em>, <em>51</em>(5), 987–1013. <a href="https://doi.org/10.1111/j.1467-9787.2011.00722.x">https://doi.org/10.1111/j.1467-9787.2011.00722.x</a>
+</div>
+<div id="ref-ref20833" class="csl-entry" role="listitem">
+Patel, A., &amp; Sissons, R. (2024, November 27). <em><span>“The IVF postcode lottery is not fair”</span></em>. BBC. BBC News. <a href="https://www.bbc.co.uk/news/articles/ckglq7kn11jo">https://www.bbc.co.uk/news/articles/ckglq7kn11jo</a>
+</div>
+<div id="ref-ref534" class="csl-entry" role="listitem">
+Pearl, J. (2001). Direct and indirect effects. <em>Proceedings of the Seventeenth Conference on Uncertainty in Artificial Intelligence, UAI’01</em>, 411–420. <a href="https://dl.acm.org/doi/10.5555/2074022.2074073">https://dl.acm.org/doi/10.5555/2074022.2074073</a>
+</div>
+<div id="ref-ref20996" class="csl-entry" role="listitem">
+Pearl, J. (2022). <em>Causality: models, reasoning, and inference</em> (Second edition, reprinted with corrections). Cambridge University Press.
+</div>
+<div id="ref-ref827" class="csl-entry" role="listitem">
+Pearl, J., &amp; Mackenzie, D. (2018). <em>The Book of Why: The New Science of Cause and Effect</em> (First edition). Basic Books.
+</div>
+<div id="ref-ref717" class="csl-entry" role="listitem">
+Pearson, H. W. (2016). <em>The life project: the extraordinary story of our ordinary lives</em>. Allen Lane, an imprint of Penguin Books.
+</div>
+<div id="ref-ref300" class="csl-entry" role="listitem">
+Pereira, R. D., Biroli, P., Galama, T., Hinke, S. von, Kippersluis, H. van, Rietveld, C. A., &amp; Thom, K. (2022). <em>Gene-Environment Interplay in the Social Sciences</em>. <a href="https://doi.org/10.1093/acrefore/9780190625979.013.804">https://doi.org/10.1093/acrefore/9780190625979.013.804</a>
+</div>
+<div id="ref-ref21045" class="csl-entry" role="listitem">
+Persson, M. (2014). Testing the Relationship Between Education and Political Participation Using the 1970 British Cohort Study. <em>Political Behavior</em>, <em>36</em>(4), 877–897. <a href="https://doi.org/10.1007/s11109-013-9254-0">https://doi.org/10.1007/s11109-013-9254-0</a>
+</div>
+<div id="ref-ref28" class="csl-entry" role="listitem">
+Petersen, M. L., Sinisi, S. E., &amp; van der Laan, M. J. (2006). Estimation of Direct Causal Effects. <em>Epidemiology</em>, <em>17</em>(3), 276. <a href="https://doi.org/10.1097/01.ede.0000208475.99429.2d">https://doi.org/10.1097/01.ede.0000208475.99429.2d</a>
+</div>
+<div id="ref-ref20799" class="csl-entry" role="listitem">
+Petersen, M. L., &amp; van der Laan, M. J. (2014). Causal Models and Learning from Data. <em>Epidemiology (Cambridge, Mass.)</em>, <em>25</em>(3), 418–426. <a href="https://doi.org/10.1097/EDE.0000000000000078">https://doi.org/10.1097/EDE.0000000000000078</a>
+</div>
+<div id="ref-ref476" class="csl-entry" role="listitem">
+Petitti, D. B., Perlman, J. A., &amp; Sidney, S. (1986). Postmenopausal Estrogen Use and Heart Disease. <em>New England Journal of Medicine</em>, <em>315</em>(2), 131–132. <a href="https://doi.org/10.1056/NEJM198607103150213">https://doi.org/10.1056/NEJM198607103150213</a>
+</div>
+<div id="ref-ref65" class="csl-entry" role="listitem">
+Phillips, A. N., &amp; Smith, G. D. (1991). How independent are <span>“independent”</span> effects? Relative risk estimation when correlated exposures are measured imprecisely. <em>Journal of Clinical Epidemiology</em>, <em>44</em>(11), 1223–1231. <a href="https://doi.org/10.1016/0895-4356(91)90155-3">https://doi.org/10.1016/0895-4356(91)90155-3</a>
+</div>
+<div id="ref-ref63" class="csl-entry" role="listitem">
+Piccininni, M., &amp; Stensrud, M. J. (2024). Using Negative Control Populations to Assess Unmeasured Confounding and Direct Effects. <em>Epidemiology (Cambridge, Mass.)</em>, <em>35</em>(3), 313–319. <a href="https://doi.org/10.1097/EDE.0000000000001724">https://doi.org/10.1097/EDE.0000000000001724</a>
+</div>
+<div id="ref-ref807" class="csl-entry" role="listitem">
+Pina-Sánchez, J., Brunton-Smith, I., Buil-Gil, D., &amp; Cernat, A. (2023). Exploring the impact of measurement error in police recorded crime rates through sensitivity analysis. <em>Crime Science</em>, <em>12</em>(1), 14. <a href="https://doi.org/10.1186/s40163-023-00192-5">https://doi.org/10.1186/s40163-023-00192-5</a>
+</div>
+<div id="ref-ref21062" class="csl-entry" role="listitem">
+Pinto Pereira, S. M., De Stavola, B. L., Rogers, N. T., Hardy, R., Cooper, R., &amp; Power, C. (2020). Adult obesity and mid-life physical functioning in two British birth cohorts: investigating the mediating role of physical inactivity. <em>International Journal of Epidemiology</em>, <em>49</em>(3), 845–856. <a href="https://doi.org/10.1093/ije/dyaa014">https://doi.org/10.1093/ije/dyaa014</a>
+</div>
+<div id="ref-ref2910" class="csl-entry" role="listitem">
+Plomin, R. (2018). <em>Blueprint: How DNA Makes Us Who We Are</em>. Penguin.
+</div>
+<div id="ref-ref1237" class="csl-entry" role="listitem">
+Plomin, R., &amp; Daniels, D. (1987). Why are children in the same family so different from one another? <em>Behavioral and Brain Sciences</em>, <em>10</em>(1), 1–16. <a href="https://doi.org/10.1017/S0140525X00055941">https://doi.org/10.1017/S0140525X00055941</a>
+</div>
+<div id="ref-ref685" class="csl-entry" role="listitem">
+Polderman, T. J. C., Benyamin, B., de Leeuw, C. A., Sullivan, P. F., van Bochoven, A., Visscher, P. M., &amp; Posthuma, D. (2015). Meta-analysis of the heritability of human traits based on fifty years of twin studies. <em>Nature Genetics</em>, <em>47</em>(7), 702–709. <a href="https://doi.org/10.1038/ng.3285">https://doi.org/10.1038/ng.3285</a>
+</div>
+<div id="ref-ref59" class="csl-entry" role="listitem">
+Poole, C. (2020). Commentary: Continuing the E-value’s post-publication peer review. <em>International Journal of Epidemiology</em>, <em>49</em>(5), 1497–1500. <a href="https://doi.org/10.1093/ije/dyaa097">https://doi.org/10.1093/ije/dyaa097</a>
+</div>
+<div id="ref-ref430" class="csl-entry" role="listitem">
+Purba, A. K., Henderson, M., Baxter, A., Pearce, A., &amp; Katikireddi, S. V. (2025). The Relationship Between Time Spent on Social Media and Adolescent Cigarette, E-cigarette, and Dual Use: A Longitudinal Analysis of the UK Millennium Cohort Study. <em>Nicotine &amp; Tobacco Research</em>, <em>27</em>(4), 693–704. <a href="https://doi.org/10.1093/ntr/ntae057">https://doi.org/10.1093/ntr/ntae057</a>
+</div>
+<div id="ref-ref20826" class="csl-entry" role="listitem">
+Rajah, N., Calderwood, L., De Stavola, B. L., Harron, K., Ploubidis, G. B., &amp; Silverwood, R. J. (2023). Using linked administrative data to aid the handling of non-response and restore sample representativeness in cohort studies: the 1958 national child development study and hospital episode statistics data. <em>BMC medical research methodology</em>, <em>23</em>(1), 266. <a href="https://doi.org/10.1186/s12874-023-02099-w">https://doi.org/10.1186/s12874-023-02099-w</a>
+</div>
+<div id="ref-ref21040" class="csl-entry" role="listitem">
+Rambachan, A., &amp; Roth, J. (2023). A More Credible Approach to Parallel Trends. <em>Review of Economic Studies</em>, <em>90</em>(5), 2555–2591. <a href="https://doi.org/10.1093/restud/rdad018">https://doi.org/10.1093/restud/rdad018</a>
+</div>
+<div id="ref-ref18515" class="csl-entry" role="listitem">
+Reeves, A., Clair, A., McKee, M., &amp; Stuckler, D. (2016). Reductions in the United Kingdom’s Government Housing Benefit and Symptoms of Depression in Low-Income Households. <em>American Journal of Epidemiology</em>, <em>184</em>(6), 421–429. <a href="https://doi.org/10.1093/aje/kww055">https://doi.org/10.1093/aje/kww055</a>
+</div>
+<div id="ref-ref21005" class="csl-entry" role="listitem">
+Reichardt, C. S. (2019). <em>Quasi-Experimentation: A Guide to Design and Analysis</em> (T. D. Little, Ed.). Guilford Press. <a href="https://www.jstor.org/stable/10.1521/jj.41115888">https://www.jstor.org/stable/10.1521/jj.41115888</a>
+</div>
+<div id="ref-ref472" class="csl-entry" role="listitem">
+Rich Harris, J. (1999). <em>The nurture assumption: why children turn out the way they do</em>. Bloomsbury.
+</div>
+<div id="ref-ref5409" class="csl-entry" role="listitem">
+Richardson, T. G., Sanderson, E., Elsworth, B., Tilling, K., &amp; Smith, G. D. (2020). Use of genetic variation to separate the effects of early and later life adiposity on disease risk: mendelian randomisation study. <em>Bmj</em>, <em>369</em>.
+</div>
+<div id="ref-ref84" class="csl-entry" role="listitem">
+Richmond, R. C., Al-Amin, A., Davey Smith, G., &amp; Relton, C. L. (2014). Approaches for drawing causal inferences from epidemiological birth cohorts: A review. <em>Early Human Development, Special Issue: Neonatal Update 2014</em>, <em>90</em>(11), 769–780. <a href="https://doi.org/10.1016/j.earlhumdev.2014.08.023">https://doi.org/10.1016/j.earlhumdev.2014.08.023</a>
+</div>
+<div id="ref-ref21018" class="csl-entry" role="listitem">
+Ripollone, J. E., Huybrechts, K. F., Rothman, K. J., Ferguson, R. E., &amp; Franklin, J. M. (2018). Implications of the Propensity Score Matching Paradox in Pharmacoepidemiology. <em>American Journal of Epidemiology</em>, <em>187</em>(9), 1951–1961. <a href="https://doi.org/10.1093/aje/kwy078">https://doi.org/10.1093/aje/kwy078</a>
+</div>
+<div id="ref-ref5756" class="csl-entry" role="listitem">
+Ritchie, S. J., &amp; Tucker-Drob, E. M. (2018). How much does education improve intelligence? A meta-analysis. <em>Psychological Science</em>, <em>29</em>(8), 1358–1369.
+</div>
+<div id="ref-ref483" class="csl-entry" role="listitem">
+Robins, J. M. (1986). A new approach to causal inference in mortality studies with a sustained exposure period—application to control of the healthy worker survivor effect. <em>Mathematical Modelling</em>, <em>7</em>(9), 1393–1512. <a href="https://doi.org/10.1016/0270-0255(86)90088-6">https://doi.org/10.1016/0270-0255(86)90088-6</a>
+</div>
+<div id="ref-ref532" class="csl-entry" role="listitem">
+Robins, J. M., &amp; Greenland, S. (1992). Identifiability and Exchangeability for Direct and Indirect Effects. <em>Epidemiology</em>, <em>3</em>(2), 143.
+</div>
+<div id="ref-ref223" class="csl-entry" role="listitem">
+Robins, J. M., Hernán, M. Á., &amp; Brumback, B. (2000). Marginal Structural Models and Causal Inference in Epidemiology: <em>Epidemiology</em>, <em>11</em>(5), 550–560. <a href="https://doi.org/10.1097/00001648-200009000-00011">https://doi.org/10.1097/00001648-200009000-00011</a>
+</div>
+<div id="ref-ref529" class="csl-entry" role="listitem">
+Robins, J. M., Richardson, T. S., &amp; Shpitser, I. (2022). An Interventionist Approach to Mediation Analysis. In <em>Probabilistic and Causal Inference: The Works of Judea Pearl</em> (1st ed., Vol. 36, pp. 713–764). Association for Computing Machinery. <a href="https://dl.acm.org/doi/10.1145/3501714.3501754">https://dl.acm.org/doi/10.1145/3501714.3501754</a>
+</div>
+<div id="ref-ref512" class="csl-entry" role="listitem">
+Ronson, J. (2001). <em>Them: Adventures with Extremists</em>. Picador.
+</div>
+<div id="ref-ref21084" class="csl-entry" role="listitem">
+Rosenbaum, P. R. (1987). The Role of a Second Control Group in an Observational Study. <em>Statistical Science</em>, <em>2</em>(3). <a href="https://doi.org/10.1214/ss/1177013232">https://doi.org/10.1214/ss/1177013232</a>
+</div>
+<div id="ref-ref91" class="csl-entry" role="listitem">
+Rosenbaum, P. R. (1989). The Role of Known Effects in Observational Studies. <em>Biometrics</em>, <em>45</em>(2), 557–569. <a href="https://doi.org/10.2307/2531497">https://doi.org/10.2307/2531497</a>
+</div>
+<div id="ref-ref69" class="csl-entry" role="listitem">
+Rosenbaum, P. R. (2001). Replicating Effects and Biases. <em>The American Statistician</em>, <em>55</em>(3), 223–227. <a href="https://doi.org/10.1198/000313001317098220">https://doi.org/10.1198/000313001317098220</a>
+</div>
+<div id="ref-ref75" class="csl-entry" role="listitem">
+Rosenbaum, P. R. (2005). Reasons for Effects. <em>CHANCE</em>, <em>18</em>(1), 5–10. <a href="https://doi.org/10.1080/09332480.2005.10722702">https://doi.org/10.1080/09332480.2005.10722702</a>
+</div>
+<div id="ref-ref92" class="csl-entry" role="listitem">
+Rosenbaum, P. R. (2006). Differential Effects and Generic Biases in Observational Studies. <em>Biometrika</em>, <em>93</em>(3), 573–586.
+</div>
+<div id="ref-ref580" class="csl-entry" role="listitem">
+Rosenbaum, P. R. (2013). Using Differential Comparisons in Observational Studies. <em>CHANCE</em>, <em>26</em>(3), 18–25. <a href="https://doi.org/10.1080/09332480.2013.845002">https://doi.org/10.1080/09332480.2013.845002</a>
+</div>
+<div id="ref-ref579" class="csl-entry" role="listitem">
+Rosenbaum, P. R. (2015). Cochran’s Causal Crossword. <em>Observational Studies</em>, <em>1</em>(1), 205–211. <a href="https://doi.org/10.1353/obs.2015.0021">https://doi.org/10.1353/obs.2015.0021</a>
+</div>
+<div id="ref-ref1502" class="csl-entry" role="listitem">
+Rosenbaum, P. R. (2019). <em>Observation and experiment: an introduction to causal inference</em>. Harvard University Press.
+</div>
+<div id="ref-ref454" class="csl-entry" role="listitem">
+Rosenbaum, P. R. (2020). <em>Design of Observational Studies</em> (2nd ed). Springer International Publishing AG.
+</div>
+<div id="ref-ref20993" class="csl-entry" role="listitem">
+Rosenbaum, P. R. (2023). <em>Causal Inference</em>. The MIT Press. <a href="https://doi.org/10.7551/mitpress/14244.001.0001">https://doi.org/10.7551/mitpress/14244.001.0001</a>
+</div>
+<div id="ref-ref20816" class="csl-entry" role="listitem">
+Rosenbaum, P. R., &amp; Rubin, D. B. (1983). The central role of the propensity score in observational studies for causal effects. <em>Biometrika</em>, <em>70</em>(1), 41–55. <a href="https://doi.org/10.1093/biomet/70.1.41">https://doi.org/10.1093/biomet/70.1.41</a>
+</div>
+<div id="ref-ref609" class="csl-entry" role="listitem">
+Royal College of Physicians. (1962). <em>Smoking and Health</em>. Pitman Medical Publishing Co. LTD. <a href="https://www.rcp.ac.uk/media/rujmcoyp/smoking-and-health-1962_1.pdf">https://www.rcp.ac.uk/media/rujmcoyp/smoking-and-health-1962_1.pdf</a>
+</div>
+<div id="ref-ref3333" class="csl-entry" role="listitem">
+Rubin, D. B. (1987). <em>Multiple Imputation for Nonresponse in Surveys</em>. John Wiley &amp; Sons, Ltd. <a href="https://doi.org/10.1002/9780470316696">https://doi.org/10.1002/9780470316696</a>
+</div>
+<div id="ref-ref230" class="csl-entry" role="listitem">
+Rushton, A., Maughan, B., Grant, M., &amp; Sehmi, R. (2020). Infant domestic adoptions followed up to adulthood: considerations with reference to British birth cohort data. <em>Adoption &amp; Fostering</em>, <em>44</em>(4), 334–348. <a href="https://doi.org/10.1177/0308575920968237">https://doi.org/10.1177/0308575920968237</a>
+</div>
+<div id="ref-ref96" class="csl-entry" role="listitem">
+Sabates, R., &amp; Duckworth, K. (2010). Maternal schooling and children’s relative inequalities in developmental outcomes: evidence from the 1947 school leaving age reform in Britain. <em>Oxford Review of Education</em>, <em>36</em>(4), 445–461. <a href="https://doi.org/10.1080/03054981003775277">https://doi.org/10.1080/03054981003775277</a>
+</div>
+<div id="ref-ref228" class="csl-entry" role="listitem">
+Sacerdote, B. (2002). The Nature and Nurture of Economic Outcomes. <em>American Economic Review</em>, <em>92</em>(2), 344–348. <a href="https://doi.org/10.1257/000282802320191589">https://doi.org/10.1257/000282802320191589</a>
+</div>
+<div id="ref-ref205" class="csl-entry" role="listitem">
+Sanderson, E., Richardson, T. G., Hemani, G., &amp; Davey Smith, G. (2021). The use of negative control outcomes in Mendelian randomization to detect potential population stratification. <em>International Journal of Epidemiology</em>, <em>50</em>(4), 1350–1361. <a href="https://doi.org/10.1093/ije/dyaa288">https://doi.org/10.1093/ije/dyaa288</a>
+</div>
+<div id="ref-ref5465" class="csl-entry" role="listitem">
+Schisterman, E. F., Cole, S. R., &amp; Platt, R. W. (2009). Overadjustment bias and unnecessary adjustment in epidemiologic studies. <em>Epidemiology (Cambridge, Mass.)</em>, <em>20</em>(4), 488.
+</div>
+<div id="ref-ref2224" class="csl-entry" role="listitem">
+Schmitz, H. (2011). Why are the unemployed in worse health? The causal effect of unemployment on health. <em>Labour Economics</em>, <em>18</em>(1), 71–78. <a href="https://doi.org/10.1016/j.labeco.2010.08.005">https://doi.org/10.1016/j.labeco.2010.08.005</a>
+</div>
+<div id="ref-ref1868" class="csl-entry" role="listitem">
+Schomaker, M., &amp; Heumann, C. (2018). Bootstrap inference when using multiple imputation: Bootstrap Inference When Using Multiple Imputation. <em>Statistics in Medicine</em>, <em>37</em>(14), 2252–2266. <a href="https://doi.org/10.1002/sim.7654">https://doi.org/10.1002/sim.7654</a>
+</div>
+<div id="ref-ref21057" class="csl-entry" role="listitem">
+Scott, R. (2022). Does university make you more liberal? Estimating the within-individual effects of higher education on political values. <em>Electoral Studies</em>, <em>77</em>, 102471. <a href="https://doi.org/10.1016/j.electstud.2022.102471">https://doi.org/10.1016/j.electstud.2022.102471</a>
+</div>
+<div id="ref-ref264" class="csl-entry" role="listitem">
+Seaman, S. R., &amp; Vansteelandt, S. (2018). Introduction to Double Robust Methods for Incomplete Data. <em>Statistical Science : A Review Journal of the Institute of Mathematical Statistics</em>, <em>33</em>(2), 184–197. <a href="https://doi.org/10.1214/18-STS647">https://doi.org/10.1214/18-STS647</a>
+</div>
+<div id="ref-ref5461" class="csl-entry" role="listitem">
+Sellers, R., Warne, N., Rice, F., Langley, K., Maughan, B., Pickles, A., Thapar, A., &amp; Collishaw, S. (2020). Using a cross-cohort comparison design to test the role of maternal smoking in pregnancy in child mental health and learning: evidence from two UK cohorts born four decades apart. <em>International Journal of Epidemiology</em>, <em>49</em>(2), 390–399.
+</div>
+<div id="ref-ref101" class="csl-entry" role="listitem">
+Selzam, S., McAdams, T. A., Coleman, J. R. I., Carnell, S., O’Reilly, P. F., Plomin, R., &amp; Llewellyn, C. H. (2018). Evidence for gene-environment correlation in child feeding: Links between common genetic variation for BMI in children and parental feeding practices. <em>PLOS Genetics</em>, <em>14</em>(11), e1007757. <a href="https://doi.org/10.1371/journal.pgen.1007757">https://doi.org/10.1371/journal.pgen.1007757</a>
+</div>
+<div id="ref-ref432" class="csl-entry" role="listitem">
+Shadish, W. R., &amp; Cook, T. D. (1999). Comment-Design Rules: More Steps toward a Complete Theory of Quasi-Experimentation. <em>Statistical Science</em>, <em>14</em>(3), 294–300.
+</div>
+<div id="ref-ref21007" class="csl-entry" role="listitem">
+Shadish, W. R., Cook, T. D., &amp; Campbell, D. T. (2002). <em>Experimental and quasi-experimental designs for generalized causal inference</em> (Nachdr.). Wadsworth Cengage Learning.
+</div>
+<div id="ref-ref57" class="csl-entry" role="listitem">
+Shaw, P. A., Gustafson, P., Carroll, R. J., Deffner, V., Dodd, K. W., Keogh, R. H., Kipnis, V., Tooze, J. A., Wallace, M. P., Küchenhoff, H., &amp; Freedman, L. S. (2020). STRATOS guidance document on measurement error and misclassification of variables in observational epidemiology: Part 2—More complex methods of adjustment and advanced topics. <em>Statistics in Medicine</em>, <em>39</em>(16), 2232–2263. <a href="https://doi.org/10.1002/sim.8531">https://doi.org/10.1002/sim.8531</a>
+</div>
+<div id="ref-ref21002" class="csl-entry" role="listitem">
+Sheikh, M. A., Abelsen, B., &amp; Olsen, J. A. (2016). Differential Recall Bias, Intermediate Confounding, and Mediation Analysis in Life Course Epidemiology: An Analytic Framework with Empirical Example. <em>Frontiers in Psychology</em>, <em>7</em>. <a href="https://doi.org/10.3389/fpsyg.2016.01828">https://doi.org/10.3389/fpsyg.2016.01828</a>
+</div>
+<div id="ref-ref524" class="csl-entry" role="listitem">
+Shi, B., Choirat, C., Coull, B. A., VanderWeele, T. J., &amp; Valeri, L. (2021). CMAverse: A Suite of Functions for Reproducible Causal Mediation Analyses. <em>Epidemiology</em>, <em>32</em>(5), e20. <a href="https://doi.org/10.1097/EDE.0000000000001378">https://doi.org/10.1097/EDE.0000000000001378</a>
+</div>
+<div id="ref-ref502" class="csl-entry" role="listitem">
+Shi, X., Miao, W., &amp; Tchetgen, E. T. (2020). A Selective Review of Negative Control Methods in Epidemiology. <em>Current Epidemiology Reports</em>, <em>7</em>(4), 190–202. <a href="https://doi.org/10.1007/s40471-020-00243-4">https://doi.org/10.1007/s40471-020-00243-4</a>
+</div>
+<div id="ref-ref217" class="csl-entry" role="listitem">
+Shireby, G., Morris, T. T., Wong, A., Chaturvedi, N., Ploubidis, G. B., Fitzsimons, E., Goodman, A., Sanchez-Galvez, A., Davies, N. M., Wright, L., &amp; Bann, D. (2025). Data Resource Profile: Genomic data in multiple British birth cohorts (1946–2001)—linkage with health, social, and environmental data from birth to old age. <em>International Journal of Epidemiology</em>, <em>54</em>(5), dyaf141. <a href="https://doi.org/10.1093/ije/dyaf141">https://doi.org/10.1093/ije/dyaf141</a>
+</div>
+<div id="ref-ref257" class="csl-entry" role="listitem">
+Silva, L., Tropf, F. C., &amp; Wolfram, T. (2025). Mind the gap: the interplay between genes and neighbourhood context on educational achievement. <em>European Sociological Review</em>, <em>41</em>(5), 755–773. <a href="https://doi.org/10.1093/esr/jcaf001">https://doi.org/10.1093/esr/jcaf001</a>
+</div>
+<div id="ref-ref463" class="csl-entry" role="listitem">
+Silverwood, R. J., Calderwood, L., Henderson, M., Sakshaug, J. W., &amp; Ploubidis, G. B. (2024). A data-driven approach to understanding non-response and restoring sample representativeness in the UK Next Steps cohort. <em>Longitudinal and Life Course Studies</em>, <em>15</em>(2), 227–250. <a href="https://doi.org/10.1332/17579597Y2024D000000010">https://doi.org/10.1332/17579597Y2024D000000010</a>
+</div>
+<div id="ref-ref153" class="csl-entry" role="listitem">
+Simmons, J. P., Nelson, L. D., &amp; Simonsohn, U. (2011). False-Positive Psychology: Undisclosed Flexibility in Data Collection and Analysis Allows Presenting Anything as Significant. <em>Psychological Science</em>, <em>22</em>(11), 1359–1366. <a href="https://doi.org/10.1177/0956797611417632">https://doi.org/10.1177/0956797611417632</a>
+</div>
+<div id="ref-ref151" class="csl-entry" role="listitem">
+Simonsohn, U., Simmons, J. P., &amp; Nelson, L. D. (2020). Specification curve analysis. <em>Nature Human Behaviour</em>, <em>4</em>(11), 1208–1214. <a href="https://doi.org/10.1038/s41562-020-0912-z">https://doi.org/10.1038/s41562-020-0912-z</a>
+</div>
+<div id="ref-ref5164" class="csl-entry" role="listitem">
+Singh-Manoux, A., Ferrie, J. E., Lynch, J. W., &amp; Marmot, M. (2005). The Role of Cognitive Ability (Intelligence) in Explaining the Association between Socioeconomic Position and Health: Evidence from the Whitehall II Prospective Cohort Study. <em>American Journal of Epidemiology</em>, <em>161</em>(9), 831–839. <a href="https://doi.org/10.1093/aje/kwi109">https://doi.org/10.1093/aje/kwi109</a>
+</div>
+<div id="ref-ref4896" class="csl-entry" role="listitem">
+Sjölander, A., Frisell, T., Kuja-Halkola, R., Öberg, S., &amp; Zetterqvist, J. (2016). Carryover Effects in Sibling Comparison Designs. <em>Epidemiology</em>, <em>27</em>(6), 852–858. <a href="https://doi.org/10.1097/EDE.0000000000000541">https://doi.org/10.1097/EDE.0000000000000541</a>
+</div>
+<div id="ref-ref4894" class="csl-entry" role="listitem">
+Sjölander, A., Frisell, T., &amp; Öberg, S. (2022). Sibling Comparison Studies. <em>Annual Review of Statistics and Its Application</em>, <em>9</em>(1), null. <a href="https://doi.org/10.1146/annurev-statistics-040120-024521">https://doi.org/10.1146/annurev-statistics-040120-024521</a>
+</div>
+<div id="ref-ref21102" class="csl-entry" role="listitem">
+Sjölander, A., &amp; Greenland, S. (2022). Are E-values too optimistic or too pessimistic? Both and neither! <em>International Journal of Epidemiology</em>, <em>51</em>(2), 355–363. <a href="https://doi.org/10.1093/ije/dyac018">https://doi.org/10.1093/ije/dyac018</a>
+</div>
+<div id="ref-ref64" class="csl-entry" role="listitem">
+Smith, G. D., &amp; Phillips, A. N. (1996). Inflation in epidemiology: <span>“the proof and measurement of association between two things”</span> revisited. <em>British Medical Journal</em>, <em>312</em>(7047), 1659–1661. <a href="https://doi.org/10.1136/bmj.312.7047.1659">https://doi.org/10.1136/bmj.312.7047.1659</a>
+</div>
+<div id="ref-ref21058" class="csl-entry" role="listitem">
+Speyer, L. G., Hang, Y., Hall, H. A., &amp; Murray, A. L. (2022). The role of harsh parenting practices in early- to middle-childhood socioemotional development: An examination in the Millennium Cohort Study. <em>Child Development</em>, <em>93</em>(5), 1304–1317. <a href="https://doi.org/10.1111/cdev.13761">https://doi.org/10.1111/cdev.13761</a>
+</div>
+<div id="ref-ref548" class="csl-entry" role="listitem">
+Stacey, T., Tennant, P., McCowan, L., Mitchell, E., Budd, J., Li, M., Thompson, J., Martin, B., Roberts, D., &amp; Heazell, A. (2019). Gestational diabetes and the risk of late stillbirth: a case–control study from England, UK. <em>BJOG: An International Journal of Obstetrics &amp; Gynaecology</em>, <em>126</em>(8), 973–982. <a href="https://doi.org/10.1111/1471-0528.15659">https://doi.org/10.1111/1471-0528.15659</a>
+</div>
+<div id="ref-ref107" class="csl-entry" role="listitem">
+Steegen, S., Tuerlinckx, F., Gelman, A., &amp; Vanpaemel, W. (2016). Increasing Transparency Through a Multiverse Analysis. <em>Perspectives on Psychological Science: A Journal of the Association for Psychological Science</em>, <em>11</em>(5), 702–712. <a href="https://doi.org/10.1177/1745691616658637">https://doi.org/10.1177/1745691616658637</a>
+</div>
+<div id="ref-ref526" class="csl-entry" role="listitem">
+Stensrud, M. J., Young, J. G., Didelez, V., Robins, J. M., &amp; Hernán, M. A. (2022). Separable Effects for Causal Inference in the Presence of Competing Events. <em>Journal of the American Statistical Association</em>, <em>117</em>(537), 175–183. <a href="https://doi.org/10.1080/01621459.2020.1765783">https://doi.org/10.1080/01621459.2020.1765783</a>
+</div>
+<div id="ref-ref1336" class="csl-entry" role="listitem">
+Strenze, T. (2007). Intelligence and socioeconomic success: A meta-analytic review of longitudinal research. <em>Intelligence</em>, <em>35</em>(5), 401–426. <a href="https://doi.org/10.1016/j.intell.2006.09.004">https://doi.org/10.1016/j.intell.2006.09.004</a>
+</div>
+<div id="ref-ref1565" class="csl-entry" role="listitem">
+Stuart, E. A. (2010). Matching methods for causal inference: A review and a look forward. <em>Statistical Science : A Review Journal of the Institute of Mathematical Statistics</em>, <em>25</em>(1), 1–21. <a href="https://doi.org/10.1214/09-STS313">https://doi.org/10.1214/09-STS313</a>
+</div>
+<div id="ref-ref503" class="csl-entry" role="listitem">
+Tabor, E., Kneale, D., &amp; Patalay, P. (2025). <em>Sexuality and respiratory outcomes in the UK: disparities, development and mediators in multiple longitudinal studies</em>. medRxiv. <a href="https://doi.org/10.1101/2025.02.07.25321888">https://doi.org/10.1101/2025.02.07.25321888</a>
+</div>
+<div id="ref-ref227" class="csl-entry" role="listitem">
+Tanksley, P. T., Brislin, S. J., Wertz, J., de Vlaming, R., Courchesne-Krak, N. S., Mallard, T. T., Raffington, L. L., Karlsson Linnér, R., Koellinger, P., Palmer, A. A., Sanchez-Roige, S., Waldman, I. D., Dick, D., Moffitt, T. E., Caspi, A., &amp; Harden, K. P. (2025). Do Polygenic Indices Capture <span>“Direct”</span> Effects on Child Externalizing Behavior Problems? Within-Family Analyses in Two Longitudinal Birth Cohorts. <em>Clinical Psychological Science</em>, <em>13</em>(2), 316–331. <a href="https://doi.org/10.1177/21677026241260260">https://doi.org/10.1177/21677026241260260</a>
+</div>
+<div id="ref-ref20830" class="csl-entry" role="listitem">
+Tennant, P. W. G., &amp; Murray, E. J. (2021). The Quest for Timely Insights into COVID-19 Should not Come at the Cost of Scientific Rigor. <em>Epidemiology</em>, <em>32</em>(1), e2. <a href="https://doi.org/10.1097/EDE.0000000000001258">https://doi.org/10.1097/EDE.0000000000001258</a>
+</div>
+<div id="ref-ref442" class="csl-entry" role="listitem">
+Tennant, P. W. G., Murray, E. J., Arnold, K. F., Berrie, L., Fox, M. P., Gadd, S. C., Harrison, W. J., Keeble, C., Ranker, L. R., Textor, J., Tomova, G. D., Gilthorpe, M. S., &amp; Ellison, G. T. H. (2021). Use of directed acyclic graphs (DAGs) to identify confounders in applied health research: review and recommendations. <em>International Journal of Epidemiology</em>, <em>50</em>(2), 620–632. <a href="https://doi.org/10.1093/ije/dyaa213">https://doi.org/10.1093/ije/dyaa213</a>
+</div>
+<div id="ref-ref652" class="csl-entry" role="listitem">
+Textor, J., van der Zander, B., Gilthorpe, M. S., Liśkiewicz, M., &amp; Ellison, G. T. (2016). Robust causal inference using directed acyclic graphs: the R package <span>“dagitty.”</span> <em>International Journal of Epidemiology</em>, <em>45</em>(6), 1887–1894. <a href="https://doi.org/10.1093/ije/dyw341">https://doi.org/10.1093/ije/dyw341</a>
+</div>
+<div id="ref-ref212" class="csl-entry" role="listitem">
+Thistlethwaite, D. L., &amp; Campbell, D. T. (2017). Regression-Discontinuity Analysis: An Alternative to the Ex-Post Facto Experiment. <em>Observational Studies</em>, <em>3</em>(2), 119–128. <a href="https://doi.org/10.1353/obs.2017.0000">https://doi.org/10.1353/obs.2017.0000</a>
+</div>
+<div id="ref-ref518" class="csl-entry" role="listitem">
+Thoemmes, F., &amp; Ong, A. D. (2016). A Primer on Inverse Probability of Treatment Weighting and Marginal Structural Models. <em>Emerging Adulthood</em>, <em>4</em>(1), 40–59. <a href="https://doi.org/10.1177/2167696815621645">https://doi.org/10.1177/2167696815621645</a>
+</div>
+<div id="ref-ref505" class="csl-entry" role="listitem">
+Toews, I., Anglemyer, A., Nyirenda, J. L., Alsaid, D., Balduzzi, S., Grummich, K., Schwingshackl, L., &amp; Bero, L. (2024). Healthcare outcomes assessed with observational study designs compared with those assessed in randomized trials: a meta-epidemiological study. <em>The Cochrane Database of Systematic Reviews</em>, <em>1</em>(1), MR000034. <a href="https://doi.org/10.1002/14651858.MR000034.pub3">https://doi.org/10.1002/14651858.MR000034.pub3</a>
+</div>
+<div id="ref-ref4" class="csl-entry" role="listitem">
+Tomova, G. D., Silverwood, R. J., Tennant, P. W. G., &amp; Wright, L. (2026). How can the use of different modes of survey data collection introduce bias? An introduction to mode effects using directed acyclic graphs (DAGs). <em>American Journal of Epidemiology</em>, kwag017. <a href="https://doi.org/10.1093/aje/kwag017">https://doi.org/10.1093/aje/kwag017</a>
+</div>
+<div id="ref-ref58" class="csl-entry" role="listitem">
+Tomova, G. D., Silverwood, R. J., &amp; Wright, L. (2026a). <em>Mode effects on survey item measurement: A systematic review of the experimental evidence</em> (bc7qn_v1). SocArXiv. <a href="https://osf.io/preprints/socarxiv/bc7qn_v1/">https://osf.io/preprints/socarxiv/bc7qn_v1/</a>
+</div>
+<div id="ref-ref20972" class="csl-entry" role="listitem">
+Tomova, G. D., Silverwood, R. J., &amp; Wright, L. (2026b). <em>When, and how much, might effect estimates be biased when analysing mixed-mode survey data? The roles of mode effects, mode selection, and mode split.</em> SocArXiv. <a href="https://doi.org/10.31235/osf.io/6sxbq_v1">https://doi.org/10.31235/osf.io/6sxbq_v1</a>
+</div>
+<div id="ref-ref445" class="csl-entry" role="listitem">
+Tompsett, D. M., Leacy, F., Moreno‐Betancur, M., Heron, J., &amp; White, I. R. (2018). On the use of the not‐at‐random fully conditional specification (NARFCS) procedure in practice. <em>Statistics in Medicine</em>, <em>37</em>(15), 2338–2353. <a href="https://doi.org/10.1002/sim.7643">https://doi.org/10.1002/sim.7643</a>
+</div>
+<div id="ref-ref21009" class="csl-entry" role="listitem">
+Trochim, W. M. K. (1985). Pattern Matching, Validity, and Conceptualization in Program Evaluation. <em>Evaluation Review</em>, <em>9</em>(5), 575–604. <a href="https://doi.org/10.1177/0193841X8500900503">https://doi.org/10.1177/0193841X8500900503</a>
+</div>
+<div id="ref-ref21011" class="csl-entry" role="listitem">
+Trochim, W. M. K. (1989). Outcome pattern matching and program theory. <em>Evaluation and Program Planning, Special Issue: The Theory-Driven Perspective</em>, <em>12</em>(4), 355–366. <a href="https://doi.org/10.1016/0149-7189(89)90052-9">https://doi.org/10.1016/0149-7189(89)90052-9</a>
+</div>
+<div id="ref-ref21085" class="csl-entry" role="listitem">
+Tuffaha, H. W., Gordon, L. G., &amp; Scuffham, P. A. (2014). Value of information analysis in healthcare: a review of principles and applications. <em>Journal of Medical Economics</em>, <em>17</em>(6), 377–383. <a href="https://doi.org/10.3111/13696998.2014.907170">https://doi.org/10.3111/13696998.2014.907170</a>
+</div>
+<div id="ref-ref1238" class="csl-entry" role="listitem">
+Turkheimer, E. (2000). Three Laws of Behavior Genetics and What They Mean. <em>Current Directions in Psychological Science</em>, <em>9</em>(5), 160–164. <a href="https://doi.org/10.1111/1467-8721.00084">https://doi.org/10.1111/1467-8721.00084</a>
+</div>
+<div id="ref-ref21099" class="csl-entry" role="listitem">
+Vagni, G. (2026). Life Course Social Mobility and Parenthood. Counterfactual Estimates of the Motherhood Class Penalty in Britain. <em>The British Journal of Sociology</em>, <em>77</em>(1), 114–129. <a href="https://doi.org/10.1111/1468-4446.70039">https://doi.org/10.1111/1468-4446.70039</a>
+</div>
+<div id="ref-ref21042" class="csl-entry" role="listitem">
+Vagni, G., &amp; Breen, R. (2021). Earnings and Income Penalties for Motherhood: Estimates for British Women Using the Individual Synthetic Control Method. <em>European Sociological Review</em>, <em>37</em>(5), 834–848. <a href="https://doi.org/10.1093/esr/jcab014">https://doi.org/10.1093/esr/jcab014</a>
+</div>
+<div id="ref-ref2219" class="csl-entry" role="listitem">
+van Buuren, S. (2018). <em>Flexible imputation of missing data</em> (Second edition). CRC Press, Taylor &amp; Francis Group.
+</div>
+<div id="ref-ref2046" class="csl-entry" role="listitem">
+VanderWeele, T. J. (2011). Sensitivity Analysis for Contagion Effects in Social Networks. <em>Sociological Methods &amp; Research</em>, <em>40</em>(2), 240–255. <a href="https://doi.org/10.1177/0049124111404821">https://doi.org/10.1177/0049124111404821</a>
+</div>
+<div id="ref-ref129" class="csl-entry" role="listitem">
+VanderWeele, T. J. (2017). Outcome-wide Epidemiology: <em>Epidemiology</em>, <em>28</em>(3), 399–402. <a href="https://doi.org/10.1097/EDE.0000000000000641">https://doi.org/10.1097/EDE.0000000000000641</a>
+</div>
+<div id="ref-ref126" class="csl-entry" role="listitem">
+VanderWeele, T. J. (2019). Principles of confounder selection. <em>European Journal of Epidemiology</em>, <em>34</em>(3), 211–219. <a href="https://doi.org/10.1007/s10654-019-00494-6">https://doi.org/10.1007/s10654-019-00494-6</a>
+</div>
+<div id="ref-ref2243" class="csl-entry" role="listitem">
+VanderWeele, T. J., &amp; Ding, P. (2017). Sensitivity Analysis in Observational Research: Introducing the E-Value. <em>Annals of Internal Medicine</em>, <em>167</em>(4), 268. <a href="https://doi.org/10.7326/M16-2607">https://doi.org/10.7326/M16-2607</a>
+</div>
+<div id="ref-ref21012" class="csl-entry" role="listitem">
+VanderWeele, T. J., Jackson, J. W., &amp; Li, S. (2016). Causal inference and longitudinal data: a case study of religion and mental health. <em>Social Psychiatry and Psychiatric Epidemiology</em>, <em>51</em>(11), 1457–1466. <a href="https://doi.org/10.1007/s00127-016-1281-9">https://doi.org/10.1007/s00127-016-1281-9</a>
+</div>
+<div id="ref-ref277" class="csl-entry" role="listitem">
+VanderWeele, T. J., &amp; Li, Y. (2019). Simple Sensitivity Analysis for Differential Measurement Error. <em>American Journal of Epidemiology</em>, <em>188</em>(10), 1823–1829. <a href="https://doi.org/10.1093/aje/kwz133">https://doi.org/10.1093/aje/kwz133</a>
+</div>
+<div id="ref-ref1279" class="csl-entry" role="listitem">
+VanderWeele, T. J., Mathur, M. B., &amp; Chen, Y. (2020). Outcome-Wide Longitudinal Designs for Causal Inference: A New Template for Empirical Studies. <em>Statistical Science</em>, <em>35</em>(3). <a href="https://doi.org/10.1214/19-STS728">https://doi.org/10.1214/19-STS728</a>
+</div>
+<div id="ref-ref535" class="csl-entry" role="listitem">
+Vanderweele, T. J., &amp; Vansteelandt, S. (2009). Conceptual issues concerning mediation, interventions and composition. <em>Statistics and Its Interface</em>, <em>2</em>(4), 457–468. <a href="https://doi.org/10.4310/SII.2009.v2.n4.a7">https://doi.org/10.4310/SII.2009.v2.n4.a7</a>
+</div>
+<div id="ref-ref24" class="csl-entry" role="listitem">
+VanderWeele, T. J., Vansteelandt, S., &amp; Robins, J. M. (2014). Effect Decomposition in the Presence of an Exposure-Induced Mediator-Outcome Confounder. <em>Epidemiology</em>, <em>25</em>(2), 300. <a href="https://doi.org/10.1097/EDE.0000000000000034">https://doi.org/10.1097/EDE.0000000000000034</a>
+</div>
+<div id="ref-ref49" class="csl-entry" role="listitem">
+Vansteelandt, S., &amp; Daniel, R. M. (2017). Interventional Effects for Mediation Analysis with Multiple Mediators. <em>Epidemiology</em>, <em>28</em>(2), 258. <a href="https://doi.org/10.1097/EDE.0000000000000596">https://doi.org/10.1097/EDE.0000000000000596</a>
+</div>
+<div id="ref-ref514" class="csl-entry" role="listitem">
+Vansteelandt, S., &amp; Sjolander, A. (2016). Revisiting g-estimation of the Effect of a Time-varying Exposure Subject to Time-varying Confounding. <em>Epidemiologic Methods</em>, <em>5</em>(1), 37–56. <a href="https://doi.org/10.1515/em-2015-0005">https://doi.org/10.1515/em-2015-0005</a>
+</div>
+<div id="ref-ref468" class="csl-entry" role="listitem">
+Vignen, T. (2025). <em>Spurious Correlations</em>. <a href="https://tylervigen.com/spurious-correlations">https://tylervigen.com/spurious-correlations</a>
+</div>
+<div id="ref-ref118" class="csl-entry" role="listitem">
+Wadsworth, M., Kuh, D., Richards, M., &amp; Hardy, R. (2006). Cohort Profile: The 1946 National Birth Cohort (MRC National Survey of Health and Development). <em>International Journal of Epidemiology</em>, <em>35</em>(1), 49–54. <a href="https://doi.org/10.1093/ije/dyi201">https://doi.org/10.1093/ije/dyi201</a>
+</div>
+<div id="ref-ref266" class="csl-entry" role="listitem">
+Wellcome Trust Case Control Consortium. (2007). Genome-wide association study of 14,000 cases of seven common diseases and 3,000 shared controls. <em>Nature</em>, <em>447</em>(7145), 661–678. <a href="https://doi.org/10.1038/nature05911">https://doi.org/10.1038/nature05911</a>
+</div>
+<div id="ref-ref3438" class="csl-entry" role="listitem">
+Wellings, K., Palmer, M. J., Geary, R. S., Gibson, L. J., Copas, A., Datta, J., Glasier, A., Scott, R. H., Mercer, C. H., Erens, B., Macdowall, W., French, R. S., Jones, K., Johnson, A. M., Tanton, C., &amp; Wilkinson, P. (2016). Changes in conceptions in women younger than 18 years and the circumstances of young mothers in England in 2000–12: an observational study. <em>The Lancet</em>, <em>388</em>(10044), 586–595. <a href="https://doi.org/10.1016/S0140-6736(16)30449-4">https://doi.org/10.1016/S0140-6736(16)30449-4</a>
+</div>
+<div id="ref-ref922" class="csl-entry" role="listitem">
+Wertz, J., Belsky, J., Moffitt, T. E., Belsky, D. W., Harrington, H., Avinun, R., Poulton, R., Ramrakha, S., &amp; Caspi, A. (2019). Genetics of nurture: A test of the hypothesis that parents’ genetics predict their observed caregiving. <em>Developmental Psychology</em>, <em>55</em>(7), 1461–1472. <a href="https://doi.org/10.1037/dev0000709">https://doi.org/10.1037/dev0000709</a>
+</div>
+<div id="ref-ref82" class="csl-entry" role="listitem">
+Westerman, K. E., &amp; Sofer, T. (2024). Many roads to a gene-environment interaction. <em>American Journal of Human Genetics</em>, <em>111</em>(4), 626–635. <a href="https://doi.org/10.1016/j.ajhg.2024.03.002">https://doi.org/10.1016/j.ajhg.2024.03.002</a>
+</div>
+<div id="ref-ref5266" class="csl-entry" role="listitem">
+Weston, S. J., Ritchie, S. J., Rohrer, J. M., &amp; Przybylski, A. K. (2019). Recommendations for Increasing the Transparency of Analysis of Preexisting Data Sets. <em>Advances in Methods and Practices in Psychological Science</em>, <em>2</em>(3), 214–227. <a href="https://doi.org/10.1177/2515245919848684">https://doi.org/10.1177/2515245919848684</a>
+</div>
+<div id="ref-ref829" class="csl-entry" role="listitem">
+Williams, T. C., Bach, C. C., Matthiesen, N. B., Henriksen, T. B., &amp; Gagliardi, L. (2018). Directed acyclic graphs: a tool for causal studies in paediatrics. <em>Pediatric Research</em>, <em>84</em>(4), 487–493. <a href="https://doi.org/10.1038/s41390-018-0071-3">https://doi.org/10.1038/s41390-018-0071-3</a>
+</div>
+<div id="ref-ref239" class="csl-entry" role="listitem">
+Wooldridge, J. M. (2010). <em>Econometric analysis of cross section and panel data</em> (Second edition). MIT Press.
+</div>
+<div id="ref-ref21016" class="csl-entry" role="listitem">
+Woolf, B., Gill, D., Sallis, H., &amp; Munafò, M. R. (2023). The UK BiLEVE and Mendelian randomisation: using multivariable instrumental variables to address <span>“damned if you, damned if you don’t”</span> adjustment problems. <em>BMC research notes</em>, <em>16</em>(1), 157. <a href="https://doi.org/10.1186/s13104-023-06434-8">https://doi.org/10.1186/s13104-023-06434-8</a>
+</div>
+<div id="ref-ref2047" class="csl-entry" role="listitem">
+Wright, L. (2020). Arts engagement, mortality and dementia: what can the data say? <em>Journal of Epidemiology and Community Health</em>, jech-2020-214227. <a href="https://doi.org/10.1136/jech-2020-214227">https://doi.org/10.1136/jech-2020-214227</a>
+</div>
+<div id="ref-ref591" class="csl-entry" role="listitem">
+Wright, L. (2021). <em>Investigating the Association between Youth Unemployment and Mental Health Later in Life</em> [University College London]. <a href="https://discovery.ucl.ac.uk/id/eprint/10128339/">https://discovery.ucl.ac.uk/id/eprint/10128339/</a>
+</div>
+<div id="ref-ref265" class="csl-entry" role="listitem">
+Wright, L., Davies, N. M., Shireby, G., Williams, D. M., Morris, T. T., &amp; Bann, D. (2024). <em>Genetic Risk for High Body Mass Index Before and Amidst the Obesity Epidemic: Cross-Cohort Analysis of Four British Birth Cohort Studies</em>. medRxiv. <a href="https://doi.org/10.1101/2024.10.24.24315860">https://doi.org/10.1101/2024.10.24.24315860</a>
+</div>
+<div id="ref-ref1295" class="csl-entry" role="listitem">
+Wright, L., Head, J. A., &amp; Jivraj, S. (2021). How robust is the association between youth unemployment and later mental health? An analysis of longitudinal data from English schoolchildren. <em>Occupational and Environmental Medicine</em>, oemed-2021-107473. <a href="https://doi.org/10.1136/oemed-2021-107473">https://doi.org/10.1136/oemed-2021-107473</a>
+</div>
+<div id="ref-ref632" class="csl-entry" role="listitem">
+Wright, L., Ploubidis, G. B., &amp; Silverwood, R. J. (2024). <em>Handling Mode Effects in CLS’s cohort Studies</em>. UCL Centre for Longitudinal Studies.
+</div>
+<div id="ref-ref232" class="csl-entry" role="listitem">
+Wright, L., Shireby, G., Morris, T. T., Davies, N. M., &amp; Bann, D. (2025). The association between parental BMI and offspring adiposity: A genetically informed analysis of trios. <em>PLOS Genetics</em>, <em>21</em>(8), e1011775. <a href="https://doi.org/10.1371/journal.pgen.1011775">https://doi.org/10.1371/journal.pgen.1011775</a>
+</div>
+<div id="ref-ref77" class="csl-entry" role="listitem">
+Wright, M. A., Wintemute, G. J., &amp; Rivara, F. P. (1999). Effectiveness of denial of handgun purchase to persons believed to be at high risk for firearm violence. <em>American Journal of Public Health</em>, <em>89</em>(1), 88–90. <a href="https://doi.org/10.2105/ajph.89.1.88">https://doi.org/10.2105/ajph.89.1.88</a>
+</div>
+<div id="ref-ref555" class="csl-entry" role="listitem">
+Wright, S. (1934). The Method of Path Coefficients. <em>The Annals of Mathematical Statistics</em>, <em>5</em>(3), 161–215. <a href="https://doi.org/10.1214/aoms/1177732676">https://doi.org/10.1214/aoms/1177732676</a>
+</div>
+<div id="ref-ref204" class="csl-entry" role="listitem">
+Yang, Q., Yang, Z., Cai, X., Zhao, H., Jia, J., &amp; Sun, F. (2024). Advances in methodologies of negative controls: a scoping review. <em>Journal of Clinical Epidemiology</em>, <em>166</em>, 111228. <a href="https://doi.org/10.1016/j.jclinepi.2023.111228">https://doi.org/10.1016/j.jclinepi.2023.111228</a>
+</div>
+<div id="ref-ref21081" class="csl-entry" role="listitem">
+Ye, T., Keele, L., Hasegawa, R., &amp; Small, D. S. (2024). A Negative Correlation Strategy for Bracketing in Difference-in-Differences. <em>Journal of the American Statistical Association</em>, <em>119</em>(547), 2256–2268. <a href="https://doi.org/10.1080/01621459.2023.2252576">https://doi.org/10.1080/01621459.2023.2252576</a>
+</div>
+<div id="ref-ref20832" class="csl-entry" role="listitem">
+Yudkowsky, E. (2007). Hindsight Devalues Science. <em>LessWrong</em>. <a href="https://www.lesswrong.com/posts/WnheMGAka4fL99eae/hindsight-devalues-science">https://www.lesswrong.com/posts/WnheMGAka4fL99eae/hindsight-devalues-science</a>
+</div>
+<div id="ref-ref198" class="csl-entry" role="listitem">
+Zaadstra, B., Chorus, A., Van Buuren, S., Kalsbeek, H., &amp; Van Noort, J. (2008). Selective association of multiple sclerosis with infectious mononucleosis. <em>Multiple Sclerosis Journal</em>, <em>14</em>(3), 307–313. <a href="https://doi.org/10.1177/1352458507084265">https://doi.org/10.1177/1352458507084265</a>
+</div>
+<div id="ref-ref02w9uLqN/LsLWvkX3" class="csl-entry" role="listitem">
+Zivich, P. N., Ross, R. K., Shook-Sa, B. E., Cole, S. R., &amp; Edwards, J. K. (2024). Empirical Sandwich Variance Estimator for Iterated Conditional Expectation g-Computation. <em>Statistics in Medicine</em>, <em>43</em>(29), 5562–5572. <a href="https://doi.org/10.1002/sim.10255">https://doi.org/10.1002/sim.10255</a>
+</div>
+<div id="ref-ref79" class="csl-entry" role="listitem">
+Zubizarreta, J. R., Small, D. S., &amp; Rosenbaum, P. R. (2018). A Simple Example of Isolation in Building a Natural Experiment. <em>CHANCE</em>, <em>31</em>(4), 16–23. <a href="https://doi.org/10.1080/09332480.2018.1549811">https://doi.org/10.1080/09332480.2018.1549811</a>
+</div>
+<div id="ref-ref259" class="csl-entry" role="listitem">
+Zyphur, M. J., Allison, P. D., Tay, L., Voelkle, M. C., Preacher, K. J., Zhang, Z., Hamaker, E. L., Shamsollahi, A., Pierides, D. C., Koval, P., &amp; Diener, E. (2020). From Data to Causes I: Building A General Cross-Lagged Panel Model (GCLM). <em>Organizational Research Methods</em>, <em>23</em>(4), 651–687. <a href="https://doi.org/10.1177/1094428119847278">https://doi.org/10.1177/1094428119847278</a>
+</div>
+<div id="ref-ref2024" class="csl-entry" role="listitem">
+Zyphur, M. J., Voelkle, M. C., Tay, L., Allison, P. D., Preacher, K. J., Zhang, Z., Hamaker, E. L., Shamsollahi, A., Pierides, D. C., Koval, P., &amp; Diener, E. (2019). From Data to Causes II: Comparing Approaches to Panel Data Analysis. <em>Organizational Research Methods</em>, 109442811984728. <a href="https://doi.org/10.1177/1094428119847280">https://doi.org/10.1177/1094428119847280</a>
+</div>
+</div>
+
+
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copied!");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copied!");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp("https:\/\/cls-data\.github\.io\/causal-inference-review\/");
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+            // target, if specified
+            link.setAttribute("target", "_blank");
+            if (link.getAttribute("rel") === null) {
+              link.setAttribute("rel", "noopener");
+            }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+<nav class="page-navigation">
+  <div class="nav-page nav-page-previous">
+      <a href="./08-appendix.html" class="pagination-link" aria-label="8 Appendix">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-title">8 Appendix</span></span>
+      </a>          
+  </div>
+  <div class="nav-page nav-page-next">
+  </div>
+</nav>
+</div> <!-- /content -->
+<footer class="footer">
+  <div class="nav-footer">
+    <div class="nav-footer-left">
+<p>Wright, Tomova, Danka, Ploubidis &amp; Silverwood · Centre for Longitudinal Studies, UCL</p>
+</div>   
+    <div class="nav-footer-center">
+      &nbsp;
+    <div class="toc-actions"><ul><li><a href="https://github.com/CLS-Data/causal-inference-review/issues/new" class="toc-action"><i class="bi bi-github"></i>Report an issue</a></li></ul></div></div>
+    <div class="nav-footer-right">
+<p>Built with <a href="https://quarto.org">Quarto</a></p>
+</div>
+  </div>
+</footer>
+
+
+
+
+<script src="site_libs/quarto-html/zenscroll-min.js"></script>
+</body></html>

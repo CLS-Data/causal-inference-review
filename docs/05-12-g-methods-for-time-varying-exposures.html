@@ -1,0 +1,866 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en-GB" xml:lang="en-GB"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.8.27">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="description" content="A guide to methods and research designs for causal inference with the Centre for Longitudinal Studies’ cohort data.">
+
+<title>5.12 G-methods for Time-Varying Exposures – Causal Inference in the CLS Cohort Studies</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+</style>
+
+
+<script src="site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="site_libs/quarto-nav/headroom.min.js"></script>
+<script src="site_libs/clipboard/clipboard.min.js"></script>
+<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="site_libs/quarto-search/fuse.min.js"></script>
+<script src="site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="./">
+<link href="./05-13-causal-mediation.html" rel="next">
+<link href="./05-11-target-trial-emulation.html" rel="prev">
+<link href="./images/favicon.svg" rel="icon" type="image/svg+xml">
+<script src="site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="site_libs/quarto-html/axe/axe-check.js" type="module"></script>
+<script src="site_libs/quarto-html/popper.min.js"></script>
+<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="site_libs/quarto-html/anchor.min.js"></script>
+<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-ed96de9b727972fe78a7b5d16c58bf87.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="site_libs/bootstrap/bootstrap-6be7f6e0362b36c773b9fb5cb1e95ee5.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script src="site_libs/quarto-contrib/glightbox/glightbox.min.js"></script>
+<link href="site_libs/quarto-contrib/glightbox/glightbox.min.css" rel="stylesheet">
+<link href="site_libs/quarto-contrib/glightbox/lightbox.css" rel="stylesheet">
+<script id="quarto-search-options" type="application/json">{
+  "location": "sidebar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "start",
+  "type": "textbox",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+<style>html{ scroll-behavior: smooth; }</style>
+
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
+
+</head>
+
+<body class="nav-sidebar docked quarto-light">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+  <nav class="quarto-secondary-nav">
+    <div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
+      </button>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./05-methods.html">5 The Methods of Causal Inference</a></li><li class="breadcrumb-item"><a href="./05-12-g-methods-for-time-varying-exposures.html"><span class="chapter-title">5.12 G-methods for Time-Varying Exposures</span></a></li></ol></nav>
+        <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        </a>
+      <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
+        <i class="bi bi-search"></i>
+      </button>
+    </div>
+  </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation docked overflow-auto">
+    <div class="pt-lg-2 mt-2 text-left sidebar-header sidebar-header-stacked">
+      <a href="./index.html" class="sidebar-logo-link">
+      <img src="./images/cover.svg" alt="Cover: Causal Inference in the CLS Cohort Studies" class="sidebar-logo light-content py-0 d-lg-inline d-none">
+      <img src="./images/cover.svg" alt="Cover: Causal Inference in the CLS Cohort Studies" class="sidebar-logo dark-content py-0 d-lg-inline d-none">
+      </a>
+    <div class="sidebar-title mb-0 py-0">
+      <a href="./">Causal Inference in the CLS Cohort Studies</a> 
+        <div class="sidebar-tools-main">
+    <a href="https://github.com/CLS-Data/causal-inference-review" title="Source Code" class="quarto-navigation-tool px-1" aria-label="Source Code"><i class="bi bi-github"></i></a>
+</div>
+    </div>
+      </div>
+        <div class="mt-2 flex-shrink-0 align-items-center">
+        <div class="sidebar-search">
+        <div id="quarto-search" class="" title="Search"></div>
+        </div>
+        </div>
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">About this guide</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./01-introduction.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">1 Introduction</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./02-problem.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">2 The Problem of Causal Inference with Observational Data</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./03-approaches.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">3 Three Approaches to Causal Inference</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./04-attributes.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">4 Attributes of CLS’s Cohort Studies That Support Causal Inference</span></a>
+  </div>
+</li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a href="./05-methods.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">5 The Methods of Causal Inference</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./05-01-control-via-regression-adjustment.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">5.1 Control via Regression Adjustment</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./05-02-matching.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">5.2 Matching</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./05-03-inverse-probability-of-treatment-weighting.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">5.3 Inverse Probability of Treatment Weighting</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./05-04-missing-data-methods.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">5.4 Missing Data Methods</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./05-05-longitudinal-fixed-effects.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">5.5 (Longitudinal) Fixed Effects</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./05-06-difference-in-differences.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">5.6 Difference in Differences</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./05-07-study-initiated-experiments.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">5.7 Study-Initiated Experiments</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./05-08-natural-experiments.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">5.8 Natural Experiments</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./05-09-instrumental-variables.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">5.9 Instrumental Variables</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./05-10-regression-discontinuity-designs.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">5.10 Regression Discontinuity Designs</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./05-11-target-trial-emulation.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">5.11 Target Trial Emulation</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./05-12-g-methods-for-time-varying-exposures.html" class="sidebar-item-text sidebar-link active"><span class="chapter-title">5.12 G-methods for Time-Varying Exposures</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./05-13-causal-mediation.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">5.13 Causal Mediation</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./05-14-family-designs.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">5.14 Family Designs</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./05-15-negative-control-outcomes-and-exposures.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">5.15 Negative Control Outcomes and Exposures</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./05-16-cross-context-analysis.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">5.16 Cross-Context Analysis</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./05-17-biases-of-known-direction.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">5.17 Biases of Known Direction</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./05-18-differential-effects.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">5.18 Differential Effects</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./05-19-reasons-for-effects.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">5.19 Reasons for Effects</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./05-20-quantitative-bias-analysis.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">5.20 Quantitative Bias Analysis</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./06-discussion.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">6 Discussion</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./07-statements.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">7 Statements</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./08-appendix.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">8 Appendix</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./references.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">References</span></a>
+  </div>
+</li>
+    </ul>
+    </div>
+</nav>
+<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#method" id="toc-method" class="nav-link active" data-scroll-target="#method">5.12.1 Method</a></li>
+  <li><a href="#applications" id="toc-applications" class="nav-link" data-scroll-target="#applications">5.12.2 Applications</a></li>
+  <li><a href="#opportunities" id="toc-opportunities" class="nav-link" data-scroll-target="#opportunities">5.12.3 Opportunities</a></li>
+  </ul>
+<div class="toc-actions"><ul><li><a href="https://github.com/CLS-Data/causal-inference-review/issues/new" class="toc-action"><i class="bi bi-github"></i>Report an issue</a></li></ul></div></nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./05-methods.html">5 The Methods of Causal Inference</a></li><li class="breadcrumb-item"><a href="./05-12-g-methods-for-time-varying-exposures.html"><span class="chapter-title">5.12 G-methods for Time-Varying Exposures</span></a></li></ol></nav>
+<div class="quarto-title">
+<h1 class="title"><span id="g-methods-for-time-varying-exposures" class="quarto-section-identifier"><span class="chapter-title">5.12 G-methods for Time-Varying Exposures</span></span></h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<section id="method" class="level2">
+<h2 class="anchored" data-anchor-id="method">5.12.1 Method</h2>
+<p>Most of the methods outlined so far focus on the effect of exposures occurring at a single timepoint. In many applications, however, researchers are interested in how the effect of the same exposure depends on when it occurs or in how exposure sustained or accumulated over time influences later outcomes. CLS’s cohorts are particularly well suited to answering such questions. However, time-varying exposures introduce additional challenges for causal inference, some of which cannot be addressed by conventional statistical methods (e.g., ordinary least squares regression). In this section, we outline these challenges and briefly discuss potential solutions.</p>
+<p>Before turning to time-varying confounding – which was briefly introduced in <a href="./02-problem.html#confounding-bias">Section 2.2.3</a> – it is important to note that the problems and methods discussed here apply specifically to causal questions about the effects of exposure patterns over time. This is more specific than simply studying an exposure that may vary over time, since such exposures may still be analysed as time-fixed depending on the causal question. For example, for some target population, one might ask about the effect of high versus low depressive symptoms at age 16 on blood HbA1c concentration at age 30, a biomarker of diabetes. (For simplicity, we treat the exposure as binary and set aside concerns about consistency – that is, we assume “high” and “low” depressive symptoms are ‘sufficiently well-defined’.) The causal question is valid, but it concerns exposure at a single age and its total effect on later HbA1c through all subsequent pathways. Although depressive symptoms and other influences may change between ages 16 and 30, the causal contrast is defined only in terms of symptoms at age 16. From an interventionist perspective, this corresponds to asking what the average HbA1c concentration at age 30 would be under hypothetical interventions that set everyone’s depressive symptoms to high vs.&nbsp;low levels at age 16, while allowing later symptoms to evolve naturally thereafter. This matches the definition of the average treatment effect as provided in <a href="./02-problem.html#what-is-a-causal-effect-counterfactuals-and-the-potential-outcomes-framework">Section 2.2.1</a>, and its estimation does not require methods for time-varying exposures that we discuss in this section.</p>
+<p>Alternatively, a researcher may be interested in the effects of different exposure patterns over time. We will refer to these as ‘regimes’. Extending the previous example, one might ask about the effect on HbA1c at age 30 of experiencing the treatment regime of high levels of depressive symptoms at age 16 and again at age 24, compared with the regime of experiencing low levels of depressive symptoms at both timepoints. This defines a different type of causal question. Here (again using an interventionist perspective), we are interested in the joint effect of intervening twice: first in adolescence and again in early adulthood. More formally, for this contrast, the average treatment effect could be expressed as <span class="math inline">\(E\left\left[ Y^{X_{1} = 1,{\ X}_{2} = 1} \right\right] - E\left\left[ Y^{X_{1} = 0,{\ X}_{2} = 0} \right\right]\)</span>, where X<sub>1</sub> and X<sub>2</sub> denote exposure levels at the two timepoints. Other causal contrasts are also possible, depending on which exposure regimes are compared. For example, one could consider HbA1c levels under high depressive symptoms at age 16 but low symptoms at age 24, and vice versa. Naturally, the very same principle could be extended to more exposure timepoints, giving rise to an even higher number of possible contrasts.<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a> For this reason, defining the causal contrast of interest becomes more challenging in time-varying settings. Despite this additional complexity, comparisons of different exposure regimes allow researchers to formalise pressing causal questions. They are especially relevant when the aim is to learn whether exposures have different effects at different stages of the life course, whether accumulated exposure has distinct effects, or which exposure regimes may have the greatest effect and as such be targeted in policy making.</p>
+<p>When estimating the effects of exposure regimes, a new complication arises with respect to confounding. We illustrate this using the simplified example introduced earlier. Consider the DAG in <a href="#figure-5-15">Figure 5.15</a>, which represents the setting introduced above. In this DAG, X<sub>1</sub> and X<sub>2</sub> represent the two exposure instances and L<sub>1</sub> and L<sub>2</sub> represent sets of time-varying confounders (e.g., one’s overall health).<a href="#fn2" class="footnote-ref" id="fnref2" role="doc-noteref"><sup>2</sup></a> Suppose we wish to estimate the effect of high depressive symptoms at both timepoints, compared with low symptoms at both timepoints, on later HbA1c. The graph is best read sequentially, from left to right over time. At the first exposure timepoint, the situation looks familiar: to estimate the effect of depressive symptoms at age 16 (X<sub>1</sub>) on HbA1c at age 30 (Y), we would wish to condition on common causes of X<sub>1</sub> and Y – in this case, L<sub>1</sub>. The situation is also familiar at the second timepoint: to estimate the effect of depressive symptoms at age 24 (X<sub>2</sub>) on HbA1c at age 30 (Y), we would wish to condition on common causes of X<sub>2</sub> and Y, including prior exposure (X<sub>1</sub>), and the time-varying confounders taking place before the second exposure (L<sub>1</sub> and L<sub>2</sub>).</p>
+<div id="figure-5-15">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><a href="images/image32.png" class="lightbox" data-gallery="quarto-lightbox-gallery-1" title="Figure 5.15: A DAG representing a simple setting with a time-varying exposure at two timepoints (X1 and X2). L1 and L2 are time-varying confounders. To estimate the effect of X2 → Y, one must condition on the full history of the covariates and the exposure, including L1, L2, and X1. To estimate the effect of X1 → Y, one needs to condition on L1, but must not condition on L2. If one wishes to estimate the joint effect X1 and X2 have on Y, a problem arises, because the two instances require mutually exclusive adjustment sets (that is, one needs L2 to be conditioned upon, whereas the other needs that it is not conditioned upon). Standard estimation methods cannot accommodate this structure, and g-methods are required."><img src="images/image32.png" class="img-fluid figure-img" style="width:56.0%" alt="Figure 5.15: A DAG representing a simple setting with a time-varying exposure at two timepoints (X1 and X2). L1 and L2 are time-varying confounders. To estimate the effect of X2 → Y, one must condition on the full history of the covariates and the exposure, including L1, L2, and X1. To estimate the effect of X1 → Y, one needs to condition on L1, but must not condition on L2. If one wishes to estimate the joint effect X1 and X2 have on Y, a problem arises, because the two instances require mutually exclusive adjustment sets (that is, one needs L2 to be conditioned upon, whereas the other needs that it is not conditioned upon). Standard estimation methods cannot accommodate this structure, and g-methods are required."></a></p>
+<figcaption><strong>Figure 5.15:</strong> A DAG representing a simple setting with a time-varying exposure at two timepoints (X<sub>1</sub> and X<sub>2</sub>). L<sub>1</sub> and L<sub>2</sub> are time-varying confounders. To estimate the effect of X<sub>2</sub> → Y, one must condition on the full history of the covariates and the exposure, including L<sub>1</sub>, L<sub>2</sub>, and X<sub>1</sub>. To estimate the effect of X<sub>1</sub> → Y, one needs to condition on L<sub>1</sub>, but must <u>not</u> condition on L<sub>2</sub>. If one wishes to estimate the joint effect X<sub>1</sub> and X<sub>2</sub> have on Y, a problem arises, because the two instances require mutually exclusive adjustment sets (that is, one needs L<sub>2</sub> to be conditioned upon, whereas the other needs that it is <u>not</u> conditioned upon). Standard estimation methods cannot accommodate this structure, and g-methods are required.</figcaption>
+</figure>
+</div>
+</div>
+<p>So, we have identified two different, though partly overlapping, sets of confounders, one for X<sub>1</sub>–Y and the other for X<sub>2</sub>–Y. If we were to estimate these effects separately, we could simply fit two separate models, each focusing on one exposure instance and conditioning on the respective set of confounders. However, we wish to estimate an effect that compares different exposure regimes, so X<sub>1</sub> and X<sub>2</sub> must be considered jointly. Consequently, confounding relevant to both the earlier and later exposure–outcome relationships must be addressed when estimating that joint effect. The difficulty arises when confounders of the later exposure–outcome relationship (here L<sub>2</sub>) are themselves affected by the earlier exposure. This scenario is known as treatment-confounder feedback and confounders affected by past exposure levels are referred to as intermediate confounders. In our example, health status in early adulthood could be an intermediate confounder: it may affect both later depressive symptoms and later HbA1c but may also itself be affected by earlier depressive symptoms. Intermediate confounders have a dual role: they confound the later exposure–outcome relationship (X2 ← L<sub>2</sub> → Y) but also lie on the causal pathway from the earlier exposure to the outcome (X<sub>1</sub> → L<sub>2</sub> → Y).</p>
+<p>In the presence of treatment-confounder feedback, conventional methods will generally fail to estimate the effects of exposure regimes correctly, even when all relevant confounders are measured. To see why, consider what the dual role of intermediate confounders implies for the adjustment set. To address confounding of the X<sub>2</sub>–Y relationship, L<sub>2</sub> must be conditioned upon. But for the X<sub>1</sub>–Y relationship, conditioning on L<sub>2</sub> would block part of the earlier exposure effect. Standard methods therefore face a problem with no satisfactory solution: conditioning on L<sub>2</sub> removes part of the causal effect X<sub>1</sub> has on Y, whereas <u>not</u> conditioning on L<sub>2</sub> leaves the X<sub>2</sub>–Y relationship confounded.<a href="#fn3" class="footnote-ref" id="fnref3" role="doc-noteref"><sup>3</sup></a></p>
+<p>To address this problem, a family of methods has been developed, which are collectively referred to as <em>g-methods</em> (the letter <em>g</em> stands for ‘generalised’). The three main approaches are: g-computation, also known as the parametric g-formula (Robins, 1986); inverse probability of treatment weighting (IPTW; Robins et al., 2000), already encountered for single time points in <a href="./05-03-inverse-probability-of-treatment-weighting.html">Section 5.3</a>; and g-estimation of structural nested models (Robins, 1989; Vansteelandt &amp; Sjolander, 2016). The naming convention can cause some confusion. IPTW belongs in the g-methods family despite containing no signposting letter g, while g-estimation is, despite its name, a method that is fully distinct from g-computation. Nevertheless, all three methods share the ability to estimate effects of exposure regimes even in the presence of treatment-confounder feedback.<a href="#fn4" class="footnote-ref" id="fnref4" role="doc-noteref"><sup>4</sup></a> While discussing the details of the three g-methods is beyond the scope of this work, we briefly outline the intuition behind g-computation and IPTW. We do not discuss g-estimation further, as it would require additional technical context not well suited to the brief treatment possible here. Readers interested in more detail on all three g-methods are referred to Hernán &amp; Robins (2023).</p>
+<p>In the most common implementation, g-computation uses a series of regression models to simulate, step by step and forward in time, what each person’s intermediate confounders and outcome would be under a particular exposure regime, given the covariate history up to the respective timepoint. Using these simulations, one could first estimate, for example, the expected outcome under a regime in which everyone was exposed at each timepoint. Next, the process is repeated under a different regime (e.g., no one exposed at any timepoint). The simulated outcomes are averaged under each regime, and the resulting means can be compared, for example by taking the mean difference.</p>
+<p>This approach naturally accommodates the dual role of intermediate confounders. As the simulations are carried out forward in time under each exposure regime, they preserve the influence of earlier exposures on later intermediate confounders and their resulting effect on the outcome. The final comparison is made directly between the estimated mean potential outcomes under different regimes, so intermediate confounders contribute to the differences in the estimated mean potential outcomes only insofar as they are changed by the exposure regime. The resulting comparison can be interpreted as the estimate of the respective causal effect, provided that the identifying assumptions hold (discussed below) and that all models for the intermediate confounders and outcome are correctly specified.</p>
+<p>Unlike the usual implementation of g-computation, IPTW does not attempt to simulate counterfactual trajectories. Recall from <a href="./05-03-inverse-probability-of-treatment-weighting.html">Section 5.3</a> that, in the single-exposure setting, the weights are defined as the inverse of the probability of receiving the observed exposure level, conditional on confounders. Reweighting observations by these weights aims to create a pseudo-population in which the exposure is independent of the measured confounders. For time-varying exposures, IPTW extends this same principle: if successfully implemented, it reweights observations so that, at each exposure timepoint, the exposure is independent of the covariate history (conditional on past exposure levels). In its simplest form, weights can be derived separately for each exposure instance, for example using regression models for the exposure conditional on the covariate and exposure history up to that point. These timepoint-specific weights are then multiplied across timepoints to give a single weight for each individual. The resulting weights can then be used to estimate the effects of exposure regimes, which can be obtained through methods such as weighted regression. For a simple worked example, see Thoemmes &amp; Ong (2016).</p>
+<p>IPTW generally relies on the same identifying assumptions as g-computation, but the two methods have different requirements for statistical modelling. The standard version of g-computation requires a correctly specified model for each intermediate confounder as well as the outcome, whereas the implementation of IPTW described here requires a correctly specified model for each exposure instance. In most analyses, there are many more potential confounders than there are exposure instances, so IPTW typically has the benefit of making fewer parametric assumptions than g-computation. That said, this may come at a cost of lower efficiency of IPTW, producing wider confidence intervals. In practice, IPTW can also be more prone than g-computation to numerical instability, especially in settings with many timepoints and complex covariate histories, where extreme weights are more likely to arise. Importantly, this comparison applies to the standard versions of the two methods, but other implementations can be used to relax some of the modelling assumptions (see, for example, Huffman &amp; van Gameren, 2018; Karim et al., 2017; Zivich et al., 2024). The strengths of the two methods can also be combined in doubly robust estimators (Bang &amp; Robins, 2005; van der Laan &amp; Gruber, 2012). The flexible and doubly robust approaches typically come at the cost of greater complexity.</p>
+<p>While progress has been made in statistical methods, identification of exposure regime effects relies on strong assumptions. The methods outlined above generally require a sequential version of the conditional exchangeability assumption. In practical terms, this typically implies that, at each exposure timepoint, one must account for common causes of the exposure and the outcome.<a href="#fn5" class="footnote-ref" id="fnref5" role="doc-noteref"><sup>5</sup></a> Even when only a single exposure instance is considered, it is rare that all confounding has been fully accounted for, and some bias due to unmeasured confounding may remain. As additional timepoints are introduced, the number of confounders can only increase, so this assumption becomes more difficult to justify. Other identifying assumptions, including positivity, consistency, and no interference, also generalise to sequential versions and may likewise become harder to satisfy (see Hernán &amp; Robins, 2023, for details).</p>
+<p>The strong identifying assumptions, together with the added analytical complexity, have an important practical implication. When many exposure timepoints are available, researchers may be tempted to define exposure regimes that involve all of these instances, hoping to make full use of the available information. Yet it may be preferable to focus on fewer exposure timepoints than are available in the data, so that the required assumptions remain more plausible. For example, one should consider the availability of confounders at or before each exposure timepoint. Another reason for limiting the number of timepoints is so that the causal question becomes clearer. As additional exposure occasions are introduced, the number of possible exposure regimes increases rapidly, and it may become unclear which contrasts are substantively meaningful. Therefore, it may be more informative as well as practical to focus on a few timepoints that correspond to meaningful developmental periods or plausible intervention points, than to model every observed measurement occasion.</p>
+</section>
+<section id="applications" class="level2">
+<h2 class="anchored" data-anchor-id="applications">5.12.2 Applications</h2>
+<p>Hope et al.&nbsp;(2019) use MCS to examine the effect of time-varying maternal distress upon childhood mental health problems across ages 3, 5, 7, and 11 years. Using marginal structural models and allowing for treatment-confounder feedback (prior child mental health influencing maternal distress) and time-varying confounding via family circumstances, they show that maternal distress increases the risk of future mental health problems in children, even net of future maternal distress. A strength of the study is the use of QBA (<a href="./05-20-quantitative-bias-analysis.html">Section 5.20</a>) to examine sensitivity of the results to unobserved confounding, showing that – according to their reading of the literature – implausibly strong unobserved confounding would be necessary to explain associations.</p>
+<p>Pinto Pereira et al.&nbsp;(2020) use data from the NCDS and the National Survey of Health and Development (NSHD, the 1946 British Birth Cohort Study; for a cohort profile, see Wadsworth et al., 2006) to assess the causal effect of early- and mid-adulthood obesity upon physical functioning in mid-life. Using the parametric g-formula and an explicit counterfactual framework, the authors compare the causal effect of multiple treatment regimes: never obese, persistent obesity, and obesity beginning at particular ages. Their results suggest that obesity increases the risk of low physical functioning in mid-life, with greater effects attendant with obesity that began earlier in the life course. The authors also perform a causal mediation analysis; we delay discussion of this until <a href="./05-13-causal-mediation.html">Section 5.13</a>. Strengths of the study include: sharing of analytical code, the reduction of a complex exposure history to a small number of substantively interpretable regimes, and explicit discussion of study estimands, the assumptions upon which these are based, and the causal interpretation that can be made, subject to the assumptions being met.</p>
+</section>
+<section id="opportunities" class="level2">
+<h2 class="anchored" data-anchor-id="opportunities">5.12.3 Opportunities</h2>
+<p>Given repeated measurement of many factors across the life course, there is ample opportunity to assess the effects of time-varying exposures in CLS’s cohorts, as well as to include time-varying confounders in such analyses. Further, unlike many other cohort studies, data collection in CLS cohorts began at birth or early in life. This allows for testing of a wider range of life course theories, but also averts an issue with cohorts that have data collection starting later. Specifically, that exposure is implicitly assumed to begin at the point at which variables are measured (e.g., at recruitment in adulthood), though in practice exposure would likely begin before then (Gilsanz et al., 2022, term this late-study start confounding).</p>
+<p>As discussed, a key limitation is the age gap that can appear between consecutive sweeps – for instance, ten years elapse between the age 23 and 33 year sweeps in the NCDS. This could warrant focusing upon life course stages where measurement was more frequent (i.e., from age 42 years onward in the NCDS), or upon MCS and Next Steps, whose earlier sweeps are more closely spaced. Data linkages offer a further route around the problem, as administrative records may capture relevant information more frequently than survey sweeps.</p>
+<p>To our knowledge, most existing applications of g-methods in CLS’s cohorts have been causal mediation analyses (<a href="./05-13-causal-mediation.html">Section 5.13</a>) rather than comparisons of exposure regimes. Exposures that are measured repeatedly but to date have been studied largely with descriptive trajectory methods – e.g., on poverty spells, parental mental health, employment histories, housing tenure, area deprivation – could be fruitfully reassessed within a counterfactual framework.</p>
+
+
+</section>
+<section id="footnotes" class="footnotes footnotes-end-of-document" role="doc-endnotes">
+<hr>
+<ol>
+<li id="fn1"><p>The same principles also apply when one is interested in the history of different exposures, rather than repeated measures of the same exposure. For example, one might be interested in the joint effect of parental income in childhood and unemployment in adulthood on later health outcomes.<a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn2"><p>Time-invariant confounders could also have been added to this DAG, but weren’t for readability.<a href="#fnref2" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn3"><p>Note, the software DAGitty is less developed for handling time-varying exposures and time-dependent confounding.<a href="#fnref3" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn4"><p>Apart from g-methods, related developments have also emerged within the structural equation modelling (SEM) literature (De Stavola et al., 2015), though the focus is on SEM as a parametric framework for causal modelling rather than on the broader range of SEM applications familiar from applied research.<a href="#fnref4" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn5"><p>More precisely, the exact form of sequential conditional exchangeability depends on the exposure regime under consideration. The implication stated in the main text generally holds for static regimes, in which exposure is set according to a fixed sequence that does not depend on covariate history. Hernán &amp; Robins (2023) discuss more complex regimes for which this assumption may need to be formulated differently, and in some settings more stringently.<a href="#fnref5" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+</ol>
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copied!");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copied!");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp("https:\/\/cls-data\.github\.io\/causal-inference-review\/");
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+            // target, if specified
+            link.setAttribute("target", "_blank");
+            if (link.getAttribute("rel") === null) {
+              link.setAttribute("rel", "noopener");
+            }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+<nav class="page-navigation">
+  <div class="nav-page nav-page-previous">
+      <a href="./05-11-target-trial-emulation.html" class="pagination-link" aria-label="5.11 Target Trial Emulation">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-title">5.11 Target Trial Emulation</span></span>
+      </a>          
+  </div>
+  <div class="nav-page nav-page-next">
+      <a href="./05-13-causal-mediation.html" class="pagination-link" aria-label="5.13 Causal Mediation">
+        <span class="nav-page-text"><span class="chapter-title">5.13 Causal Mediation</span></span> <i class="bi bi-arrow-right-short"></i>
+      </a>
+  </div>
+</nav>
+</div> <!-- /content -->
+<footer class="footer">
+  <div class="nav-footer">
+    <div class="nav-footer-left">
+<p>Wright, Tomova, Danka, Ploubidis &amp; Silverwood · Centre for Longitudinal Studies, UCL</p>
+</div>   
+    <div class="nav-footer-center">
+      &nbsp;
+    <div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/CLS-Data/causal-inference-review/issues/new" class="toc-action"><i class="bi bi-github"></i>Report an issue</a></li></ul></div></div>
+    <div class="nav-footer-right">
+<p>Built with <a href="https://quarto.org">Quarto</a></p>
+</div>
+  </div>
+</footer>
+<script>var lightboxQuarto = GLightbox({"closeEffect":"zoom","descPosition":"bottom","loop":false,"openEffect":"zoom","selector":".lightbox"});
+(function() {
+  let previousOnload = window.onload;
+  window.onload = () => {
+    if (previousOnload) {
+      previousOnload();
+    }
+    lightboxQuarto.on('slide_before_load', (data) => {
+      const { slideIndex, slideNode, slideConfig, player, trigger } = data;
+      const href = trigger.getAttribute('href');
+      if (href !== null) {
+        const imgEl = window.document.querySelector(`a[href="${href}"] img`);
+        if (imgEl !== null) {
+          const srcAttr = imgEl.getAttribute("src");
+          if (srcAttr && srcAttr.startsWith("data:")) {
+            slideConfig.href = srcAttr;
+          }
+        }
+      } 
+    });
+  
+    lightboxQuarto.on('slide_after_load', (data) => {
+      const { slideIndex, slideNode, slideConfig, player, trigger } = data;
+      if (window.Quarto?.typesetMath) {
+        window.Quarto.typesetMath(slideNode);
+      }
+    });
+  
+  };
+  
+})();
+          </script>
+
+
+
+
+<script src="site_libs/quarto-html/zenscroll-min.js"></script>
+</body></html>

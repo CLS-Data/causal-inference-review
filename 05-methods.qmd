@@ -1,0 +1,28 @@
+# 5 The Methods of Causal Inference {#the-methods-of-causal-inference}
+
+In this section, we list individual methods that can, when assumptions are met, either directly help estimate causal effects with CLS's cohort data, or strengthen any causal inferences made. Generally, we focus on methods that account for confounding, though methods to account for measurement error or selection bias are also discussed. This section is something of a gallimaufry: some of these methods relate to statistical *estimators* (e.g., multivariable regression; [Section 5.1](05-01-control-via-regression-adjustment.qmd)), others to identification *strategies* (e.g., instrumental variables; [Section 5.9](05-09-instrumental-variables.qmd)), and others to *falsification tests* (e.g., negative controls; [Section 5.15](05-15-negative-control-outcomes-and-exposures.qmd)). As with the 'Three Approaches to Causal Inference' described in [Section 3](03-approaches.qmd), the individual methods are not mutually exclusive, and a single study may use a mix of them (e.g., multiple imputation to address missing data, with statistical control to meet the assumptions behind instrumental variables analysis).
+
+For each method, we provide three pieces of information: Method, Applications, and Opportunities. *Method* provides a brief overview of the method, its strengths and limitations, with references for further reading. The focus is on intuition, rather than the statistical and algorithmic nuts and bolts. *Applications* gives examples of papers using the method with CLS data. We focus on particularly well-executed studies or examples that demonstrate issues that can arise. For other examples, please search the [CLS Bibliography website](https://www.bibliography.cls.ucl.ac.uk/). *Opportunities* discusses general research ideas that could utilise the method in question with CLS data. Readers interested in learning more about these methods are invited to read textbooks by Huntington-Klein (2022, 2026), Cunningham (2021), Fox et al. (2021), Rosenbaum (2019, 2020), Hernán and Robins (2023), and van Buuren (2018). Some of the examples and explanatory material in this section are derived from these textbooks.
+
+**Sections**
+
+- [5.1 Control via Regression Adjustment](05-01-control-via-regression-adjustment.qmd)
+- [5.2 Matching](05-02-matching.qmd)
+- [5.3 Inverse Probability of Treatment Weighting](05-03-inverse-probability-of-treatment-weighting.qmd)
+- [5.4 Missing Data Methods](05-04-missing-data-methods.qmd)
+- [5.5 (Longitudinal) Fixed Effects](05-05-longitudinal-fixed-effects.qmd)
+- [5.6 Difference in Differences](05-06-difference-in-differences.qmd)
+- [5.7 Study-Initiated Experiments](05-07-study-initiated-experiments.qmd)
+- [5.8 Natural Experiments](05-08-natural-experiments.qmd)
+- [5.9 Instrumental Variables](05-09-instrumental-variables.qmd)
+- [5.10 Regression Discontinuity Designs](05-10-regression-discontinuity-designs.qmd)
+- [5.11 Target Trial Emulation](05-11-target-trial-emulation.qmd)
+- [5.12 G-methods for Time-Varying Exposures](05-12-g-methods-for-time-varying-exposures.qmd)
+- [5.13 Causal Mediation](05-13-causal-mediation.qmd)
+- [5.14 Family Designs](05-14-family-designs.qmd)
+- [5.15 Negative Control Outcomes and Exposures](05-15-negative-control-outcomes-and-exposures.qmd)
+- [5.16 Cross-Context Analysis](05-16-cross-context-analysis.qmd)
+- [5.17 Biases of Known Direction](05-17-biases-of-known-direction.qmd)
+- [5.18 Differential Effects](05-18-differential-effects.qmd)
+- [5.19 Reasons for Effects](05-19-reasons-for-effects.qmd)
+- [5.20 Quantitative Bias Analysis](05-20-quantitative-bias-analysis.qmd)

@@ -1,0 +1,149 @@
+/*-- scss:defaults --*/
+
+@import url('https://fonts.googleapis.com/css2?family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;0,8..60,700;1,8..60,400;1,8..60,600&family=Source+Sans+3:ital,wght@0,400;0,600;0,700;1,400&display=swap');
+
+// CLS / UCL palette
+$cls-dark:    #361A54;
+$cls-vivid:   #993AFF;
+$cls-mid:     #B982FF;
+$cls-light:   #DDBDFF;
+$cls-lightest:#EEDEFF;
+$cls-cyan:    #30D6FF;
+
+$font-family-sans-serif: "Source Sans 3", "Helvetica Neue", Helvetica, Arial, sans-serif;
+$font-family-serif:      "Source Serif 4", Georgia, "Times New Roman", serif;
+$font-family-base:       $font-family-serif;
+$headings-font-family:   $font-family-sans-serif;
+$headings-font-weight:   600;
+$font-size-base:         1.06rem;
+$line-height-base:       1.7;
+
+$body-color:   #1f1f24;
+$link-color:   #5a2ca0;
+$primary:      $cls-dark;
+
+$sidebar-bg:   #f7f5fa;
+$sidebar-fg:   #2b2b33;
+
+$toc-color:    #6b3fb5;
+$toc-active-border: $cls-vivid;
+
+$callout-border-width: 4px;
+
+/*-- scss:rules --*/
+
+// ---------- headings ----------
+h1, h2, h3, h4, .title {
+  color: $cls-dark;
+  letter-spacing: -0.01em;
+}
+h1.title { font-size: 2.2rem; }
+#title-block-header .quarto-title .title { font-size: 2.2rem; }
+h2 { font-size: 1.55rem; margin-top: 2.4rem; border-bottom: none; padding-bottom: 0; }
+h3 { font-size: 1.25rem; margin-top: 1.8rem; }
+h4 { font-size: 1.05rem; margin-top: 1.4rem; font-weight: 700; }
+
+// ---------- body text ----------
+p { margin-bottom: 1.05rem; }
+.content ol li, .content ul li { margin-bottom: .35rem; }
+.underline { text-decoration: underline; }
+strong { font-weight: 600; }
+
+blockquote {
+  border-left: 3px solid $cls-light;
+  padding: .25rem 0 .25rem 1.1rem;
+  color: #3e3e46;
+  font-size: 1rem;
+}
+
+// ---------- sidebar / navigation ----------
+.sidebar-navigation, .sidebar-title, .quarto-secondary-nav, nav#TOC, .nav-page {
+  font-family: $font-family-sans-serif;
+}
+.sidebar-title a { color: $cls-dark; font-weight: 700; }
+.sidebar-navigation .sidebar-item .sidebar-item-text { font-size: .92rem; }
+.sidebar-navigation .sidebar-item a.active { color: $cls-dark; font-weight: 600; }
+.sidebar-navigation .sidebar-section .sidebar-item-text { font-weight: 600; }
+.sidebar-navigation .sidebar-item-container:hover .sidebar-item-text { color: $cls-vivid; }
+.sidebar #quarto-sidebar .book-cover img,
+.sidebar .sidebar-logo img { max-width: 160px; }
+#quarto-margin-sidebar nav a { font-size: .86rem; }
+.nav-page a { color: $cls-dark; }
+
+// ---------- figures ----------
+figure.figure, .quarto-figure { text-align: center; margin: 1.5rem auto 1.75rem; }
+figure.figure img, .quarto-figure img { max-width: 100%; height: auto; }
+figcaption, .figure-caption {
+  font-family: $font-family-sans-serif;
+  font-size: .9rem;
+  color: #4a4a52;
+  text-align: left;
+  margin-top: .6rem;
+  line-height: 1.5;
+}
+.quarto-figure-center > figure > figcaption { text-align: left; }
+figure.figure figcaption strong, .figure-caption strong { color: $cls-dark; }
+
+// ---------- tables ----------
+table caption, .table caption {
+  caption-side: top;
+  font-family: $font-family-sans-serif;
+  font-size: .9rem;
+  color: #4a4a52;
+  padding: 0 0 .6rem 0;
+  line-height: 1.5;
+}
+table caption strong { color: $cls-dark; }
+.table { font-family: $font-family-sans-serif; font-size: .92rem; margin: 1.25rem 0 2rem; }
+.table th { font-weight: 600; background: #faf8fd; vertical-align: middle; }
+.table td, .table th { padding: .45rem .6rem; vertical-align: middle; }
+.table td .math, .table th .math { font-size: .95em; }
+.rct-table th, .rct-table td { text-align: center; }
+.rct-table .text-end { text-align: right; }
+.rct-table td.shaded { background: #e4e4e8; }
+.rct-table tr.summary th, .rct-table tr.summary td { border-top: 2px solid #bbb; }
+
+// ---------- callouts ----------
+.callout.callout-style-default {
+  border-left-color: $cls-vivid;
+  background: #faf8fd;
+}
+.callout.callout-style-default .callout-header { background: $cls-lightest; font-family: $font-family-sans-serif; font-weight: 600; }
+.callout.callout-style-simple { background: #faf8fd; border-left-color: $cls-vivid; }
+.callout-body p:last-child { margin-bottom: 0; }
+
+// ---------- equations ----------
+div[id^="equation-"] { margin: .5rem 0 1rem; }
+
+// ---------- footnotes & references ----------
+.footnotes { font-size: .92rem; }
+.footnotes ol li p { margin-bottom: .5rem; }
+div.csl-entry {
+  padding-left: 2em;
+  text-indent: -2em;
+  margin-bottom: .75rem;
+  font-size: .97rem;
+  line-height: 1.55;
+}
+
+// ---------- landing page ----------
+.quarto-title-meta { font-family: $font-family-sans-serif; }
+.abstract-box {
+  background: #faf8fd;
+  border: 1px solid $cls-lightest;
+  border-radius: 6px;
+  padding: 1.1rem 1.4rem;
+  margin: 1.25rem 0 1.5rem;
+}
+.abstract-box p:last-child { margin-bottom: 0; }
+.cite-box {
+  font-family: $font-family-sans-serif;
+  font-size: .95rem;
+  background: #f4f4f6;
+  border-radius: 6px;
+  padding: .9rem 1.2rem;
+}
+.cite-box p:last-child { margin-bottom: 0; }
+
+// ---------- footer ----------
+.nav-footer { font-family: $font-family-sans-serif; font-size: .85rem; color: #55555e; }

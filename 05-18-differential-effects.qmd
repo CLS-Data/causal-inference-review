@@ -1,0 +1,51 @@
+# 5.18 Differential Effects {#differential-effects}
+
+## 5.18.1 Method {#method}
+
+The negative control exposure design exploits situations where the same set of confounders has effects on multiple 'exposures' only some of which plausibly have a causal effect upon the outcome of interest. Confounders like these are said to be "generic" (Rosenbaum, 2019), having multiple impacts on the world. For instance, a generalised disposition to risk may influence consumption of several drugs, meaning that people who are more likely to smoke crack cocaine may be more likely to inject heroin. A generalised interest in health could lead one to exercise more and follow a good diet.
+
+The effects of a generic bias may be competing or the overlap between them incomplete -- for instance, one may become addicted to one drug, but not another. Those who perform just one of these behaviours may be more similar in terms of the confounding factor to those who perform only the other than to those who perform neither, but in standard observational research both would appear in the comparison group. Instead of comparing exposed vs. non-exposed groups, the differential effect design (Rosenbaum, 2006, 2013) compares individuals exposed to only one of two factors in lieu of the other to reduce imbalances on generic confounders -- e.g., those who exercise a lot but don't follow a good diet may be more similar to those who follow a good diet but don't exercise a lot, than those who exercise a lot are similar to those who don't exercise a lot (regardless of either group's diet).
+
+The differential effects design is another expression of the principle Zubizarreta et al. (2018) term 'isolation' -- a smaller comparison is made that is less biased than the overall association in the wider system. Two examples discussed by Paul Rosenbaum in *Design of Observational Studies* (Rosenbaum, 2020) clarify the differential effects design as well as highlight its limitations:
+
+1.  Non-steroidal anti-inflammatory drugs, such as ibuprofen, may reduce the risk of Alzheimer's, but pre-clinical Alzheimer's may reduce pain sensitivity leading to lower ibuprofen use. However, pain sensitivity should affect the use of other analgesics, too, including ones that are not anti-inflammatory, such as paracetamol. Comparing exclusive ibuprofen users with exclusive paracetamol users is useful for gauging the effect of anti-inflammatory drugs on Alzheimer's as this would likely reduce imbalance on pain sensitivity, though other confounders may remain.[^52]
+
+2.  Understanding the effect of cannabis use during pregnancy on child development is challenging as mothers who smoke cannabis during pregnancy differ sharply from those who do not (Columns 2, 3 & 5, [Table 5.6](#table-5-6)). Cannabis users are more similar to those who use crack cocaine than those who use no drug, however; comparing exclusive cannabis users with exclusive crack cocaine users leads to an analytical sample less imbalanced on potential confounders (Columns 3-4, [Table 5.6](#table-5-6)). Nevertheless, maternal crack cocaine use likely has an independent effect on childhood development.
+
+::: {#table-5-6}
+
++---------------------------------+---------+----------+---------+---------+
+|                                 | Neither | Cannabis | Crack   | Both    |
+|                                 |         |          |         |         |
+| Number of Babies                |         |          |         |         |
+|                                 +---------+----------+---------+---------+
+|                                 | 931     | 11       | 39      | 5       |
++=================================+=========+==========+=========+=========+
+| Cigarette use during pregnancy  | 22%     | 100%     | 92%     | 100%    |
++---------------------------------+---------+----------+---------+---------+
+| Alcohol use during pregnancy    | 23%     | 64%      | 74%     | 100%    |
++---------------------------------+---------+----------+---------+---------+
+| Late or no prenatal care        | 10%     | 27%      | 48%     | 40%     |
++---------------------------------+---------+----------+---------+---------+
+| Less than high school education | 23%     | 54%      | 49%     | 60%     |
++---------------------------------+---------+----------+---------+---------+
+| Married                         | 34%     | 0%       | 3%      | 0%      |
++---------------------------------+---------+----------+---------+---------+
+| Did not want to get pregnant    | 32%     | 46%      | 59%     | 80%     |
++---------------------------------+---------+----------+---------+---------+
+
+: **Table 5.6:** An Example Differential Effect Study (figures from Rosenbaum, 2020).
+
+:::
+
+By comparing two exposures, the 'effect' identified is not directly informative of the effect of an exposure vs. its absence. However, this may still be useful if the comparison factor does not plausibly have an effect on the outcome (i.e., it is a type of placebo test; Example #1) or where the effect of one is known and so the effect of the other can be back-transformed, or where the direction of effect of the comparator is known and exceeding this is informative (similar to reasoning in Biases of Known Direction, [Section 5.17](05-17-biases-of-known-direction.qmd)). The differential effect design can be particularly beneficial in drug safety research where side-effects for a specific health complaint may only be expected to exist for one treatment under study (again, as with Example #1). Regardless, the information gleaned from the differential effects design may be useful in any case as part of a strategy of triangulation. An additional limitation of the design is that, where behaviours are rare, by focusing on subgroups of the population, statistical power may be much lower.
+
+## 5.18.2 Applications {#applications}
+
+Applications of this method using any data appear to be few and we identified none using CLS data -- according to Google Scholar, the Rosenbaum (2006) paper only has 45 citations (as of January 2026), many of which are other methodological papers.
+
+## 5.18.3 Opportunities {#opportunities}
+
+Several behaviours plausibly reflect common traits and impulses -- e.g., health-seeking behaviour or risk aversion, in general. Given the variety of behaviours (e.g., on drug use) measured in the cohorts, there may be many possible applications. However, as the differential effects design uses only subsets of the data, the opportunities to obtain sufficient sample sizes with the method in CLS data may be fewer, though will increase if the cohorts are combined together or with similar studies.
+
+[^52]: Note, preferences are sometimes used as Instrumental Variables (e.g., in the judge fixed effect or physician preference designs).

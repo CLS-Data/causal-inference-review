@@ -1,0 +1,37 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="480" height="680" viewBox="0 0 480 680" role="img" aria-label="Causal Inference in the CLS Cohort Studies">
+  <rect width="480" height="680" fill="#361A54"/>
+  <rect x="0" y="0" width="480" height="8" fill="#993AFF"/>
+  <!-- stylised DAG motif -->
+  <g stroke="#B982FF" stroke-width="3" fill="none">
+    <line x1="120" y1="150" x2="230" y2="90"/>
+    <line x1="120" y1="150" x2="350" y2="150"/>
+    <line x1="230" y1="90" x2="350" y2="150"/>
+  </g>
+  <g fill="#FAFAFA">
+    <circle cx="120" cy="150" r="14"/>
+    <circle cx="350" cy="150" r="14"/>
+  </g>
+  <circle cx="230" cy="90" r="14" fill="#361A54" stroke="#FAFAFA" stroke-width="3" stroke-dasharray="6 5"/>
+  <g fill="#361A54" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-size="13" font-weight="700" text-anchor="middle">
+    <text x="120" y="155">X</text>
+    <text x="350" y="155">Y</text>
+  </g>
+  <text x="230" y="95" fill="#FAFAFA" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-size="13" font-weight="700" text-anchor="middle">U</text>
+
+  <g fill="#FAFAFA" font-family="Helvetica Neue, Helvetica, Arial, sans-serif">
+    <text x="48" y="300" font-size="46" font-weight="700">Causal</text>
+    <text x="48" y="352" font-size="46" font-weight="700">Inference</text>
+    <text x="48" y="404" font-size="30" font-weight="400">in the CLS</text>
+    <text x="48" y="442" font-size="30" font-weight="400">Cohort Studies</text>
+  </g>
+  <rect x="48" y="474" width="70" height="4" fill="#30D6FF"/>
+  <g fill="#DDBDFF" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-size="16">
+    <text x="48" y="520">Liam Wright · Georgia D. Tomova</text>
+    <text x="48" y="544">Martin N. Danka · George B. Ploubidis</text>
+    <text x="48" y="568">Richard J. Silverwood</text>
+  </g>
+  <g fill="#FAFAFA" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-size="15" font-weight="600">
+    <text x="48" y="628">Centre for Longitudinal Studies</text>
+    <text x="48" y="650" font-weight="400" fill="#DDBDFF">University College London</text>
+  </g>
+</svg>

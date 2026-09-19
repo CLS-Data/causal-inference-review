@@ -1,0 +1,9 @@
+.quarto/
+.DS_Store
+*_files/
+/.luarc.json
+/tools/__pycache__/
+/.claude/
+
+/.quarto/
+**/*.quarto_ipynb

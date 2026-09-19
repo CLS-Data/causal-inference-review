@@ -1,0 +1,798 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en-GB" xml:lang="en-GB"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.8.27">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="description" content="A guide to methods and research designs for causal inference with the Centre for Longitudinal Studies’ cohort data.">
+
+<title>3 Three Approaches to Causal Inference – Causal Inference in the CLS Cohort Studies</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+</style>
+
+
+<script src="site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="site_libs/quarto-nav/headroom.min.js"></script>
+<script src="site_libs/clipboard/clipboard.min.js"></script>
+<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="site_libs/quarto-search/fuse.min.js"></script>
+<script src="site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="./">
+<link href="./04-attributes.html" rel="next">
+<link href="./02-problem.html" rel="prev">
+<link href="./images/favicon.svg" rel="icon" type="image/svg+xml">
+<script src="site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="site_libs/quarto-html/axe/axe-check.js" type="module"></script>
+<script src="site_libs/quarto-html/popper.min.js"></script>
+<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="site_libs/quarto-html/anchor.min.js"></script>
+<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-ed96de9b727972fe78a7b5d16c58bf87.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="site_libs/bootstrap/bootstrap-6be7f6e0362b36c773b9fb5cb1e95ee5.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "sidebar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "start",
+  "type": "textbox",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+<style>html{ scroll-behavior: smooth; }</style>
+
+
+</head>
+
+<body class="nav-sidebar docked quarto-light">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+  <nav class="quarto-secondary-nav">
+    <div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
+      </button>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./03-approaches.html"><span class="chapter-title">3 Three Approaches to Causal Inference</span></a></li></ol></nav>
+        <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        </a>
+      <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
+        <i class="bi bi-search"></i>
+      </button>
+    </div>
+  </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation docked overflow-auto">
+    <div class="pt-lg-2 mt-2 text-left sidebar-header sidebar-header-stacked">
+      <a href="./index.html" class="sidebar-logo-link">
+      <img src="./images/cover.svg" alt="Cover: Causal Inference in the CLS Cohort Studies" class="sidebar-logo light-content py-0 d-lg-inline d-none">
+      <img src="./images/cover.svg" alt="Cover: Causal Inference in the CLS Cohort Studies" class="sidebar-logo dark-content py-0 d-lg-inline d-none">
+      </a>
+    <div class="sidebar-title mb-0 py-0">
+      <a href="./">Causal Inference in the CLS Cohort Studies</a> 
+        <div class="sidebar-tools-main">
+    <a href="https://github.com/CLS-Data/causal-inference-review" title="Source Code" class="quarto-navigation-tool px-1" aria-label="Source Code"><i class="bi bi-github"></i></a>
+</div>
+    </div>
+      </div>
+        <div class="mt-2 flex-shrink-0 align-items-center">
+        <div class="sidebar-search">
+        <div id="quarto-search" class="" title="Search"></div>
+        </div>
+        </div>
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">About this guide</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./01-introduction.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">1 Introduction</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./02-problem.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">2 The Problem of Causal Inference with Observational Data</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./03-approaches.html" class="sidebar-item-text sidebar-link active"><span class="chapter-title">3 Three Approaches to Causal Inference</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./04-attributes.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">4 Attributes of CLS’s Cohort Studies That Support Causal Inference</span></a>
+  </div>
+</li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a href="./05-methods.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">5 The Methods of Causal Inference</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="false" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./05-01-control-via-regression-adjustment.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">5.1 Control via Regression Adjustment</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./05-02-matching.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">5.2 Matching</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./05-03-inverse-probability-of-treatment-weighting.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">5.3 Inverse Probability of Treatment Weighting</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./05-04-missing-data-methods.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">5.4 Missing Data Methods</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./05-05-longitudinal-fixed-effects.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">5.5 (Longitudinal) Fixed Effects</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./05-06-difference-in-differences.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">5.6 Difference in Differences</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./05-07-study-initiated-experiments.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">5.7 Study-Initiated Experiments</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./05-08-natural-experiments.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">5.8 Natural Experiments</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./05-09-instrumental-variables.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">5.9 Instrumental Variables</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./05-10-regression-discontinuity-designs.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">5.10 Regression Discontinuity Designs</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./05-11-target-trial-emulation.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">5.11 Target Trial Emulation</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./05-12-g-methods-for-time-varying-exposures.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">5.12 G-methods for Time-Varying Exposures</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./05-13-causal-mediation.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">5.13 Causal Mediation</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./05-14-family-designs.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">5.14 Family Designs</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./05-15-negative-control-outcomes-and-exposures.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">5.15 Negative Control Outcomes and Exposures</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./05-16-cross-context-analysis.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">5.16 Cross-Context Analysis</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./05-17-biases-of-known-direction.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">5.17 Biases of Known Direction</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./05-18-differential-effects.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">5.18 Differential Effects</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./05-19-reasons-for-effects.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">5.19 Reasons for Effects</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./05-20-quantitative-bias-analysis.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">5.20 Quantitative Bias Analysis</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./06-discussion.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">6 Discussion</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./07-statements.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">7 Statements</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./08-appendix.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">8 Appendix</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./references.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">References</span></a>
+  </div>
+</li>
+    </ul>
+    </div>
+</nav>
+<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#model-based-approaches" id="toc-model-based-approaches" class="nav-link active" data-scroll-target="#model-based-approaches">3.1 Model-Based Approaches</a></li>
+  <li><a href="#design-based-approaches" id="toc-design-based-approaches" class="nav-link" data-scroll-target="#design-based-approaches">3.2 Design-Based Approaches</a></li>
+  <li><a href="#elaborate-theories" id="toc-elaborate-theories" class="nav-link" data-scroll-target="#elaborate-theories">3.3 Elaborate Theories</a></li>
+  </ul>
+<div class="toc-actions"><ul><li><a href="https://github.com/CLS-Data/causal-inference-review/issues/new" class="toc-action"><i class="bi bi-github"></i>Report an issue</a></li></ul></div></nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title"><span id="three-approaches-to-causal-inference" class="quarto-section-identifier"><span class="chapter-title">3 Three Approaches to Causal Inference</span></span></h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<p>With the basis gained from <a href="./02-problem.html">Section 2</a>, we now outline three approaches for attempting to make causal inferences with cohort data: model-based approaches, design-based approaches and <em>elaborate theories</em>. These approaches are not mutually exclusive and the boundaries between them are not sharp. They do not, for instance, map onto a set of non-overlapping methods – a particular study may use a combination of approaches, as the assumptions of one may only be correct when using another, or alternatively could use multiple approaches to examine whether each, having separate biases, triangulate upon the same answer. For example, an instrumental variable (IV) study may also use model-based statistical control for known confounders to improve the plausibility of the IV assumptions (Brumpton et al., 2020). Regardless, delineating and describing the three approaches helps clarify the virtues and limitations of each, and provides a useful organising schema for the specific causal inference methods detailed in <a href="./05-methods.html">Section 5</a>.</p>
+<section id="model-based-approaches" class="level2">
+<h2 class="anchored" data-anchor-id="model-based-approaches">3.1 Model-Based Approaches</h2>
+<p>The model-based approach is the most frequently used in quantitative research. In this approach, the researcher develops a statistical model – or uses other related algorithms, such as matching – to account for the influence of factors that bias the relationship between exposure and outcome in the available data. The model developed reflects the researcher’s beliefs about the underlying data-generating process: accounting for biasing influences is <em>post hoc</em>. The purpose of the model is to remove the influence of biasing factors in the exposure or outcome – to “attempt to compare people who are not directly comparable” (Rosenbaum, 2020). The model-based approach is often referred to as the non-equivalent group design (Reichardt, 2019), which highlights the fundamental problem.</p>
+<p>The most popular model-based method is multivariable regression, where variables other than the exposure are added as covariates and their influence on the outcome modelled. Stratification – where associations are calculated within sub-strata of the data (e.g., males and females, separately) and then pooled – can also be considered a model-based approach, though it does not involve modelling the influence of the stratifying variables directly; within strata, exposure assignment is assumed to be as-if random (potentially after adjustment for additional variables, as described above).</p>
+<p>Model-based approaches can be more principled or less. With correct knowledge of the data-generating process (e.g., how individuals are assigned to the exposure), accurate measurement of all relevant factors, and an appropriate understanding of how to incorporate the data into a model (e.g., with the correct functional form and sensible choice of adjustment set), the model-based approach would recover a causal effect, sampling variation notwithstanding. However, this is not how the model-based approach is typically used. Perhaps more frequent are ‘Causal Salad’ approaches (McElreath, 2020) where an array of covariates is haphazardly thrown into a statistical model, with only a vague sense of how these will ameliorate bias as the researcher has not systematically considered the causal network within which these covariates sit; as shown in <a href="./02-problem.html#confounding-bias">Section 2.2.3</a>, unaware, a researcher can increase bias by conditioning on certain variables.</p>
+<p>Though researchers using model-based approaches may note (usually in a Limitations section) the possibility of bias remaining, the ambition is to have obtained a causal estimate. The caveat is regularly vague or noncommittal and the researcher may write the rest of the paper as if a causal estimate had been obtained, though it had not. Because the model-based approach relies upon recapitulating the data-generating process, and in many circumstances this is unknown, it is easy for analyses to obtain biased estimates of causal effects and for researchers to fool themselves into believing this is not the case.</p>
+</section>
+<section id="design-based-approaches" class="level2">
+<h2 class="anchored" data-anchor-id="design-based-approaches">3.2 Design-Based Approaches</h2>
+<p>The design-based approach differs from the model-based approach in that the researcher uses knowledge about treatment assignment to identify <em>a priori</em> circumstances where treatment assignment should be as-if random. Data are analysed to exploit this ‘exogenous’ (originating outside the system) variation to obtain a causal effect. Examples of this approach include studies that use natural experiments or quasi-experimental approaches such as regression discontinuity or instrumental variable designs, where for some set of individuals, exposure is proposed to be unrelated to factors that confound the relationship of interest more generally.</p>
+<p>As with the RCT, randomness of the assignment mechanism can guarantee exchangeability, even without detailed understanding of what potential confounders may be. For instance, who wins a prize among lottery players is a fully random process (that is, unless the game is rigged), which is why lottery wins have been used to study the causal effect of wealth on health (Cesarini et al., 2016). However, not all design-based approaches may exploit straightforwardly random processes. Assignment may be for fully legible, predictable reasons, but still be exploitable in a design-based approach if it can be argued that assignment is not related to (potential) outcomes, except through its effect on exposure. This is the basis of many instrumental variable studies. For instance, in a classic paper in political economy, Acemoglu et al.&nbsp;(2001) use early European settler mortality rates as an instrument for whether a colonising country set up extractive institutions in a colonised country in order to assess the effect of institutional quality on long-term economic development. Their argument is that countries where tropical disease made mortality high would be less attractive for individuals from the colonising nation to settle in, thereby incentivising the development of institutions oriented to short-term resource extraction. Identifying this variation and successfully making the argument it meets the conditions for a valid instrumental variable (<a href="./05-09-instrumental-variables.html">Section 5.9</a>) requires deep domain-specific knowledge.</p>
+<p>Additionally, some design-based methods are not able to account for all sources of bias but instead use knowledge about assignment to account for distinct classes of confounder. For instance, sibling designs account for shared familial factors by comparing outcomes among siblings discordant on an exposure, without knowing exactly what these shared familial factors are (Donovan &amp; Susser, 2011): factors that are shared do not contribute to the outcome variance within sibling sets and so cannot confound the association between exposure and outcome, though factors that aren’t shared still have the potential to confound associations. The sibling design and other related methods are examples of <em>isolation</em>, where a smaller set of comparisons is exploited that are expected to be less biased than the wider set of comparisons that could be made (Zubizarreta et al., 2018).</p>
+</section>
+<section id="elaborate-theories" class="level2">
+<h2 class="anchored" data-anchor-id="elaborate-theories">3.3 Elaborate Theories</h2>
+<p>The model- and design-based approaches are concerned with causal effect estimation. The Elaborate Theories approach follows a different tack and focuses more broadly on strengthening causal inference (which, according to Shadish &amp; Cook, 1999, is ‘more a matter of logic than statistics’). Instead of being occupied with identifying random variation, it takes theories seriously and asks what specific predictions a theory makes about the world. Instances where these predictions differ from those of competing theories are where causal inferences can be made. Two variables, X and Y, being associated because X <em>causes</em> Y is a theory, but X and Y being associated because they are confounded by U is a theory, too. Both theories may entail a larger set of (more specific) predictions – a <em>pattern</em> of anticipated empirical observations (Trochim, 1985, 1989) – that may not fully overlap; the places of non-overlap are where useful information can be gleaned.</p>
+<p>An historical example may make this more concrete. In the mid-19th century, London was beset by outbreaks of cholera; one such outbreak in August 1854 centred around Soho’s Broad Street pump (Adhikari et al., 2024; Coleman, 2019). The prevailing theory of the time was that cholera was transmitted via <em>miasmas</em> – bad airs. A prediction of this theory was that individuals living close together would succumb to the illness as they breathed the same air. The physician John Snow had another theory, however – that cholera was caused by contaminated water. This theory was supported by several observations that were inconsistent with miasma causing the disease, including: no deaths among workers at the nearby Lion Brewery, who did not take water from the Broad Street pump (instead drinking the beer they produced); and the case of Mrs Eley, a deceased resident of Hampstead, who had water from the Broad Street pump delivered to her house as she liked the taste, an unfortunate preference, given a cesspit containing sewage from cholera victims had been leaking into the well the pump drew from. At one level, both the miasma and contaminated water theories made the same prediction – clustering of cases in certain areas – but at a more specific level, the predictions varied, and this allowed John Snow to provide compelling evidence, even with purely observational data, of how cholera was caused.</p>
+<p>Exceptions to theories like the inebriated employees of Lion Brewery are rarely so vivid, but the Elaborate Theory approach can still prove insightful when arguments are more dry. For instance, Elaborate Theory-style reasoning has been used to appraise explanations of the well-established association between socioeconomic position (SEP) and health. One such explanation is that associations are explained by confounding by cognitive ability (Gottfredson, 2004), rather than a causal effect of SEP as more commonly claimed (Link &amp; Phelan, 1995; Marmot, 2015, 2016). One corollary of the former theory is that correlations between SEP and health should be stronger for measures of SEP that are more closely related to cognitive ability (education &gt; socioeconomic class &gt; income) as confounding would be stronger, a prediction not necessarily entailed by <em>causal</em> explanations of the association (e.g., associations driven by the causal effect of differences in financial resources). The empirical observation that associations are not stronger for measures of SEP more closely related to cognitive ability is therefore evidence against cognitive ability being sufficient to explain the social gradient in health (Singh-Manoux et al., 2005) and refocuses attention on other possible confounders.</p>
+<p>The Elaborate Theories approach had its first expression in Sir Ronald Fisher’s gnomic reply to a question from William Cochran on how to move from correlation to causation in observational data (‘Make your theories elaborate’; quoted in Cochran, 1965). Cochran concurred with this assessment (“this multi-phasic attack is one of the most potent weapons in observational studies”) and the approach has since been staunchly and eloquently advocated by, among others, the statistician Paul Rosenbaum, including in his superlative book <em>Observation and Experiment</em> (Rosenbaum, 2019), which we highly recommend. See also Rosenbaum (2023), Reichardt (2019), Shadish &amp; Cook (1999), Shadish et al.&nbsp;(2002), and Trochim (1985, 1989).<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a></p>
+<p>How does one make a theory elaborate in practice? Several methods exploit the logic of Elaborate Theories and are particularly suited to cohort data. Generally, these exploit situations where an important hypothesised mechanism of action (either for the main causal effect of interest or for competing explanations) is expected to be absent or else stronger or weaker than otherwise. Above, confounding was expected to act more strongly for some measures of SEP than others. The following examples give additional strategies.</p>
+<ul>
+<li><p><strong>Variation in active ingredient:</strong> Observational studies attempting to ascertain whether cannabis has a causal impact on schizophrenia risk may exploit the expectation that correlations between cannabis use and schizophrenia should be stronger where concentrations of THC (the supposed schizophrenia-inducing compound) are greater (Gage et al., 2016).</p></li>
+<li><p><strong>Variation in confounding structures:</strong> Observational studies that want to ascertain the effect of breastfeeding on child development may compare associations in settings where the social patterning of breastfeeding (a major hypothesised confounder) is entirely opposite (Brion et al., 2011).</p></li>
+<li><p><strong>Specificity of association:</strong> Observational studies attempting to ascertain the carcinogenic effect of tobacco use could determine whether the profile of specific cancers is consistent with how the tobacco is used – for instance, an excess of throat cancers among cigarette smokers (who inhale smoke) and mouth cancers among cigar smokers (who do not) (Cornfield et al., 1959).</p></li>
+<li><p><strong>Timing of effects:</strong> The legalisation of abortion may reduce aggregate crime rates by disproportionately leading to terminations of pregnancies that would have yielded children at higher risk of going on to commit crimes (Donohue &amp; Levitt, 2001). This effect should only be observed as the cohorts affected by such legalisation grow to an age where they are more likely to commit crime (i.e., adolescence and early adulthood). Similarly, flu vaccination should only have effects on mortality at times of the year when influenza is prevalent (L. A. Jackson et al., 2006).</p></li>
+<li><p><strong>Absence of hypothesised mechanism:</strong></p>
+<ul>
+<li><p><em>In a subgroup</em>: Observational studies that want to ascertain the effect of alcohol on cardiovascular disease may surmise that genes related to alcohol use (such as the ALDH2 gene that determines the comfort with which one can metabolise alcohol) should also be related to cardiovascular disease but only among populations where alcohol is used (L. Chen et al., 2008).</p></li>
+<li><p><em>In a historical period</em>: Observational studies that seek to understand the effect of socioeconomic position on a health outcome and posit access to health information and technologies as a key mediator may examine changes in inequalities in health before and after relevant medical knowledge is discovered or publicised (Clouston et al., 2016).</p></li>
+<li><p><em>In a geographic area</em>: Observational studies attempting to ascertain whether policies to reduce teenage pregnancies were effective may investigate whether reductions in teenage pregnancy rates were confined to countries in which policies were implemented (Baxter et al., 2021).</p></li>
+</ul></li>
+</ul>
+<p>A concept related to Elaborate Theories is the <em>quasi-experiment device</em>. Studies using quasi-experimental devices utilise additional data to disambiguate an observation that would otherwise be ambiguous – e.g., to judge whether an association reflects a causal effect of interest or that of a competing theory (Rosenbaum, 2019). For instance, to assess whether the English Teenage Pregnancy Strategy achieved its aims, a quasi-experimental device would be to use comparator data from Scotland and Wales (Baxter et al., 2021).</p>
+
+
+</section>
+<section id="footnotes" class="footnotes footnotes-end-of-document" role="doc-endnotes">
+<hr>
+<ol>
+<li id="fn1"><p>The Elaborate Theories approach has alternatively been referred to as “pattern matching” (Reichardt, 2019; Trochim, 1985, 1989). Expressed by Shadish et al.&nbsp;(2002; quoted in Reichardt, 2019): “The more complex pattern that is successfully predicted, the less likely it is that alternative explanations could generate the same pattern, and so the more likely it is that the treatment had a real effect”.<a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+</ol>
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copied!");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copied!");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp("https:\/\/cls-data\.github\.io\/causal-inference-review\/");
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+            // target, if specified
+            link.setAttribute("target", "_blank");
+            if (link.getAttribute("rel") === null) {
+              link.setAttribute("rel", "noopener");
+            }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+<nav class="page-navigation">
+  <div class="nav-page nav-page-previous">
+      <a href="./02-problem.html" class="pagination-link" aria-label="2 The Problem of Causal Inference with Observational Data">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-title">2 The Problem of Causal Inference with Observational Data</span></span>
+      </a>          
+  </div>
+  <div class="nav-page nav-page-next">
+      <a href="./04-attributes.html" class="pagination-link" aria-label="4 Attributes of CLS's Cohort Studies That Support Causal Inference">
+        <span class="nav-page-text"><span class="chapter-title">4 Attributes of CLS’s Cohort Studies That Support Causal Inference</span></span> <i class="bi bi-arrow-right-short"></i>
+      </a>
+  </div>
+</nav>
+</div> <!-- /content -->
+<footer class="footer">
+  <div class="nav-footer">
+    <div class="nav-footer-left">
+<p>Wright, Tomova, Danka, Ploubidis &amp; Silverwood · Centre for Longitudinal Studies, UCL</p>
+</div>   
+    <div class="nav-footer-center">
+      &nbsp;
+    <div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/CLS-Data/causal-inference-review/issues/new" class="toc-action"><i class="bi bi-github"></i>Report an issue</a></li></ul></div></div>
+    <div class="nav-footer-right">
+<p>Built with <a href="https://quarto.org">Quarto</a></p>
+</div>
+  </div>
+</footer>
+
+
+
+
+<script src="site_libs/quarto-html/zenscroll-min.js"></script>
+</body></html>

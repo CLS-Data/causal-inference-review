@@ -1,0 +1,917 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en-GB" xml:lang="en-GB"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.8.27">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="description" content="A guide to methods and research designs for causal inference with the Centre for Longitudinal Studies’ cohort data.">
+
+<title>5.20 Quantitative Bias Analysis – Causal Inference in the CLS Cohort Studies</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+</style>
+
+
+<script src="site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="site_libs/quarto-nav/headroom.min.js"></script>
+<script src="site_libs/clipboard/clipboard.min.js"></script>
+<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="site_libs/quarto-search/fuse.min.js"></script>
+<script src="site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="./">
+<link href="./06-discussion.html" rel="next">
+<link href="./05-19-reasons-for-effects.html" rel="prev">
+<link href="./images/favicon.svg" rel="icon" type="image/svg+xml">
+<script src="site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="site_libs/quarto-html/axe/axe-check.js" type="module"></script>
+<script src="site_libs/quarto-html/popper.min.js"></script>
+<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="site_libs/quarto-html/anchor.min.js"></script>
+<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-ed96de9b727972fe78a7b5d16c58bf87.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="site_libs/bootstrap/bootstrap-6be7f6e0362b36c773b9fb5cb1e95ee5.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script src="site_libs/quarto-contrib/glightbox/glightbox.min.js"></script>
+<link href="site_libs/quarto-contrib/glightbox/glightbox.min.css" rel="stylesheet">
+<link href="site_libs/quarto-contrib/glightbox/lightbox.css" rel="stylesheet">
+<script id="quarto-search-options" type="application/json">{
+  "location": "sidebar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "start",
+  "type": "textbox",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+<style>html{ scroll-behavior: smooth; }</style>
+
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
+
+</head>
+
+<body class="nav-sidebar docked quarto-light">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+  <nav class="quarto-secondary-nav">
+    <div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
+      </button>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./05-methods.html">5 The Methods of Causal Inference</a></li><li class="breadcrumb-item"><a href="./05-20-quantitative-bias-analysis.html"><span class="chapter-title">5.20 Quantitative Bias Analysis</span></a></li></ol></nav>
+        <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        </a>
+      <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
+        <i class="bi bi-search"></i>
+      </button>
+    </div>
+  </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation docked overflow-auto">
+    <div class="pt-lg-2 mt-2 text-left sidebar-header sidebar-header-stacked">
+      <a href="./index.html" class="sidebar-logo-link">
+      <img src="./images/cover.svg" alt="Cover: Causal Inference in the CLS Cohort Studies" class="sidebar-logo light-content py-0 d-lg-inline d-none">
+      <img src="./images/cover.svg" alt="Cover: Causal Inference in the CLS Cohort Studies" class="sidebar-logo dark-content py-0 d-lg-inline d-none">
+      </a>
+    <div class="sidebar-title mb-0 py-0">
+      <a href="./">Causal Inference in the CLS Cohort Studies</a> 
+        <div class="sidebar-tools-main">
+    <a href="https://github.com/CLS-Data/causal-inference-review" title="Source Code" class="quarto-navigation-tool px-1" aria-label="Source Code"><i class="bi bi-github"></i></a>
+</div>
+    </div>
+      </div>
+        <div class="mt-2 flex-shrink-0 align-items-center">
+        <div class="sidebar-search">
+        <div id="quarto-search" class="" title="Search"></div>
+        </div>
+        </div>
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">About this guide</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./01-introduction.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">1 Introduction</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./02-problem.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">2 The Problem of Causal Inference with Observational Data</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./03-approaches.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">3 Three Approaches to Causal Inference</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./04-attributes.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">4 Attributes of CLS’s Cohort Studies That Support Causal Inference</span></a>
+  </div>
+</li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a href="./05-methods.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">5 The Methods of Causal Inference</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./05-01-control-via-regression-adjustment.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">5.1 Control via Regression Adjustment</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./05-02-matching.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">5.2 Matching</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./05-03-inverse-probability-of-treatment-weighting.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">5.3 Inverse Probability of Treatment Weighting</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./05-04-missing-data-methods.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">5.4 Missing Data Methods</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./05-05-longitudinal-fixed-effects.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">5.5 (Longitudinal) Fixed Effects</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./05-06-difference-in-differences.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">5.6 Difference in Differences</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./05-07-study-initiated-experiments.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">5.7 Study-Initiated Experiments</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./05-08-natural-experiments.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">5.8 Natural Experiments</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./05-09-instrumental-variables.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">5.9 Instrumental Variables</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./05-10-regression-discontinuity-designs.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">5.10 Regression Discontinuity Designs</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./05-11-target-trial-emulation.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">5.11 Target Trial Emulation</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./05-12-g-methods-for-time-varying-exposures.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">5.12 G-methods for Time-Varying Exposures</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./05-13-causal-mediation.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">5.13 Causal Mediation</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./05-14-family-designs.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">5.14 Family Designs</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./05-15-negative-control-outcomes-and-exposures.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">5.15 Negative Control Outcomes and Exposures</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./05-16-cross-context-analysis.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">5.16 Cross-Context Analysis</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./05-17-biases-of-known-direction.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">5.17 Biases of Known Direction</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./05-18-differential-effects.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">5.18 Differential Effects</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./05-19-reasons-for-effects.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">5.19 Reasons for Effects</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./05-20-quantitative-bias-analysis.html" class="sidebar-item-text sidebar-link active"><span class="chapter-title">5.20 Quantitative Bias Analysis</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./06-discussion.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">6 Discussion</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./07-statements.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">7 Statements</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./08-appendix.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">8 Appendix</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./references.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">References</span></a>
+  </div>
+</li>
+    </ul>
+    </div>
+</nav>
+<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#method" id="toc-method" class="nav-link active" data-scroll-target="#method">5.20.1 Method</a>
+  <ul class="collapse">
+  <li><a href="#methods-using-summary-level-data" id="toc-methods-using-summary-level-data" class="nav-link" data-scroll-target="#methods-using-summary-level-data">5.20.1.1 Methods using Summary-Level Data</a></li>
+  <li><a href="#methods-using-record-level-data" id="toc-methods-using-record-level-data" class="nav-link" data-scroll-target="#methods-using-record-level-data">5.20.1.2 Methods using Record-Level Data</a></li>
+  </ul></li>
+  <li><a href="#applications" id="toc-applications" class="nav-link" data-scroll-target="#applications">5.20.2 Applications</a></li>
+  <li><a href="#opportunities" id="toc-opportunities" class="nav-link" data-scroll-target="#opportunities">5.20.3 Opportunities</a></li>
+  </ul>
+<div class="toc-actions"><ul><li><a href="https://github.com/CLS-Data/causal-inference-review/issues/new" class="toc-action"><i class="bi bi-github"></i>Report an issue</a></li></ul></div></nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./05-methods.html">5 The Methods of Causal Inference</a></li><li class="breadcrumb-item"><a href="./05-20-quantitative-bias-analysis.html"><span class="chapter-title">5.20 Quantitative Bias Analysis</span></a></li></ol></nav>
+<div class="quarto-title">
+<h1 class="title"><span id="quantitative-bias-analysis" class="quarto-section-identifier"><span class="chapter-title">5.20 Quantitative Bias Analysis</span></span></h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<section id="method" class="level2">
+<h2 class="anchored" data-anchor-id="method">5.20.1 Method</h2>
+<blockquote class="blockquote">
+<p>There is a quantitative question. Cigarette smokers have a ninefold greater risk of developing lung cancer than nonsmokers, while over-two-pack-a-day smokers have at least a 60-fold greater risk. Any characteristic proposed as a measure of the postulated cause common to both smoking status and lung-cancer risk must therefore be at least ninefold more prevalent among cigarette smokers than among nonsmokers and at least 60-fold more prevalent among two-pack-a-day smokers. No such characteristic has yet been produced despite diligent search.</p>
+<p>Cornfield et al.&nbsp;(1959)</p>
+</blockquote>
+<p>In <a href="./05-17-biases-of-known-direction.html">Section 5.17</a>, we discussed approaches to exploiting biases of known direction to support causal inference. These approaches incorporate information on bias qualitatively – e.g., to identify appropriate groups for study, contexts to draw data from, or to ascertain in which direction an estimate is likely to be biased. A drawback with this approach is that it does not allow the analyst to determine by how much an estimate is likely to be biased or what an unbiased estimate would plausibly look like. It is also not useful in situations where bias runs in the same direction as the anticipated causal effect or where the causal effect is hard to predict <em>a priori</em> – in these cases, a given estimate would be compatible with a null or opposite signed effect.</p>
+<p>As the name suggests, quantitative bias analysis (QBA) instead incorporates or produces quantitative information on bias. QBA methods allow analysts to produce bias-corrected estimates or to ascertain the size of bias necessary to overturn a substantive result. This makes better use of the information the analyst may have – for instance, analysts may be able to make reasonable assumptions about the size of bias, as well as its direction. By providing data on the likely material effect of bias, QBA can support better decision making, enable more plausible comparisons of alternatives, and inform the direction of research resources to areas where the expected consequences of reducing uncertainty in a biasing factor would be greatest. QBA can also focus disagreement (Fox et al., 2021): instead of unproductive debates over whether an estimate is or is not biased, discussion can centre on whether bias is plausibly sufficiently strong in practice or whether it has been appropriately operationalised by the analyst performing the QBA.</p>
+<p>The term QBA denotes a broad aim rather than a single method. An arsenal of QBA methods exists, though not all are advertised under this name – sensitivity analysis is a popular alternate term (Cinelli &amp; Hazlett, 2020; Rosenbaum, 2020; VanderWeele &amp; Ding, 2017), though this is also sometimes unhelpfully used synonymously with ‘robustness checks’ – additional analyses performed to check incidental analytical decisions (e.g., the coding of variables) do not influence results. There are QBA methods for measurement error, selection bias, and confounding; some can be combined to deal with each within a single analysis (Fox et al., 2021). QBA methods vary in their complexity, spanning <em>post hoc</em> deterministic methods applied to summary data (e.g., regression coefficients) to simulation-based stochastic methods that adjust record-level data repeatedly using random draws from hypothesised distributions for biasing factors.</p>
+<p>Methods also vary in what they produce. Some methods – like the E-Value (VanderWeele &amp; Ding, 2017) – produce bounds on the size of bias required to entirely explain an observed association; larger bounds mean stronger – potentially implausibly strong – bias is required to explain an association absent a causal effect. Other methods – like Pattern Mixture Modelling (Leurent et al., 2018; C. D. Nguyen et al., 2025; Tompsett et al., 2018) – can produce a bias-corrected estimate reflecting the researcher’s best guess at what the causal effect is, given assumptions put into the QBA model. These methods can also be used for <em>tipping-point</em> type analyses to assess whether only a large degree of bias could explain an association (Y. Liu et al., 2025). Given the large number of QBA methods, what follows is a selective review.</p>
+<section id="methods-using-summary-level-data" class="level3">
+<h3 class="anchored" data-anchor-id="methods-using-summary-level-data">5.20.1.1 Methods using Summary-Level Data</h3>
+<p>As discussed in <a href="./01-introduction.html">Section 1</a>, observational studies formed a major source of the evidence in the discovery of the harmful effect of smoking on lung cancer. One reason observational evidence was compelling was the size of the association between smoking and lung cancer observed. In one of the earliest quantitative bias analyses, Cornfield et al.&nbsp;(1959) derived lower bounds on the associations a single binary confounder must have with a binary exposure and binary outcome to fully explain an observed association between the two. Specifically, they show that the exposure-outcome association must be equal to or exceeded by both the confounder-outcome and confounder-exposure associations, rules now referred to as the ‘Cornfield conditions’.</p>
+<p>One corollary of their formulation is that the closer the confounder-outcome association is in size to the exposure-outcome association, the stronger the confounder-exposure association must be (and vice versa). This trade-off between confounder-exposure and confounder-outcome associations necessary to explain an exposure-outcome relationship follows a simple equation and can be plotted as contours as in <a href="#figure-5-19">Figure 5.19</a> – see the figure caption for further details.</p>
+<div id="figure-5-19">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><a href="images/image36.png" class="lightbox" data-gallery="quarto-lightbox-gallery-1" title="Figure 5.19: Graphical representation of the ‘Cornfield Conditions’ (Cornfield et al., 1959) for a binary exposure (X), outcome (Y) and confounder (Z). For a given risk ratio (RR = 2) between exposure and outcome (i.e., P(Y = 1 | X = 1)/P(Y = 1 | X = 0)) and probability Z = 1 given X = 1 (green, orange, and pink lines), the graph shows the combination of association between confounder and exposure (RR[XZ], x-axis) and confounder and outcome (RR[ZY], y-axis) required to fully explain the association. If the confounder-exposure association is weaker (e.g., RR(XZ) ↓ or P(Z = 1 | X = 1) ↓), then the confounder-outcome association must be stronger to explain the same result."><img src="images/image36.png" class="img-fluid figure-img" style="width:100.0%" alt="Figure 5.19: Graphical representation of the ‘Cornfield Conditions’ (Cornfield et al., 1959) for a binary exposure (X), outcome (Y) and confounder (Z). For a given risk ratio (RR = 2) between exposure and outcome (i.e., P(Y = 1 | X = 1)/P(Y = 1 | X = 0)) and probability Z = 1 given X = 1 (green, orange, and pink lines), the graph shows the combination of association between confounder and exposure (RR[XZ], x-axis) and confounder and outcome (RR[ZY], y-axis) required to fully explain the association. If the confounder-exposure association is weaker (e.g., RR(XZ) ↓ or P(Z = 1 | X = 1) ↓), then the confounder-outcome association must be stronger to explain the same result."></a></p>
+<figcaption><strong>Figure 5.19:</strong> Graphical representation of the ‘Cornfield Conditions’ (Cornfield et al., 1959) for a binary exposure (X), outcome (Y) and confounder (Z). For a given risk ratio (RR = 2) between exposure and outcome (i.e., P(Y = 1 | X = 1)/P(Y = 1 | X = 0)) and probability Z = 1 given X = 1 (green, orange, and pink lines), the graph shows the combination of association between confounder and exposure (RR[XZ], x-axis) and confounder and outcome (RR[ZY], y-axis) required to fully explain the association. If the confounder-exposure association is weaker (e.g., RR(XZ) ↓ or P(Z = 1 | X = 1) ↓), then the confounder-outcome association must be stronger to explain the same result.</figcaption>
+</figure>
+</div>
+</div>
+<p>The Cornfield conditions formalise several intuitions, including:</p>
+<ol type="1">
+<li><p>Stronger exposure-outcome associations require a greater degree of confounding to explain results</p></li>
+<li><p>Confounders must have at least as large a causal effect on the outcome as the observed exposure-outcome association</p></li>
+<li><p>The strength of effect of the confounder on the outcome must be greater if the effect of the confounder on the exposure becomes weaker (and vice versa).</p></li>
+</ol>
+<p>Using their bounds, Cornfield et al.&nbsp;(1959) offered an unanswerable test to sceptics of the link between smoking and cancer (among whom counted Ronald Fisher): no plausible confounding factors existed that could explain the very large association between the two.</p>
+<p>The Cornfield conditions further formalise the intuition that there must be strong imbalance in absolute terms in the prevalence of the confounder between levels of the exposure; otherwise the confounder must have a particularly strong impact on the outcome to compensate (compare the pink, orange and green lines for a given RR(XZ) in <a href="#figure-5-19">Figure 5.19</a>). To give an applied example, parental problematic drug use may be a confounder in the association between parental SES and childhood development, but it is (thankfully) a rare occurrence, so is unlikely to explain much of the association between the two.</p>
+<p>The E-Value (VanderWeele &amp; Ding, 2017), a widely used QBA method, builds upon the Cornfield conditions by making two assumptions: first, that the exposure-confounder and confounder-outcome effects are equal, and second, that the prevalence of the confounder among exposed is 100%. The E-Value is represented as a point at the intersection of the pink (P(Z = 1 | X = 1) = 1) and blue (RR(XZ) = RR(ZY)) lines in <a href="#figure-5-19">Figure 5.19</a>. As Fox et al.&nbsp;(2021) and others (e.g., Poole, 2020) note, however, the assumption of complete prevalence of the confounder among the exposed is generally implausible and conservative. Fox et al.&nbsp;(2021) thus introduce the ‘G-Value’, which generalises the E-Value to situations where prevalence of the confounder is lower – <a href="#figure-5-19">Figure 5.19</a> also displays the G-Value(0.25) (intersection of green and blue lines) where the prevalence of the confounder among treated is 25%. As can be seen, the G-Value is larger than a given E-Value; the confounder has to have a stronger effect on the outcome because it is now less prevalent among the exposed group.</p>
+<p>Though both the E-Value and G-Value allow bounds to be represented in a single scalar value, the price of this is the assumption that confounder-exposure and confounder-outcome associations are equal. This is not likely to be plausible in practice. It is instead preferable to posit values of each separately and to determine the consequences of this for bias, as enabled by drawing contours as in <a href="#figure-5-19">Figure 5.19</a>. The utility of the Cornfield conditions and the E-Value and G-Value is that they can be used as a basis for rigorous argument about confounders, including providing a frame for reviews of existing evidence on plausible confounding variables. It is not sufficient to say a confounder exists – it needs to have particular properties. However, this does not appear to be how E-Values and the like are used in practice. In their review of the use of E-Values, Blum et al.&nbsp;(2020) report that few authors assessed whether confounding was likely to overturn results or even noted candidate confounders likely to be missing from analyses.</p>
+<p>A further limitation of the E-Value concerns multiple confounders – the E-Value relates to the combined effect of these, so several confounders that are individually too weak to explain away an association may jointly do so (Ioannidis et al., 2019). This joint strength can be particularly difficult to ascertain where individual unmeasured confounders are correlated. On the other hand, the degree of residual confounding depends on the confounders that have been controlled for – some of these (e.g., age and sex) can be strongly related to unobserved confounders, and so partly operate as proxies for these variables (Greenland, 2020). Together, these issues mean the E-Value can give a too optimistic or too pessimistic view of sensitivity to confounding bias (Sjölander &amp; Greenland, 2022).</p>
+<p>Though developed for settings with binary variables, the E-Value can be produced for continuous variables too, using heuristics for converting standardised beta coefficients to odds ratios (Mathur et al., 2025). However, similar methods have been developed for settings with continuous outcomes, specifically. Omitted variable bias (OVB) follows a simple formula in linear regression settings: it is the product of the regression coefficient for the confounder had it been included in the regression model and the coefficient from a regression of the confounder on the exposure had it been performed.</p>
+<blockquote class="blockquote">
+<p>True Model: <span class="math inline">\(Y = \beta_{0} + \beta_{1} \cdot X + \beta_{2} \cdot Z + \varepsilon\)</span></p>
+<p>Estimated Model: <span class="math inline">\(Y = \widehat{\beta_{0}} + \widehat{\beta_{1}} \cdot X + \widehat{\varepsilon}\ \)</span></p>
+<p>Decomposition: <span class="math inline">\({\widehat{\beta_{1}} = \beta}_{1} + \beta_{2} \cdot \delta_{1}\ \)</span> (True Effect + Omitted Variable Bias)</p>
+<p>Where <span class="math inline">\(\delta_{1}\)</span> is the solution to regression: <span class="math inline">\(Z = \delta_{0} + \delta_{1} \cdot X + \mu\)</span></p>
+</blockquote>
+<p>Note, <span class="math inline">\(\delta_{1}\)</span> is the solution to the regression of Z upon X, despite this running counter to the direction of hypothesised causality (i.e., X is dependent on Z, rather than the other way round). However, this formulation makes intuitive sense: the observed association between X and Y is equal to the causal effect of X upon Y (<span class="math inline">\(\beta_{1}\)</span>) plus the effect of Z upon Y multiplied by the association a one-unit difference in X has with Z. This formulation has another advantage: while Z may have a large effect on X, X may have only a weak association with Z if Z explains little of the variance in X overall. Again, absolute effect size is key for driving OVB.</p>
+<p>The OVB formula, <span class="math inline">\(\beta_{2} \cdot \delta_{1}\ \)</span>, can be visualised in a contour plot similar to the Cornfield conditions in <a href="#figure-5-19">Figure 5.19</a>. An issue, however, is that the standard OVB formulation depends on the scales used for the exposure and outcome and so identifying appropriate literature on confounder-exposure associations may be difficult. Additionally, the formula does not easily generalise to situations with multiple confounders. To address this, Cinelli &amp; Hazlett (2020) reparameterise OVB in terms of partial R<sup>2</sup> (i.e., the residual variance in exposure and outcome a confounder explains after conditioning on covariates).<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a> With this formula, analysts can determine the required confounding associations to materially change an observed association between exposure and outcome (e.g., attenuate to the null), again assisted using contour plots.</p>
+<p>Cinelli &amp; Hazlett’s (2020) method is implemented in the sensemakr R package (Cinelli, Ferwerda, et al., 2024); see <a href="#figure-5-20">Figure 5.20</a> for an example. The sensemakr package outputs additional information to contextualise analysts’ consideration of whether unobserved confounders can plausibly explain results. This includes a ‘robustness value’ (for both the point estimate and lower confidence interval), which – analogous to the E-Value – specifies the minimum partial R<sup>2</sup> that would be required to attenuate the observed association to the null, setting this equal for the partial R<sup>2</sup> for both the confounder-exposure and confounder-outcome associations. It also includes information on the associations between <em>observed</em> confounders and exposure and outcome. For instance, in their working example on the effect of experiencing violence during the Darfur war on attitudes to peace (displayed in <a href="#figure-5-20">Figure 5.20</a>), the authors benchmark the effect of the supposed confounder (whether the respondent lived in the <em>centre</em> of a village) against sex, showing that <em>centre</em> would need to have multiple times stronger association with outcome and treatment than sex to explain results (‘[1-3]x female’ sit below the red-dashed line of null association in <a href="#figure-5-20">Figure 5.20</a>). This is helpful because, while not all confounders may be observed, major ones may be. Using the latter to calibrate expectations can therefore help interpretation of the QBA analysis.</p>
+<div id="figure-5-20">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><a href="images/image37.png" class="lightbox" data-gallery="quarto-lightbox-gallery-2" title="Figure 5.20: Contour plot of a Cinelli &amp; Hazlett (2020) type sensitivity analysis. Drawn from the Cinelli &amp; Hazlett (2020) running example examining the potential for confounding in the association between experiencing violence during the Darfur war and attitudes to peace. The authors hypothesise that this association is confounded by whether the survey respondent lived in the centre of the village (more likely to be victimised) or at the periphery, and use the variable ‘female’ to contextualise discussion of whether confounding would be sufficient to reduce the observed association (0.097) to the null. If the confounder were to have 3 times the strength of association with violence victimisation and peace attitudes as female does, this would still not be sufficient to reduce the point estimate to the null (3x female [0.03]). Cinelli &amp; Hazlett (2020) type sensitivity analyses can be performed with the sensemakr R package (Cinelli, Ferwerda, et al., 2024), which also outputs ‘robustness value’ statistics."><img src="images/image37.png" class="img-fluid figure-img" style="width:63.0%" alt="Figure 5.20: Contour plot of a Cinelli &amp; Hazlett (2020) type sensitivity analysis. Drawn from the Cinelli &amp; Hazlett (2020) running example examining the potential for confounding in the association between experiencing violence during the Darfur war and attitudes to peace. The authors hypothesise that this association is confounded by whether the survey respondent lived in the centre of the village (more likely to be victimised) or at the periphery, and use the variable ‘female’ to contextualise discussion of whether confounding would be sufficient to reduce the observed association (0.097) to the null. If the confounder were to have 3 times the strength of association with violence victimisation and peace attitudes as female does, this would still not be sufficient to reduce the point estimate to the null (3x female [0.03]). Cinelli &amp; Hazlett (2020) type sensitivity analyses can be performed with the sensemakr R package (Cinelli, Ferwerda, et al., 2024), which also outputs ‘robustness value’ statistics."></a></p>
+<figcaption><strong>Figure 5.20:</strong> Contour plot of a Cinelli &amp; Hazlett (2020) type sensitivity analysis. Drawn from the Cinelli &amp; Hazlett (2020) running example examining the potential for confounding in the association between experiencing violence during the Darfur war and attitudes to peace. The authors hypothesise that this association is confounded by whether the survey respondent lived in the centre of the village (more likely to be victimised) or at the periphery, and use the variable ‘female’ to contextualise discussion of whether confounding would be sufficient to reduce the observed association (0.097) to the null. If the confounder were to have 3 times the strength of association with violence victimisation and peace attitudes as female does, this would still not be sufficient to reduce the point estimate to the null (3x female [0.03]). Cinelli &amp; Hazlett (2020) type sensitivity analyses can be performed with the sensemakr R package (Cinelli, Ferwerda, et al., 2024), which also outputs ‘robustness value’ statistics.</figcaption>
+</figure>
+</div>
+</div>
+<p>Oster (2019) provides another formulation of bias from omitted variables that, like Cinelli &amp; Hazlett (2020), uses observable information from regressions including observed confounders, but also utilising information on the “stability” of coefficients when adding observed confounders to models. Oster’s solution parameterises OVB as a function of four observable and two unobserved quantities: the model R<sup>2</sup> from (a) a “short” regression of Y on X (denoted <span class="math inline">\(\dot{R}\)</span>), (b) a regression of Y on X plus observed confounders (<span class="math inline">\(\widetilde{R}\)</span>), and (c) a regression of Y on X plus observed and unobserved confounders, would it be possible to run this (<span class="math inline">\(R_{MAX}\)</span>); coefficients for X in regressions (a) (<span class="math inline">\(\dot{\beta}\)</span>) and (b) (<span class="math inline">\(\widetilde{\beta}\)</span>); and a parameter, δ, capturing “proportional selection” – the relative association unobserved confounders have with treatment relative to observed confounders (by necessity, this is also unobserved).</p>
+<p><span class="math display">\[\beta^{*} \approx \widetilde{\beta} - \delta \cdot (\dot{\beta} - \widetilde{\beta}) \cdot \frac{R_{MAX} - \widetilde{R}}{\widetilde{R} - \dot{R}}\]</span></p>
+<p>… where <span class="math inline">\(\beta^{*}\)</span> is the coefficient on X from a regression of Y upon X plus observed and unobserved confounders. δ captures imbalance in the unobserved confounders across exposure levels (though as a function of imbalance in the observed confounders) and <span class="math inline">\(R_{MAX} - \widetilde{R}\)</span> captures the impact of confounders on the outcome. All else being equal, greater proportional selection and larger effects of the confounders on the outcome will bias coefficients more.</p>
+<p>Using this formula, one can reason about the combinations of <span class="math inline">\(R_{MAX}\)</span> and <span class="math inline">\(\delta\)</span> that would reduce <span class="math inline">\(\beta^{*}\)</span> to an important value (e.g., the null, <span class="math inline">\(\beta^{*} = 0\)</span>) or to determine what plausible values of <span class="math inline">\(R_{MAX}\)</span> and <span class="math inline">\(\delta\)</span> would imply for <span class="math inline">\(\beta^{*}\)</span>. A key development in Oster’s (2019) paper is that she identifies heuristics for <span class="math inline">\(R_{MAX}\)</span> and δ by applying her formula to the results of RCTs, among other analyses. Oster suggests values of <span class="math inline">\(R_{MAX} = \min(1,\ 1.3 \cdot \widetilde{R})\)</span> and δ = 1 as sensible bounds.</p>
+<p>The Cinelli &amp; Hazlett (2020), Oster (2019), E-Value, G-Value, and Cornfield Condition methods each exploit summary-level data and are referred to as ‘simple sensitivity analysis’ techniques. Each is generally used to evaluate bias from unobserved confounding, though can be extended to assess other types of bias, including selection bias or bias from violations of the assumptions of instrumental variables analysis (Mathur et al., 2025; Mellon, 2025). Other QBA methods to obtain bounds that use summary-level data exist, including for (e.g.) bias from differential measurement error (VanderWeele &amp; Li, 2019). We will not cover these methods further here (for more, see Fox et al., 2021).</p>
+<p>Another summary-level approach that has been used extensively to account for bias is regression calibration (Keogh &amp; White, 2014), though in this case the purpose is to provide a bias-corrected estimate. Regression calibration applies where there is regression dilution – classical measurement error in the exposure, which would bias the estimate, most commonly towards the null. This attenuation is predictable: in linear regression, the observed association will be attenuated in proportion to the measurement’s reliability (i.e., the correlation between two independent measurements of the same variable). The correction is therefore straightforward – one can divide the estimated coefficient by assumed reliability – though more complex ways of incorporating this information can be performed (e.g., by treating reliability as an uncertain estimated quantity with its own distribution). However, this approach will generate biased results when there are unobserved or mis-measured confounders (Phillips &amp; Smith, 1991; Smith &amp; Phillips, 1996) as the uncorrected estimate will be subject to other biases, rather than just the regression dilution.</p>
+</section>
+<section id="methods-using-record-level-data" class="level3">
+<h3 class="anchored" data-anchor-id="methods-using-record-level-data">5.20.1.2 Methods using Record-Level Data</h3>
+<p>Another popular method that corrects for measurement error but instead uses record-level data is Simulation and Extrapolation (SIMEX; Cook &amp; Stefanski, 1994). In SIMEX, analyses are re-run <em>adding</em> random measurement error to (continuous) variables.<a href="#fn2" class="footnote-ref" id="fnref2" role="doc-noteref"><sup>2</sup></a> Progressively increasing error and then drawing a line of best fit through estimates, before extrapolating back, allows one to predict a situation where no measurement error exists (see <a href="#figure-5-21">Figure 5.21</a>). SIMEX can handle situations where it is confounders, rather than the exposure itself, that are subject to measurement error, but accurate extrapolation requires (a) correct assumptions about the reliability of the initial measurement (which determines how far a line of best fit should be drawn backwards to reflect a situation of no measurement error) and (b) use of an appropriate extrapolation function, which is an inherently uncertain choice.</p>
+<div id="figure-5-21">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><a href="images/image38.png" class="lightbox" data-gallery="quarto-lightbox-gallery-3" title="Figure 5.21: Results of an example SIMEX analysis. SIMEX consists of two steps. First, one reruns analyses, progressively adding random measurement error to the variable hypothesised to be subject to measurement error, in proportion to the amount of error anticipated in the raw variable already. Next, one estimates a line of best fit through the estimates obtained from Step 1 (blue line) and then extrapolates this line back to the point where no measurement error would exist to obtain the measurement-error corrected estimate (orange line for x-axis = 0)."><img src="images/image38.png" class="img-fluid figure-img" style="width:100.0%" alt="Figure 5.21: Results of an example SIMEX analysis. SIMEX consists of two steps. First, one reruns analyses, progressively adding random measurement error to the variable hypothesised to be subject to measurement error, in proportion to the amount of error anticipated in the raw variable already. Next, one estimates a line of best fit through the estimates obtained from Step 1 (blue line) and then extrapolates this line back to the point where no measurement error would exist to obtain the measurement-error corrected estimate (orange line for x-axis = 0)."></a></p>
+<figcaption><strong>Figure 5.21:</strong> Results of an example SIMEX analysis. SIMEX consists of two steps. First, one reruns analyses, progressively adding random measurement error to the variable hypothesised to be subject to measurement error, in proportion to the amount of error anticipated in the raw variable already. Next, one estimates a line of best fit through the estimates obtained from Step 1 (blue line) and then extrapolates this line back to the point where no measurement error would exist to obtain the measurement-error corrected estimate (orange line for x-axis = 0).</figcaption>
+</figure>
+</div>
+</div>
+<p>Systematic or differential measurement error can be corrected for via simulation using record-level data (Gallop &amp; Weschle, 2019; Pina-Sánchez et al., 2023; L. Wright, Ploubidis, et al., 2024). For instance, to account for ‘mode effects’ (a type of measurement error where responses vary systematically by mode; <a href="./02-problem.html#information-bias">Section 2.2.5</a>) in a mixed-mode study in which participants are not randomised to mode, external information on mode effects can be used to simulate values had participants responded in a single mode. For example, experimental evidence may indicate that individuals report 0.2 SD <em>better</em> mental health when responding via telephone rather than web (Goodman et al., 2022; Tomova, Silverwood, &amp; Wright, 2026a). Subtracting 0.2 SD from observed mental health for those in the telephone mode would therefore provide (estimated) counterfactual values which can be used when fitting the substantive model of interest. This approach is very flexible – it can handle multiplicative, or other non-additive, errors and differential measurement errors (Pina-Sánchez et al., 2023), e.g., by incorporating different sized errors according to participant characteristics. The process can be repeated to explore sensitivity of the findings to different magnitudes of measurement error.</p>
+<p>Another record-level simulation-based method is Pattern Mixture Modelling (PMM; Leurent et al., 2018; C. D. Nguyen et al., 2025; Tompsett et al., 2018). PMM is used to correct for violations in the Missing at Random Assumption used in multiple imputation (<a href="./05-04-missing-data-methods.html">Section 5.4</a>) – i.e., for selection bias. Post hoc adjustment is used to amend imputed values – for instance, if one anticipates missing values to in fact be 0.3 SD lower than as imputed, imputed values can simply be corrected to reflect this and analyses otherwise run as usual (i.e., with estimates pooled with Rubin’s Rules). As with simulation for non-random measurement error, the complexity of the PMM procedure can be increased – for instance, by choosing more complex patterns of MNAR (e.g., larger violations in some groups than in others). Corrections to MNAR should be performed within the ‘Gibbs sampler’ – i.e., within the imputation procedure, rather than once the imputed datasets have been created – so that chained equations models reflect beliefs about MNAR. However, this can be hard to code (some limited functionality exists in the mice R package; C. D. Nguyen et al., 2025) and is more computationally demanding to run as it requires separate imputations for each MNAR assumption posited.</p>
+<p>Simulation-based methods can incorporate assumptions on biases stochastically, rather than use single deterministic values – for instance, by reflecting uncertainty as distributions and repeating the simulation using draws. Fox et al.&nbsp;(2021) provide advice on turning beliefs about the size of biases into statistical distributions from which to draw. Often, it may be easier to rule <em>out</em> particular-sized biases, than rule biases <em>in</em> (for instance, mode effects are unlikely to exceed 0.5 SD, but may be within the range 0-0.2 SD; Tomova, Silverwood, &amp; Wright, 2026a). In this case, simulations can be run in a tipping-point-like fashion, or large and implausible biases used to assess whether implausible levels of bias would be insufficient to change substantive conclusions.</p>
+<p>Readers interested in QBA can see the textbook by Fox et al.&nbsp;(2021), which includes recommendations for performing and reporting QBA (see also Lash et al., 2014). However, note, as epidemiologists, the authors focus their exposition and examples on cases with binary exposures and outcomes. For comprehensive discussion of QBA for measurement error, specifically, see Keogh et al.&nbsp;(2020) and Shaw et al.&nbsp;(2020).</p>
+</section>
+</section>
+<section id="applications" class="level2">
+<h2 class="anchored" data-anchor-id="applications">5.20.2 Applications</h2>
+<p>Several papers have calculated E-Values as part of analyses of CLS data (see, e.g., Gondek, Bann, Brown, et al., 2021; Metherell et al., 2023; Moulton et al., 2023; Ning et al., 2021). For example, Gondek et al.&nbsp;(2021) use the E-Values to understand the potential consequences of bias in an analysis of early mental health and later problematic alcohol use using data from the NCDS and BCS70. Though the E-Values were small, they note a paucity of existing evidence on the strength of the confounders they hypothesise, making it difficult to evaluate plausibility. Nevertheless, this evidence may appear in future, so performing the QBA provides information that may still be of use to future readers.</p>
+<p>Dräger et al.&nbsp;(2025) perform an Oster (2019) type QBA of the association between school absences and attainment at GCSE using data from the MCS. They show that many of their results are robust to an assumption about relative selection on observables and explanatory power of observables for their outcome. However, this assumption is not well justified and is only compared against a much more conservative assumption, which produces prima facie implausible results for some model specifications.</p>
+<p>Bann et al.&nbsp;(2023) use PMM when assessing cross-cohort differences in the association between height and cognitive ability using data from NCDS, BCS70 and MCS, given different levels of non-response and missingness in each of these studies. They perform a tipping-point-style analysis to assess whether differences in missingness mechanisms would be required to explain results.</p>
+</section>
+<section id="opportunities" class="level2">
+<h2 class="anchored" data-anchor-id="opportunities">5.20.3 Opportunities</h2>
+<p>As QBA methods are designed to be used to handle situations where data are missing (e.g., on confounders), they do not make demands upon existing data. Therefore, there is ample opportunity to use these in CLS’s cohorts. That said, as data on many major confounders are available, Cinelli &amp; Hazlett (2020) type QBA may be especially compelling as these confounders can be used to calibrate assessments of unobserved confounding.</p>
+
+
+</section>
+<section id="footnotes" class="footnotes footnotes-end-of-document" role="doc-endnotes">
+<hr>
+<ol>
+<li id="fn1"><p>As partial R<sup>2</sup> are directly related to the (partial) correlation between two variables, the partial R<sup>2</sup> is symmetric. (Note in the equation above, OVB is expressed in terms of a regression of the confounder upon the exposure, even though the assumption is that the confounder is the cause of the exposure.)<a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn2"><p>Küchenhoff et al.&nbsp;(2006) extend SIMEX to categorical data.<a href="#fnref2" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+</ol>
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copied!");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copied!");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp("https:\/\/cls-data\.github\.io\/causal-inference-review\/");
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+            // target, if specified
+            link.setAttribute("target", "_blank");
+            if (link.getAttribute("rel") === null) {
+              link.setAttribute("rel", "noopener");
+            }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+<nav class="page-navigation">
+  <div class="nav-page nav-page-previous">
+      <a href="./05-19-reasons-for-effects.html" class="pagination-link" aria-label="5.19 Reasons for Effects">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-title">5.19 Reasons for Effects</span></span>
+      </a>          
+  </div>
+  <div class="nav-page nav-page-next">
+      <a href="./06-discussion.html" class="pagination-link" aria-label="6 Discussion">
+        <span class="nav-page-text"><span class="chapter-title">6 Discussion</span></span> <i class="bi bi-arrow-right-short"></i>
+      </a>
+  </div>
+</nav>
+</div> <!-- /content -->
+<footer class="footer">
+  <div class="nav-footer">
+    <div class="nav-footer-left">
+<p>Wright, Tomova, Danka, Ploubidis &amp; Silverwood · Centre for Longitudinal Studies, UCL</p>
+</div>   
+    <div class="nav-footer-center">
+      &nbsp;
+    <div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/CLS-Data/causal-inference-review/issues/new" class="toc-action"><i class="bi bi-github"></i>Report an issue</a></li></ul></div></div>
+    <div class="nav-footer-right">
+<p>Built with <a href="https://quarto.org">Quarto</a></p>
+</div>
+  </div>
+</footer>
+<script>var lightboxQuarto = GLightbox({"closeEffect":"zoom","descPosition":"bottom","loop":false,"openEffect":"zoom","selector":".lightbox"});
+(function() {
+  let previousOnload = window.onload;
+  window.onload = () => {
+    if (previousOnload) {
+      previousOnload();
+    }
+    lightboxQuarto.on('slide_before_load', (data) => {
+      const { slideIndex, slideNode, slideConfig, player, trigger } = data;
+      const href = trigger.getAttribute('href');
+      if (href !== null) {
+        const imgEl = window.document.querySelector(`a[href="${href}"] img`);
+        if (imgEl !== null) {
+          const srcAttr = imgEl.getAttribute("src");
+          if (srcAttr && srcAttr.startsWith("data:")) {
+            slideConfig.href = srcAttr;
+          }
+        }
+      } 
+    });
+  
+    lightboxQuarto.on('slide_after_load', (data) => {
+      const { slideIndex, slideNode, slideConfig, player, trigger } = data;
+      if (window.Quarto?.typesetMath) {
+        window.Quarto.typesetMath(slideNode);
+      }
+    });
+  
+  };
+  
+})();
+          </script>
+
+
+
+
+<script src="site_libs/quarto-html/zenscroll-min.js"></script>
+</body></html>

@@ -1,0 +1,1157 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en-GB" xml:lang="en-GB"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.8.27">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="description" content="A guide to methods and research designs for causal inference with the Centre for Longitudinal Studies’ cohort data.">
+
+<title>2 The Problem of Causal Inference with Observational Data – Causal Inference in the CLS Cohort Studies</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+</style>
+
+
+<script src="site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="site_libs/quarto-nav/headroom.min.js"></script>
+<script src="site_libs/clipboard/clipboard.min.js"></script>
+<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="site_libs/quarto-search/fuse.min.js"></script>
+<script src="site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="./">
+<link href="./03-approaches.html" rel="next">
+<link href="./01-introduction.html" rel="prev">
+<link href="./images/favicon.svg" rel="icon" type="image/svg+xml">
+<script src="site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="site_libs/quarto-html/axe/axe-check.js" type="module"></script>
+<script src="site_libs/quarto-html/popper.min.js"></script>
+<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="site_libs/quarto-html/anchor.min.js"></script>
+<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-ed96de9b727972fe78a7b5d16c58bf87.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="site_libs/bootstrap/bootstrap-6be7f6e0362b36c773b9fb5cb1e95ee5.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script src="site_libs/quarto-contrib/glightbox/glightbox.min.js"></script>
+<link href="site_libs/quarto-contrib/glightbox/glightbox.min.css" rel="stylesheet">
+<link href="site_libs/quarto-contrib/glightbox/lightbox.css" rel="stylesheet">
+<script id="quarto-search-options" type="application/json">{
+  "location": "sidebar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "start",
+  "type": "textbox",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+<style>html{ scroll-behavior: smooth; }</style>
+
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
+
+</head>
+
+<body class="nav-sidebar docked quarto-light">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+  <nav class="quarto-secondary-nav">
+    <div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
+      </button>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./02-problem.html"><span class="chapter-title">2 The Problem of Causal Inference with Observational Data</span></a></li></ol></nav>
+        <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        </a>
+      <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
+        <i class="bi bi-search"></i>
+      </button>
+    </div>
+  </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation docked overflow-auto">
+    <div class="pt-lg-2 mt-2 text-left sidebar-header sidebar-header-stacked">
+      <a href="./index.html" class="sidebar-logo-link">
+      <img src="./images/cover.svg" alt="Cover: Causal Inference in the CLS Cohort Studies" class="sidebar-logo light-content py-0 d-lg-inline d-none">
+      <img src="./images/cover.svg" alt="Cover: Causal Inference in the CLS Cohort Studies" class="sidebar-logo dark-content py-0 d-lg-inline d-none">
+      </a>
+    <div class="sidebar-title mb-0 py-0">
+      <a href="./">Causal Inference in the CLS Cohort Studies</a> 
+        <div class="sidebar-tools-main">
+    <a href="https://github.com/CLS-Data/causal-inference-review" title="Source Code" class="quarto-navigation-tool px-1" aria-label="Source Code"><i class="bi bi-github"></i></a>
+</div>
+    </div>
+      </div>
+        <div class="mt-2 flex-shrink-0 align-items-center">
+        <div class="sidebar-search">
+        <div id="quarto-search" class="" title="Search"></div>
+        </div>
+        </div>
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">About this guide</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./01-introduction.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">1 Introduction</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./02-problem.html" class="sidebar-item-text sidebar-link active"><span class="chapter-title">2 The Problem of Causal Inference with Observational Data</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./03-approaches.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">3 Three Approaches to Causal Inference</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./04-attributes.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">4 Attributes of CLS’s Cohort Studies That Support Causal Inference</span></a>
+  </div>
+</li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a href="./05-methods.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">5 The Methods of Causal Inference</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="false" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./05-01-control-via-regression-adjustment.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">5.1 Control via Regression Adjustment</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./05-02-matching.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">5.2 Matching</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./05-03-inverse-probability-of-treatment-weighting.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">5.3 Inverse Probability of Treatment Weighting</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./05-04-missing-data-methods.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">5.4 Missing Data Methods</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./05-05-longitudinal-fixed-effects.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">5.5 (Longitudinal) Fixed Effects</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./05-06-difference-in-differences.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">5.6 Difference in Differences</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./05-07-study-initiated-experiments.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">5.7 Study-Initiated Experiments</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./05-08-natural-experiments.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">5.8 Natural Experiments</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./05-09-instrumental-variables.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">5.9 Instrumental Variables</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./05-10-regression-discontinuity-designs.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">5.10 Regression Discontinuity Designs</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./05-11-target-trial-emulation.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">5.11 Target Trial Emulation</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./05-12-g-methods-for-time-varying-exposures.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">5.12 G-methods for Time-Varying Exposures</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./05-13-causal-mediation.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">5.13 Causal Mediation</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./05-14-family-designs.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">5.14 Family Designs</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./05-15-negative-control-outcomes-and-exposures.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">5.15 Negative Control Outcomes and Exposures</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./05-16-cross-context-analysis.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">5.16 Cross-Context Analysis</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./05-17-biases-of-known-direction.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">5.17 Biases of Known Direction</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./05-18-differential-effects.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">5.18 Differential Effects</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./05-19-reasons-for-effects.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">5.19 Reasons for Effects</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./05-20-quantitative-bias-analysis.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">5.20 Quantitative Bias Analysis</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./06-discussion.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">6 Discussion</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./07-statements.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">7 Statements</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./08-appendix.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">8 Appendix</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./references.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">References</span></a>
+  </div>
+</li>
+    </ul>
+    </div>
+</nav>
+<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#correlation-causation-what-next" id="toc-correlation-causation-what-next" class="nav-link active" data-scroll-target="#correlation-causation-what-next">2.1 Correlation ≠ Causation: What Next?</a></li>
+  <li><a href="#threats-to-internal-validity" id="toc-threats-to-internal-validity" class="nav-link" data-scroll-target="#threats-to-internal-validity">2.2 Threats to (Internal) Validity</a>
+  <ul class="collapse">
+  <li><a href="#what-is-a-causal-effect-counterfactuals-and-the-potential-outcomes-framework" id="toc-what-is-a-causal-effect-counterfactuals-and-the-potential-outcomes-framework" class="nav-link" data-scroll-target="#what-is-a-causal-effect-counterfactuals-and-the-potential-outcomes-framework">2.2.1 What is a Causal Effect? Counterfactuals and The Potential Outcomes Framework</a></li>
+  <li><a href="#an-introduction-to-causal-dags" id="toc-an-introduction-to-causal-dags" class="nav-link" data-scroll-target="#an-introduction-to-causal-dags">2.2.2 An Introduction to Causal DAGs</a></li>
+  <li><a href="#confounding-bias" id="toc-confounding-bias" class="nav-link" data-scroll-target="#confounding-bias">2.2.3 Confounding Bias</a></li>
+  <li><a href="#selection-bias" id="toc-selection-bias" class="nav-link" data-scroll-target="#selection-bias">2.2.4 Selection Bias</a></li>
+  <li><a href="#information-bias" id="toc-information-bias" class="nav-link" data-scroll-target="#information-bias">2.2.5 Information Bias</a></li>
+  <li><a href="#researcher-degrees-of-freedom" id="toc-researcher-degrees-of-freedom" class="nav-link" data-scroll-target="#researcher-degrees-of-freedom">2.2.6 Researcher Degrees of Freedom</a></li>
+  </ul></li>
+  <li><a href="#why-cohort-studies" id="toc-why-cohort-studies" class="nav-link" data-scroll-target="#why-cohort-studies">2.3 Why Cohort Studies?</a></li>
+  </ul>
+<div class="toc-actions"><ul><li><a href="https://github.com/CLS-Data/causal-inference-review/issues/new" class="toc-action"><i class="bi bi-github"></i>Report an issue</a></li></ul></div></nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title"><span id="the-problem-of-causal-inference-with-observational-data" class="quarto-section-identifier"><span class="chapter-title">2 The Problem of Causal Inference with Observational Data</span></span></h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<p>In this section, we provide background on the problem of making causal inferences using cohort and other observational data. We begin by noting that causal questions are central to much quantitative research, regardless of the truth of mantras such as ‘correlation does not equal causation’. We then provide a theoretical overview of the three main causes of bias (threats to <em>internal</em> validity) in observational studies: confounding bias, selection bias, and information bias. The latter two of these typically receive less attention among applied researchers, though are no less capable of leading to incorrect inferences. We use the Potential Outcomes Framework and Causal DAGs as tools for describing these biases and conclude with a discussion of the necessity of observational data for scientific progress, notwithstanding potential problems of bias.</p>
+<p>For interested readers, in the Appendix (<a href="./08-appendix.html">Section 8</a>), we demonstrate the problem of making causal inferences using cohort and other observational data empirically, reviewing literature that compares results from observational studies and RCTs and shows discrepancies between the two – in many cases because of important biases present in observational studies (though not always, it must be noted). In the Appendix, we also provide general theoretical perspectives on why correlation may not equal causation in observational studies; though the precise causes of bias may be analysis-specific, there are reasons to expect widespread confounding in practice and broad classes of confounders that are likely to be important in varied situations.</p>
+<section id="correlation-causation-what-next" class="level2">
+<h2 class="anchored" data-anchor-id="correlation-causation-what-next">2.1 Correlation ≠ Causation: What Next?</h2>
+<p>At root, many of the questions in the health and social sciences are causal in nature. For instance, what impact do recessions have on lifetime wages? What effect does parental university education have on the likelihood of attending university oneself? What consequence does low birthweight have for life expectancy? Repeating ‘correlation does not imply causation’ does not get us very far, either as scientists interested in learning about the world or as citizens hoping to put policy on an evidenced basis. Euphemisms do not help, either – neutral-sounding terms like “association”, “links”, and “risk factors” do not satisfy the need to answer causal questions and can instead divert from the causal thinking that is necessary (Hernán, 2018b).</p>
+<p>The first step in any research programme, then, is to recognise one’s aims and which of the three “tasks” of data science – description, prediction and counterfactual prediction (i.e., causal inference; Hernán et al., 2019) – these aims fit into. Unlike descriptive studies, which are broadly concerned with quantifying and characterising features (e.g., outcomes or events) in a population of interest, or prediction studies, which are focused on identifying patterns in the data with the aim of pattern recognition or forecasting a future event, causal inference is instead concerned with asking how one variable influences another or what would happen if we were to intervene on the world (e.g., how would a person’s education change if they were adopted by highly educated, rather than less educated, parents; Sacerdote, 2002).</p>
+<p>After recognising one’s aims, the second step is crafting a good research question; research can fail prematurely, even with technically proficient analyses, if the research question is not well crafted. A good causal research question requires thinking carefully about, and defining, its key features, namely: the exposure (‘treatment’) and comparator, the outcome, the population, and – of course – the particular effect of interest. These should be clear and specific enough that the question can be translated into a statistical ‘estimand’ (Lundberg et al., 2021) – i.e., a quantity one wishes to estimate, representing a key parameter in a causal system (e.g., the difference in wages at age 33y if someone born in the UK entered adulthood during a recession compared with a healthy economy). One way of doing this can be to specify the research design as a ‘target trial’: one benefit of RCTs is they encourage the study designer to specify well-defined causal questions by requiring explicit inclusion and exclusion criteria, a specific exposure (and comparator), and so on (Hernán et al., 2025). This can be an iterative process, requiring an awareness of what is feasible with available data. Target trials will be discussed further in <a href="./05-11-target-trial-emulation.html">Section 5.11</a>.</p>
+<p>To give an example: suppose you are interested in studying the effect of planned Caesarean section on the risk of asthma in childhood. The exposure and comparator would be two levels of a binary variable (1 = Caesarean section, 0 = vaginal delivery). The outcome would need to be defined at a specific time point or in a time window, decided based on subject matter expertise and data availability. For instance, it could be asthma diagnosis between ages 5 and 12 years. The population would be the set of individuals one wishes to make inferences to, determined by the intersection of research interest and data availability: e.g., it may be children in the UK born between 2000 and 2002, the target population of the Millennium Cohort Study. Finally, one would define the specific effect (‘estimand’) of interest – e.g., the population average causal (‘treatment’) effect. Taken together then, the developed causal question might read: “What is the average treatment effect of being born by planned Caesarean section instead of vaginally on the risk of asthma diagnosis at age 5-12 years, among children in the UK born between 2000 and 2002?”</p>
+<p>Carrying out this process allows us to more easily translate the question into a well-defined causal estimand, to design an appropriate study, determine the most appropriate analytical strategy required to answer the question (Lundberg et al., 2021), and – crucially – determine the correct interpretation of the resulting estimate and the population it relates to. Naturally, there exist many different procedures for specifying a good causal question; this section is only intended to serve as a starting point for consideration. For instance, for a continuous exposure, it is advisable to define specific levels of the exposure to compare (e.g., “60 vs 30 minutes of vigorous physical activity per day”), and, additionally, one might consider including specific effect modifiers of interest. See <a href="./05-11-target-trial-emulation.html">Section 5.11</a> on Target Trial Emulation and <a href="#what-is-a-causal-effect-counterfactuals-and-the-potential-outcomes-framework">Section 2.2.1</a>, which introduces treatment variation irrelevance, for further discussion of elements worth considering when specifying a suitable causal question.</p>
+</section>
+<section id="threats-to-internal-validity" class="level2">
+<h2 class="anchored" data-anchor-id="threats-to-internal-validity">2.2 Threats to (Internal) Validity</h2>
+<p>Though observational studies have generated multiple cases where associations have not produced reliable estimates of causal effects (see <a href="./08-appendix.html#correlation-causation-a-short-empirical-review">Section 8.1</a>, Appendix, for a narrative review), there are numerous examples of observational studies that have. Why is this the case? The ability to estimate an unbiased causal effect in a study sample is referred to as ‘internal validity’. Several disciplines have converged upon three major threats to internal validity that can generate bias in (observational) data, sometimes using their own terms or the same terms in different ways. In this section, we introduce these threats using two frameworks: the Potential Outcomes Framework and Causal DAGs.</p>
+<section id="what-is-a-causal-effect-counterfactuals-and-the-potential-outcomes-framework" class="level3">
+<h3 class="anchored" data-anchor-id="what-is-a-causal-effect-counterfactuals-and-the-potential-outcomes-framework">2.2.1 What is a Causal Effect? Counterfactuals and The Potential Outcomes Framework</h3>
+<p>We first need to define a causal effect. This is a subject of substantial philosophical discussion (Mumford &amp; Anjum, 2013), but in practical terms, statisticians, social scientists and epidemiologists have adopted the counterfactual definition: for an individual, an exposure <em>X</em> has a causal effect on an outcome <em>Y</em> if that individual’s <em>Y</em> would be different under different levels of <em>X</em>. More formally, for an exposure with two levels:</p>
+<p><span class="math display">\[Y_{i}^{X = 1} \neq Y_{i}^{X = 0}\ \text{ for some individual } i\]</span></p>
+<p>where <span class="math inline">\(Y_{i}^{X = x}\)</span> is the level of <em>Y</em> for individual <em>i</em> had they received <em>X</em> = <em>x</em>.</p>
+<p>We will refer to a person as treated (or exposed) if they in fact received the exposure and untreated (or unexposed) if they in fact did not. In practice, we only observe one state of the world and so we can only see one of these <em>potential</em> <em>outcomes</em> (i.e., the <em>factual</em> rather than <em>counterfactual</em> outcome) for any given individual. For treated individuals, this is their outcome having received the treatment (<span class="math inline">\(Y_{i}^{X = 1}\)</span>). For untreated individuals, this is their outcome having not received the treatment (<span class="math inline">\(Y_{i}^{X = 0}\)</span>).</p>
+<p>Given we only observe one potential outcome for each individual, individual causal effects cannot be observed – this is the “fundamental problem of causal inference” (Holland, 1986). To estimate causal effects, we instead rely on population quantities – comparisons between groups – such as the difference in the mean of <em>Y</em> according to levels of <em>X</em>. A key causal parameter is the Average Treatment Effect (ATE) – i.e., the average causal effect across a population:</p>
+<p><span class="math display">\[ATE = E\left( Y^{X = 1} \right) - E(Y^{X = 0})\]</span></p>
+<p>That is, it is the difference in the average level of <em>Y</em> had everyone been treated vs.&nbsp;had everyone been untreated.</p>
+<p>Estimating the ATE is not straightforward as we generally cannot just compare those who, in fact, received the treatment with those who, in fact, did not, as these potential outcomes may not be identical in treated and untreated groups – i.e., where <span class="math inline">\(E\left( Y^{X = 1} \right) \neq E\left( Y^{X = 1} \middle| \ X = 1 \right)\)</span> or <span class="math inline">\(E\left( Y^{X = 0} \right) \neq E\left( Y^{X = 0} \middle| \ X = 0 \right)\)</span>. That is, the mean outcome that would be observed had the untreated group in fact received treatment may not be the same as the mean outcome that was observed among the treated group and/or the mean outcome that would be observed had the treated group in fact <u>not</u> received the treatment may not be the same as the mean outcome that was observed among the untreated group.</p>
+<p>A simple comparison of means would recover the ATE if potential outcomes are <em>independent</em> of actual treatment assignment (i.e., where <span class="math inline">\(E\left( Y^{X = 1} \right) = E\left( Y^{X = 1} \middle| \ X = 1 \right)\)</span> and <span class="math inline">\(E\left( Y^{X = 0} \right) = E\left( Y^{X = 0} \middle| \ X = 0 \right)\)</span>). The aim of causal inference then is to identify situations where independence (also known as <em>exchangeability</em> or <em>ignorability</em>) is met, which may include conditioning (achieving <em>conditional exchangeability</em>) – for instance, by statistical adjustment or stratifying according to factors related to potential outcomes (e.g., sex). However, (conditional) independence can only ever be an assumption because, ultimately, we do not observe all potential outcomes for any individual.</p>
+<p>Beyond conditional exchangeability, the standard confounder-adjustment approach requires three other assumptions (known as the ’<em>identifiability conditions’</em>) for population-average causal effects to be identified.<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a> The first, <em>positivity</em>, states that, for the population of interest, there is a non-zero (conditional) probability of receiving each level of the treatment across all relevant confounder strata – otherwise, it would not be possible to estimate causal effects using (conditional) population averages as observations may not exist for all comparisons.<a href="#fn2" class="footnote-ref" id="fnref2" role="doc-noteref"><sup>2</sup></a> Another assumption is that of <em>no interference,</em> meaning the potential outcomes of one individual are unrelated to the treatment status of other individuals. This is most commonly at risk of violation when studying the effect of vaccines or behavioural interventions.</p>
+<p>Finally, interventions must be <em>consistent</em> with respect to an outcome – that is, they must be sufficiently well-defined so that for each individual there is one potential outcome corresponding to each exposure level, i.e., <span class="math inline">\(Y_{i} = Y_{i}^{X = 1}\)</span> when X = 1 (Hernán &amp; Robins, 2023). This may seem self-evidently true, but it may be violated when there are multiple versions of treatment (for this reason consistency is also known as <em>treatment variation irrelevance</em>). An example of a question that is <u>not</u> consistent is “does obesity shorten life?” (Hernán, 2016) – since there are multiple ‘versions’ of attaining a level of obesity, each with different effects on longevity, there is no single potential outcome corresponding to levels of the intervention. This type of intervention is sometimes referred to as a “fat-handed intervention” (Bailey et al., 2024) that is generally only achieved as part of an envelope of actions that may have independent effects on outcomes. <span class="math inline">\(Y_{i}^{X = 1}\)</span> could mean “obesity due to quitting smoking” or “obesity due to calorific restriction”, both of which have different implications for life expectancy and thus potential outcomes. The narrower question “does 10% weight loss via calorific restriction between ages 40 and 50 years affect risk of death?” is more likely to satisfy consistency (Hernán, 2016).<a href="#fn3" class="footnote-ref" id="fnref3" role="doc-noteref"><sup>3</sup></a></p>
+</section>
+<section id="an-introduction-to-causal-dags" class="level3">
+<h3 class="anchored" data-anchor-id="an-introduction-to-causal-dags">2.2.2 An Introduction to Causal DAGs</h3>
+<p>Besides the Potential Outcomes Framework, another useful development in the causal inference literature has been the development of causal DAGs. DAGs are non-parametric visual representations of causal relationships that have proved exceptionally helpful for understanding and communicating biases in data and for helping researchers design studies that obtain valid estimates of causal effects. In this section, we give a brief introduction to DAGs as we use them extensively throughout this document to explain the intuition behind individual causal inference methods. This introduction is relatively self-contained, but for further background, see one of the many tutorials on DAGs that are now available (Digitale et al., 2022; Hernán &amp; Robins, 2023; McElreath, 2020; Pearl, 2022; Pearl &amp; Mackenzie, 2018; Williams et al., 2018). We particularly recommend Miguel Hernán’s (2018a) free online course, <em>Causal Diagrams: Draw Your Assumptions Before Your Conclusions</em>; several of the DAGs shown here follow its examples.</p>
+<p>In DAGs, variables are represented by nodes and causal relationships by directed arrows (arcs). A graph is a DAG if it fulfils two criteria:</p>
+<ol type="1">
+<li><p>It is directed – arcs between variables have directions that indicate the direction of causality.</p></li>
+<li><p>It is acyclic – it is not possible to follow arrows forward and arrive at a variable already reached.</p></li>
+</ol>
+<div id="figure-2-1">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><a href="images/image1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-1" title="Figure 2.1: A simple DAG."><img src="images/image1.png" class="img-fluid figure-img" style="width:26.0%" alt="Figure 2.1: A simple DAG."></a></p>
+<figcaption><strong>Figure 2.1:</strong> A simple DAG.</figcaption>
+</figure>
+</div>
+</div>
+<p><a href="#figure-2-1">Figure 2.1</a> shows a very simple DAG containing two variables, X and Y. This DAG encodes three beliefs: (1) that X has a causal effect on Y, as indicated by the presence of an arrow going from X to Y; (2) that Y does not have a causal effect on X, as indicated by the absence of an arrow going from Y to X (the graph is acyclic); and (3) that there are no variables which cause X <em>and</em> Y, as indicated by the absence of nodes with arrows going to X and Y – on the convention, discussed below, that DAGs are drawn ‘complete’.<a href="#fn4" class="footnote-ref" id="fnref4" role="doc-noteref"><sup>4</sup></a></p>
+<p>A (frankly miraculous) property of DAGs is that beyond being conceptual models, DAGs obey a simple set of rules that entail empirical predictions: provided the DAG is complete – that is, the common causes of any two variables in the DAG also appear in the DAG – “open” paths (defined below) between variables permit statistical association, while their absence implies statistical independence. Implied independencies are testable and so some assumptions encoded in the DAG can be tested and refined by applying the DAG to real-world data.<a href="#fn5" class="footnote-ref" id="fnref5" role="doc-noteref"><sup>5</sup></a> The DAG in <a href="#figure-2-1">Figure 2.1</a> predicts that the variables X and Y should be correlated due to X having a causal effect on Y. Whether X and Y are correlated is testable, though a correlation could also arise because the DAG is mis-specified relative to the data it is applied to, either in principle (e.g., because Y causes X or X and Y share a common cause) or in practice (e.g., due to sample biases or measurement problems in the data).<a href="#fn6" class="footnote-ref" id="fnref6" role="doc-noteref"><sup>6</sup></a></p>
+<div id="figure-2-2">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><a href="images/image2.png" class="lightbox" data-gallery="quarto-lightbox-gallery-2" title="Figure 2.2: A more complex DAG."><img src="images/image2.png" class="img-fluid figure-img" style="width:31.0%" alt="Figure 2.2: A more complex DAG."></a></p>
+<figcaption><strong>Figure 2.2:</strong> A more complex DAG.</figcaption>
+</figure>
+</div>
+</div>
+<p><a href="#figure-2-2">Figure 2.2</a> shows a more complex DAG. There are now four variables (X, U, M, and Y) and six directed paths representing causal effects, some of which pass through intermediate variables: X → M, X → M → Y, M → Y, U → M, U → M → Y, and U → Y. M has a causal effect on Y that is not mediated by any other variable in the DAG (M → Y),<a href="#fn7" class="footnote-ref" id="fnref7" role="doc-noteref"><sup>7</sup></a> X has a causal effect on Y that is fully mediated by M (X → M → Y), and U has a causal effect on Y that is only partly mediated by M (paths U → M → Y and U → Y). Each of these paths is said to be a ‘causal’ (or ‘directed’) path as each begins by following the arrows from the first variable onwards in the direction of causality.</p>
+<p>Paths between variables do not necessarily proceed in the direction of causality, and association can travel along paths regardless of their direction. For instance, in <a href="#figure-2-2">Figure 2.2</a>, M will also be associated with Y via a ‘backdoor’ path through U (M ← U → Y); such a path is said to be backdoor because it exits the back of the initial variable (i.e., it begins by following an arrow <em>against</em> the direction of causality). The path is non-causal in the sense that it is not solely comprised of <em>descendants</em> (consequences) of the initial variable M, as indicated by the presence of arrows pointing in the opposite direction of causality (M ← U). This path therefore does not reflect a causal effect of M upon Y, but it nevertheless would lead to an observed association between M and Y that is introduced by their common cause (i.e., confounder), U. Controlling for this common cause would remove the association transmitted through the backdoor path.</p>
+<p>More formally, in DAGs, paths between variables are either ‘open’ or ‘closed’ (<em>blocked</em>). Variables that are connected by an open path should be associated,<a href="#fn8" class="footnote-ref" id="fnref8" role="doc-noteref"><sup>8</sup></a> while variables that are connected only by closed paths should not. Whether a path is open or closed depends on the variables being <em>conditioned</em> upon; conditioning can be explicit (e.g., through regression adjustment or stratification) or implicit (e.g., by analysing a dataset restricting to one or more levels of a relevant covariate, e.g., only those with response at each wave). Whether a path is open or closed can be determined by applying the four rules of d-Separation (Hernán, 2018a). These rules are shown below with accompanying DAGs. In these and other DAGs, we denote a variable that has been conditioned upon using red outline and grey fill.</p>
+<p><strong>d-Separation Rules</strong></p>
+<ol type="1">
+<li><p>If there are no variables being conditioned upon, a path is closed if and only if two arrowheads on the path <em>collide</em> at some variable on the path.</p>
+<ul>
+<li>Below, the path X → Y ← U collides at Y (Y is referred to as a <em>collider</em>), and so, without conditioning upon Y, the path between X and U is closed.</li>
+</ul></li>
+</ol>
+<div id="figure-2-3">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><a href="images/image3.png" class="lightbox" data-gallery="quarto-lightbox-gallery-3" title="Figure 2.3: d-Separation Rule #1. The path X → Y ← U is closed because the collider Y has not been conditioned upon."><img src="images/image3.png" class="img-fluid figure-img" style="width:31.0%" alt="Figure 2.3: d-Separation Rule #1. The path X → Y ← U is closed because the collider Y has not been conditioned upon."></a></p>
+<figcaption><strong>Figure 2.3:</strong> d-Separation Rule #1. The path X → Y ← U is closed because the collider Y <strong>has not</strong> been conditioned upon.</figcaption>
+</figure>
+</div>
+</div>
+<ol start="2" type="1">
+<li><p>Any path that contains a non-collider that has been conditioned upon is blocked.</p>
+<ul>
+<li>Below, the paths (a) X → M → Y and (b) X ← U → Y are blocked by conditioning upon the non-colliders M and U, respectively.</li>
+</ul></li>
+</ol>
+<div id="figure-2-4">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><a href="images/image4.png" class="lightbox" data-gallery="quarto-lightbox-gallery-4" title="Figure 2.4: d-Separation Rule #2. (a) The path X → M → Y is closed because M has been conditioned upon. (b) The path X ← U → Y is closed because U has been conditioned upon."><img src="images/image4.png" class="img-fluid figure-img" style="width:63.0%" alt="Figure 2.4: d-Separation Rule #2. (a) The path X → M → Y is closed because M has been conditioned upon. (b) The path X ← U → Y is closed because U has been conditioned upon."></a></p>
+<figcaption><strong>Figure 2.4:</strong> d-Separation Rule #2. (a) The path X → M → Y is closed because M has been conditioned upon. (b) The path X ← U → Y is closed because U has been conditioned upon.</figcaption>
+</figure>
+</div>
+</div>
+<ol start="3" type="1">
+<li><p>A collider that has been conditioned upon does not block a path.</p>
+<ul>
+<li>Below, the path X → Y ← U is open because the collider Y has been conditioned upon.</li>
+</ul></li>
+</ol>
+<div id="figure-2-5">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><a href="images/image5.png" class="lightbox" data-gallery="quarto-lightbox-gallery-5" title="Figure 2.5: d-Separation Rule #3. The path X → Y ← U is open because the collider Y has been conditioned upon."><img src="images/image5.png" class="img-fluid figure-img" style="width:31.0%" alt="Figure 2.5: d-Separation Rule #3. The path X → Y ← U is open because the collider Y has been conditioned upon."></a></p>
+<figcaption><strong>Figure 2.5:</strong> d-Separation Rule #3. The path X → Y ← U is open because the collider Y <strong>has</strong> been conditioned upon.</figcaption>
+</figure>
+</div>
+</div>
+<ol start="4" type="1">
+<li><p>A collider that has a descendant that has been conditioned upon does not block a path.</p>
+<ul>
+<li>Below, the path X → Y ← U is open because Z, a descendant (consequence) of the collider Y, has been conditioned upon.</li>
+</ul></li>
+</ol>
+<div id="figure-2-6">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><a href="images/image6.png" class="lightbox" data-gallery="quarto-lightbox-gallery-6" title="Figure 2.6: d-Separation Rule #4. The path X → Y ← U is open because a descendant of the collider Y has been conditioned upon."><img src="images/image6.png" class="img-fluid figure-img" style="width:31.0%" alt="Figure 2.6: d-Separation Rule #4. The path X → Y ← U is open because a descendant of the collider Y has been conditioned upon."></a></p>
+<figcaption><strong>Figure 2.6:</strong> d-Separation Rule #4. The path X → Y ← U is open because a descendant of the collider Y <strong>has</strong> been conditioned upon.</figcaption>
+</figure>
+</div>
+</div>
+<p>Applying these rules to <a href="#figure-2-2">Figure 2.2</a>, the path M ← U → Y is open but can be closed by conditioning on U. This path represents the belief that U is a confounder for the relationship between M and Y; we discuss confounding further below. X is also connected to Y via M and U (X → M ← U → Y). M is a descendant of both X and U and so is a collider on this path (the paths from X and U <em>collide</em> at M). The path X → M ← U → Y is therefore closed because neither M nor its descendant, Y, has been conditioned upon. An open collider path generates ‘collider bias’, a form of selection bias, examples of which abound and which can also affect RCTs. We discuss selection bias further below.</p>
+<p>The benefit of drawing the DAG in <a href="#figure-2-2">Figure 2.2</a> is threefold. First, it is a very compact and straightforward way of representing our beliefs about the causal relationships pertaining to a particular research question. The DAG succinctly communicates these beliefs to other researchers. Second, as noted, DAGs imply a set of empirical predictions that can enable us to test our beliefs. The DAG in <a href="#figure-2-2">Figure 2.2</a> predicts, among other things, that (a) M should be associated with Y, either unconditionally or having conditioned upon U; (b) X should be associated with M and Y, but not with Y when conditioning upon M and U; (c) U should be associated with Y, either unconditionally or conditioning on M; and (d) X should be independent of U unless conditioning on M and/or Y. If we have data with measurements of X, M, Y and U, we should be able to test these predictions, i.e., evaluate the DAG-data consistency (Textor et al., 2016).</p>
+<p>Third, accepting the assumptions encoded in <a href="#figure-2-2">Figure 2.2</a>, we can use the DAG to understand the biases that may apply in an existing study or, better still, plan a new study that obtains an unbiased causal effect estimate even with observational data. For instance, to obtain an estimate of the causal effect of M on Y, we can condition upon U or use X as an instrument for M (more on this in <a href="./05-09-instrumental-variables.html">Section 5.9</a>). This is the power of DAGs.</p>
+</section>
+<section id="confounding-bias" class="level3">
+<h3 class="anchored" data-anchor-id="confounding-bias">2.2.3 Confounding Bias</h3>
+<p>The three main sources of bias in observational studies can each be represented with DAGs. We have already seen an example of confounding in <a href="#figure-2-2">Figure 2.2</a> – U was a confounder of the relationship between M and Y (M ← U → Y).</p>
+<div id="figure-2-7">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><a href="images/image7.png" class="lightbox" data-gallery="quarto-lightbox-gallery-7" title="Figure 2.7: DAGs representing the structural definition of confounding bias."><img src="images/image7.png" class="img-fluid figure-img" style="width:94.0%" alt="Figure 2.7: DAGs representing the structural definition of confounding bias."></a></p>
+<figcaption><strong>Figure 2.7:</strong> DAGs representing the structural definition of confounding bias.</figcaption>
+</figure>
+</div>
+</div>
+<p>DAGs provide a distinct perspective on confounding. Specifically, the focus is on the bias itself, which is determined by the causal structure, rather than the role individual variables may have, which is the more usual focus (Hernán, 2018a).<a href="#fn9" class="footnote-ref" id="fnref9" role="doc-noteref"><sup>9</sup></a> Though confounders (common causes; Tennant et al., 2021) of exposure and outcome may exist, whether there is confounding <u>bias</u> depends on the variables that have been conditioned upon. For instance, in <a href="#figure-2-7">Figure 2.7a</a>, U<sub>1</sub> is a confounder of the relationship between X and Y (X ← U<sub>1</sub> → U<sub>2</sub> → Y). Yet, there is no confounding bias because U<sub>2</sub>, which is not a common cause of X and Y but blocks the backdoor path between them (d-Separation Rule #2), <em>is</em> conditioned upon. A similar observation can be made for the DAG in <a href="#figure-2-7">Figure 2.7b</a>. <a href="#fn10" class="footnote-ref" id="fnref10" role="doc-noteref"><sup>10</sup></a></p>
+<div id="figure-2-8">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><a href="images/image8.png" class="lightbox" data-gallery="quarto-lightbox-gallery-8" title="Figure 2.8: DAGs showing issues with data-driven definition of confounders that do not take causal structure into account. (a) Z meets data-driven definition even though it does not confound the association between X and Y and, in fact, could be used as an instrumental variable for X and controlling for it, in the absence of control for U, would actually increase bias. (b) C meets data-driven definition even though controlling for it creates bias that otherwise would not be there."><img src="images/image8.png" class="img-fluid figure-img" style="width:91.0%" alt="Figure 2.8: DAGs showing issues with data-driven definition of confounders that do not take causal structure into account. (a) Z meets data-driven definition even though it does not confound the association between X and Y and, in fact, could be used as an instrumental variable for X and controlling for it, in the absence of control for U, would actually increase bias. (b) C meets data-driven definition even though controlling for it creates bias that otherwise would not be there."></a></p>
+<figcaption><strong>Figure 2.8:</strong> DAGs showing issues with data-driven definition of confounders that do not take causal structure into account. (a) Z meets data-driven definition even though it does not confound the association between X and Y and, in fact, could be used as an instrumental variable for X and controlling for it, in the absence of control for U, would actually increase bias. (b) C meets data-driven definition even though controlling for it creates bias that otherwise would not be there.</figcaption>
+</figure>
+</div>
+</div>
+<p>Compare the structural definition with a lay, partly data-driven (and ultimately incorrect) definition of a confounder: a variable that is associated with X and Y (conditional on X) and is not on the causal path between X and Y. <a href="#figure-2-8">Figure 2.8a</a> shows a variable Z that would meet this definition (conditioning on X opens the path Z → X ← U → Y) despite there being no confounding bias from Z (i.e., no path X ← Z → Y): no adjustment for Z needs to be made and not conditioning on Z does not mean only a biased estimate of the causal effect of X upon Y could be obtained. <a href="#figure-2-8">Figure 2.8b</a> shows a variable C that would also meet the data-driven definition and yet controlling for C actually creates bias because it is a collider on the backdoor path between X and Y (this bias is referred to as M-bias; W. Liu et al., 2012). Conditioning upon U<sub>1</sub> and/or U<sub>2</sub> would close this (now opened) path but conditioning on either is unnecessary unless C is conditioned upon.</p>
+<p>We can draw two lessons from the DAGs in <a href="#figure-2-7">Figure 2.7</a> and <a href="#figure-2-8">Figure 2.8</a>. First, as a confounder may only be one step on a longer causal path, it is possible to have multiple options to close biasing backdoor paths. Some may not be “common causes” of exposure and outcome – e.g., according to the DAGs in <a href="#figure-2-7">Figure 2.7</a>, U<sub>1</sub> could be conditioned upon, or U<sub>2</sub> could, or both. Second, theory and domain-specific knowledge are required to make appropriate choices with regard to adjustment sets. “Causal Salad” approaches (McElreath, 2020), where a host of potentially relevant variables are thrown roughshod into a regression model (e.g., C in <a href="#figure-2-8">Figure 2.8b</a>), can make an analysis more biased than if no adjustments were made at all.</p>
+<div id="figure-2-9">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><a href="images/image9.png" class="lightbox" data-gallery="quarto-lightbox-gallery-9" title="Figure 2.9: DAG representing intermediate confounding."><img src="images/image9.png" class="img-fluid figure-img" style="width:42.0%" alt="Figure 2.9: DAG representing intermediate confounding."></a></p>
+<figcaption><strong>Figure 2.9:</strong> DAG representing intermediate confounding.</figcaption>
+</figure>
+</div>
+</div>
+<p>In <a href="#figure-2-7">Figure 2.7</a> and <a href="#figure-2-8">Figure 2.8</a>, the exposure was a single point intervention, but many research questions relate to estimating joint effects of multiple exposures or the effect of an exposure varying over time – for instance, questions related to testing models in life course epidemiology (Ben-Shlomo &amp; Kuh, 2002). Where the causal effect of one exposure is mediated by a confounder of others, simple regression adjustment will not be able to identify the joint causal effect of the exposures combined, a problem known as <em>intermediate</em> confounding (De Stavola et al., 2015) or <em>time-dependent</em> or <em>time-varying</em> confounding in the longitudinal setting, specifically (Hernán &amp; Robins, 2023; VanderWeele et al., 2016). <a href="#figure-2-9">Figure 2.9</a> shows a DAG with an example demonstrating the issue: the effect of low socioeconomic status in both childhood and adolescence upon health (Sheikh et al., 2016). When attempting to identify the joint effect of SES<sub>1</sub> <em>and</em> SES<sub>2</sub> upon Health<sub>2</sub> (e.g., SES<sub>1</sub>, SES<sub>2</sub> = Low, Low vs.&nbsp;High, High), it would be necessary to condition on Health<sub>1</sub> to block the (confounding) backdoor path from SES<sub>2</sub> to Health<sub>2</sub> via Health<sub>1</sub> (SES<sub>2</sub> ← Health<sub>1</sub> → Health<sub>2</sub>). However, this also blocks part of the causal effect of SES<sub>1</sub> upon Health<sub>2</sub> (SES<sub>1</sub> → Health<sub>1</sub> → Health<sub>2</sub>). Relatively complex statistical methods beyond simple regression adjustment are necessary in this setting and are described in <a href="./05-12-g-methods-for-time-varying-exposures.html">Sections 5.12</a> and <a href="./05-13-causal-mediation.html">5.13</a>.</p>
+<div id="figure-2-10">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><a href="images/image10.png" class="lightbox" data-gallery="quarto-lightbox-gallery-10" title="Figure 2.10: The Randomised Controlled Trial Design."><img src="images/image10.png" class="img-fluid figure-img" style="width:31.0%" alt="Figure 2.10: The Randomised Controlled Trial Design."></a></p>
+<figcaption><strong>Figure 2.10:</strong> The Randomised Controlled Trial Design.</figcaption>
+</figure>
+</div>
+</div>
+<p>Before moving on to discuss the second threat to internal validity, selection bias, we can briefly show why RCTs are so powerful. <a href="#figure-2-10">Figure 2.10</a> represents the RCT design within a DAG (note the similarity to <a href="#figure-2-2">Figure 2.2</a>). In a standard RCT, individuals are randomised to treatment or control groups (denoted by T). This randomisation provides a source of variation in the exposure X that is not caused by any other causes of Y, including any confounders (U) of the relationship of X and Y that may exist in the population; that is, treatment is allocated independently of potential outcomes for Y. Given that the effect of T upon Y should only operate through its effect upon X, T can be used as an ‘exposure’ variable in its own right (as in an “Intention to Treat” analysis) or as an instrumental variable for X. The extraordinary feature of RCTs is that the researcher need not even know what confounders U are – differences are not systematic and chance imbalances contribute to sampling variability.</p>
+</section>
+<section id="selection-bias" class="level3">
+<h3 class="anchored" data-anchor-id="selection-bias">2.2.4 Selection Bias</h3>
+<p><a href="#figure-2-8">Figure 2.8b</a> showed an example of M-bias. M-bias is, in fact, a form of selection bias as it arises from conditioning upon a collider. While most attention is usually placed on confounding as a source of bias in observational studies, selection bias can have greater consequences and be sufficient to generate estimates in the entirely opposite direction to the true causal effect. For example, during the COVID-19 pandemic, there was evidence that suggested smoking was protective against infection. However, as Tattan-Birch and colleagues (2021) note, both smoking and COVID-19 infection make people cough more, which is a reason for getting tested. Among people tested for COVID-19, smoking may be negatively correlated with infection because smokers are more likely to be tested <em>despite</em> not having COVID-19 (<a href="#figure-2-11">Figure 2.11</a>).</p>
+<div id="figure-2-11">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><a href="images/image11.png" class="lightbox" data-gallery="quarto-lightbox-gallery-11" title="Figure 2.11: Selection bias in the study of the effect of smoking on COVID-19 where being tested for COVID-19 determines eligibility into the analytic sample. There will be an association between the two even in the absence of a causal effect due to (implicitly) conditioning on a collider."><img src="images/image11.png" class="img-fluid figure-img" style="width:31.0%" alt="Figure 2.11: Selection bias in the study of the effect of smoking on COVID-19 where being tested for COVID-19 determines eligibility into the analytic sample. There will be an association between the two even in the absence of a causal effect due to (implicitly) conditioning on a collider."></a></p>
+<figcaption><strong>Figure 2.11:</strong> Selection bias in the study of the effect of smoking on COVID-19 where being tested for COVID-19 determines eligibility into the analytic sample. There will be an association between the two even in the absence of a causal effect due to (implicitly) conditioning on a collider.</figcaption>
+</figure>
+</div>
+</div>
+<p>Since being tested for COVID-19 is a potential consequence of both smoking and COVID-19, it can be conceptualised as a collider variable. As the analytic sample includes only tested individuals, this collider has been implicitly conditioned upon through the study design using restriction, instead of explicit analytical choice (e.g., by regression adjustment, as in the case of M-bias in <a href="#figure-2-8">Figure 2.8b</a>). But regardless of whether conditioning is implicit or explicit, the consequences are the same: selection bias. This can – and should – be represented in a DAG to fully capture biasing processes (Lu et al., 2024). Note, the phrases ‘selection’ and ‘selection bias’ are not used consistently across the academic literature, which can cause confusion. <a href="#box-2-1">Box 2.1</a> offers some clarifications.</p>
+<div id="box-2-1" class="callout callout-style-default callout-note no-icon callout-titled" title="Box 2.1: Notes on selection bias terminology">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>Box 2.1: Notes on selection bias terminology
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>The phrases ‘selection’ or ‘selection bias’ are not used consistently in all fields or by all academics. Some notes of clarification:</p>
+<ul>
+<li><p>Economists frequently use the phrase ‘selection’ (i.e., ‘selection on unobservables’), but this is synonymous with confounding – e.g., ‘selection into unemployment based on human capital’.</p></li>
+<li><p>‘Selection bias’ is often used to refer to issues of ‘transportability’ of an estimate to another population (i.e., bias in <em>external</em> rather than <em>internal</em> validity). This bias occurs when effects are heterogeneous and there are differences in the distribution of effect modifiers in the analytical sample relative to the target population. Lu et al.&nbsp;(2022, 2024) refer to this type of bias as ‘Type 2’ selection bias.</p></li>
+<li><p>Selection bias as we have used it in the paragraph above is alternatively referred to as ‘collider stratification bias’ and can be separated into ‘collider restriction bias’ and ‘collider adjustment bias’ (Lu et al., 2022, 2024).</p>
+<ul>
+<li><p>Collider restriction bias from selecting data points according to levels of a collider (e.g., only studying individuals with a COVID-19 test)</p></li>
+<li><p>Collider adjustment bias arises from including colliders in a regression model (e.g., as in the M-bias example in Figure 2.8b).</p></li>
+</ul></li>
+<li><p>Though collider adjustment bias is often considered a form of ‘selection bias’, Lu et al.&nbsp;(2024) argue against this as it does not involve selecting only some data points for analysis, instead referring to it as a form of ‘overadjustment’ bias.<a href="#fn11" class="footnote-ref" id="fnref11" role="doc-noteref"><sup>11</sup></a> However, we use ‘selection bias’ to capture both forms of collider bias, given this remains in predominant use.</p></li>
+</ul>
+</div>
+</div>
+<p>Selection biases are particularly important to consider in cohort studies due to the possibility of sweep and item non-response. While the initial sample in each of CLS’s cohorts was designed (after applying design weights) to be nationally representative, there has been non-random attrition from each study over time (Katsoulis et al., 2024; Mostafa et al., 2021; Silverwood, Calderwood, et al., 2024). The length and depth of the survey questionnaires also mean that some items have less than complete response. Accordingly, analysing only complete cases can mean restricting the sample and implicitly conditioning on colliders, similar to <a href="#figure-2-11">Figure 2.11</a>. In <a href="./05-methods.html">Section 5</a>, we discuss methods to address these problems, but unaccounted for, non-response can lead to selection bias. Selection bias also has further salience in mediation analyses, which are commonly applied to cohort data because of their longitudinal nature. These analyses are often used when a researcher is interested in decomposing a total causal effect into direct (unmediated) and indirect (mediated) effects, e.g., as in a Baron and Kenny (1986) type analysis.</p>
+<div id="figure-2-12">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><a href="images/image12.png" class="lightbox" data-gallery="quarto-lightbox-gallery-12" title="Figure 2.12: Bias from conditioning upon a collider variable."><img src="images/image12.png" class="img-fluid figure-img" style="width:100.0%" alt="Figure 2.12: Bias from conditioning upon a collider variable."></a></p>
+<figcaption><strong>Figure 2.12:</strong> Bias from conditioning upon a collider variable.</figcaption>
+</figure>
+</div>
+</div>
+<p>These issues (differential non-response and adjusting for a mediator) are represented graphically in <a href="#figure-2-12">Figure 2.12</a>. <a href="#figure-2-12">Figure 2.12a</a> shows a typical mediation analysis where a mediator is explicitly conditioned upon in an attempt to obtain an estimate of a direct causal effect (X → Y). Controlling for M opens the path from X to Y via M and U (X → M ← U → Y). A researcher wanting to obtain an unbiased estimate of the direct (or indirect) effect of X upon Y will not do so using this analysis unless they also condition on U. Note though, here U stands in for <em>all</em> variables independently affecting M and Y, so controlling for U may be a difficult task indeed. The size of the bias is determined by the strength of the path X → M ← U → Y – i.e., the size of the effect X and U have on M and the size of the effect U has on Y.<a href="#fn12" class="footnote-ref" id="fnref12" role="doc-noteref"><sup>12</sup></a></p>
+<p><a href="#figure-2-12">Figure 2.12b-c</a> represent two situations where selection into the analytical sample is related to exposure and outcome. Because we can only analyse the data that are available, in both cases, a spurious association is introduced between the two. We have already noted that this may arise due to issues with the data collection process – for instance, if we have unit, sweep or item non-response – but it can also arise for substantive reasons: we only observe people who are alive and we may observe a variable for some individuals because it is only defined for a certain group (e.g., wages are only defined for the employed). This can have important ramifications. For instance, at older ages smoking is associated with a <em>lower</em> risk of dementia, but this is likely due to the onset of dementia occurring late in life after many heavy smokers have died (Hernán, 2018a); surviving smokers are relatively robust compared to the larger proportion of surviving non-smokers but not <em>because</em> they smoke.</p>
+<p>Before moving on to discuss the third threat to internal validity, information bias, we note that selection bias can also affect RCTs for the same reason as observational studies. Selection bias would, for instance, arise where there is attrition from the trial that is related to both treatment and the outcome. Selection bias can also arise in mediation analyses as conditioning upon a consequence of an exposure leads to incomparable groups. To give an example: imagine an RCT in which participants were randomised to a work placement scheme (treatment) or no intervention (control). We may be interested in the long-term effect of work placement on wages, but wages are only observed for those with a job. If the work placement scheme increases employment, then the employed individuals in the treatment group will include not only those who would have found a job anyway, but also those who are only employed because of the scheme. By contrast, the employed individuals in the control group will only include those able to find a job without the scheme. If the additional employed individuals in the treatment group tend to earn lower wages, a naïve comparison of wages among those employed will underestimate the effect of the scheme on wages. See <a href="#table-2-1">Table 2.1</a>.</p>
+<div id="table-2-1">
+<table class="table table-bordered rct-table caption-top">
+<caption><strong>Table 2.1:</strong> A hypothetical RCT of a job placement scheme that improves employment and wages, but wages are only observed among employed individuals (grey shaded cells) leading to a naïve analysis suggesting the intervention was associated with lower wages, when the causal effect was the opposite.</caption>
+<thead>
+<tr class="header">
+<th colspan="2" rowspan="2" data-quarto-table-cell-role="th"></th>
+<th colspan="2" data-quarto-table-cell-role="th">Trial Arm</th>
+<th rowspan="2" data-quarto-table-cell-role="th"></th>
+</tr>
+<tr class="even">
+<th data-quarto-table-cell-role="th">Work Placement</th>
+<th data-quarto-table-cell-role="th">Control</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<th rowspan="2" class="text-end" data-quarto-table-cell-role="th">Employability</th>
+<th class="text-end" data-quarto-table-cell-role="th">High</th>
+<td class="shaded">£600 p.w.</td>
+<td class="shaded">£550 p.w.</td>
+<td></td>
+</tr>
+<tr class="even">
+<th class="text-end" data-quarto-table-cell-role="th">Low</th>
+<td class="shaded">£400 p.w.</td>
+<td>£350 p.w. (Latent)</td>
+<td></td>
+</tr>
+<tr class="summary odd">
+<th colspan="2" class="text-end" data-quarto-table-cell-role="th">Observed Mean</th>
+<td>£500 p.w.</td>
+<td>£550 p.w.</td>
+<td>− £50 p.w.</td>
+</tr>
+<tr class="summary even">
+<th colspan="2" class="text-end" data-quarto-table-cell-role="th">True Mean</th>
+<td>£500 p.w.</td>
+<td>£450 p.w.</td>
+<td>+ £50 p.w.</td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<section id="information-bias" class="level3">
+<h3 class="anchored" data-anchor-id="information-bias">2.2.5 Information Bias</h3>
+<div id="figure-2-13">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><a href="images/image13.png" class="lightbox" data-gallery="quarto-lightbox-gallery-13" title="Figure 2.13: Non-differential and independent measurement error in two variables, X* and Z*."><img src="images/image13.png" class="img-fluid figure-img" style="width:37.0%" alt="Figure 2.13: Non-differential and independent measurement error in two variables, X* and Z*."></a></p>
+<figcaption><strong>Figure 2.13:</strong> Non-differential and independent measurement error in two variables, X* and Z*.</figcaption>
+</figure>
+</div>
+</div>
+<p>The third threat to internal validity is information bias. Information bias arises when measured variables are not perfect representations of the phenomena they are designed to capture – i.e., when variables are measured with error. In DAGs, measurement error is represented by distinguishing the measured variable (X*) from the latent, unobserved variable (X) and drawing the measured variable as a descendant of the latent variable and an error node (E<sub>X</sub>). Nodes for latent variables and unobserved errors are displayed as circles or ellipses. See <a href="#figure-2-13">Figure 2.13</a> for an example.</p>
+<p>Errors can be classified along two dimensions: they can be <em>dependent</em> or <em>independent</em> and <em>differential</em> or <em>non-differential</em>. An error is dependent (as opposed to independent) if it is correlated with the measurement error of another variable. An error is differential (as opposed to non-differential) if its value is related to the underlying value of a variable. <a href="#figure-2-13">Figure 2.13</a> displays a situation where there are independent and non-differential errors in two study variables, X* and Z*; classical measurement error is a type of independent, non-differential measurement error.</p>
+<p>Whether independent, non-differential error leads to a biased estimate of a causal effect depends on the analysis. In a simple linear regression with classical (additive) measurement error in the exposure (X* = X + E<sub>x</sub>), the coefficient on the exposure will be biased towards the null. Intuitively, this is because each unit increase in X* can be either caused by X, which has an effect on Y, or E<sub>x</sub>, which does not. This phenomenon is known as regression dilution (Hutcheon et al., 2010). On the other hand, if it is the outcome that is measured with classical measurement error (Y* = Y + E<sub>Y</sub>), there would be no bias, but statistical precision will be decreased.</p>
+<div id="figure-2-14">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><a href="images/image14.png" class="lightbox" data-gallery="quarto-lightbox-gallery-14" title="Figure 2.14: Combinations of differential and dependent measurement error in two variables, X* and Y*."><img src="images/image14.png" class="img-fluid figure-img" style="width:100.0%" alt="Figure 2.14: Combinations of differential and dependent measurement error in two variables, X* and Y*."></a></p>
+<figcaption><strong>Figure 2.14:</strong> Combinations of differential and dependent measurement error in two variables, X* and Y*.</figcaption>
+</figure>
+</div>
+</div>
+<p><a href="#figure-2-14">Figure 2.14</a> completes the three other combinations of dependent/independent and differential/non-differential error. In each case, X does not have a causal effect on Y but X* and Y* are associated due to measurement error. <a href="#figure-2-14">Figure 2.14a</a> displays a situation where there are dependent, non-differential errors in the two measured variables, X* and Y*. X* and Y* are associated via the backdoor path X* ← E<sub>X</sub> ← E<sub>XY</sub> → U<sub>Y</sub> → Y*, even though there is no causal effect of the latent variable X on Y. <a href="#figure-2-14">Figure 2.14b</a> displays a situation where there are independent, differential errors in two measured variables X* and Y* (Y* is differential with respect to X). X* and Y* are associated via the path X* ← X → E<sub>Y</sub> → Y*, even though there is no causal effect of X on Y. <a href="#figure-2-14">Figure 2.14c</a> displays a situation where there are dependent, differential errors in two measured variables X* and Y* (Y* is differential with respect to X). X* and Y* are associated via the two biasing paths in <a href="#figure-2-14">Figure 2.14a-b</a> even though there is no causal effect of X on Y: X* ← X → E<sub>Y</sub> → Y* and X* ← E<sub>X</sub> ← E<sub>XY</sub> → E<sub>Y</sub> → Y*.</p>
+<div id="figure-2-15">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><a href="images/image15.png" class="lightbox" data-gallery="quarto-lightbox-gallery-15" title="Figure 2.15: Measurement error in a confounding factor."><img src="images/image15.png" class="img-fluid figure-img" style="width:32.0%" alt="Figure 2.15: Measurement error in a confounding factor."></a></p>
+<figcaption><strong>Figure 2.15:</strong> Measurement error in a confounding factor.</figcaption>
+</figure>
+</div>
+</div>
+<p>Information bias is not only a problem where exposure and outcome variables are subject to measurement error but also when there is measurement error in variables used to close biasing paths. <a href="#figure-2-15">Figure 2.15</a> displays a common situation where the confounder U is measured with some error. Since U* is not a perfect measure of U, conditioning on U* will not close the backdoor path X ← U → Y completely, leaving residual confounding. Thus, the effect of X on Y is still confounded, though the size of the resulting bias depends on the relative size of the error in U* and the strength of the confounding pathway. The more accurate the measurement, the less bias; the stronger the confounding, the greater the bias.</p>
+<p>A potential source of information bias that users of CLS’s data should be particularly aware of is <em>survey mode effects</em>. Each of CLS’s cohort studies has at various points adopted mixed-mode designs, with cohort members responding via, e.g., web, video, telephone or face-to-face interview. Mixed-mode designs mean survey modes differ between individuals <em>within a sweep</em> or within individuals <em>across sweeps</em>. Mixed-mode designs can increase response rates while also lowering the cost of data collection. A drawback, though, is that responses to survey items can differ systematically between modes, in particular due to differences in interviewer presence/absence and in how items are presented (Tomova, Silverwood, &amp; Wright, 2026a). For instance, a participant may be less willing to answer sensitive questions accurately in non-anonymous modes. Differences between modes due to how items are measured are termed mode effects.</p>
+<div id="figure-2-16">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><a href="images/image16.png" class="lightbox" data-gallery="quarto-lightbox-gallery-16" title="Figure 2.16: Bias from mixed-mode designs. (a) Bias due to shared mode effects in two measured variables, X* and Y*. (b) Bias due to a combination of mode effect (M → Y*) and mode selection (X → M). Note, mode is an observable source of measurement error."><img src="images/image16.png" class="img-fluid figure-img" style="width:58.0%" alt="Figure 2.16: Bias from mixed-mode designs. (a) Bias due to shared mode effects in two measured variables, X* and Y*. (b) Bias due to a combination of mode effect (M → Y*) and mode selection (X → M). Note, mode is an observable source of measurement error."></a></p>
+<figcaption><strong>Figure 2.16:</strong> Bias from mixed-mode designs. (a) Bias due to shared mode effects in two measured variables, X* and Y*. (b) Bias due to a combination of mode effect (M → Y*) and mode selection (X → M). Note, mode is an observable source of measurement error.</figcaption>
+</figure>
+</div>
+</div>
+<p>Unaccounted for, mode effects can cause bias in analysis because mode effects are mechanistically dependent; two variables subject to mode effects will be associated where mode is shared (<a href="#figure-2-16">Figure 2.16a</a>; X* ← M → Y*) or correlated. But mode effects can also cause bias in analysis due to mode effects being differential (<a href="#figure-2-16">Figure 2.16b</a>; X → M → Y*); in mixed-mode designs, participants are typically not randomised to mode, and the characteristics of participants in each mode can differ due to active participant choice or as a direct or indirect consequence of the fieldwork design. For instance, people without a telephone number may only be offered face-to-face interview, while in the sequential mixed-mode design where one mode is only offered after non-response to previously offered modes, groups who are slower to respond will only appear in modes offered last. Systematic differences between modes due to <em>who</em> is being measured are referred to as <em>mode selection</em>.</p>
+<p>In the DAGs in <a href="#figure-2-16">Figure 2.16</a>, bias can be removed by conditioning upon mode (e.g., by including mode as an indicator variable in a regression model). However, conditioning upon mode can generate collider bias where there are unaccounted-for factors that also determine selection into mode (X → M ← U → Y, <a href="#figure-2-17">Figure 2.17a</a>), a Gordian Knot-like problem when the unobserved factors are the latent variables of interest themselves (X → M ← Y, <a href="#figure-2-17">Figure 2.17b</a>).</p>
+<div id="figure-2-17">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><a href="images/image17.png" class="lightbox" data-gallery="quarto-lightbox-gallery-17" title="Figure 2.17: Bias from controlling for mode in the presence of mode selection."><img src="images/image17.png" class="img-fluid figure-img" style="width:58.0%" alt="Figure 2.17: Bias from controlling for mode in the presence of mode selection."></a></p>
+<figcaption><strong>Figure 2.17:</strong> Bias from controlling for mode in the presence of mode selection.</figcaption>
+</figure>
+</div>
+</div>
+<p>CLS has recently released guidance for users of its cohort data on handling mode effects (L. Wright, Ploubidis, et al., 2024). This guidance includes a description of the mixed-mode elements in each cohort, DAGs to conceptualise a wider set of situations in which mode effects can bias analysis, and discussion of methods for accounting for mode effects (see also Tomova, Silverwood, Tennant, et al., 2026; Tomova, Silverwood, &amp; Wright, 2026b).</p>
+</section>
+<section id="researcher-degrees-of-freedom" class="level3">
+<h3 class="anchored" data-anchor-id="researcher-degrees-of-freedom">2.2.6 Researcher Degrees of Freedom</h3>
+<p>In the previous three sections we have seen how bias can arise from analytical decisions and the data-generating process, but bias can also arise when researchers (or editors or publishers) choose which results to publish. Many analyses admit multiple defensible specifications (e.g., how to treat missing data, how to operationalise key variables), which may give slightly different results, some more favourable to the researcher’s aims or prejudices, some less. If the analyst spends their “researcher degrees of freedom” (Simmons et al., 2011) on getting the answer they want, absence of confounding, selection, and information biases is no guarantee of obtaining an unbiased causal effect. This problem can be lessened through pre-registration of analysis plans, including using registered report publication models (Crüwell et al., 2019; Weston et al., 2019). Methods that involve running and presenting the “universe” of defensible model specifications, such as Specification Curve Analysis (Simonsohn et al., 2020) or Multiverse Analysis (Steegen et al., 2016), can also help. See Orben &amp; Przybylski (2019) for an example of specification curve analysis using MCS data.</p>
+</section>
+</section>
+<section id="why-cohort-studies" class="level2">
+<h2 class="anchored" data-anchor-id="why-cohort-studies">2.3 Why Cohort Studies?</h2>
+<p>Given the empirical and theoretical expectation of the potential for bias in cohort and other observational studies (see <a href="./08-appendix.html">Section 8</a> [Appendix] for a review), readers may wonder why cohort studies should be used at all. Besides highlighting the utility of cohort studies for purely descriptive analyses, a typical defence would note that there is little other option – RCTs are expensive, potentially unethical, and in many cases impractical or even impossible. Large cohort studies, on the other hand, can be used for very many different research questions, at relatively low cost, exist already so can give answers fast, and by measuring behaviours and other factors occurring anyway (e.g., problematic drug use) do not have the same ethical issues that can arise in RCTs.</p>
+<p>But this is a negative case. More positively, there are situations that are recorded in observational data where confounding and other forms of bias are unlikely to exist or to materially impact results, including “natural” experiments. There are also frameworks and methods that have been developed which, when used in appropriate situations, can help researchers draw sensible causal inferences from observational data. Methods also exist for detecting and correcting for bias <em>post hoc</em>, and in many important cases the size or direction of bias will not be sufficient to substantively affect results. Compelling causal claims can therefore still be made with observational data even when bias is present and known. In <a href="./04-attributes.html">Section 4</a>, we further discuss the attributes of cohort data that support causal inference, and in <a href="./05-methods.html">Section 5</a>, we describe methods that exploit these attributes.</p>
+
+
+</section>
+<section id="footnotes" class="footnotes footnotes-end-of-document" role="doc-endnotes">
+<hr>
+<ol>
+<li id="fn1"><p>Some other methods, such as difference-in-differences, instrumental variables, and the regression discontinuity design, use different identifying arguments, though each include a version of conditional exchangeability. These assumptions are stated in <a href="./05-methods.html">Section 5</a> when relevant. Note, these assumptions also apply when targeting other estimands, including the Average Treatment Effect on the Treated (ATT) and the Average Treatment Effect on the Untreated (ATU).<a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn2"><p>Some methods, such as the Sharp Regression Discontinuity Design (<a href="./05-10-regression-discontinuity-designs.html">Section 5.10</a>), do not rely upon the positivity assumption as they instead use statistical models or other assumptions to extrapolate counterfactual estimates.<a href="#fnref2" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn3"><p>The consistency assumption can be highly restrictive given treatments can vary along many different dimensions (e.g., the angle at which a vaccine is administered; Hernán, 2016). In practice, it may not be possible to determine which aspects of different versions of a treatment are irrelevant for (potential) outcomes, and thus if consistency is met. Domain specific expertise is necessary to make these judgements, but is therefore limited by present knowledge (Hernán &amp; Robins, 2023). Given it may be impossible to completely specify a consistent treatment, observed outcomes could be considered a weighted average of the different versions of treatment captured in a definition (“10% weight loss via calorific restriction”). Bias can arise where there are (possibly) subtle differences in distribution of these treatments between treatment and control groups, even where conditional exchangeability has been achieved. Note treatment variation is one reason results from one population may not generalise to another (Hernán &amp; Robins, 2023).<a href="#fnref3" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn4"><p>Note it is possible to include in a DAG factors that have causal effects on one another. This is handled by treating variables as time-specific to respect temporality – e.g., X<sub>t</sub> → Y<sub>t+1</sub> → X<sub>t+2</sub><a href="#fnref4" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn5"><p>DAGs were initially developed by Judea Pearl, a computer scientist interested in artificial intelligence. As DAGs follow rules, a property is that they can be programmed and manipulated algorithmically. The software DAGitty (<a href="https://www.dagitty.net/" class="uri">https://www.dagitty.net/</a>) can be used to draw DAGs and can also generate the set of testable predictions (i.e., [conditional] independencies) implied by a DAG. Note, (conditional) independencies, which represent the <u>absence</u> of a path, represent stronger assumptions than dependencies, which could result from any number of paths (possibly of different directions, too).<a href="#fnref5" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn6"><p>The distinction between principle and practice is not clear cut because, as we shall see, DAGs can be drawn to represent data issues and DAGs are most useful when drawn for the data they are applied to.<a href="#fnref6" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn7"><p>This is not to say the effect on M on Y is unmediated by any other variable (e.g., a biological mechanism operating at the cellular level). Recall, a DAG is complete if common causes of any two variables in the DAG also appear in the DAG. Mediators therefore only need to be included in a DAG if they cause, or are caused by, two variables in the DAG, though they may be optionally specified if of analytic interest.<a href="#fnref7" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn8"><p>An exception is when paths counterbalance. High winds can blow boats off course, but a good captain handling the tiller may keep the boat’s bearing (Cunningham, 2021). Note, as DAGs are non-parametric, statistical relationships may be of a form that simple (e.g., Pearson’s) correlations cannot detect.<a href="#fnref8" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn9"><p>For more on variable roles within DAGs, see Tennant et al.&nbsp;(2021).<a href="#fnref9" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn10"><p>In Footnote 8, we discussed how DAGs can be high level and do not necessarily have to include all mediators of a causal effect from one variable to another within them (for instance, a DAG representing the effect of education on health might not include a node for income). Given this, we should note that confounders of the relationship between an exposure and a mediator also confound associations between exposures and outcomes (Cinelli, Forney, et al., 2024).<a href="#fnref10" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn11"><p>Other examples of overadjustment bias are conditioning on instrumental variables (see <a href="./05-09-instrumental-variables.html">Section 5.9</a>), mediators (where one wishes to estimate a total, rather than indirect, effect), or consequences (descendants) of an outcome (Cinelli, Forney, et al., 2024; Lu et al., 2021; Schisterman et al., 2009)<a href="#fnref11" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn12"><p>This provides a straightforward solution to the so-called “obesity paradox” of obese individuals displaying greater survival rates from cardiovascular disease (CVD; Banack &amp; Kaufman, 2014). As CVD is a consequence of obesity, comparing survival rates among obese and non-obese individuals with CVD compares obese people against those who must have developed CVD for other reasons, some of which may have far worse prognoses, even if obesity itself is deleterious for health.<a href="#fnref12" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+</ol>
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copied!");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copied!");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp("https:\/\/cls-data\.github\.io\/causal-inference-review\/");
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+            // target, if specified
+            link.setAttribute("target", "_blank");
+            if (link.getAttribute("rel") === null) {
+              link.setAttribute("rel", "noopener");
+            }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+<nav class="page-navigation">
+  <div class="nav-page nav-page-previous">
+      <a href="./01-introduction.html" class="pagination-link" aria-label="1 Introduction">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-title">1 Introduction</span></span>
+      </a>          
+  </div>
+  <div class="nav-page nav-page-next">
+      <a href="./03-approaches.html" class="pagination-link" aria-label="3 Three Approaches to Causal Inference">
+        <span class="nav-page-text"><span class="chapter-title">3 Three Approaches to Causal Inference</span></span> <i class="bi bi-arrow-right-short"></i>
+      </a>
+  </div>
+</nav>
+</div> <!-- /content -->
+<footer class="footer">
+  <div class="nav-footer">
+    <div class="nav-footer-left">
+<p>Wright, Tomova, Danka, Ploubidis &amp; Silverwood · Centre for Longitudinal Studies, UCL</p>
+</div>   
+    <div class="nav-footer-center">
+      &nbsp;
+    <div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/CLS-Data/causal-inference-review/issues/new" class="toc-action"><i class="bi bi-github"></i>Report an issue</a></li></ul></div></div>
+    <div class="nav-footer-right">
+<p>Built with <a href="https://quarto.org">Quarto</a></p>
+</div>
+  </div>
+</footer>
+<script>var lightboxQuarto = GLightbox({"closeEffect":"zoom","descPosition":"bottom","loop":false,"openEffect":"zoom","selector":".lightbox"});
+(function() {
+  let previousOnload = window.onload;
+  window.onload = () => {
+    if (previousOnload) {
+      previousOnload();
+    }
+    lightboxQuarto.on('slide_before_load', (data) => {
+      const { slideIndex, slideNode, slideConfig, player, trigger } = data;
+      const href = trigger.getAttribute('href');
+      if (href !== null) {
+        const imgEl = window.document.querySelector(`a[href="${href}"] img`);
+        if (imgEl !== null) {
+          const srcAttr = imgEl.getAttribute("src");
+          if (srcAttr && srcAttr.startsWith("data:")) {
+            slideConfig.href = srcAttr;
+          }
+        }
+      } 
+    });
+  
+    lightboxQuarto.on('slide_after_load', (data) => {
+      const { slideIndex, slideNode, slideConfig, player, trigger } = data;
+      if (window.Quarto?.typesetMath) {
+        window.Quarto.typesetMath(slideNode);
+      }
+    });
+  
+  };
+  
+})();
+          </script>
+
+
+
+
+<script src="site_libs/quarto-html/zenscroll-min.js"></script>
+</body></html>

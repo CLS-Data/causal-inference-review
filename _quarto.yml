@@ -1,0 +1,79 @@
+project:
+  type: book
+  output-dir: docs
+
+book:
+  title: "Causal Inference in the CLS Cohort Studies"
+  author:
+    - "Liam Wright"
+    - "Georgia D. Tomova"
+    - "Martin N. Danka"
+    - "George B. Ploubidis"
+    - "Richard J. Silverwood"
+  date: "2026-09-16"
+  date-format: "D MMMM YYYY"
+  description: "A guide to methods and research designs for causal inference with the Centre for Longitudinal Studies' cohort data."
+  favicon: images/favicon.svg
+  site-url: https://cls-data.github.io/causal-inference-review/
+  repo-url: https://github.com/CLS-Data/causal-inference-review
+  repo-actions: [issue]
+  search: true
+  page-navigation: true
+  back-to-top-navigation: true
+  sidebar:
+    style: docked
+    collapse-level: 1
+    logo: images/cover.svg
+    logo-alt: "Cover: Causal Inference in the CLS Cohort Studies"
+  page-footer:
+    left: "Wright, Tomova, Danka, Ploubidis & Silverwood · Centre for Longitudinal Studies, UCL"
+    right: "Built with [Quarto](https://quarto.org)"
+  chapters:
+    - index.qmd
+    - 01-introduction.qmd
+    - 02-problem.qmd
+    - 03-approaches.qmd
+    - 04-attributes.qmd
+    - part: 05-methods.qmd
+      chapters:
+        - 05-01-control-via-regression-adjustment.qmd
+        - 05-02-matching.qmd
+        - 05-03-inverse-probability-of-treatment-weighting.qmd
+        - 05-04-missing-data-methods.qmd
+        - 05-05-longitudinal-fixed-effects.qmd
+        - 05-06-difference-in-differences.qmd
+        - 05-07-study-initiated-experiments.qmd
+        - 05-08-natural-experiments.qmd
+        - 05-09-instrumental-variables.qmd
+        - 05-10-regression-discontinuity-designs.qmd
+        - 05-11-target-trial-emulation.qmd
+        - 05-12-g-methods-for-time-varying-exposures.qmd
+        - 05-13-causal-mediation.qmd
+        - 05-14-family-designs.qmd
+        - 05-15-negative-control-outcomes-and-exposures.qmd
+        - 05-16-cross-context-analysis.qmd
+        - 05-17-biases-of-known-direction.qmd
+        - 05-18-differential-effects.qmd
+        - 05-19-reasons-for-effects.qmd
+        - 05-20-quantitative-bias-analysis.qmd
+    - 06-discussion.qmd
+    - 07-statements.qmd
+    - 08-appendix.qmd
+    - references.qmd
+
+format:
+  html:
+    theme: [cosmo, custom.scss]
+    number-sections: false
+    toc: true
+    toc-depth: 3
+    toc-title: "On this page"
+    lightbox: true
+    html-math-method: mathjax
+    link-external-newwindow: true
+    smooth-scroll: true
+    fig-cap-location: bottom
+    tbl-cap-location: top
+    citations-hover: true
+    footnotes-hover: true
+    lang: en-GB

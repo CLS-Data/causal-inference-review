@@ -1,0 +1,902 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en-GB" xml:lang="en-GB"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.8.27">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="description" content="A guide to methods and research designs for causal inference with the Centre for Longitudinal Studies’ cohort data.">
+
+<title>5.1 Control via Regression Adjustment – Causal Inference in the CLS Cohort Studies</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+</style>
+
+
+<script src="site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="site_libs/quarto-nav/headroom.min.js"></script>
+<script src="site_libs/clipboard/clipboard.min.js"></script>
+<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="site_libs/quarto-search/fuse.min.js"></script>
+<script src="site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="./">
+<link href="./05-02-matching.html" rel="next">
+<link href="./05-methods.html" rel="prev">
+<link href="./images/favicon.svg" rel="icon" type="image/svg+xml">
+<script src="site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="site_libs/quarto-html/axe/axe-check.js" type="module"></script>
+<script src="site_libs/quarto-html/popper.min.js"></script>
+<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="site_libs/quarto-html/anchor.min.js"></script>
+<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-ed96de9b727972fe78a7b5d16c58bf87.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="site_libs/bootstrap/bootstrap-6be7f6e0362b36c773b9fb5cb1e95ee5.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script src="site_libs/quarto-contrib/glightbox/glightbox.min.js"></script>
+<link href="site_libs/quarto-contrib/glightbox/glightbox.min.css" rel="stylesheet">
+<link href="site_libs/quarto-contrib/glightbox/lightbox.css" rel="stylesheet">
+<script id="quarto-search-options" type="application/json">{
+  "location": "sidebar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "start",
+  "type": "textbox",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+<style>html{ scroll-behavior: smooth; }</style>
+
+
+</head>
+
+<body class="nav-sidebar docked quarto-light">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+  <nav class="quarto-secondary-nav">
+    <div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
+      </button>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./05-methods.html">5 The Methods of Causal Inference</a></li><li class="breadcrumb-item"><a href="./05-01-control-via-regression-adjustment.html"><span class="chapter-title">5.1 Control via Regression Adjustment</span></a></li></ol></nav>
+        <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        </a>
+      <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
+        <i class="bi bi-search"></i>
+      </button>
+    </div>
+  </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation docked overflow-auto">
+    <div class="pt-lg-2 mt-2 text-left sidebar-header sidebar-header-stacked">
+      <a href="./index.html" class="sidebar-logo-link">
+      <img src="./images/cover.svg" alt="Cover: Causal Inference in the CLS Cohort Studies" class="sidebar-logo light-content py-0 d-lg-inline d-none">
+      <img src="./images/cover.svg" alt="Cover: Causal Inference in the CLS Cohort Studies" class="sidebar-logo dark-content py-0 d-lg-inline d-none">
+      </a>
+    <div class="sidebar-title mb-0 py-0">
+      <a href="./">Causal Inference in the CLS Cohort Studies</a> 
+        <div class="sidebar-tools-main">
+    <a href="https://github.com/CLS-Data/causal-inference-review" title="Source Code" class="quarto-navigation-tool px-1" aria-label="Source Code"><i class="bi bi-github"></i></a>
+</div>
+    </div>
+      </div>
+        <div class="mt-2 flex-shrink-0 align-items-center">
+        <div class="sidebar-search">
+        <div id="quarto-search" class="" title="Search"></div>
+        </div>
+        </div>
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">About this guide</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./01-introduction.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">1 Introduction</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./02-problem.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">2 The Problem of Causal Inference with Observational Data</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./03-approaches.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">3 Three Approaches to Causal Inference</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./04-attributes.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">4 Attributes of CLS’s Cohort Studies That Support Causal Inference</span></a>
+  </div>
+</li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a href="./05-methods.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">5 The Methods of Causal Inference</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./05-01-control-via-regression-adjustment.html" class="sidebar-item-text sidebar-link active"><span class="chapter-title">5.1 Control via Regression Adjustment</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./05-02-matching.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">5.2 Matching</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./05-03-inverse-probability-of-treatment-weighting.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">5.3 Inverse Probability of Treatment Weighting</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./05-04-missing-data-methods.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">5.4 Missing Data Methods</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./05-05-longitudinal-fixed-effects.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">5.5 (Longitudinal) Fixed Effects</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./05-06-difference-in-differences.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">5.6 Difference in Differences</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./05-07-study-initiated-experiments.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">5.7 Study-Initiated Experiments</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./05-08-natural-experiments.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">5.8 Natural Experiments</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./05-09-instrumental-variables.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">5.9 Instrumental Variables</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./05-10-regression-discontinuity-designs.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">5.10 Regression Discontinuity Designs</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./05-11-target-trial-emulation.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">5.11 Target Trial Emulation</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./05-12-g-methods-for-time-varying-exposures.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">5.12 G-methods for Time-Varying Exposures</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./05-13-causal-mediation.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">5.13 Causal Mediation</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./05-14-family-designs.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">5.14 Family Designs</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./05-15-negative-control-outcomes-and-exposures.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">5.15 Negative Control Outcomes and Exposures</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./05-16-cross-context-analysis.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">5.16 Cross-Context Analysis</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./05-17-biases-of-known-direction.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">5.17 Biases of Known Direction</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./05-18-differential-effects.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">5.18 Differential Effects</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./05-19-reasons-for-effects.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">5.19 Reasons for Effects</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./05-20-quantitative-bias-analysis.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">5.20 Quantitative Bias Analysis</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./06-discussion.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">6 Discussion</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./07-statements.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">7 Statements</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./08-appendix.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">8 Appendix</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./references.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">References</span></a>
+  </div>
+</li>
+    </ul>
+    </div>
+</nav>
+<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#method" id="toc-method" class="nav-link active" data-scroll-target="#method">5.1.1 Method</a></li>
+  <li><a href="#applications" id="toc-applications" class="nav-link" data-scroll-target="#applications">5.1.2 Applications</a></li>
+  <li><a href="#opportunities" id="toc-opportunities" class="nav-link" data-scroll-target="#opportunities">5.1.3 Opportunities</a></li>
+  </ul>
+<div class="toc-actions"><ul><li><a href="https://github.com/CLS-Data/causal-inference-review/issues/new" class="toc-action"><i class="bi bi-github"></i>Report an issue</a></li></ul></div></nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./05-methods.html">5 The Methods of Causal Inference</a></li><li class="breadcrumb-item"><a href="./05-01-control-via-regression-adjustment.html"><span class="chapter-title">5.1 Control via Regression Adjustment</span></a></li></ol></nav>
+<div class="quarto-title">
+<h1 class="title"><span id="control-via-regression-adjustment" class="quarto-section-identifier"><span class="chapter-title">5.1 Control via Regression Adjustment</span></span></h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<section id="method" class="level2">
+<h2 class="anchored" data-anchor-id="method">5.1.1 Method</h2>
+<p>The most common method for accounting for confounding bias is by taking a model-based approach and controlling for confounders or other nuisance factors via regression adjustment – for example, by adding covariates to an ordinary least squares (OLS) regression model. The data-generating process is modelled mathematically, with elements of the model (e.g., regression coefficients) learned from the data itself (Rosenbaum &amp; Rubin, 1983). Statistical adjustment models the effect of relevant differences between treatment and comparison groups to block backdoor or other nuisance paths between exposure and outcomes, isolating variation in the exposure and outcome unrelated to these (observed) confounders.</p>
+<p>This description is not just poetically true but reflects the underlying mechanics. The Frisch-Waugh-Lovell theorem demonstrates that the coefficient obtained by multivariable regression of an outcome upon an exposure plus covariates is equivalent to (1) obtaining residuals from regressions of (a) the exposure on covariates and (b) the outcome on covariates and then (2) regressing the residuals from (b) upon (a). In other words, statistical control winnows, and then utilises, residual variation. Readers can confirm this in R or Stata using the below code.</p>
+<p># Stata Code</p>
+<p>sysuse auto, clear</p>
+<p>regress price mpg length foreign // full model</p>
+<p>regress mpg length foreign</p>
+<p>predict mpg_resid, residuals</p>
+<p>regress price length foreign</p>
+<p>predict price_resid, residuals</p>
+<p>regress price_resid mpg_resid</p>
+<p># R Code</p>
+<p>data(iris)</p>
+<p>lm(Sepal.Length ~ Sepal.Width + Petal.Length + Species, iris) # full model</p>
+<p>width_mod &lt;- lm(Sepal.Width ~ Petal.Length + Species, iris)</p>
+<p>length_mod &lt;- lm(Sepal.Length ~ Petal.Length + Species, iris)</p>
+<p>lm(residuals(length_mod) ~ residuals(width_mod))</p>
+<p>Statistical control is an example of a ‘non-equivalent groups design’: the analyst starts with groups expected to differ systematically but attempts to model the effect of these differences on the outcome in order to remove them. Nick Huntington-Klein (2022, p.&nbsp;469) evocatively likens methods like this to creating a statue by taking a large block of marble and chipping away until the desired form is revealed underneath. Where successful – i.e., using a suitably accurate model, possibly reflecting an appropriate DAG – a valid causal estimate can be obtained. However, validity cannot be ascertained directly. Unlike a sculptor, the data analyst cannot say whether the finished product looks quite right. They do not know if they are left with Michelangelo’s <em>David</em> or <a href="https://web.archive.org/web/20180618225849/https:/www.bbc.com/sport/football/44518595">Emanuel Santos’ bust of Cristiano Ronaldo</a>.</p>
+<p>Not including a sufficient adjustment set in the statistical model leaves open backdoor or other biasing paths between exposure and outcome variables and will generate a biased estimate of the causal effect. The size of the bias will equal the (aggregate) strength of the biasing paths. For confounding paths, it will reflect the strength of the associations between the confounders and the exposure and between the confounders and the outcome. Adding too many covariates – the Causal Salad ‘approach’ (McElreath, 2020) – can also bias estimates where covariates serve as colliders or mediators of the effect of the exposure upon the outcome (the latter where an estimate of the total causal effect is sought). The statistical adjustment approach will also obtain a biased estimate if confounders are not modelled appropriately or measured accurately. Simple models with variables incorporated as linear terms without interactions or other non-linearities (e.g., absence of required polynomial terms) may not reveal suitable residual variation.</p>
+<p>Theory may not be sufficiently strong to clarify the correct functional form <em>a priori</em>, which limits standard regression algorithms like OLS, where the functional form requires explicit parameterisation. On the other hand, machine-learning and deep-learning algorithms, such as the random forest and neural networks, are capable of modelling non-linearities without their express inclusion in a model. The Frisch-Waugh-Lovell theorem has motivated the development of other methods, notably the double machine learning method (Chernozhukov et al., 2018), where machine-learning algorithms are used to obtain residuals for exposures and outcomes, increasing the plausibility that data-generating processes have been modelled correctly. Still, ever more complicated algorithms cannot use data that aren’t there; bias via backdoor paths (and incorrectly closed front-door paths or conditioned colliders) is still a fundamental issue regardless of the method used for statistical control.</p>
+<div id="figure-5-1">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><a href="images/image18.png" class="lightbox" data-gallery="quarto-lightbox-gallery-1" title="Figure 5.1: DAGs showing situations where controlling for a variable may increase or decrease bias. In (a), conditioning on Z closes the path X ← U1 → Z → Y but opens the path X ← U1 → Z ← U2 → Y (Source: Cinelli, Forney, et al., 2024). (b) represents a situation where there are mode effects and mode selection (Section 2.2.5). Conditioning on M (mode) closes the path X → M → Y* representing differential measurement but opens the path X → M ← Y → Y*. Tomova et al.&nbsp;(2026b) use simulations to explore the conditions in which this would increase bias."><img src="images/image18.png" class="img-fluid figure-img" style="width:69.0%" alt="Figure 5.1: DAGs showing situations where controlling for a variable may increase or decrease bias. In (a), conditioning on Z closes the path X ← U1 → Z → Y but opens the path X ← U1 → Z ← U2 → Y (Source: Cinelli, Forney, et al., 2024). (b) represents a situation where there are mode effects and mode selection (Section 2.2.5). Conditioning on M (mode) closes the path X → M → Y* representing differential measurement but opens the path X → M ← Y → Y*. Tomova et al.&nbsp;(2026b) use simulations to explore the conditions in which this would increase bias."></a></p>
+<figcaption><strong>Figure 5.1:</strong> DAGs showing situations where controlling for a variable may increase or decrease bias. In (a), conditioning on Z closes the path X ← U<sub>1</sub> → Z → Y but opens the path X ← U<sub>1</sub> → Z ← U<sub>2</sub> → Y (Source: Cinelli, Forney, et al., 2024). (b) represents a situation where there are mode effects and mode selection (Section 2.2.5). Conditioning on M (mode) closes the path X → M → Y* representing differential measurement but opens the path X → M ← Y → Y*. Tomova et al.&nbsp;(2026b) use simulations to explore the conditions in which this would increase bias.</figcaption>
+</figure>
+</div>
+</div>
+<p>Though non-parametric in nature, DAGs can help identify control variables that are sufficient to identify causal effects: the software DAGitty (2025) can be used to programmatically identify minimal sufficient adjustment sets or biasing pathways, while Cinelli et al.&nbsp;(2024) provide a “crash course” with example DAGs showing where adjustment would reduce, increase or leave bias unchanged.<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a> There are also situations where controlling for a variable could go either way; <a href="#figure-5-1">Figure 5.1</a> shows two DAGs where control closes one path but opens another due to the variable operating as a collider (‘damned if you do, damned if you don’t’; Cinelli, Forney, et al., 2024; Tomova, Silverwood, Tennant, et al., 2026; Woolf et al., 2023). Whether bias would be reduced is an empirical question and depends on the relative strength of the paths in question; judgements about this benefit from domain expertise. Regardless, adjustment sets will only be valid in so far as the assumptions encoded in the DAG (e.g., the set of variables, causal arrows, and their direction) are valid, too. Though some assumptions in a DAG may be testable empirically (i.e., implied [conditional] independencies), ultimately not all can be – e.g., there is no statistical way to identify the correct direction of an arrow between two adjacent variables, measured at the same moment in time.</p>
+<p>VanderWeele (2019) offers principles for selecting confounders when knowledge of underlying causal structures is incomplete or uncertain. Specifically, he recommends, with two caveats, conditioning upon any pre-exposure covariate that is a cause of the exposure or the outcome or both. This ‘disjunctive cause criterion’ avoids issues that can arise if simply controlling for any pre-treatment variable (i.e., M-bias) or insisting confounders must be common causes of both exposure and outcome (which can miss variables that are valid controls); see <a href="#figure-5-2">Figure 5.2</a> below.</p>
+<div id="figure-5-2">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><a href="images/image19.png" class="lightbox" data-gallery="quarto-lightbox-gallery-2" title="Figure 5.2: DAGs showing bias that can arise when (a) controlling for any pre-treatment variable or (b) controlling for a variable only if it is available and is a common cause of both exposure and outcome. In (a) and (b) variables U are not observed. In (a), conditioning upon C opens a bias path from X to Y via C (X ← U2→ C ← U1 → Y; i.e., M-bias). In (b), not conditioning upon C keeps the biasing path X ← C ← U → Y open, though it could be closed."><img src="images/image19.png" class="img-fluid figure-img" style="width:100.0%" alt="Figure 5.2: DAGs showing bias that can arise when (a) controlling for any pre-treatment variable or (b) controlling for a variable only if it is available and is a common cause of both exposure and outcome. In (a) and (b) variables U are not observed. In (a), conditioning upon C opens a bias path from X to Y via C (X ← U2→ C ← U1 → Y; i.e., M-bias). In (b), not conditioning upon C keeps the biasing path X ← C ← U → Y open, though it could be closed."></a></p>
+<figcaption><strong>Figure 5.2:</strong> DAGs showing bias that can arise when (a) controlling for any pre-treatment variable or (b) controlling for a variable only if it is available and is a common cause of both exposure and outcome. In (a) and (b) variables U are not observed. In (a), conditioning upon C opens a bias path from X to Y via C (X ← U<sub>2</sub>→ C ← U<sub>1</sub> → Y; i.e., M-bias). In (b), <strong>not</strong> conditioning upon C keeps the biasing path X ← C ← U → Y open, though it could be closed.</figcaption>
+</figure>
+</div>
+</div>
+<p>VanderWeele’s first caveat to this rule is that analysts should not control for any instrumental variable (<a href="./05-09-instrumental-variables.html">Section 5.9</a>) – that is, a variable which is only related to the outcome via its effect on the exposure – as this can generate ‘Z-bias’ where the bias from an unconditioned common cause of exposure and outcome is amplified by adjustment for an instrument (Ding et al., 2017). This is because controlling for the instrument removes a source of variation in the exposure that was unbiased, meaning a greater proportion of the variation that is left will represent bias or measurement error.<a href="#fn2" class="footnote-ref" id="fnref2" role="doc-noteref"><sup>2</sup></a> VanderWeele’s second caveat is that analysts should also consider conditioning on ‘proxy confounders’ – variables that explain sufficient variation in true confounders, such that they can be used instead of them, for example when the confounders themselves are not available or are poorly measured. These proxy confounders can be thought of as imperfect measurements of the true confounders. However, a drawback of including these is that there may also exist an unobserved common cause of the proxy confounder and the outcome, which could then create M-bias if the proxy confounder is conditioned upon. This would be the case if C were considered a proxy confounder for U<sub>2</sub> in <a href="#figure-5-2">Figure 5.2a</a> above.</p>
+<p>VanderWeele (2019) also discusses issues that can arise when covariates and exposures are measured simultaneously as it is possible that covariates are in fact mediators rather than confounders – for instance, conditioning upon cognitive ability when trying to estimate the causal effect of educational attainment as this is a consequence of education, as well as a cause (Ritchie &amp; Tucker-Drob, 2018; Strenze, 2007). A key benefit of CLS’s cohorts is that multiple sweeps of data are available which include repeated measurement, so it is usually possible to find measurements for confounders from prior to the measurement of the exposure (as well as to find measurements of the exposure prior to the outcome), thereby respecting temporality. Additionally, it may also be possible to control for lagged measurements of exposures and/or outcomes (VanderWeele et al., 2020), which can again reduce bias, particularly where time-invariant confounders exist or there are confounders that have effects on exposure and outcome at multiple time points. Note, controlling for earlier exposures more specifically links the study estimate (exposure to treatment at a specific time point) to a specific intervention and to the randomised controlled trial design; we discuss this further in <a href="./05-11-target-trial-emulation.html">Section 5.11</a>. However, one issue is that the time between adjacent sweeps can be quite long (e.g., a nine-year gap between the Age 33 year and 42 year NCDS sweeps), so control may be imperfect when this strategy is used.</p>
+<p>Less abstractly, VanderWeele et al.&nbsp;(2020) provide a list of variables they suggest should be considered for inclusion as covariates in regression models, given these represent confounders of many different associations in the health and social sciences.<a href="#fn3" class="footnote-ref" id="fnref3" role="doc-noteref"><sup>3</sup></a> Ideally these should be measured prior to exposure and outcome, or otherwise with consideration to the possibilities these mediate rather than confound associations (see <a href="#table-5-1">Table 5.1</a>). Most or all of these variables are available in each of CLS’s cohorts.</p>
+<div id="table-5-1">
+<table class="caption-top table">
+<caption><strong>Table 5.1:</strong> List of confounders to include in regression models recommended by VanderWeele et al.&nbsp;(2020).</caption>
+<colgroup>
+<col style="width: 50%">
+<col style="width: 50%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Domain</th>
+<th>Covariate</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Demographic</td>
+<td><p>Race</p>
+<p>Age</p>
+<p>Gender</p>
+<p>Marital Status</p></td>
+</tr>
+<tr class="even">
+<td>Economic, Social and Political</td>
+<td><p>Income</p>
+<p>Education</p>
+<p>Employment</p>
+<p>Social integration</p>
+<p>Neighbourhood</p>
+<p>Religious service attendance</p>
+<p>Political affiliation</p></td>
+</tr>
+<tr class="odd">
+<td>Health</td>
+<td><p>Self-rated health</p>
+<p>Number of health conditions</p>
+<p>Exercise</p>
+<p>Smoking</p>
+<p>Alcohol consumption</p>
+<p>Depression</p></td>
+</tr>
+<tr class="even">
+<td>Psychological</td>
+<td><p>Happiness</p>
+<p>Loneliness</p>
+<p>Parental warmth</p>
+<p>Purpose/Meaning</p>
+<p>Big five personality</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<section id="applications" class="level2">
+<h2 class="anchored" data-anchor-id="applications">5.1.2 Applications</h2>
+<p>There are thousands of papers using CLS data that have used the statistical adjustment approach. A particularly rigorous example of statistical control is Purba et al.&nbsp;(2025), who use data from MCS to assess the effect of time spent on social media on cigarette and e-cigarette use. The authors based their (pre-registered) analysis upon a DAG developed from subject knowledge, existing evidence, and input from a policy advisory group, from which they identified a minimally sufficient adjustment set for their analysis. A further virtue, though not related to reducing bias via regression adjustment, is that the authors also elected to use a more reliable time-diary-based measure of social media use rather than other available measures, reducing measurement error.</p>
+</section>
+<section id="opportunities" class="level2">
+<h2 class="anchored" data-anchor-id="opportunities">5.1.3 Opportunities</h2>
+<p>The regression adjustment approach is straightforward to implement and particularly suited to CLS’s cohort data given the amount and variety of data available on participants, including their individual characteristics and the characteristics of their backgrounds, families and localities in which they live. Control can be made for many common and important confounders, such as sex, ethnicity, psychological traits, and lifetime socioeconomic position. While not all confounders may be available, nor all confounders known, the ability to incorporate additional plausible confounders may still improve upon existing work; bias may not be fully ameliorated but at least reduced. The statistical adjustment approach may also be beneficial when treated as a data point within a broader literature – where remaining bias is unrelated to biases hampering other studies, particularly those using different study designs, consistency of results across studies (“triangulation”) makes a causal interpretation more plausible (Lawlor et al., 2016). Additionally, as will be discussed further in <a href="./05-20-quantitative-bias-analysis.html">Section 5.20</a> on Quantitative Bias Analysis, information on important confounders can be used to calibrate expectations about whether remaining confounders are sufficient to explain observed associations.</p>
+
+
+</section>
+<section id="footnotes" class="footnotes footnotes-end-of-document" role="doc-endnotes">
+<hr>
+<ol>
+<li id="fn1"><p>Control for some variables does not reduce bias, but by reducing residual variation, increases statistical power and the precision of estimates.<a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn2"><p>This is also known as ‘bias amplification’. Bias amplification can occur even if the confounder is a weak cause of the outcome because, again, once conditioned upon, the residual variation in the exposure may be more confounded than before. Similar logic also applies to sibship studies and other fixed effects designs as discussed in <a href="./05-05-longitudinal-fixed-effects.html">Sections 5.5</a> and <a href="./05-14-family-designs.html">5.14</a>.<a href="#fnref2" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn3"><p>In <a href="./08-appendix.html#why-does-correlation-often-not-equal-causation">Section 8.2</a> (Appendix), we also offer some general theoretical perspectives on confounding processes.<a href="#fnref3" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+</ol>
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copied!");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copied!");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp("https:\/\/cls-data\.github\.io\/causal-inference-review\/");
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+            // target, if specified
+            link.setAttribute("target", "_blank");
+            if (link.getAttribute("rel") === null) {
+              link.setAttribute("rel", "noopener");
+            }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+<nav class="page-navigation">
+  <div class="nav-page nav-page-previous">
+      <a href="./05-methods.html" class="pagination-link" aria-label="5 The Methods of Causal Inference">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">5 The Methods of Causal Inference</span>
+      </a>          
+  </div>
+  <div class="nav-page nav-page-next">
+      <a href="./05-02-matching.html" class="pagination-link" aria-label="5.2 Matching">
+        <span class="nav-page-text"><span class="chapter-title">5.2 Matching</span></span> <i class="bi bi-arrow-right-short"></i>
+      </a>
+  </div>
+</nav>
+</div> <!-- /content -->
+<footer class="footer">
+  <div class="nav-footer">
+    <div class="nav-footer-left">
+<p>Wright, Tomova, Danka, Ploubidis &amp; Silverwood · Centre for Longitudinal Studies, UCL</p>
+</div>   
+    <div class="nav-footer-center">
+      &nbsp;
+    <div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/CLS-Data/causal-inference-review/issues/new" class="toc-action"><i class="bi bi-github"></i>Report an issue</a></li></ul></div></div>
+    <div class="nav-footer-right">
+<p>Built with <a href="https://quarto.org">Quarto</a></p>
+</div>
+  </div>
+</footer>
+<script>var lightboxQuarto = GLightbox({"closeEffect":"zoom","descPosition":"bottom","loop":false,"openEffect":"zoom","selector":".lightbox"});
+(function() {
+  let previousOnload = window.onload;
+  window.onload = () => {
+    if (previousOnload) {
+      previousOnload();
+    }
+    lightboxQuarto.on('slide_before_load', (data) => {
+      const { slideIndex, slideNode, slideConfig, player, trigger } = data;
+      const href = trigger.getAttribute('href');
+      if (href !== null) {
+        const imgEl = window.document.querySelector(`a[href="${href}"] img`);
+        if (imgEl !== null) {
+          const srcAttr = imgEl.getAttribute("src");
+          if (srcAttr && srcAttr.startsWith("data:")) {
+            slideConfig.href = srcAttr;
+          }
+        }
+      } 
+    });
+  
+    lightboxQuarto.on('slide_after_load', (data) => {
+      const { slideIndex, slideNode, slideConfig, player, trigger } = data;
+      if (window.Quarto?.typesetMath) {
+        window.Quarto.typesetMath(slideNode);
+      }
+    });
+  
+  };
+  
+})();
+          </script>
+
+
+
+
+<script src="site_libs/quarto-html/zenscroll-min.js"></script>
+</body></html>

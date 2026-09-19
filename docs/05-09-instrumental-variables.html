@@ -1,0 +1,921 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en-GB" xml:lang="en-GB"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.8.27">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="description" content="A guide to methods and research designs for causal inference with the Centre for Longitudinal Studies’ cohort data.">
+
+<title>5.9 Instrumental Variables – Causal Inference in the CLS Cohort Studies</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+</style>
+
+
+<script src="site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="site_libs/quarto-nav/headroom.min.js"></script>
+<script src="site_libs/clipboard/clipboard.min.js"></script>
+<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="site_libs/quarto-search/fuse.min.js"></script>
+<script src="site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="./">
+<link href="./05-10-regression-discontinuity-designs.html" rel="next">
+<link href="./05-08-natural-experiments.html" rel="prev">
+<link href="./images/favicon.svg" rel="icon" type="image/svg+xml">
+<script src="site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="site_libs/quarto-html/axe/axe-check.js" type="module"></script>
+<script src="site_libs/quarto-html/popper.min.js"></script>
+<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="site_libs/quarto-html/anchor.min.js"></script>
+<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-ed96de9b727972fe78a7b5d16c58bf87.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="site_libs/bootstrap/bootstrap-6be7f6e0362b36c773b9fb5cb1e95ee5.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script src="site_libs/quarto-contrib/glightbox/glightbox.min.js"></script>
+<link href="site_libs/quarto-contrib/glightbox/glightbox.min.css" rel="stylesheet">
+<link href="site_libs/quarto-contrib/glightbox/lightbox.css" rel="stylesheet">
+<script id="quarto-search-options" type="application/json">{
+  "location": "sidebar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "start",
+  "type": "textbox",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+<style>html{ scroll-behavior: smooth; }</style>
+
+
+</head>
+
+<body class="nav-sidebar docked quarto-light">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+  <nav class="quarto-secondary-nav">
+    <div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
+      </button>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./05-methods.html">5 The Methods of Causal Inference</a></li><li class="breadcrumb-item"><a href="./05-09-instrumental-variables.html"><span class="chapter-title">5.9 Instrumental Variables</span></a></li></ol></nav>
+        <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        </a>
+      <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
+        <i class="bi bi-search"></i>
+      </button>
+    </div>
+  </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation docked overflow-auto">
+    <div class="pt-lg-2 mt-2 text-left sidebar-header sidebar-header-stacked">
+      <a href="./index.html" class="sidebar-logo-link">
+      <img src="./images/cover.svg" alt="Cover: Causal Inference in the CLS Cohort Studies" class="sidebar-logo light-content py-0 d-lg-inline d-none">
+      <img src="./images/cover.svg" alt="Cover: Causal Inference in the CLS Cohort Studies" class="sidebar-logo dark-content py-0 d-lg-inline d-none">
+      </a>
+    <div class="sidebar-title mb-0 py-0">
+      <a href="./">Causal Inference in the CLS Cohort Studies</a> 
+        <div class="sidebar-tools-main">
+    <a href="https://github.com/CLS-Data/causal-inference-review" title="Source Code" class="quarto-navigation-tool px-1" aria-label="Source Code"><i class="bi bi-github"></i></a>
+</div>
+    </div>
+      </div>
+        <div class="mt-2 flex-shrink-0 align-items-center">
+        <div class="sidebar-search">
+        <div id="quarto-search" class="" title="Search"></div>
+        </div>
+        </div>
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">About this guide</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./01-introduction.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">1 Introduction</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./02-problem.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">2 The Problem of Causal Inference with Observational Data</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./03-approaches.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">3 Three Approaches to Causal Inference</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./04-attributes.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">4 Attributes of CLS’s Cohort Studies That Support Causal Inference</span></a>
+  </div>
+</li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a href="./05-methods.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">5 The Methods of Causal Inference</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./05-01-control-via-regression-adjustment.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">5.1 Control via Regression Adjustment</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./05-02-matching.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">5.2 Matching</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./05-03-inverse-probability-of-treatment-weighting.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">5.3 Inverse Probability of Treatment Weighting</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./05-04-missing-data-methods.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">5.4 Missing Data Methods</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./05-05-longitudinal-fixed-effects.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">5.5 (Longitudinal) Fixed Effects</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./05-06-difference-in-differences.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">5.6 Difference in Differences</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./05-07-study-initiated-experiments.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">5.7 Study-Initiated Experiments</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./05-08-natural-experiments.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">5.8 Natural Experiments</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./05-09-instrumental-variables.html" class="sidebar-item-text sidebar-link active"><span class="chapter-title">5.9 Instrumental Variables</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./05-10-regression-discontinuity-designs.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">5.10 Regression Discontinuity Designs</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./05-11-target-trial-emulation.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">5.11 Target Trial Emulation</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./05-12-g-methods-for-time-varying-exposures.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">5.12 G-methods for Time-Varying Exposures</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./05-13-causal-mediation.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">5.13 Causal Mediation</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./05-14-family-designs.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">5.14 Family Designs</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./05-15-negative-control-outcomes-and-exposures.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">5.15 Negative Control Outcomes and Exposures</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./05-16-cross-context-analysis.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">5.16 Cross-Context Analysis</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./05-17-biases-of-known-direction.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">5.17 Biases of Known Direction</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./05-18-differential-effects.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">5.18 Differential Effects</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./05-19-reasons-for-effects.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">5.19 Reasons for Effects</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./05-20-quantitative-bias-analysis.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">5.20 Quantitative Bias Analysis</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./06-discussion.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">6 Discussion</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./07-statements.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">7 Statements</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./08-appendix.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">8 Appendix</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./references.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">References</span></a>
+  </div>
+</li>
+    </ul>
+    </div>
+</nav>
+<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#method" id="toc-method" class="nav-link active" data-scroll-target="#method">5.9.1 Method</a></li>
+  <li><a href="#applications" id="toc-applications" class="nav-link" data-scroll-target="#applications">5.9.2 Applications</a></li>
+  <li><a href="#opportunities" id="toc-opportunities" class="nav-link" data-scroll-target="#opportunities">5.9.3 Opportunities</a></li>
+  </ul>
+<div class="toc-actions"><ul><li><a href="https://github.com/CLS-Data/causal-inference-review/issues/new" class="toc-action"><i class="bi bi-github"></i>Report an issue</a></li></ul></div></nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./05-methods.html">5 The Methods of Causal Inference</a></li><li class="breadcrumb-item"><a href="./05-09-instrumental-variables.html"><span class="chapter-title">5.9 Instrumental Variables</span></a></li></ol></nav>
+<div class="quarto-title">
+<h1 class="title"><span id="instrumental-variables" class="quarto-section-identifier"><span class="chapter-title">5.9 Instrumental Variables</span></span></h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<section id="method" class="level2">
+<h2 class="anchored" data-anchor-id="method">5.9.1 Method</h2>
+<p>One issue with RCTs is that not everyone may comply with the intervention to which they have been assigned – in a medical trial, some of the ‘treated’ may stop taking the drug they have been given, and some of the ‘control’ may find the drug through other means, instead of remaining on placebo. Analogously, in natural experiments not everyone may receive or follow their expected intervention. For instance:</p>
+<ol type="1">
+<li><p>In the UESD, some people may be unaware of the event occurring, in extreme cases like the <a href="https://www.smithsonianmag.com/history/this-russian-family-lived-alone-in-the-siberian-wilderness-for-40-years-unaware-of-world-war-ii-or-the-moon-landing-7354256/">reclusive Lykov family</a> or <a href="https://www.bbc.co.uk/culture/article/20220413-onoda-the-man-who-hid-in-the-jungle-for-30-years">Hiroo Onoda and other Japanese holdouts</a>, who were unaware of the end of World War II.</p></li>
+<li><p>In the Vietnam lottery, some draftees absconded, while some non-draftees signed up to serve.</p></li>
+<li><p>In maternity wards, some mothers breastfeed or don’t regardless of whether advice from a midwife is received or not (Fitzsimons &amp; Vera-Hernández, 2022).</p></li>
+</ol>
+<p>Simply comparing outcomes by assignment (known as an <em>Intention to Treat</em> [ITT] analysis), while often useful in policy terms, will not necessarily identify the causal effect of the treatment itself. Individuals are typically only randomised to receive <em>encouragement</em> to follow a certain treatment, rather than to adopt the treatment, per se – for instance, they are provided a box of medication and given instructions to take it, rather than administered it through force. To identify the causal effect of treatment, we instead need to look at those who <em>comply</em>.</p>
+<p>This is not as simple as comparing outcomes among those who used the treatment because it is <u>not</u> <em>use</em> of treatment that is randomised. For instance, if we compare, among those entered into the Vietnam lottery, those who served and those who didn’t, we would compare on the one hand those who (1) served <em>because</em> they were drafted (<em>compliers</em>), (2) served because they would serve regardless of being drafted (<em>always takers</em>), or (3) served because they were <em>not</em> drafted (<em>non-compliers</em>) with, on the other hand, those who (a) did not serve <em>because</em> they weren’t drafted (<em>compliers</em>), (b) did not serve despite being drafted (<em>never takers</em>), or (c) did not serve because they <em>were</em> drafted (<em>non-compliers</em>). These are not equivalent groups and they are not necessarily identical according to their potential outcomes. See <a href="#table-5-5">Table 5.5</a>, which continues this worked example.</p>
+<div id="table-5-5">
+<table class="caption-top table">
+<caption><strong>Table 5.5:</strong> Numerical example showing that even with random assignment of treatment <strong>encouragement</strong>, comparing outcomes by treatment <strong>used</strong> can yield a biased estimate of the causal effect if there is non-compliance (i.e., not all individuals use the treatment they were assigned to). The example uses the Vietnam draft lottery where people either serve or don’t serve (treatment used), depending on whether they are drafted or not drafted (encouragement assigned). People can be split into four groups depending on how they behave based on treatment assignment. For simplicity we assume that people are equally split across these four groups to make the arithmetic simpler to follow. For each group, the causal effect of serving is 2 (to verify, compare ‘Potential Outcome’ columns). However, people who choose to serve when drafted have higher potential outcomes than those who do not. The difference in observed outcomes among those who serve and those who don’t is 4 (final two rows) rather than 2, a biased estimate.</caption>
+<colgroup>
+<col style="width: 32%">
+<col style="width: 15%">
+<col style="width: 17%">
+<col style="width: 15%">
+<col style="width: 17%">
+</colgroup>
+<thead>
+<tr class="header">
+<th rowspan="3" style="text-align: right;"><p>Group</p>
+<p>(X<sup>Drafted</sup>, X<sup>Not&nbsp;Drafted</sup>)</p></th>
+<th colspan="4" style="text-align: center;">Activity</th>
+</tr>
+<tr class="even">
+<th colspan="2" style="text-align: center;">Serve</th>
+<th colspan="2" style="text-align: center;">Don’t Serve</th>
+</tr>
+<tr class="header">
+<th style="text-align: center;">Potential Outcome</th>
+<th style="text-align: center;"># Enacting Activity</th>
+<th style="text-align: center;">Potential Outcome</th>
+<th style="text-align: center;"># Enacting Activity</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: right;"><p>Serve, Serve</p>
+<p>(Always Takers)</p></td>
+<td style="text-align: center;">9</td>
+<td style="text-align: center;">N</td>
+<td style="text-align: center;">7</td>
+<td style="text-align: center;">0</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">Serve, Don’t Serve (Compliers)</td>
+<td style="text-align: center;">10</td>
+<td style="text-align: center;">N/2</td>
+<td style="text-align: center;">8</td>
+<td style="text-align: center;">N/2</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">Don’t Serve, Don’t Serve (Never Takers)</td>
+<td style="text-align: center;">5</td>
+<td style="text-align: center;">0</td>
+<td style="text-align: center;">3</td>
+<td style="text-align: center;">N</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;"><p>Don’t Serve, Serve</p>
+<p>(Non-compliers)</p></td>
+<td style="text-align: center;">6</td>
+<td style="text-align: center;">N/2</td>
+<td style="text-align: center;">4</td>
+<td style="text-align: center;">N/2</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">E(Y | X = x)</td>
+<td colspan="2" style="text-align: center;"><p>= (9⋅N + 10⋅N/2 + 5⋅0+6⋅N/2) / 2⋅N</p>
+<p>= 8.5</p></td>
+<td colspan="2" style="text-align: center;"><p>= (7⋅0 + 8⋅N/2 + 3⋅N+4⋅N/2) / 2⋅N</p>
+<p>= 4.5</p></td>
+</tr>
+<tr class="even">
+<td colspan="3" style="text-align: right;">E(Y | X = Serve) – E(Y | X = Don’t Serve)</td>
+<td colspan="2" style="text-align: center;">= 8.5 – 4.5 = 4</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>Accounting for non-compliance in the estimation of causal effects can instead be achieved using the Instrumental Variable (IV) design (<a href="#figure-5-10">Figure 5.10a</a>). This design utilises variables that create – or are associated with (Goetghebeur et al., 2020) – exogenous variation in treatment, nudging subjects to a particular level of the exposure, rather than another, analogous to the role of a coin in an RCT. For instance, being picked in the Vietnam draft raised the probability a person would serve, but did not make it inevitable, while giving birth on a weekday makes it more likely, but by no means certain, that a mother will breastfeed.</p>
+<div id="figure-5-10">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><a href="images/image27.png" class="lightbox" data-gallery="quarto-lightbox-gallery-1" title="Figure 5.10: DAG representing the instrumental variable design. The instrument Z is an exogenous cause of variation in the exposure, X, and can thus be used to determine the effect of X upon Y (at least, for the variation induced in X by Z). The instrument meets three criteria: relevance (Z → X), exclusion restriction (Z → X → Y is the only directed path from Z to Y), and (conditional) independence – i.e., no open backdoor path from Z to Y. In (b), conditional exchangeability is achieved by controlling for the confounder U1."><img src="images/image27.png" class="img-fluid figure-img" style="width:68.0%" alt="Figure 5.10: DAG representing the instrumental variable design. The instrument Z is an exogenous cause of variation in the exposure, X, and can thus be used to determine the effect of X upon Y (at least, for the variation induced in X by Z). The instrument meets three criteria: relevance (Z → X), exclusion restriction (Z → X → Y is the only directed path from Z to Y), and (conditional) independence – i.e., no open backdoor path from Z to Y. In (b), conditional exchangeability is achieved by controlling for the confounder U1."></a></p>
+<figcaption><strong>Figure 5.10:</strong> DAG representing the instrumental variable design. The instrument Z is an exogenous cause of variation in the exposure, X, and can thus be used to determine the effect of X upon Y (at least, for the variation induced in X by Z). The instrument meets three criteria: relevance (Z → X), exclusion restriction (Z → X → Y is the only directed path from Z to Y), and (conditional) independence – i.e., no open backdoor path from Z to Y. In (b), conditional exchangeability is achieved by controlling for the confounder U<sub>1</sub>.</figcaption>
+</figure>
+</div>
+</div>
+<p>In addition to meeting the assumptions of positivity, consistency and no interference, to be valid, an instrumental variable must have four properties (Goetghebeur et al., 2020). First, it must be associated with exposure (<em>relevance</em>; Z → X in <a href="#figure-5-10">Figure 5.10a</a>). Second, it must be unrelated to any unmeasured confounders of the exposure-outcome relationship (<em>independence</em>; no Z ← U → Y). Third, it must be independent of the outcome conditional on the treatment and unmeasured confounders (<em>exclusion restriction</em>; Z → X → Y, the only directed path from Z to Y), unless these are conditioned upon (<a href="#figure-5-10">Figure 5.10b</a>); the lottery used in the Vietnam War draft is an instrumental variable but only among males eligible to serve.<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a> Fourth, the size of the treatment effect must be independent of the instrument (<em>homogeneity</em>) <em>or</em>, where there is effect heterogeneity, there cannot be both compliers (people who use treatment only when encouraged) and defiers (people who use treatment only when <em>discouraged</em>) within the same study population (<em>monotonicity</em>).<a href="#fn2" class="footnote-ref" id="fnref2" role="doc-noteref"><sup>2</sup></a></p>
+<p>Under these assumptions, it is possible to use estimates of the association between the instrument and the exposure and the instrument and the outcome (in <a href="#figure-5-10">Figure 5.10</a>, paths Z → X and Z → X → Y, respectively) to obtain an estimate of the causal effect of the exposure upon the outcome (X → Y); in effect, exploiting exogenous variation in the exposure related to the IV (Z → X). Several IV estimators exist. The most commonly used, two-stage least squares regression (IV-2SLS), uses the instrument to predict the exposure variable, and then uses these predicted values to estimate associations with the outcome variable. Unlike ITT analysis, this procedure provides an estimate of the change in the outcome per unit change in the exposure. Similarly, the widely used Wald estimator scales the association between the instrument and the outcome by the instrument’s association with the exposure.</p>
+<p>Where there is treatment effect heterogeneity and the monotonicity assumption is met, IV methods estimate a specific quantity termed the Local Average Treatment Effect (LATE). This is the average effect of the exposure within the variation induced by the instrumental variable, i.e., among <em>compliers</em> – people whose level of the exposure is sensitive to (changes according to) the level of the instrument (for instance, those who served in the Vietnam War only because they were drafted). The LATE, which is sometimes referred to as the Complier Average Causal Effect (CACE), can differ from a global average treatment effect because causal effects may be heterogeneous according to why someone was exposed. For instance, the effect of military service on income among those who only served due to the draft could be different to those who served voluntarily (especially if the latter did so in expectation of serving’s beneficial effect on their outcomes).</p>
+<p>Discrepancies between observational associations and IV estimates may therefore arise not just because of bias in the observational association, but also because a different quantity is being estimated. It is generally not possible to identify which individuals are compliers because the ‘fundamental problem of causal inference’ (Holland, 1986) reappears: we cannot see both states of the world, where a person receives the instrument and doesn’t. However, characteristics of the population of compliers can be observed (assuming monotonicity) by comparing the attributes of the exposed among those with the instrument and those without. Nevertheless, this population may not be of particular scientific or policy interest; we may wish to know the effect of military service on recruits in general, for example. The price of internal validity is potentially lower external validity.</p>
+<p>Where treatment effects are heterogeneous, monotonicity is required because, otherwise, the total effect of the instrument on the exposure becomes a net combination of opposite responses, making the resulting instrumental variable estimate difficult to interpret (for worked examples demonstrating this, see Cunningham, 2021; Huntington-Klein, 2022). IV methods can exploit multiple IVs, which can increase statistical power and precision, but make interpretation more challenging where treatment effects are heterogeneous as the estimated treatment effect is then an average across different groups. Additionally, where the exposure is continuous, rather than binary, the LATE is a weighted average where compliers are weighted in proportion to how affected they are by the IV (i.e., those whose exposure changes the most are weighted more highly), again making interpretation challenging.</p>
+<p>Many instruments have been proposed and used in the empirical literature, particularly in economics. Examples include (Baiocchi et al., 2014; Cunningham, 2021; Hernán &amp; Robins, 2023; Huntington-Klein, 2022; Mellon, 2025):</p>
+<ul>
+<li><p>Having a girl as a first birth (due to a preference for boys, a first-born girl means a family is more likely to have further children)</p></li>
+<li><p>Measures of access (e.g., distance to hospitals, as travel time provides an incentive to use the nearest service, regardless of its quality)</p></li>
+<li><p>Preferences (e.g., the judge fixed effects design relies on random allocation to judges who have different predilections to handing out long prison sentences)</p></li>
+<li><p>Weather (e.g., extreme weather events can mean, among other things, planned events are disbanded)</p></li>
+<li><p>Calendar time (e.g., the roll-out of cable networks in the US)</p></li>
+<li><p>Offspring traits (e.g., direct effects of genes that are shared between parents and offspring lead to correlation in parent-offspring pairs, and the offspring trait may be less confounded than the parent trait; Davey Smith et al., 2009)</p></li>
+</ul>
+<p>However, the popularity of these IVs can itself be a cause for concern (Gallen &amp; Raymond, 2020; Mellon, 2025). For instance, weather has been linked with over 190 treatment variables, such as income and food prices, through which it may plausibly affect outcomes (Mellon, 2025). Such disparate effects suggest exclusion restrictions do not hold, though Mellon (2025) discusses conditions under which this may not be the case (e.g., the exclusion restriction holds for the specific population under study), as well as outlining a procedure for determining whether this matters for a planned IV study.</p>
+<p>Note, IV estimates can be especially sensitive to violations of assumptions (Hernán &amp; Robins, 2023), in particular where the instruments are ‘weak’ (have small associations with the exposure; J. W. Jackson &amp; Swanson, 2015). Baiocchi et al.&nbsp;(2014) and Cinelli &amp; Hazlett (2025) describe quantitative bias analysis methods for IV designs.</p>
+<p>Another class of IVs that are routinely used are genetic variants – i.e., as in Mendelian Randomisation (MR) analysis. (Almost) every human trait is heritable (Polderman et al., 2015; Turkheimer, 2000). Mendelian inheritance means parents pass on a random half of their genomes to their children, and thus, conditional on parents’ genomes, a child’s genes potentially represent a source of exogenous variation in a trait. For instance, variants of the ALDH2 gene are related to the comfort with which one metabolises alcohol and have thus been used to instrument alcohol consumption and determine its effect upon health (L. Chen et al., 2008), a canonical example of a difficult question to answer with standard observational data. An advantage of using genetic variants as instruments is that they are inherited at conception and so are not subject to reverse causality. However, this also comes with the disadvantage that genes are carried across life and so it is difficult to determine or isolate specific timing of exposure (though, see Richardson et al., 2020).</p>
+<p>Due to data unavailability, MR analyses are generally undertaken without genetic data from multiple family members and therefore cannot condition on family and so do not necessarily have the characteristics motivating MR. (MR with family-level data is discussed further in <a href="./05-14-family-designs.html">Section 5.14</a>.) Genetic variants are not randomly distributed around the population (Abdellaoui et al., 2019, 2022), and population-level MR analysis can be biased by (population) genetic phenomena, including population stratification and assortative mating, as well as genetic nurture (effects of parental genes on offspring via parental behaviour) and other indirect genetic effects. Population stratification refers to differences in particular genes across groups, which can lead to (non-causal) association between genes and environments – famously, genes that are more prevalent among individuals of East Asian ancestry will be associated with chopstick use, despite this having a cultural explanation (D. Hamer &amp; Sirota, 2000). Assortative mating refers to the phenomenon of individuals not mating randomly, which can lead to associations between phenotypes (and thus the genetic variants they are influenced by) without one phenotype having a causal effect upon another. For instance, if highly educated people are more likely to mate with taller individuals, then genes that influence either will become correlated and a population MR analysis would suggest education influences height (or vice versa) when this is not the case. Both population stratification and assortative mating represent violations of the <em>independence</em> assumption.</p>
+<p>An additional issue with MR analyses (including those using family-level data) is <em>horizontal pleiotropy,</em> where a genetic variant has an effect on multiple phenotypes, not due to the main trait of interest having an effect on the others (<em>vertical</em> pleiotropy): many genes have effects on multiple phenotypes, a necessary consequence of the limited number of protein-coding genes (~20,000) in the human genome. Horizontal pleiotropy represents a potential violation of the exclusion restriction assumption. Horizontal pleiotropy can also arise through <em>linkage disequilibrium</em> (LD), whereby variants located close together on a chromosome are correlated because recombination of DNA during meiosis (formation of sex cells, gametes) rarely separates nearby loci, so DNA is inherited in blocks. Thus, a genetic variant which has a causal effect on one trait may be in LD with a variant that has an effect on another trait, creating a correlation between the two traits.</p>
+<p>The risk of horizontal pleiotropy is heightened when polygenic scores (PGS) are used as instruments. PGS aggregate the effect of many genes (e.g., hundreds or more) into a single weighted summary variable, with the individual weights determined from Genome-Wide Association Studies, which use a hypothesis-free approach. Unlike with single genetic variants like ALDH2, the pathways linking PGS to a trait may thus be poorly understood. This is a particular concern when studying complex traits, such as education, that are genetically influenced through multiple other traits (e.g., cognitive ability, conscientiousness, and physical health), which may themselves have independent effects on outcomes. As individual genes often have only weak effects, there is a trade-off between using genetic instruments that most plausibly satisfy the exclusion restriction (and independence) assumptions and using instruments that are well-powered. Researchers often strike a balance by using PGS created from the top ‘hits’ in a GWAS (e.g., variants exceeding the genome-wide significance, p &lt;= 5x10<sup>-08</sup>, level). Multivariable MR, in which PGS for related traits are also used (Davies et al., 2019), may also reduce bias in this situation. PGS also raise difficulty for meeting the <em>consistency</em> assumption.</p>
+<p>Note, however, whether population stratification, assortative mating, or horizontal pleiotropy matter in a particular MR application is an empirical question – some traits are not subject to assortative mating, nor do some genes vary in prevalence in important ways across populations, and horizontal pleiotropy may not be relevant in a specific situation. Further, as discussed in <a href="./05-16-cross-context-analysis.html">Section 5.16</a>, clever cross-context designs may be used to elaborate the theory that the gene has an exogenous effect on the exposure and provide compelling causal evidence.</p>
+</section>
+<section id="applications" class="level2">
+<h2 class="anchored" data-anchor-id="applications">5.9.2 Applications</h2>
+<p>Fitzsimons &amp; Vera-Hernández (2022) use data from the MCS to assess the effects of breastfeeding on various measures of child development using time of birth and day of birth as instruments for the likelihood that someone received breastfeeding support in hospital. Major strengths of their study are their ability to demonstrate that day of birth was not related to mothers’, babies’ and pregnancy characteristics and that associations were confined to low-SES individuals for whom breastfeeding support was particularly likely to have an effect on breastfeeding rates. Further, the authors augment their analysis using an external dataset containing detailed data on postnatal care to demonstrate that the relevance assumption is plausible (e.g., that day of birth is related to receiving advice and active support with breastfeeding).</p>
+<p>Hyppönen et al.&nbsp;(2022) use data from parents in the NCDS to assess the effect of BMI upon mortality using cohort members’ (i.e., offspring) BMI as an instrumental variable; the authors’ argument is that offspring BMI is unlikely to be confounded by underlying disease, a major confounder of the BMI-mortality association in observational studies (i.e., reverse causality; Davey Smith et al., 2009). The authors find that associations between BMI and mortality are stronger when using the IV. However, they find evidence that offspring BMI is confounded by socioeconomic position (confounding bias can be amplified when using IVs; J. W. Jackson &amp; Swanson, 2015). It is also possible the exclusion restriction is violated if, e.g., offspring socioeconomic position (which could have a causal effect on offspring BMI) affects parental mortality. Further, because the instrument captures the stable familial component of BMI, the analysis disregards temporary variation in parental BMI, and so estimates target the effect of long-run – rather than contemporaneous – adiposity.</p>
+</section>
+<section id="opportunities" class="level2">
+<h2 class="anchored" data-anchor-id="opportunities">5.9.3 Opportunities</h2>
+<p>The temporal and geographical range of the CLS cohorts, as well as linkage with admin data, potentially opens up many opportunities for novel instrumental variable analyses. However, the discovery of plausible IVs depends on deep domain-specific knowledge. Given the wide range of data that are available in the cohorts, there may be a case for extending previous successful IV applications – e.g., to extend the Fitzsimons &amp; Vera-Hernández (2022) work to outcomes captured later in life (e.g., educational attainment) or other domains (e.g., to personality traits); though whether IV assumptions are met for these additional outcomes would need to be examined. Data on offspring and/or parents are available in each cohort and can enable IV analyses using family members’ traits. However, again, whether the IV assumptions are met will need to be assessed for the exposure and outcome under study. Finally, PGS for a wide range of traits are now available in each cohort (Shireby et al., 2025) and could be used in MR analyses. For researchers wishing to exploit single genetic variants, raw genetic data can be accessed via application to CLS.</p>
+
+
+</section>
+<section id="footnotes" class="footnotes footnotes-end-of-document" role="doc-endnotes">
+<hr>
+<ol>
+<li id="fn1"><p>Typically, and as displayed in <a href="#figure-5-10">Figure 5.10</a>, the three IV assumptions are stated referring to causal effects rather than (conditional) associations. For instance, relevance is defined as the IV having a causal effect on the exposure and exclusion restriction as the IV not having causal effects on outcomes except via the exposure, X. In the causal framing, not conditioning on U<sub>1</sub> in <a href="#figure-5-10">Figure 5.10b</a> may be classified as a violation of independence (i.e., presence of open back-door paths) rather than exclusion restriction as above. In the causal framing, selection paths (e.g., adding Z → S ← Y to <a href="#figure-5-10">Figure 5.10b</a>) do not fall easily under any assumption’s definition, whereas they sit straightforwardly under exclusion restriction as the assumptions are defined above.<a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn2"><p>There are various (relatively technical) versions of the homogeneity assumption. See Goetghebeur et al.&nbsp;(2020) and Hernán &amp; Robins (2023) for more detail.<a href="#fnref2" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+</ol>
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copied!");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copied!");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp("https:\/\/cls-data\.github\.io\/causal-inference-review\/");
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+            // target, if specified
+            link.setAttribute("target", "_blank");
+            if (link.getAttribute("rel") === null) {
+              link.setAttribute("rel", "noopener");
+            }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+<nav class="page-navigation">
+  <div class="nav-page nav-page-previous">
+      <a href="./05-08-natural-experiments.html" class="pagination-link" aria-label="5.8 Natural Experiments">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-title">5.8 Natural Experiments</span></span>
+      </a>          
+  </div>
+  <div class="nav-page nav-page-next">
+      <a href="./05-10-regression-discontinuity-designs.html" class="pagination-link" aria-label="5.10 Regression Discontinuity Designs">
+        <span class="nav-page-text"><span class="chapter-title">5.10 Regression Discontinuity Designs</span></span> <i class="bi bi-arrow-right-short"></i>
+      </a>
+  </div>
+</nav>
+</div> <!-- /content -->
+<footer class="footer">
+  <div class="nav-footer">
+    <div class="nav-footer-left">
+<p>Wright, Tomova, Danka, Ploubidis &amp; Silverwood · Centre for Longitudinal Studies, UCL</p>
+</div>   
+    <div class="nav-footer-center">
+      &nbsp;
+    <div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/CLS-Data/causal-inference-review/issues/new" class="toc-action"><i class="bi bi-github"></i>Report an issue</a></li></ul></div></div>
+    <div class="nav-footer-right">
+<p>Built with <a href="https://quarto.org">Quarto</a></p>
+</div>
+  </div>
+</footer>
+<script>var lightboxQuarto = GLightbox({"closeEffect":"zoom","descPosition":"bottom","loop":false,"openEffect":"zoom","selector":".lightbox"});
+(function() {
+  let previousOnload = window.onload;
+  window.onload = () => {
+    if (previousOnload) {
+      previousOnload();
+    }
+    lightboxQuarto.on('slide_before_load', (data) => {
+      const { slideIndex, slideNode, slideConfig, player, trigger } = data;
+      const href = trigger.getAttribute('href');
+      if (href !== null) {
+        const imgEl = window.document.querySelector(`a[href="${href}"] img`);
+        if (imgEl !== null) {
+          const srcAttr = imgEl.getAttribute("src");
+          if (srcAttr && srcAttr.startsWith("data:")) {
+            slideConfig.href = srcAttr;
+          }
+        }
+      } 
+    });
+  
+    lightboxQuarto.on('slide_after_load', (data) => {
+      const { slideIndex, slideNode, slideConfig, player, trigger } = data;
+      if (window.Quarto?.typesetMath) {
+        window.Quarto.typesetMath(slideNode);
+      }
+    });
+  
+  };
+  
+})();
+          </script>
+
+
+
+
+<script src="site_libs/quarto-html/zenscroll-min.js"></script>
+</body></html>
