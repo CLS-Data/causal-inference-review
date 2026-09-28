@@ -218,7 +218,7 @@
   }
  },
  {
-  "id": "refgBdfcUY6_cq0rAZAq",
+  "id": "refTO1X510p_062xtueC",
   "type": "article-journal",
   "container-title": "The Journals of Gerontology: Series A",
   "DOI": "10.1093/gerona/glad077",
@@ -265,7 +265,7 @@
   }
  },
  {
-  "id": "refgBdfcUY6_p6SijbvQ",
+  "id": "refTO1X510p_FV62xf7E",
   "type": "article-journal",
   "container-title": "Epidemiology",
   "DOI": "10.1097/EDE.0000000000001313",
@@ -634,7 +634,7 @@
   }
  },
  {
-  "id": "refgBdfcUY6_OaanUcio",
+  "id": "refTO1X510p_dJlwJmvX",
   "type": "article-journal",
   "container-title": "Biometrics",
   "DOI": "10.1111/j.1541-0420.2005.00377.x",
@@ -1474,7 +1474,7 @@
   }
  },
  {
-  "id": "refgBdfcUY6_IcaL14jz",
+  "id": "refTO1X510p_7RVErtIR",
   "type": "article",
   "DOI": "10.48550/arXiv.2512.11549",
   "number": "arXiv:2512.11549",
@@ -1562,7 +1562,7 @@
    },
    {
     "family": "Smith",
-    "given": "G. D."
+    "given": "G."
    }
   ],
   "issued": {
@@ -1595,8 +1595,8 @@
     "given": "S. D."
    },
    {
-    "family": "Smith",
-    "given": "G. D."
+    "family": "DaveySmith",
+    "given": "G."
    },
    {
     "family": "Ness",
@@ -1991,8 +1991,8 @@
     "given": "L."
    },
    {
-    "family": "Smith",
-    "given": "G. D."
+    "family": "Davey Smith",
+    "given": "G."
    },
    {
     "family": "Harbord",
@@ -3020,7 +3020,7 @@
   }
  },
  {
-  "id": "refgBdfcUY6_NqCJeKbi",
+  "id": "refTO1X510p_9hiW5n9W",
   "type": "chapter",
   "container-title": "Pathways to Health",
   "DOI": "10.1007/978-94-024-1707-4_1",
@@ -3079,7 +3079,7 @@
   }
  },
  {
-  "id": "refgBdfcUY6_CT1dSYk3",
+  "id": "refTO1X510p_6W0GAu2d",
   "type": "article-journal",
   "container-title": "The Stata Journal",
   "DOI": "10.1177/1536867X1201100401",
@@ -3116,7 +3116,7 @@
   }
  },
  {
-  "id": "refgBdfcUY6_fENWhzQ7",
+  "id": "refTO1X510p_klVwHLvv",
   "type": "article-journal",
   "container-title": "Biometrics",
   "DOI": "10.1111/biom.12248",
@@ -3297,6 +3297,40 @@
   }
  },
  {
+  "id": "ref64",
+  "type": "article-journal",
+  "container-title": "British Medical Journal",
+  "DOI": "10.1136/bmj.312.7047.1659",
+  "ISSN": "0959-8138",
+  "issue": "7047",
+  "journalAbbreviation": "BMJ",
+  "page": "1659-1661",
+  "PMID": "8664725",
+  "PMCID": "PMC2351357",
+  "title": "Inflation in epidemiology: \"the proof and measurement of association between two things\" revisited.",
+  "title-short": "Inflation in epidemiology",
+  "volume": "312",
+  "author": [
+   {
+    "family": "Davey Smith",
+    "given": "G."
+   },
+   {
+    "family": "Phillips",
+    "given": "A. N."
+   }
+  ],
+  "issued": {
+   "date-parts": [
+    [
+     "1996",
+     6,
+     29
+    ]
+   ]
+  }
+ },
+ {
   "id": "ref473",
   "type": "article-journal",
   "container-title": "International Journal of Epidemiology",
@@ -3434,7 +3468,7 @@
   }
  },
  {
-  "id": "refgBdfcUY6_WXKrNfmS",
+  "id": "refTO1X510p_OMGTQzv6",
   "type": "article-journal",
   "container-title": "American Journal of Epidemiology",
   "DOI": "10.1093/aje/kwu239",
@@ -3766,7 +3800,7 @@
   }
  },
  {
-  "id": "refgBdfcUY6_su7m1iE1",
+  "id": "refTO1X510p_IRG85OTV",
   "type": "paper-conference",
   "collection-title": "UAI'06",
   "container-title": "Proceedings of the Twenty-Second Conference on Uncertainty in Artificial Intelligence",
@@ -3859,7 +3893,7 @@
     "given": "P."
    },
    {
-    "family": "Vanderweele",
+    "family": "VanderWeele",
     "given": "T. J."
    },
    {
@@ -4804,7 +4838,7 @@
   }
  },
  {
-  "id": "refgBdfcUY6_uEFnvTbc",
+  "id": "refTO1X510p_mpcJRTKx",
   "type": "article-journal",
   "container-title": "Statistics in Medicine",
   "DOI": "10.1002/sim.70038",
@@ -5354,8 +5388,8 @@
     "given": "M. M."
    },
    {
-    "family": "Smith",
-    "given": "G. D."
+    "family": "Davey Smith",
+    "given": "G."
    }
   ],
   "issued": {
@@ -6418,7 +6452,7 @@
   }
  },
  {
-  "id": "ref02w9uLqN_uYE2IfRf",
+  "id": "refTO1X510p_ERZtTqck",
   "type": "article-journal",
   "container-title": "Journal of Causal Inference",
   "DOI": "10.1515/jci-2017-0002",
@@ -6499,8 +6533,8 @@
     "given": "H."
    },
    {
-    "family": "Smith",
-    "given": "G. D."
+    "family": "Davey Smith",
+    "given": "G."
    },
    {
     "family": "Davies",
@@ -7045,7 +7079,7 @@
   }
  },
  {
-  "id": "ref02w9uLqN_F2NRGq3a",
+  "id": "refTO1X510p_0WwrizZF",
   "type": "article-journal",
   "container-title": "Statistics in Medicine",
   "DOI": "10.1002/sim.7266",
@@ -7526,7 +7560,7 @@
   }
  },
  {
-  "id": "refgBdfcUY6_uzY2JvPD",
+  "id": "refTO1X510p_bQg5R1yN",
   "type": "article-journal",
   "container-title": "The International Journal of Biostatistics",
   "DOI": "10.1515/1557-4679.1370",
@@ -7734,8 +7768,8 @@
     "given": "D. A."
    },
    {
-    "family": "Smith",
-    "given": "G. D."
+    "family": "Davey Smith",
+    "given": "G."
    },
    {
     "family": "Bruckdorfer",
@@ -8261,7 +8295,7 @@
   }
  },
  {
-  "id": "refgBdfcUY6_isvLjaZi",
+  "id": "refTO1X510p_tpqW9Agn",
   "type": "article-journal",
   "container-title": "Annual Review of Psychology",
   "DOI": "10.1146/annurev.psych.58.110405.085542",
@@ -8297,7 +8331,7 @@
   }
  },
  {
-  "id": "refgBdfcUY6_pnEuvp9T",
+  "id": "refTO1X510p_XgmS1Ug6",
   "type": "book",
   "collection-title": "Multivariate Applications",
   "DOI": "10.4324/9780203809556",
@@ -8660,7 +8694,7 @@
   }
  },
  {
-  "id": "refgBdfcUY6_JczgRvwF",
+  "id": "refTO1X510p_FoUJxstl",
   "type": "article-journal",
   "container-title": "Journal of the Royal Statistical Society Series B: Statistical Methodology",
   "DOI": "10.1093/jrsssb/qkad066",
@@ -8687,7 +8721,7 @@
   }
  },
  {
-  "id": "refgBdfcUY6_tOHRxI4S",
+  "id": "refTO1X510p_hlzEtEbg",
   "type": "article-journal",
   "container-title": "Epidemiology",
   "DOI": "10.1097/EDE.0000000000000866",
@@ -9081,7 +9115,7 @@
   }
  },
  {
-  "id": "refgBdfcUY6_ip5S6lpc",
+  "id": "refTO1X510p_crQSqpxV",
   "type": "article-journal",
   "container-title": "Psychological Methods",
   "DOI": "10.1037/met0000299",
@@ -9485,7 +9519,7 @@
   }
  },
  {
-  "id": "refgBdfcUY6_ap40KqKf",
+  "id": "refTO1X510p_26e6qqCg",
   "type": "paper-conference",
   "collection-title": "UAI'01",
   "container-title": "Proceedings of the Seventeenth conference on Uncertainty in artificial intelligence",
@@ -9663,7 +9697,7 @@
   }
  },
  {
-  "id": "refgBdfcUY6_PTngU6qp",
+  "id": "refTO1X510p_6OjWPWdE",
   "type": "article-journal",
   "container-title": "Epidemiology",
   "DOI": "10.1097/01.ede.0000208475.99429.2d",
@@ -9753,8 +9787,8 @@
     "given": "A. N."
    },
    {
-    "family": "Smith",
-    "given": "G. D."
+    "family": "Davey Smith",
+    "given": "G."
    }
   ],
   "issued": {
@@ -10397,7 +10431,7 @@
   }
  },
  {
-  "id": "refgBdfcUY6_P4en83rU",
+  "id": "refTO1X510p_9ORVzkUW",
   "type": "article-journal",
   "container-title": "Mathematical Modelling",
   "DOI": "10.1016/0270-0255(86)90088-6",
@@ -10424,7 +10458,7 @@
   }
  },
  {
-  "id": "refgBdfcUY6_zxg7VP3f",
+  "id": "refTO1X510p_8Sb14NyN",
   "type": "article-journal",
   "container-title": "Epidemiology",
   "DOI": "10.1097/00001648-200009000-00011",
@@ -10460,7 +10494,7 @@
   }
  },
  {
-  "id": "refgBdfcUY6_hV4k7gp3",
+  "id": "refTO1X510p_gVAUoHL7",
   "type": "chapter",
   "container-title": "Health service research methodology: A focus on AIDS",
   "ISBN": "0935316107",
@@ -10498,7 +10532,7 @@
   }
  },
  {
-  "id": "refgBdfcUY6_4U4YiTkh",
+  "id": "refTO1X510p_qJJPuRmY",
   "type": "article-journal",
   "container-title": "Epidemiology",
   "ISSN": "1044-3983",
@@ -10527,7 +10561,7 @@
   }
  },
  {
-  "id": "refgBdfcUY6_dQLXgHCa",
+  "id": "refTO1X510p_e9MWnZeM",
   "type": "chapter",
   "container-title": "Probabilistic and Causal Inference: The Works of Judea Pearl",
   "edition": "1",
@@ -11603,7 +11637,7 @@
   }
  },
  {
-  "id": "refgBdfcUY6_GHMKYCCO",
+  "id": "refTO1X510p_xMmk5iCE",
   "type": "article-journal",
   "container-title": "Epidemiology",
   "DOI": "10.1097/EDE.0000000000001378",
@@ -12094,40 +12128,6 @@
   }
  },
  {
-  "id": "ref64",
-  "type": "article-journal",
-  "container-title": "British Medical Journal",
-  "DOI": "10.1136/bmj.312.7047.1659",
-  "ISSN": "0959-8138",
-  "issue": "7047",
-  "journalAbbreviation": "BMJ",
-  "page": "1659-1661",
-  "PMID": "8664725",
-  "PMCID": "PMC2351357",
-  "title": "Inflation in epidemiology: \"the proof and measurement of association between two things\" revisited.",
-  "title-short": "Inflation in epidemiology",
-  "volume": "312",
-  "author": [
-   {
-    "family": "Smith",
-    "given": "G. D."
-   },
-   {
-    "family": "Phillips",
-    "given": "A. N."
-   }
-  ],
-  "issued": {
-   "date-parts": [
-    [
-     "1996",
-     6,
-     29
-    ]
-   ]
-  }
- },
- {
   "id": "ref21058",
   "type": "article-journal",
   "container-title": "Child Development",
@@ -12169,7 +12169,7 @@
   }
  },
  {
-  "id": "refgBdfcUY6_xwb8Ap0v",
+  "id": "refTO1X510p_UI7Rn9tc",
   "type": "article-journal",
   "container-title": "BJOG: An International Journal of Obstetrics & Gynaecology",
   "DOI": "10.1111/1471-0528.15659",
@@ -12271,7 +12271,7 @@
   }
  },
  {
-  "id": "refgBdfcUY6_fqnTXg4u",
+  "id": "refTO1X510p_gYdhmySH",
   "type": "article-journal",
   "container-title": "Journal of the American Statistical Association",
   "DOI": "10.1080/01621459.2020.1765783",
@@ -12373,15 +12373,17 @@
   }
  },
  {
-  "id": "ref503",
-  "type": "article",
-  "DOI": "10.1101/2025.02.07.25321888",
+  "id": "ref21103",
+  "type": "article-journal",
+  "container-title": "Public Health",
+  "DOI": "10.1016/j.puhe.2025.105886",
+  "ISSN": "00333506",
+  "journalAbbreviation": "Public Health",
   "language": "en",
-  "license": "© 2025, Posted by Cold Spring Harbor Laboratory. This pre-print is available under a Creative Commons License (Attribution 4.0 International), CC BY 4.0, as described at http://creativecommons.org/licenses/by/4.0/",
-  "publisher": "medRxiv",
+  "page": "105886",
   "title": "Sexuality and respiratory outcomes in the UK: disparities, development and mediators in multiple longitudinal studies",
   "title-short": "Sexuality and respiratory outcomes in the UK",
-  "URL": "https://www.medrxiv.org/content/10.1101/2025.02.07.25321888v1",
+  "volume": "247",
   "author": [
    {
     "family": "Tabor",
@@ -12396,20 +12398,10 @@
     "given": "P."
    }
   ],
-  "accessed": {
-   "date-parts": [
-    [
-     "2025",
-     2,
-     17
-    ]
-   ]
-  },
   "issued": {
    "date-parts": [
     [
      "2025",
-     2,
      10
     ]
    ]
@@ -12729,7 +12721,7 @@
   }
  },
  {
-  "id": "refgBdfcUY6_FmFWobBO",
+  "id": "refTO1X510p_QurA1osq",
   "type": "article-journal",
   "container-title": "Emerging Adulthood",
   "DOI": "10.1177/2167696815621645",
@@ -13302,21 +13294,19 @@
   }
  },
  {
-  "id": "refgBdfcUY6_R7VUgAt3",
+  "id": "ref21105",
   "type": "article-journal",
   "container-title": "Statistics and Its Interface",
   "DOI": "10.4310/SII.2009.v2.n4.a7",
-  "ISSN": "1938-7997, 1938-7989",
+  "ISSN": "19387989, 19387997",
   "issue": "4",
-  "journalAbbreviation": "Stat. Interface",
   "language": "en",
   "page": "457-468",
-  "publisher": "International Press of Boston",
   "title": "Conceptual issues concerning mediation, interventions and composition",
   "volume": "2",
   "author": [
    {
-    "family": "Vanderweele",
+    "family": "VanderWeele",
     "given": "T. J."
    },
    {
@@ -13333,7 +13323,7 @@
   }
  },
  {
-  "id": "refgBdfcUY6_TGzKF3iJ",
+  "id": "refTO1X510p_DaM4txQY",
   "type": "article-journal",
   "container-title": "Epidemiology",
   "DOI": "10.1097/EDE.0000000000000034",
@@ -13458,7 +13448,7 @@
   }
  },
  {
-  "id": "refgBdfcUY6_gLlVaZrf",
+  "id": "ref21106",
   "type": "article-journal",
   "container-title": "Epidemiologic Methods",
   "DOI": "10.1515/em-2015-0005",
@@ -13476,7 +13466,7 @@
     "given": "S."
    },
    {
-    "family": "Sjolander",
+    "family": "Sjölander",
     "given": "A."
    }
   ],
@@ -13491,7 +13481,7 @@
   }
  },
  {
-  "id": "refgBdfcUY6_UEAHVudx",
+  "id": "refTO1X510p_4Jf7B1zn",
   "type": "article-journal",
   "container-title": "Epidemiology",
   "DOI": "10.1097/EDE.0000000000000596",
@@ -14170,7 +14160,7 @@
   }
  },
  {
-  "id": "refgBdfcUY6_JnUu1ZVx",
+  "id": "refTO1X510p_xJ0M7ZD0",
   "type": "article-journal",
   "container-title": "The Annals of Mathematical Statistics",
   "DOI": "10.1214/aoms/1177732676",
@@ -14358,7 +14348,7 @@
   }
  },
  {
-  "id": "ref02w9uLqN_LsLWvkX3",
+  "id": "refTO1X510p_KjhroDSo",
   "type": "article-journal",
   "container-title": "Statistics in Medicine",
   "DOI": "10.1002/sim.10255",

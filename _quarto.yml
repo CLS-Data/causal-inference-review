@@ -12,7 +12,7 @@ book:
     - "Martin N. Danka"
     - "George B. Ploubidis"
     - "Richard J. Silverwood"
-  date: "2026-09-16"
+  date: "2026-09-29"
   date-format: "D MMMM YYYY"
   description: "A guide to methods and research designs for causal inference with the Centre for Longitudinal Studies' cohort data."
   favicon: images/favicon.svg

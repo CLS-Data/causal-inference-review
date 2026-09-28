@@ -24,7 +24,7 @@ Use the sidebar to navigate between chapters, the search box to find a method or
 
 ## Status and feedback {.unnumbered}
 
-This is a working draft of the guide (version dated 16 September 2026). We welcome comments, corrections and suggestions of further applications: please email [liam.wright@ucl.ac.uk](mailto:liam.wright@ucl.ac.uk) or [open an issue on GitHub](https://github.com/CLS-Data/causal-inference-review/issues).
+This is a working draft of the guide (version dated 29 September 2026). We welcome comments, corrections and suggestions of further applications: please email [liam.wright@ucl.ac.uk](mailto:liam.wright@ucl.ac.uk) or [open an issue on GitHub](https://github.com/CLS-Data/causal-inference-review/issues).
 
 ## How to cite {.unnumbered}
 

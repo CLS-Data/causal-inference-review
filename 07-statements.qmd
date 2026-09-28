@@ -10,7 +10,7 @@ This work was supported by the Economic and Social Research Council (ES/W013142/
 
 ## 7.3 Author contributions {#author-contributions}
 
-LW and RJS conceptualised the user guide. LW wrote the first draft, except for [Sections 5.12](05-12-g-methods-for-time-varying-exposures.qmd) and [5.13](05-13-causal-mediation.qmd), which were written by MD, and [Section 2.1](02-problem.qmd#correlation-causation-what-next), which was written by GDT. Claude Fable 5.1 and OpenAI GPT-6 Astra were used as reviewers, suggesting grammatical, formatting and substantive edits to text, which were reviewed by LW before approval or rejection. All authors provided critical revisions.
+LW and RJS conceptualised the user guide. LW wrote the first draft, except for [Sections 5.12](05-12-g-methods-for-time-varying-exposures.qmd) and [5.13](05-13-causal-mediation.qmd), which were written by MD, and [Section 2.1](02-problem.qmd#correlation-causation-what-next), which was written by GDT. Claude (Fable 5.1 and Opus 5.5) and OpenAI (GPT-6 Astra) were used as reviewers, suggesting grammatical, formatting and substantive edits to text, which were reviewed by LW before approval or rejection. All authors provided critical revisions.
 
 ## 7.4 Data availability {#data-availability}
 

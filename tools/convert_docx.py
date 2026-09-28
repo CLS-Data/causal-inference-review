@@ -458,14 +458,57 @@ def multiline_to_pipe(block: list) -> list:
             + ["| " + " | ".join(r) + " |" for r in rows])
 
 
+CAPTION_NUMBERED = re.compile(r"^(Table|Box)\s+(\d+\.\d+)\s*:\s*(.*)$")
+
+
 def rebuild_tables_and_boxes(md: str, registry: dict) -> str:
+    """Grid/multiline tables with a ': caption' line -> numbered tables or callout boxes.
+
+    Captions come in two forms depending on how Word's caption fields convert:
+    with the number as text (': : Table 2.1: A hypothetical…', ': : Box 1.1: How to…')
+    or without it (': : A hypothetical…', ': Box .: Notes…'). Numbers are taken from
+    the caption when present; otherwise tables are numbered by position
+    (TABLE_NUMBERS) and boxes by chapter.
+    """
     lines = md.split("\n")
     out_lines = list(lines)
-    tables_seen = 0
-    # find caption lines (": caption") scanning from the bottom so indices stay valid
+    # chapter number of each line (level-1 headings, counting from the Introduction)
+    chapter_of, ch = [], 0
+    for l in lines:
+        if re.match(r"^# ", l) and not l.startswith("# References"):
+            ch += 1
+        chapter_of.append(ch)
     caption_idx = [i for i, l in enumerate(lines) if re.match(r"^\s*: ", l)]
-    for ci in reversed(caption_idx):
-        cap = lines[ci].strip()
+    parsed = []
+    for ci in caption_idx:
+        text = re.sub(r"^:\s*(?::\s*)?", "", lines[ci].strip())
+        m = CAPTION_NUMBERED.match(text)
+        if m:
+            parsed.append((ci, m.group(1), m.group(2), m.group(3)))
+        elif text.startswith("Box .:"):
+            parsed.append((ci, "Box", None, text[len("Box .:"):].strip()))
+        else:
+            parsed.append((ci, "Table", None, text))
+    # fill in missing numbers: tables by position, boxes by chapter
+    unnumbered_tables = [p for p in parsed if p[1] == "Table" and p[2] is None]
+    positional = iter(TABLE_NUMBERS[len(TABLE_NUMBERS) - len(unnumbered_tables):]) \
+        if len(unnumbered_tables) <= len(TABLE_NUMBERS) else iter(())
+    box_count = {}
+    filled = []
+    for ci, kind, num, text in parsed:
+        if kind == "Box":
+            c = chapter_of[ci]
+            box_count[c] = box_count.get(c, 0) + 1
+            num = num or f"{c}.{box_count[c]}"
+        elif num is None:
+            num = next(positional, None)
+            if num is None:
+                print(f"WARNING: could not number table caption: {text[:60]!r}")
+                continue
+        filled.append((ci, kind, num, text))
+
+    # rebuild from the bottom so earlier line indices stay valid
+    for ci, kind, num, text in reversed(filled):
         # locate the table block above the caption
         j = ci - 1
         while j >= 0 and is_table_line(lines[j]):
@@ -476,8 +519,8 @@ def rebuild_tables_and_boxes(md: str, registry: dict) -> str:
         block = lines[start:ci]
         while block and block[-1] == "":
             block.pop()
-        if cap.startswith(": Box .:"):
-            title = cap[len(": Box .:"):].strip().rstrip(".")
+        if kind == "Box":
+            title = text.strip().rstrip(".")
             content = []
             for l in block:
                 if l.startswith("+"):
@@ -485,16 +528,26 @@ def rebuild_tables_and_boxes(md: str, registry: dict) -> str:
                 content.append(re.sub(r"\s*\|$", "", l[2:]) if l.startswith("| ") else l)
             while content and content[-1] == "":
                 content.pop()
-            registry.setdefault("boxes", {})["2.1"] = "box-2-1"
-            new = ['::: {#box-2-1 .callout-note title="Box 2.1: ' + title + '" icon=false}', ""] + content + ["", ":::"]
+            # drop an internal heading that repeats the box title (it is shown in the callout header)
+            while content and content[0].strip() == "":
+                content.pop(0)
+            if content and re.sub(r"[*_\\]", "", content[0]).strip().rstrip(".").lower() == title.lower():
+                content.pop(0)
+                while content and content[0].strip() == "":
+                    content.pop(0)
+            anchor = "box-" + num.replace(".", "-")
+            registry.setdefault("boxes", {})[num] = anchor
+            new = [f'::: {{#{anchor} .callout-note title="Box {num}: {title}" icon=false}}', ""] + content + ["", ":::"]
         else:
-            text = re.sub(r"^:\s*:\s*", "", cap)
-            num = TABLE_NUMBERS[len(TABLE_NUMBERS) - 1 - tables_seen]
-            tables_seen += 1
             anchor = "table-" + num.replace(".", "-")
             registry.setdefault("tables", {})[num] = anchor
             if text.startswith("A hypothetical RCT"):
-                new = TABLE_2_1_HTML.split("\n")
+                # hand-built HTML keeps the merged header cells and the grey shading;
+                # the caption text still comes from the manuscript
+                cap_html = html.escape(re.sub(r"\*\*?([^*]+)\*\*?", r"\1", text), quote=False)
+                new = re.sub(r"<caption>.*?</caption>",
+                             lambda _: f"<caption><strong>Table {num}:</strong> {cap_html}</caption>",
+                             TABLE_2_1_HTML).split("\n")
             elif block[0].lstrip().startswith("-"):
                 body = multiline_to_pipe(block)
                 new = [f"::: {{#{anchor}}}", ""] + body + ["", f": **Table {num}:** {text}", "", ":::"]
@@ -633,7 +686,8 @@ def link_xrefs(files: dict, registry: dict):
             hit = registry.get("tables", {}).get(num)
             hit = (registry["tbl_file"].get(num), hit) if hit else None
         elif kind.startswith("box"):
-            hit = ("02-problem.qmd", "box-2-1") if num == "2.1" else None
+            hit = registry.get("boxes", {}).get(num)
+            hit = (registry["box_file"].get(num), hit) if hit else None
         else:
             hit = registry.get("equations", {}).get(num)
             hit = (registry["eq_file"].get(num), hit) if hit else None
@@ -706,13 +760,15 @@ def main():
     files, order = split_into_files(md, registry)
 
     # where does each figure / table / equation live?
-    registry["fig_file"], registry["tbl_file"], registry["eq_file"] = {}, {}, {}
+    registry["fig_file"], registry["tbl_file"], registry["eq_file"], registry["box_file"] = {}, {}, {}, {}
     for fname, flines in files.items():
         text = "\n".join(flines)
         for num in re.findall(r"\{#figure-(\d+-\d+)", text):
             registry["fig_file"][num.replace("-", ".")] = fname
         for num in re.findall(r"\{#table-(\d+-\d+)", text):
             registry["tbl_file"][num.replace("-", ".")] = fname
+        for num in re.findall(r"\{#box-(\d+-\d+)", text):
+            registry["box_file"][num.replace("-", ".")] = fname
         for num in re.findall(r"\{#equation-(\d+-\d+)", text):
             registry["eq_file"][num.replace("-", ".")] = fname
 
